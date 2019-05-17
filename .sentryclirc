@@ -1,0 +1,6 @@
+[defaults]
+url=https://sentry.io/
+org=artiely
+project=vue
+[auth]
+token=
