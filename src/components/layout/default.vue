@@ -20,7 +20,7 @@
         <a-radio value="fixed">固定布局</a-radio>
       </a-radio-group>
     </div>
-      <div class="setting-drawer-index-handle" @click="toggle">
+      <div class="setting-drawer-index-handle" slot="handle" @click="toggle">
         <a-icon type="setting" v-if="!visible"/>
         <a-icon type="close" v-else/>
     </div>
@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      visible: true,
+      visible: false,
       currLayout: 'layout2',
       layoutMode: 'flow'
     }

@@ -2,46 +2,35 @@
 <div>
     <div class="logo"></div>
       <a-menu
-      :defaultSelectedKeys="['1']"
-      :defaultOpenKeys="['sub1']"
-      :mode="mode"
-      :theme="theme"
+      :defaultSelectedKeys="['/index']"
+      :defaultOpenKeys="['/']"
+      mode="inline"
+      theme="dark"
+      v-model="selectedKeys"
+      :inlineCollapsed="collapsed"
+      @select="select"
     >
-      <a-menu-item key="1">
-        <a-icon type="pie-chart" />
-        <span>Option 1</span>
-      </a-menu-item>
-      <a-menu-item key="2">
-        <a-icon type="desktop" />
-        <span>Option 2</span>
-      </a-menu-item>
-      <a-menu-item key="3">
-        <a-icon type="inbox" />
-        <span>Option 3</span>
-      </a-menu-item>
-      <a-sub-menu key="sub1">
-        <span slot="title"><a-icon type="mail" /><span>Navigation One</span></span>
-        <a-menu-item key="5">Option 5</a-menu-item>
-        <a-menu-item key="6">Option 6</a-menu-item>
-        <a-menu-item key="7">Option 7</a-menu-item>
-        <a-menu-item key="8">Option 8</a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu key="sub2">
-        <span slot="title"><a-icon type="appstore" /><span>Navigation Two</span></span>
-        <a-menu-item key="9">Option 9</a-menu-item>
-        <a-menu-item key="10">Option 10</a-menu-item>
-        <a-sub-menu key="sub3" title="Submenu">
-          <a-menu-item key="11">Option 11</a-menu-item>
-          <a-menu-item key="12">Option 12</a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
+      <template v-for="item in menu">
+        <template v-if="!item.meta.hide">
+        <a-menu-item v-if="!item.children&&!item.meta.hide" :key="item.path">
+          <a-icon type="pie-chart" />
+          <span>{{item.meta.title}}</span>
+        </a-menu-item>
+        <sub-menu v-else :menu-info="item" :key="item.path"/>
+        </template>
+      </template>
     </a-menu>
 </div>
 
 </template>
 
 <script>
+import subMenu from './sub-menu'
+import menu from '@/router/modules/routes' 
 export default {
+  components:{
+    subMenu
+  },
   name: 'solo-menu',
   props: {
     mode: {
@@ -51,6 +40,18 @@ export default {
     theme: {
       type: String,
       default: 'dark'
+    }
+  },
+  data () {
+    return {
+      collapsed: false,
+      selectedKeys:['/index'],
+      menu,
+    }
+  },
+  methods:{
+    select({ item, key, selectedKeys }){
+      this.$router.push(key)
     }
   }
 }
