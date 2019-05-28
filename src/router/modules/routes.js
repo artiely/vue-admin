@@ -36,7 +36,7 @@ export default [
         component: loading('views/live/workspace.vue'),
         meta: {
           auth: true,
-          title: '工作台',
+          title: '首页',
           icon: ''
         }
       },
@@ -46,7 +46,7 @@ export default [
         component: loading('views/live/workspace.vue'),
         meta: {
           auth: true,
-          title: '工作台',
+          title: '首页',
           icon: '',
           hide: true
         }

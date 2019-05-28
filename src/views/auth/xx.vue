@@ -1,12 +1,12 @@
 
 <template>
-  <div class="workspace">
-    workspace组件
+  <div class="xx">
+    xx组件
   </div>
 </template>
 <script>
 export default {
-  name: 'Workspace',
+  name: 'Xx',
   components: {},
   data () {
     return {
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.workspace {
+.xx {
 
 }
 </style>

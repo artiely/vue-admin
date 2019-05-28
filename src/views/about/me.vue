@@ -6,14 +6,14 @@
 </template>
 <script>
 export default {
-  name: 'me',
-  components:{},
-  data(){
+  name: 'Me',
+  components: {},
+  data () {
     return {
     }
   },
-  computed:{},
-  watch:{},
+  computed: {},
+  watch: {},
   /*
   beforeCreate
   created
@@ -27,8 +27,8 @@ export default {
   destroyed
   errorCaptured
    */
-  created(){},
-  methods(){}
+  created () {},
+  methods () {}
 }
 </script>
 <style lang="less" scoped>

@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-  name: 'index'
+  name: 'Index'
 }
 </script>
 <style lang="less" scoped>

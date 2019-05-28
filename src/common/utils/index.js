@@ -26,3 +26,13 @@ export function getToken () {
 export function isFunction (func) {
   return Object.prototype.toString.call(func) === '[object Function]'
 }
+
+document.addEventListener('visibilitychange', function () {
+  // 浏览器切换事件
+  if (document.visibilityState === 'hidden') {
+    document.title = '车边（冻结）'
+  } else {
+    document.title = '车边'
+    window.location.reload()
+  }
+})

@@ -1,6 +1,7 @@
 // template.js
 module.exports = {
   vueTemplate: compoenntName => {
+    compoenntName = compoenntName.split('.')[0]
     return `
 <template>
   <div class="${compoenntName}">

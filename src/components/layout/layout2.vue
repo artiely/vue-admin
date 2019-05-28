@@ -1,15 +1,28 @@
 <template>
-  <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-    <full-menu></full-menu>
-    <a-layout :style="layoutFixed" >
-      <a-layout-header style="background: #fff; padding: 0" :style="headerFixed">
-        <a-icon class="trigger" :type="layout.isCollapse ? 'menu-unfold' : 'menu-fold'" @click="handleClick"/>
+  <a-layout
+    id="components-layout-demo-side"
+    style="min-height: 100vh"
+  >
+    <full-menu />
+    <a-layout :style="layoutFixed">
+      <a-layout-header
+        style="background: #fff; padding: 0"
+        :style="headerFixed"
+      >
+        <a-icon
+          class="trigger"
+          :type="layout.isCollapse ? 'menu-unfold' : 'menu-fold'"
+          @click="handleClick"
+        />
       </a-layout-header>
-      <a-layout-content style="margin: 0 16px;" :style="contentFixed">
-      <!-- 面包屑 -->
-      <breadcrumb/>
+      <a-layout-content
+        style="margin: 0 16px;"
+        :style="contentFixed"
+      >
+        <!-- 面包屑 -->
+        <breadcrumb />
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-         <router-view></router-view>
+          <router-view />
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">

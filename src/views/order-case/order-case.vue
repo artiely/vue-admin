@@ -6,16 +6,16 @@
 </template>
 <script>
 export default {
-  name: 'order-case',
-  components:{},
-  data(){
+  name: 'OrderCase',
+  components: {},
+  data () {
     return {
     }
   },
-  watch:{},
-  computed:{},
-  created(){},
-  methods(){}
+  watch: {},
+  computed: {},
+  created () {},
+  methods () {}
 }
 </script>
 <style lang="less" scoped>

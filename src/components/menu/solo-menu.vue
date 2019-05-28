@@ -1,37 +1,43 @@
 <template>
-<div>
-    <div class="logo"></div>
-      <a-menu
-      :defaultSelectedKeys="['/index']"
-      :defaultOpenKeys="['/']"
+  <div>
+    <div class="logo" />
+    <a-menu
+      :default-selected-keys="['/index']"
+      :default-open-keys="['/']"
       mode="inline"
       theme="dark"
       v-model="selectedKeys"
-      :inlineCollapsed="collapsed"
+      :inline-collapsed="collapsed"
       @select="select"
     >
       <template v-for="item in menu">
         <template v-if="!item.meta.hide">
-        <a-menu-item v-if="!item.children&&!item.meta.hide" :key="item.path">
-          <a-icon type="pie-chart" />
-          <span>{{item.meta.title}}</span>
-        </a-menu-item>
-        <sub-menu v-else :menu-info="item" :key="item.path"/>
+          <a-menu-item
+            v-if="!item.children&&!item.meta.hide"
+            :key="item.path"
+          >
+            <a-icon type="pie-chart" />
+            <span>{{ item.meta.title }}</span>
+          </a-menu-item>
+          <sub-menu
+            v-else
+            :menu-info="item"
+            :key="item.path"
+          />
         </template>
       </template>
     </a-menu>
-</div>
-
+  </div>
 </template>
 
 <script>
 import subMenu from './sub-menu'
-import menu from '@/router/modules/routes' 
+import menu from '@/router/modules/routes'
 export default {
-  components:{
+  components: {
     subMenu
   },
-  name: 'solo-menu',
+  name: 'SoloMenu',
   props: {
     mode: {
       type: String,
@@ -45,12 +51,12 @@ export default {
   data () {
     return {
       collapsed: false,
-      selectedKeys:['/index'],
-      menu,
+      selectedKeys: ['/index'],
+      menu
     }
   },
-  methods:{
-    select({ item, key, selectedKeys }){
+  methods: {
+    select ({ item, key, selectedKeys }) {
       this.$router.push(key)
     }
   }

@@ -1,17 +1,21 @@
 <template>
-    <a-drawer
-      :wrapClassName="'my-draw-menu'"
-      v-if="layout.isMobile"
-      :visible="!layout.isCollapse"
-      :closable="false"
-      getContainer="body"
-      maskClosable
-      placement="left"
-      @close="handleChange"
-    >
-      <solo-menu></solo-menu>
-    </a-drawer>
-    <sider-menu v-else :isCollapse="layout.isCollapse" :collapsedWidth="collapsedWidth"/>
+  <a-drawer
+    :wrap-class-name="'my-draw-menu'"
+    v-if="layout.isMobile"
+    :visible="!layout.isCollapse"
+    :closable="false"
+    get-container="body"
+    mask-closable
+    placement="left"
+    @close="handleChange"
+  >
+    <solo-menu />
+  </a-drawer>
+  <sider-menu
+    v-else
+    :is-collapse="layout.isCollapse"
+    :collapsed-width="collapsedWidth"
+  />
 </template>
 
 <script>
@@ -20,7 +24,7 @@ import siderMenu from './sider-menu'
 import soloMenu from './solo-menu'
 import { layout } from '@/common/observable'
 export default {
-  name: 'full-menu',
+  name: 'FullMenu',
   components: {
     siderMenu,
     soloMenu
