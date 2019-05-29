@@ -117,10 +117,10 @@ module.exports = {
     hotOnly: false,
     compress: true, // 开启压缩
     // 设置让浏览器 overlay 同时显示警告和错误
-    overlay: {
-      warnings: true,
-      errors: true
-    },
+    // overlay: {
+    //   warnings: true,
+    //   errors: true
+    // },
     // 代理
     proxy: {
       '/store': {

@@ -15,7 +15,7 @@ export default {
   watch: {},
   computed: {},
   created () {},
-  methods () {}
+  methods: {}
 }
 </script>
 <style lang="less" scoped>

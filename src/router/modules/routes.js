@@ -19,12 +19,32 @@ export default [
           title: '工作台',
           icon: ''
         }
+      },
+      {
+        path: '/crud',
+        name: 'crud',
+        component: loading('views/crud/crud.vue'),
+        meta: {
+          auth: true,
+          title: 'crud',
+          icon: ''
+        }
+      },
+      {
+        path: '/order-case',
+        name: 'order-case',
+        component: loading('views/order-case/order-case.vue'),
+        meta: {
+          auth: true,
+          title: 'order-case',
+          icon: ''
+        }
       }
     ]
   },
   {
     path: '/i',
-    name: 'home',
+    name: 'live',
     component: Home,
     meta: {
       title: '现场管理'
