@@ -52,7 +52,7 @@ export default [
     children: [
       {
         path: '/index2',
-        name: 'index',
+        name: 'index2',
         component: loading('views/live/workspace.vue'),
         meta: {
           auth: true,
@@ -62,7 +62,7 @@ export default [
       },
       {
         path: '/index3',
-        name: 'index',
+        name: 'index3',
         component: loading('views/live/workspace.vue'),
         meta: {
           auth: true,

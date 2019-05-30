@@ -50,11 +50,12 @@ export default {
   },
   data () {
     return {
-      collapsed: false,
-      selectedKeys: ['/index'],
+      collapsed: true,
+      selectedKeys: [this.$route.path],
       menu
     }
   },
+
   methods: {
     select ({ item, key, selectedKeys }) {
       this.$router.push(key)

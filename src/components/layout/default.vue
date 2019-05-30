@@ -67,7 +67,7 @@ export default {
     return {
       visible: false,
       currLayout: 'layout2',
-      layoutMode: 'flow'
+      layoutMode: layout.layoutMode
     }
   },
   computed: {
@@ -127,4 +127,17 @@ export default {
       font-size: 20px;
     }
   }
+  #components-layout-demo-side{
+    .ant-layout-header{
+    position: relative;
+    z-index: 99!important;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  }
+  .ant-layout-sider{
+    position: relative;
+    z-index: 100!important;
+    box-shadow: 2px 0 6px rgba(0,21,41,.35);
+  }
+  }
+
 </style>

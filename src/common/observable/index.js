@@ -8,7 +8,7 @@ export const layout = Vue.observable({
   // 菜单是否折叠
   isCollapse: false,
   // 布局模式 flow fixed
-  layoutMode: 'flow'
+  layoutMode: 'fixed'
 
 })
 export function mediaQuery () {
@@ -32,7 +32,7 @@ export function mediaQuery () {
         clearTimeout(timer)
         timer = setTimeout(() => {
           _this.outputSize()
-        }, 800)
+        }, 500)
       })
     },
     outputSize () {
