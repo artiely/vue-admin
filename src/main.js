@@ -8,6 +8,11 @@ import 'ant-design-vue/dist/antd.css'
 import './assets/styles/main.less'
 import '@/packages'
 import '@/components'
+
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
+
+Vue.use(iView)
 Vue.config.productionTip = false
 Vue.use(Antd)
 new Vue({

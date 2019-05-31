@@ -39,6 +39,26 @@ export default [
           title: 'order-case',
           icon: ''
         }
+      },
+      {
+        path: '/table-demo1',
+        name: 'table-demo1',
+        component: loading('views/table-demo/table-demo1.vue'),
+        meta: {
+          auth: true,
+          title: 'table-demo1',
+          icon: ''
+        }
+      },
+      {
+        path: '/table-demo2',
+        name: 'table-demo2',
+        component: loading('views/table-demo/table-demo2.vue'),
+        meta: {
+          auth: true,
+          title: 'table-demo2',
+          icon: ''
+        }
       }
     ]
   },

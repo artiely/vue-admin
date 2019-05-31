@@ -1,35 +1,18 @@
 <template>
-  <div>
-    <v-create-form :sourceData="columns"  :defaultData="defaultData">
-      <template v-slot:input3="{scope,value}">
-        <a-form-item :label="scope.title" :labelCol="{ span: 5 }"
-            :wrapperCol="{ span: 18 }">
-          <a-input placeholder="Basic usage"  ref="userNameInput"  v-decorator="[
-                scope.dataIndex,
-                {rules: scope.formOptions.rules,initialValue: defaultData[scope.dataIndex]}
-              ]">
-            <a-icon slot="prefix" type="user" />
-            <a-icon v-if="defaultData[scope.dataIndex]" slot="suffix" type="close-circle"  />
-          </a-input>
-        </a-form-item>
-      </template>
-    </v-create-form>
-    <div>
-      <a-button @click="visible=true">抽屉展示</a-button>
-      <a-button @click="visible2=true">模态展示</a-button>
-      <v-create-form v-model="visible" model="drawer" :sourceData="columns"  :defaultData="defaultData"></v-create-form>
-      <v-create-form v-model="visible2" model="modal" :sourceData="columns"  :defaultData="defaultData"></v-create-form>
-    </div>
-  </div>
+<!-- 基本表格 -->
+<div>
+  <h1>基本表格</h1>
+  <v-create-table :sourceData="columns" :tableData="data" ></v-create-table>
+</div>
 </template>
-
 <script>
+
 const columns = [
   // input基本使用
   {
     title: '输入框',
     dataIndex: 'name',
-    width: 200,
+    width: 100,
     fixed: 'left',
     formOptions: {
       el: 'input'
@@ -43,6 +26,7 @@ const columns = [
       el: 'input.search'
     }
   },
+  // 自定义
   {
     title: '自定义',
     dataIndex: 'input3',
@@ -81,6 +65,7 @@ const columns = [
       ]
     }
   },
+  // 输入框
   {
     title: '输入框',
     dataIndex: 'address',
@@ -88,6 +73,7 @@ const columns = [
       el: 'input'
     }
   },
+  // 单选
   {
     title: '单选框',
     dataIndex: 'radio',
@@ -106,6 +92,7 @@ const columns = [
       ]
     }
   },
+  // 开关
   {
     title: '开关',
     dataIndex: 'switch',
@@ -115,6 +102,7 @@ const columns = [
       unCheckedChildren: '关'
     }
   },
+  // 复选
   {
     title: '复选框',
     dataIndex: 'checkbox',
@@ -127,6 +115,7 @@ const columns = [
       ]
     }
   },
+  // 日期
   {
     title: '日期',
     dataIndex: 'datepicker',
@@ -135,6 +124,7 @@ const columns = [
       options: {}
     }
   },
+  // 时间
   {
     title: '时间',
     dataIndex: 'timepicker',
@@ -143,6 +133,7 @@ const columns = [
       options: {}
     }
   },
+  // 级联
   {
     title: '级联',
     dataIndex: 'cascader',
@@ -173,6 +164,7 @@ const columns = [
       }]
     }
   },
+  // 星级
   {
     title: '星级',
     dataIndex: 'rate',
@@ -180,6 +172,7 @@ const columns = [
       el: 'rate'
     }
   },
+  // 文本域
   {
     title: '文本域',
     dataIndex: 'textarea',
@@ -187,6 +180,7 @@ const columns = [
       el: 'textarea'
     }
   },
+  // 滑块
   {
     title: '滑块',
     dataIndex: 'slider',
@@ -194,6 +188,7 @@ const columns = [
       el: 'slider'
     }
   },
+  // 上传
   {
     title: '上传',
     dataIndex: 'upload',
@@ -203,6 +198,7 @@ const columns = [
       action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76'
     }
   },
+  // 树
   {
     title: '树',
     dataIndex: 'tree',
@@ -221,58 +217,42 @@ const columns = [
     }
   }
 ]
+
+const data = []
+for (let i = 0; i < 10; i++) {
+  data.push({
+    key: i,
+    name: `${i}这是一个基本输入框`,
+    input2: '这是一个搜索输入框',
+    input3: '这是一个完全自定义的输入框',
+    select: '这是一个基本输入框',
+    selectAsync: '这是一个异步数据输入框',
+    address: 'New York No. 1 Lake Park',
+    radio: 'artiely',
+    switch: true,
+    checkbox: [],
+    datepicker: '2019/10/20',
+    timepicker: '23:59:59',
+    cascader: ['zhejiang', 'hangzhou', 'xihu'],
+    rate: 3,
+    textarea: '这是一个文本域',
+    slider: 30,
+    upload: [{
+      uid: '-1',
+      name: 'xxx.png',
+      status: 'done',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+    }],
+    tree: []
+  })
+}
+
 export default {
   data () {
     return {
-      visible: false,
-      visible2: false,
-      columns,
-      // 初始值 新增时值为空，编辑时为对应的值
-      defaultData: {
-        name: '这是一个基本输入框',
-        input2: '这是一个搜索输入框',
-        input3: '这是一个完全自定义的输入框',
-        select: '这是一个基本输入框',
-        selectAsync: '这是一个异步数据输入框',
-        address: 'New York No. 1 Lake Park',
-        radio: 'artiely',
-        switch: true,
-        checkbox: [],
-        datepicker: '2019/10/20',
-        timepicker: '23:59:59',
-        cascader: ['zhejiang', 'hangzhou', 'xihu'],
-        rate: 3,
-        textarea: '这是一个文本域',
-        slider: 30,
-        upload: [{
-          uid: '-1',
-          name: 'xxx.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        }],
-        tree: []
-      }
+      data,
+      columns
     }
-  },
-  mounted () {
-    // 异步的数据直接赋值
-    setTimeout(() => {
-      this.columns[4].formOptions.options = [
-        {
-          label: 'John Brown',
-          value: 'John Brown'
-        },
-        {
-          label: 'artiely',
-          value: 'artiely'
-        }
-      ]
-    }, 3000)
   }
-
 }
 </script>
-
-<style>
-
-</style>

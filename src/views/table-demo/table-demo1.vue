@@ -1,36 +1,28 @@
 <template>
-  <div>
-    <v-create-form :sourceData="columns"  :defaultData="defaultData">
-      <template v-slot:input3="{scope,value}">
-        <a-form-item :label="scope.title" :labelCol="{ span: 5 }"
-            :wrapperCol="{ span: 18 }">
-          <a-input placeholder="Basic usage"  ref="userNameInput"  v-decorator="[
-                scope.dataIndex,
-                {rules: scope.formOptions.rules,initialValue: defaultData[scope.dataIndex]}
-              ]">
-            <a-icon slot="prefix" type="user" />
-            <a-icon v-if="defaultData[scope.dataIndex]" slot="suffix" type="close-circle"  />
-          </a-input>
-        </a-form-item>
-      </template>
-    </v-create-form>
-    <div>
-      <a-button @click="visible=true">抽屉展示</a-button>
-      <a-button @click="visible2=true">模态展示</a-button>
-      <v-create-form v-model="visible" model="drawer" :sourceData="columns"  :defaultData="defaultData"></v-create-form>
-      <v-create-form v-model="visible2" model="modal" :sourceData="columns"  :defaultData="defaultData"></v-create-form>
-    </div>
-  </div>
+<!-- 基本表格 -->
+<div>
+  <h1>基本表格</h1>
+  <v-create-table :sourceData="columns" :tableData="data" >
+    <template  v-slot:name="{row}">
+      x{{row.name}}
+    </template>
+    <template v-slot:checkbox="{row}">
+      <a-tag v-for="item in row.checkbox" :key="item" :color="item=='Apple'?'red':'pink'">{{item}}</a-tag>
+    </template>
+  </v-create-table>
+</div>
 </template>
-
 <script>
+
 const columns = [
   // input基本使用
   {
     title: '输入框',
     dataIndex: 'name',
-    width: 200,
+    width: 100,
+    tooltip: true,
     fixed: 'left',
+    sortable: true,
     formOptions: {
       el: 'input'
     }
@@ -39,13 +31,17 @@ const columns = [
   {
     title: '搜索框',
     dataIndex: 'input2',
+    width: 200,
     formOptions: {
       el: 'input.search'
     }
   },
+  // 自定义
   {
     title: '自定义',
     dataIndex: 'input3',
+    tooltip: true,
+    width: 100,
     formOptions: {
       el: 'input'
     }
@@ -55,6 +51,8 @@ const columns = [
     title: '下拉框',
     className: 'select',
     dataIndex: 'select',
+    width: 100,
+    tooltip: true,
     formOptions: {
       el: 'select',
       options: [
@@ -75,22 +73,29 @@ const columns = [
     title: '异步下拉框',
     className: 'selectAsync',
     dataIndex: 'selectAsync',
+    tooltip: true,
+    width: 100,
     formOptions: {
       el: 'select',
       options: [
       ]
     }
   },
+  // 输入框
   {
     title: '输入框',
     dataIndex: 'address',
+    tooltip: true,
+    width: 100,
     formOptions: {
       el: 'input'
     }
   },
+  // 单选
   {
     title: '单选框',
     dataIndex: 'radio',
+    width: 100,
     formOptions: {
       el: 'radio',
       options: [
@@ -106,18 +111,22 @@ const columns = [
       ]
     }
   },
+  // 开关
   {
     title: '开关',
     dataIndex: 'switch',
+    width: 100,
     formOptions: {
       el: 'switch',
       checkedChildren: '开',
       unCheckedChildren: '关'
     }
   },
+  // 复选
   {
     title: '复选框',
     dataIndex: 'checkbox',
+    width: 100,
     formOptions: {
       el: 'checkbox',
       options: [
@@ -125,27 +134,49 @@ const columns = [
         { label: 'Pear', value: 'Pear' },
         { label: 'Orange', value: 'Orange' }
       ]
+    },
+    filters: [
+      {
+        label: 'Apple',
+        value: 'Apple'
+      },
+      {
+        label: 'Pear',
+        value: 'Pear'
+      }
+    ],
+    filterMultiple: true,
+    filterMethod (value, row) {
+      console.log(value)
+      console.log('TCL: filterMethod -> value', value)
     }
   },
+  // 日期
   {
     title: '日期',
     dataIndex: 'datepicker',
+    width: 100,
     formOptions: {
       el: 'datepicker',
       options: {}
     }
   },
+  // 时间
   {
     title: '时间',
     dataIndex: 'timepicker',
+    width: 100,
     formOptions: {
       el: 'timepicker',
       options: {}
     }
   },
+  // 级联
   {
     title: '级联',
     dataIndex: 'cascader',
+    width: 100,
+    tooltip: true,
     formOptions: {
       el: 'cascader',
       options: [{
@@ -173,39 +204,50 @@ const columns = [
       }]
     }
   },
+  // 星级
   {
     title: '星级',
     dataIndex: 'rate',
+    width: 100,
     formOptions: {
       el: 'rate'
     }
   },
+  // 文本域
   {
     title: '文本域',
     dataIndex: 'textarea',
+    width: 100,
     formOptions: {
       el: 'textarea'
     }
   },
+  // 滑块
   {
     title: '滑块',
     dataIndex: 'slider',
+    width: 100,
     formOptions: {
       el: 'slider'
     }
   },
+  // 上传
   {
     title: '上传',
     dataIndex: 'upload',
+    tooltip: true,
+    width: 100,
     formOptions: {
       el: 'upload',
       // 上传地址
       action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76'
     }
   },
+  // 树
   {
     title: '树',
     dataIndex: 'tree',
+    width: 100,
     formOptions: {
       el: 'tree',
       options: [{
@@ -221,58 +263,42 @@ const columns = [
     }
   }
 ]
+
+const data = []
+for (let i = 0; i < 10; i++) {
+  data.push({
+    key: i,
+    name: `${i}这是一个基本输入框`,
+    input2: '这是一个搜索输入框',
+    input3: '这是一个完全自定义的输入框',
+    select: '这是一个基本输入框',
+    selectAsync: '这是一个异步数据输入框',
+    address: 'New York No. 1 Lake Park',
+    radio: 'artiely',
+    switch: true,
+    checkbox: ['Apple', 'Pear'],
+    datepicker: '2019/10/20',
+    timepicker: '23:59:59',
+    cascader: ['zhejiang', 'hangzhou', 'xihu'],
+    rate: 3,
+    textarea: '这是一个文本域',
+    slider: 30,
+    upload: [{
+      uid: '-1',
+      name: 'xxx.png',
+      status: 'done',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+    }],
+    tree: []
+  })
+}
+
 export default {
   data () {
     return {
-      visible: false,
-      visible2: false,
-      columns,
-      // 初始值 新增时值为空，编辑时为对应的值
-      defaultData: {
-        name: '这是一个基本输入框',
-        input2: '这是一个搜索输入框',
-        input3: '这是一个完全自定义的输入框',
-        select: '这是一个基本输入框',
-        selectAsync: '这是一个异步数据输入框',
-        address: 'New York No. 1 Lake Park',
-        radio: 'artiely',
-        switch: true,
-        checkbox: [],
-        datepicker: '2019/10/20',
-        timepicker: '23:59:59',
-        cascader: ['zhejiang', 'hangzhou', 'xihu'],
-        rate: 3,
-        textarea: '这是一个文本域',
-        slider: 30,
-        upload: [{
-          uid: '-1',
-          name: 'xxx.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        }],
-        tree: []
-      }
+      data,
+      columns
     }
-  },
-  mounted () {
-    // 异步的数据直接赋值
-    setTimeout(() => {
-      this.columns[4].formOptions.options = [
-        {
-          label: 'John Brown',
-          value: 'John Brown'
-        },
-        {
-          label: 'artiely',
-          value: 'artiely'
-        }
-      ]
-    }, 3000)
   }
-
 }
 </script>
-
-<style>
-
-</style>
