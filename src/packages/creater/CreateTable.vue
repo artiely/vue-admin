@@ -57,7 +57,7 @@ export default {
     return {
       columns: [{
         type: 'selection',
-        width: 60,
+        width: 50,
         fixed: 'left',
         align: 'center'
       }].concat(this.sourceData.map(v => {

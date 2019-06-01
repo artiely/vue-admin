@@ -1,6 +1,5 @@
 <template>
 <div>
-
     <a-modal
       v-if="model=='modal'"
       title="Title"
@@ -34,7 +33,6 @@
 
 <script>
 import { layout } from '@/common/observable'
-console.log('TCL: layout', layout)
 export default {
   name: 'v-create-form',
   props: {

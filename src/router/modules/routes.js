@@ -26,17 +26,7 @@ export default [
         component: loading('views/crud/crud.vue'),
         meta: {
           auth: true,
-          title: 'crud',
-          icon: ''
-        }
-      },
-      {
-        path: '/order-case',
-        name: 'order-case',
-        component: loading('views/order-case/order-case.vue'),
-        meta: {
-          auth: true,
-          title: 'order-case',
+          title: '自动生成表单',
           icon: ''
         }
       },
@@ -46,17 +36,7 @@ export default [
         component: loading('views/table-demo/table-demo1.vue'),
         meta: {
           auth: true,
-          title: 'table-demo1',
-          icon: ''
-        }
-      },
-      {
-        path: '/table-demo2',
-        name: 'table-demo2',
-        component: loading('views/table-demo/table-demo2.vue'),
-        meta: {
-          auth: true,
-          title: 'table-demo2',
+          title: '自动生成表格',
           icon: ''
         }
       }
