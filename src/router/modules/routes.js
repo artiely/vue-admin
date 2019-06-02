@@ -39,6 +39,16 @@ export default [
           title: '自动生成表格',
           icon: ''
         }
+      },
+      {
+        path: '/table-demo2',
+        name: 'table-demo2',
+        component: loading('views/table-demo/table-demo2.vue'),
+        meta: {
+          auth: true,
+          title: '表格表单一起',
+          icon: ''
+        }
       }
     ]
   },

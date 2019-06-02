@@ -50,7 +50,7 @@ export default {
   },
   data () {
     return {
-      collapsed: true,
+      collapsed: false,
       selectedKeys: [this.$route.path],
       menu
     }

@@ -1,5 +1,6 @@
 <template>
-  <a-form :form="formAction" @submit="handleSubmit">
+ <a-spin :spinning="loading">
+  <a-form :form="formAction" @submit="handleSubmit" class="form">
     <a-row>
       <template v-for="(item) in sourceData">
 
@@ -13,7 +14,7 @@
               {rules: item.formOptions.rules,initialValue: defaultData[item.dataIndex]}
             ]">
             <!-- v-if="formAction.getFieldsValue([item.dataIndex]).length" -->
-                <a-icon v-if="formAction.getFieldsValue([item.dataIndex])[item.dataIndex].length" slot="suffix" type="close-circle" @click="emitEmpty(item.dataIndex)" />
+                <a-icon v-if="item.formOptions.allowClear&&formAction.getFieldsValue([item.dataIndex])[item.dataIndex]&&formAction.getFieldsValue([item.dataIndex])[item.dataIndex].length" slot="suffix" theme="filled" type="close-circle" @click="emitEmpty(item.dataIndex)" />
               </a-input>
               <!-- input.search -->
               <a-input-search v-if="item.formOptions.el=='input.search'" :disabled="item._disabled" :size="size" :placeholder="item.formOptions.placeholder" :type="item.formOptions.type" v-decorator="[
@@ -82,6 +83,7 @@
         </a-col>
       </a-row> -->
   </a-form>
+ </a-spin>
 </template>
 
 <script>
@@ -113,6 +115,10 @@ export default {
     size: {
       type: String,
       default: 'default'
+    },
+    loading:{
+      type:Boolean,
+      default:false,
     }
   },
   data () {
@@ -127,7 +133,7 @@ export default {
   },
   methods: {
     onValuesChange (props, values) {
-      
+      //
     },
     emitEmpty (value) {
       // this.formAction.getFieldsValue()
@@ -179,4 +185,16 @@ export default {
 </script>
 
 <style scoped>
+.form .anticon-close-circle {
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+  font-size: 12px;
+}
+.form .anticon-close-circle:hover {
+  color: #999;
+}
+.form .anticon-close-circle:active {
+  color: #666;
+}
 </style>

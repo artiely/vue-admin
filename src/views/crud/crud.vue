@@ -32,7 +32,8 @@ const columns = [
     width: 200,
     fixed: 'left',
     formOptions: {
-      el: 'input'
+      el: 'input',
+      allowClear:true
     }
   },
   // input.search
