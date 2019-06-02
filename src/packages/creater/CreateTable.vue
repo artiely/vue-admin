@@ -54,9 +54,9 @@ export default {
         return []
       }
     },
-    loading:{
-      type:Boolean,
-      default:true
+    loading: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

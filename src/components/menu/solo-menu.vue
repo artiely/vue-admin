@@ -2,12 +2,9 @@
   <div>
     <div class="logo" />
     <a-menu
-      :default-selected-keys="['/index']"
-      :default-open-keys="['/']"
-      mode="inline"
+      :mode="mode"
       theme="dark"
       v-model="selectedKeys"
-      :inline-collapsed="collapsed"
       @select="select"
     >
       <template v-for="item in menu">
@@ -70,10 +67,16 @@ export default {
   background: rgba(255,255,255,.2);
   margin: 16px;
 }
-.ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu{
+.ant-menu-dark.ant-menu-horizontal{
+  padding-top: 9px!important;
+}
+/* .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu{
   top: 16px;
-}
-.ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu{
+} */
+/* .ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu{
   top: 10px;
-}
+} */
+/* .ant-menu-item, .ant-menu-submenu-title{
+  padding: 9px 20px;
+} */
 </style>

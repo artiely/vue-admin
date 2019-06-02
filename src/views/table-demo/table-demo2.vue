@@ -2,7 +2,7 @@
   <!-- 基本表格 -->
   <div>
     <h1>基本表格</h1>
-    <v-create-table :sourceData="columns" :tableData="data">
+    <v-create-table :sourceData="columns" :tableData="data" :loading="loading">
 
       <template v-slot:action="{row,index}">
         <a>
@@ -329,6 +329,7 @@ export default {
     return {
       data,
       columns,
+      loading: true,
       showForm: false,
       defaultData: {
         name: '这是一个基本输入框',
@@ -358,6 +359,11 @@ export default {
         tree: []
       }
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false
+    }, 3000)
   },
   methods: {
     handleInfo() {
