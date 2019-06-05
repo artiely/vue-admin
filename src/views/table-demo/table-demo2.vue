@@ -160,7 +160,7 @@ const columns = [
       }
     ],
     filterMultiple: true,
-    filterMethod(value, row) {
+    filterMethod (value, row) {
       console.log(value)
       console.log('TCL: filterMethod -> value', value)
     }
@@ -325,7 +325,7 @@ for (let i = 0; i < 20; i++) {
 }
 
 export default {
-  data() {
+  data () {
     return {
       data,
       columns,
@@ -360,19 +360,20 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     setTimeout(() => {
       this.loading = false
     }, 3000)
   },
   methods: {
-    handleInfo() {
+    handleInfo () {
       alert(1)
     },
-    handleEdit(row, index) {
-      ;(this.showForm = true), (this.defaultData = row)
+    handleEdit (row, index) {
+      this.showForm = true
+      this.defaultData = row
     },
-    handleDel() {
+    handleDel () {
       alert(3)
     }
   }

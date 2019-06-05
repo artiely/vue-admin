@@ -4,7 +4,7 @@
       <template v-slot:input3="{scope,value}">
         <a-form-item :label="scope.title" :labelCol="{ span: 5 }"
             :wrapperCol="{ span: 18 }">
-          <a-input placeholder="Basic usage"  ref="userNameInput"  v-decorator="[
+          <a-input placeholder="123"  ref="userNameInput"  v-decorator="[
                 scope.dataIndex,
                 {rules: scope.formOptions.rules,initialValue: defaultData[scope.dataIndex]}
               ]">
@@ -33,7 +33,7 @@ const columns = [
     fixed: 'left',
     formOptions: {
       el: 'input',
-      allowClear:true
+      allowClear: true
     }
   },
   // input.search

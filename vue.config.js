@@ -126,8 +126,8 @@ module.exports = {
       '/store': {
         // target: 'http://192.168.2.201:8091', // 金俊
         // target: 'http://192.168.2.178:8091', // 伍元
-        target: 'http://192.168.2.144:8091', // 吴敏
-        // target: 'http://192.168.2.242:8091', // 测试
+        // target: 'http://192.168.2.144:8091', // 吴敏
+        target: 'http://192.168.2.242:8091', // 测试
         // target: 'http://dp.51chebian.com', // 线上
         // target: 'http://120.79.169.8:19381', // 线上测试
         changeOrigin: true,

@@ -9,7 +9,8 @@
       :width="layout.isMobile?'90%':'70%'"
       @cancel="handleCancel"
     >
-      <v-create-form-view ref="createForm" :sourceData="sourceData" :defaultData="defaultData"></v-create-form-view>
+      <v-create-form-view ref="createForm" :sourceData="sourceData" :defaultData="defaultData">
+      </v-create-form-view>
     </a-modal>
     <a-drawer
       v-else-if="model=='drawer'"

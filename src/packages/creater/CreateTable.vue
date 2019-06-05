@@ -4,7 +4,7 @@
       <template slot-scope="{ row, index }" :slot="item.slot" v-for="item in columns">
         <slot :name="item.slot" :row="row">
           <template>
-            <div v-if="item.tooltip" :key="item.dataIndex">
+            <div v-if="item.tooltip" :key="item.dataIndex" >
               <a-tooltip>
                 <template slot='title'>
                   {{row[item.dataIndex]}}
@@ -18,8 +18,8 @@
               {{row[item.dataIndex]}}
             </div>
           </template>
-          <template v-if="item.slot=='action'">
-            <a href="javascript:void(0);">
+          <template v-if="item.slot=='action'" >
+            <a href="javascript:void(0);" :key="item.dataIndex">
               <span @click="handleInfo(row, index)">详情</span>
               <a-divider type="vertical" />
               <span @click="handleEdit(row, index)">编辑</span>
@@ -59,7 +59,7 @@ export default {
       default: true
     }
   },
-  data() {
+  data () {
     return {
       columns: [
         {
@@ -88,16 +88,16 @@ export default {
     }
   },
   methods: {
-    onSelectionChange(selection) {
+    onSelectionChange (selection) {
       console.log('TCL: onSelectionChange -> selection', selection)
     },
-    handleEdit(row, index) {
+    handleEdit (row, index) {
       this.$emit('handle-edit', row, index)
     },
-    handleInfo(row, index) {
+    handleInfo (row, index) {
       this.$emit('handle-info', row, index)
     },
-    handleDel(row, index) {
+    handleDel (row, index) {
       this.$emit('handle-del', row, index)
     }
   }

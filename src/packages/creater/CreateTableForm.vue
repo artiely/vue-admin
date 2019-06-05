@@ -30,7 +30,7 @@ export default {
       }
     }
   },
-  data() {
+  data () {
     return {
       rowData: this.defaultData
     }

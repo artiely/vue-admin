@@ -121,7 +121,7 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       moment,
       formAction: this.$form.createForm(this, {
@@ -132,15 +132,15 @@ export default {
     }
   },
   methods: {
-    onValuesChange(props, values) {
+    onValuesChange (props, values) {
       //
     },
-    emitEmpty(value) {
+    emitEmpty (value) {
       // this.formAction.getFieldsValue()
       console.log(this.formAction.getFieldsValue([value])[value])
       this.formAction.setFieldsValue({ [value]: '' })
     },
-    handleSubmit(e) {
+    handleSubmit (e) {
       e.preventDefault()
       this.formAction.validateFields((err, values) => {
         if (!err) {
@@ -152,32 +152,32 @@ export default {
         }
       })
     },
-    handleCancel() {
+    handleCancel () {
       this.previewVisible = false
     },
-    handlePreview(file) {
+    handlePreview (file) {
       this.previewImage = file.url || file.thumbUrl
       this.previewVisible = true
     },
-    handleChange({ fileList }) {
+    handleChange ({ fileList }) {
       this.fileList = fileList
       console.log('TCL: handleChange -> fileList', fileList)
       this.formAction.setFieldsValue({ upload: fileList })
     },
-    handleRemove(file) {
+    handleRemove (file) {
       console.log('TCL: remove -> file', file)
     },
-    normFile(e) {
+    normFile (e) {
       console.log('Upload event:', e)
       if (Array.isArray(e)) {
         return e
       }
       return e && e.fileList
     },
-    onSelect(keys) {
+    onSelect (keys) {
       console.log('Trigger Select', keys)
     },
-    onExpand() {
+    onExpand () {
       console.log('Trigger Expand')
     }
   }
