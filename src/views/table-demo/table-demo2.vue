@@ -2,6 +2,8 @@
   <!-- 基本表格 -->
   <div>
     <h1>基本表格</h1>
+    <a-button @click="handleOne">loading有数据</a-button>
+    <a-button @click="handleTwo">loading后无数据</a-button>
     <v-create-table :sourceData="columns" :tableData="data" :loading="loading">
 
       <template v-slot:action="{row,index}">
@@ -28,6 +30,7 @@
   </div>
 </template>
 <script>
+import { setTimeout } from 'timers'
 const columns = [
   // input基本使用
   {
@@ -293,37 +296,38 @@ const columns = [
 ]
 
 const data = []
-for (let i = 0; i < 20; i++) {
-  data.push({
-    key: i,
-    name: `${i}这是一个基本输入框`,
-    input2: '这是一个搜索输入框',
-    input3: '这是一个完全自定义的输入框',
-    select: '这是一个基本输入框',
-    selectAsync: '这是一个异步数据输入框',
-    address: 'New York No. 1 Lake Park',
-    radio: 'artiely',
-    switch: true,
-    checkbox: [],
-    datepicker: '2019/10/20',
-    timepicker: '23:59:59',
-    cascader: ['zhejiang', 'hangzhou', 'xihu'],
-    rate: 3,
-    textarea: '这是一个文本域',
-    slider: 30,
-    upload: [
-      {
-        uid: '-1',
-        name: 'xxx.png',
-        status: 'done',
-        url:
+setTimeout(() => {
+  for (let i = 0; i < 20; i++) {
+    data.push({
+      key: i,
+      name: `${i}这是一个基本输入框`,
+      input2: '这是一个搜索输入框',
+      input3: '这是一个完全自定义的输入框',
+      select: '这是一个基本输入框',
+      selectAsync: '这是一个异步数据输入框',
+      address: 'New York No. 1 Lake Park',
+      radio: 'artiely',
+      switch: true,
+      checkbox: [],
+      datepicker: '2019/10/20',
+      timepicker: '23:59:59',
+      cascader: ['zhejiang', 'hangzhou', 'xihu'],
+      rate: 3,
+      textarea: '这是一个文本域',
+      slider: 30,
+      upload: [
+        {
+          uid: '-1',
+          name: 'xxx.png',
+          status: 'done',
+          url:
           'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-      }
-    ],
-    tree: []
-  })
-}
-
+        }
+      ],
+      tree: []
+    })
+  }
+}, 2000)
 export default {
   data () {
     return {
@@ -366,6 +370,49 @@ export default {
     }, 3000)
   },
   methods: {
+    handleOne () {
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+        for (let i = 0; i < 20; i++) {
+          this.data.push({
+            key: i,
+            name: `${i}这是一个基本输入框`,
+            input2: '这是一个搜索输入框',
+            input3: '这是一个完全自定义的输入框',
+            select: '这是一个基本输入框',
+            selectAsync: '这是一个异步数据输入框',
+            address: 'New York No. 1 Lake Park',
+            radio: 'artiely',
+            switch: true,
+            checkbox: [],
+            datepicker: '2019/10/20',
+            timepicker: '23:59:59',
+            cascader: ['zhejiang', 'hangzhou', 'xihu'],
+            rate: 3,
+            textarea: '这是一个文本域',
+            slider: 30,
+            upload: [
+              {
+                uid: '-1',
+                name: 'xxx.png',
+                status: 'done',
+                url:
+                  'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+              }
+            ],
+            tree: []
+          })
+        }
+      }, 2000)
+    },
+    handleTwo () {
+      this.loading = true
+      setTimeout(() => {
+        this.data = []
+        this.loading = false
+      }, 2000)
+    },
     handleInfo () {
       alert(1)
     },

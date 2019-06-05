@@ -1,5 +1,6 @@
 <template>
   <a-spin :spinning="loading">
+    <template v-if="tableData.length">
     <i-table :columns="columns" :data="tableData" size="small" ref="table" border height="500" @on-selection-change="onSelectionChange">
       <template slot-scope="{ row, index }" :slot="item.slot" v-for="item in columns">
         <slot :name="item.slot" :row="row">
@@ -31,11 +32,14 @@
           </template>
         </slot>
       </template>
-
     </i-table>
     <div class="clearfix" style="padding:20px 0">
       <a-pagination class="fr" :total="50" showSizeChanger showQuickJumper />
     </div>
+    </template>
+    <a-card :loading="loading" v-else style="height:200px">
+      暂无数据
+    </a-card>
   </a-spin>
 </template>
 <script>
