@@ -5,6 +5,9 @@
     <a-button @click="handleOne">loading有数据</a-button>
     <a-button @click="handleTwo">loading后无数据</a-button>
     <v-create-table :sourceData="columns" :tableData="data" :loading="loading">
+      <template v-slot:checkbox="{row,index}">
+        {{row.checkbox}}
+      </template>
 
       <template v-slot:action="{row,index}">
         <a>
@@ -308,7 +311,7 @@ setTimeout(() => {
       address: 'New York No. 1 Lake Park',
       radio: 'artiely',
       switch: true,
-      checkbox: [],
+      checkbox: ['Apple'],
       datepicker: '2019/10/20',
       timepicker: '23:59:59',
       cascader: ['zhejiang', 'hangzhou', 'xihu'],

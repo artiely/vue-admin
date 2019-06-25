@@ -10,18 +10,11 @@
       />
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
-      <a-breadcrumb style="margin: 16px 0">
-        <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>List</a-breadcrumb-item>
-        <a-breadcrumb-item>App</a-breadcrumb-item>
-      </a-breadcrumb>
-      <div
-        :style="{ background: '#fff', padding: '24px', minHeight: '280px' }"
-        v-for="i in 4"
-        :key="i"
-      >
-        Content
-      </div>
+      <!-- 面包屑 -->
+      <breadcrumb />
+        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+          <router-view />
+        </div>
     </a-layout-content>
     <a-layout-footer style="text-align: center">
       Ant Design ©2018 Created by Ant UED
@@ -30,8 +23,10 @@
 </template>
 <script>
 import soloMenu from '../menu/solo-menu'
+import breadcrumb from '../breadcrumb'
 export default {
   components: {
+    breadcrumb,
     soloMenu
   }
 }
