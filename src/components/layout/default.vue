@@ -2,7 +2,7 @@
   <div style="height:100%">
     <component :is="layout" />
     <a-drawer
-      title="Basic Drawer"
+      title="布局设置"
       :width="300"
       @close="onClose"
       placement="right"
@@ -13,14 +13,14 @@
           <a-radio value="layout2">
             布局1
           </a-radio>
-          <a-radio value="layout3">
+          <!-- <a-radio value="layout3">
             布局2
           </a-radio>
           <a-radio value="layout4">
             布局3
-          </a-radio>
+          </a-radio> -->
           <a-radio value="layout5">
-            布局4
+            布局2
           </a-radio>
         </a-radio-group>
         <a-radio-group
@@ -55,13 +55,16 @@
 
 <script>
 import layout2 from './layout2'
-import layout3 from './layout3'
-import layout4 from './layout4'
+// import layout3 from './layout3'
+// import layout4 from './layout4'
 import layout5 from './layout5'
 import { layout } from '../../common/observable'
 export default {
   components: {
-    layout2, layout3, layout4, layout5
+    layout2,
+    // layout3,
+    // layout4,
+    layout5
   },
   data () {
     return {
@@ -75,10 +78,10 @@ export default {
       switch (this.currLayout) {
         case 'layout2':
           return layout2
-        case 'layout3':
-          return layout3
-        case 'layout4':
-          return layout4
+        // case 'layout3':
+        //   return layout3
+        // case 'layout4':
+        //   return layout4
         case 'layout5':
           return layout5
         default:

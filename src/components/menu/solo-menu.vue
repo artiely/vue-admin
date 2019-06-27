@@ -67,9 +67,9 @@ export default {
   background: rgba(255,255,255,.2);
   margin: 16px;
 }
-.ant-menu-dark.ant-menu-horizontal{
+/* .ant-menu-dark.ant-menu-horizontal{
   padding-top: 9px!important;
-}
+} */
 /* .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu{
   top: 16px;
 } */
