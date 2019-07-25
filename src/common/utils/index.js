@@ -26,7 +26,9 @@ export function getToken () {
 export function isFunction (func) {
   return Object.prototype.toString.call(func) === '[object Function]'
 }
-
+export function isObject(func) {
+  return Object.prototype.toString.call(func) === '[object Object]'
+}
 // document.addEventListener('visibilitychange', function () {
 //   // 浏览器切换事件
 //   if (document.visibilityState === 'hidden') {

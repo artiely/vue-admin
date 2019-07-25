@@ -10,16 +10,10 @@
     >
       <div>
         <a-radio-group v-model="currLayout">
-          <a-radio value="layout2">
+          <a-radio value="layout1">
             布局1
           </a-radio>
-          <!-- <a-radio value="layout3">
-            布局2
-          </a-radio>
-          <a-radio value="layout4">
-            布局3
-          </a-radio> -->
-          <a-radio value="layout5">
+          <a-radio value="layout2">
             布局2
           </a-radio>
         </a-radio-group>
@@ -54,45 +48,32 @@
 </template>
 
 <script>
+import layout1 from './layout1'
 import layout2 from './layout2'
-// import layout3 from './layout3'
-// import layout4 from './layout4'
-import layout5 from './layout5'
 import { layout } from '../../common/observable'
 export default {
   components: {
-    layout2,
-    // layout3,
-    // layout4,
-    layout5
+    layout1,
+    layout2
   },
   data () {
     return {
       visible: false,
-      currLayout: 'layout2',
+      currLayout: 'layout1',
       layoutMode: layout.layoutMode
     }
   },
   computed: {
     layout () {
       switch (this.currLayout) {
+        case 'layout1':
+          return layout1
         case 'layout2':
           return layout2
-        // case 'layout3':
-        //   return layout3
-        // case 'layout4':
-        //   return layout4
-        case 'layout5':
-          return layout5
         default:
-          return layout5
+          return layout1
       }
     }
-  },
-  mounted () {
-    this.$nextTick(() => {
-      // this.visible = false
-    })
   },
   methods: {
     toggle () {
@@ -109,10 +90,11 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../assets/styles/var.less';
  .setting-drawer-index-handle {
     position: absolute;
     top: 240px;
-    background: #1890ff;
+    background: @primary;
     width: 48px;
     height: 48px;
     right: 300px;

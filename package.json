@@ -3,10 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npm run lint --fix",
     "dev": "vue-cli-service serve",
+    "//dev-test": "本地代码测试 个人电脑",
+    "dev-test": "vue-cli-service build --mode test && node server.js",
     "serve": "vue-cli-service serve",
+    "//build-staging": "打包本地代码 一般用与本地测试 内部服务器",
+    "build-staging": "vue-cli-service build --mode staging",
+    "//prebuild": "线上测试是更新版本号 代码必须提交",
+    "prebuild": "npm version patch",
+    "//build": "打包本地代码 一般用与线上测试",
     "build": "vue-cli-service build",
+    "//build-release": "打包代码 进行发版上线",
+    "build-release": "vue-cli-service build --mode release",
+    "server": "cross-env NODE_ENV=production node server.js",
     "lint": "vue-cli-service lint",
+    "report": "vue-cli-service build --report",
     "new": "node ./script/generateView",
     "commit": "npx git-cz",
     "test:e2e": "vue-cli-service test:e2e"
@@ -28,6 +40,7 @@
     "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "@sentry/webpack-plugin": "^1.6.2",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-e2e-nightwatch": "^3.7.0",
