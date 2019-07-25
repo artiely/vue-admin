@@ -76,6 +76,7 @@ function format(el, binding) {
   let decimals = 2 // 默认的保留小数点后几位
   let style = true // 是否前后符号单位小于数字
   let zoom = 0.5 // 数字与单位的比例
+  let separator = ',' // 分隔符
 
   if (isObject(binding.value)) {
     decimals = binding.value.decimals !== undefined ? binding.value.decimals : 2
@@ -84,37 +85,31 @@ function format(el, binding) {
     style = binding.value.style !== undefined ? binding.value.style : true
     pre = binding.value.pre !== undefined ? binding.value.pre : '￥'
     zoom = binding.value.zoom || 0.5
+    separator = binding.value.separator
   } else {
     value = binding.value || 0
   }
   let myStyle = style ? `font-size:${zoom}em` : ''
   if (w) {
     let len = parseInt(value).toString().length
+    // 负数减去'-'的长度
     if (value < 0) {
       len = len - 1
     }
     if (len > 10) {
       value = value / 1000000000
-      formatMoney = currency(value, '', decimals)
+      formatMoney = currency(value, '', decimals, separator)
       el.innerHTML = `<span style="font-family:DINPro-Medium"><span  style=${myStyle}>${pre}</span>${formatMoney}<span style=${myStyle}>亿${unit}</span></span>`
-    } else if (len > 8) {
-      value = value / 10000000
-      formatMoney = currency(value, '', decimals)
-      el.innerHTML = `<span style="font-family:DINPro-Medium"><span  style=${myStyle}>${pre}</span>${formatMoney}<span style=${myStyle}>千万${unit}</span></span>`
-    } else if (len > 6) {
-      value = value / 1000000
-      formatMoney = currency(value, '', decimals)
-      el.innerHTML = `<span style="font-family:DINPro-Medium"><span  style=${myStyle}>${pre}</span>${formatMoney}<span style=${myStyle}>百万${unit}</span></span>`
     } else if (len > 4) {
       value = value / 10000
-      formatMoney = currency(value, '', decimals)
+      formatMoney = currency(value, '', decimals, separator)
       el.innerHTML = `<span style="font-family:DINPro-Medium"><span  style=${myStyle}>${pre}</span>${formatMoney}<span style=${myStyle}>万${unit}</span></span>`
     } else {
-      formatMoney = currency(value, '', decimals)
+      formatMoney = currency(value, '', decimals, separator)
       el.innerHTML = `<span style="font-family:DINPro-Medium"><span  style=${myStyle}>${pre}</span>${formatMoney}<span style=${myStyle}>${unit}</span></span>`
     }
   } else {
-    formatMoney = currency(value, '', decimals)
+    formatMoney = currency(value, '', decimals, separator)
     el.innerHTML = `<span style="font-family:DINPro-Medium"><span style=${myStyle}>${pre}</span>${formatMoney}<span style=${myStyle}>${unit}</span></span>`
   }
 }

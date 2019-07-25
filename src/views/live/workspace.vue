@@ -1,7 +1,27 @@
 
 <template>
   <div class="workspace">
-    workspace组件
+    自定义指令和过滤器
+    <p>无单位万字</p>
+    <div class="money" v-currency="10000.34"></div>
+    <p>万以下</p>
+    <div class="money" v-currency:w="{value:99}"></div>
+    <p>万以上</p>
+    <div class="money" v-currency:w="{value:1200003}"></div>
+    <p>亿以上</p>
+    <div class="money" v-currency:w="{value:12000037889}"></div>
+    <p>单位与数字的比例</p>
+    <div class="money" v-currency:w="{value:82000037889,zoom:0.7}"></div>
+    <p>无分隔符</p>
+    <div class="money" v-currency:w="{value:82037889,zoom:0.7,separator:''}"></div>
+    <p>不保留小数位</p>
+    <div class="money" v-currency:w="{value:82037889,zoom:0.7,separator:'',decimals:0}"></div>
+    <p>不要货币符号</p>
+    <div class="money" v-currency:w="{value:82037889,zoom:0.7,separator:'',decimals:0,pre:''}"></div>
+    <p>自定义单位</p>
+    <div class="money" v-currency:w="{value:82037889,zoom:0.7,separator:'',decimals:0,unit:'圆'}"></div>
+    <p>自定义货币符号</p>
+    <div class="money" v-currency="{value:82037889,zoom:1,separator:',',decimals:2,pre:'€'}"></div>
   </div>
 </template>
 <script>
@@ -33,6 +53,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .workspace {
-
+.money{
+  font-size: 30px;
+}
 }
 </style>
