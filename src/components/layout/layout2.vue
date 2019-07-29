@@ -24,7 +24,7 @@
 <script>
 import soloMenu from '../menu/solo-menu'
 import breadcrumb from '../breadcrumb'
-import { layout } from '../../common/observable'
+import { layout } from '../../common/observable/layout'
 import fullMenu from '../menu/full-menu'
 import VFooter from './footer'
 export default {
@@ -36,7 +36,7 @@ export default {
   },
   data () {
     return {
-      layout,
+      layout
     }
   }
 }

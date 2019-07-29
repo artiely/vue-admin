@@ -19,7 +19,6 @@ switch (MODE) {
     // 发版
     BASE_URL = ''
     break
-
 }
 console.log(
   '%c当前的环境是' + process.env.NODE_ENV,

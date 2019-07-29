@@ -36,17 +36,17 @@
 <script>
 import siderMenu from './sider-menu'
 import soloMenu from './solo-menu'
-import { layout } from '@/common/observable'
+import { layout } from '@/common/observable/layout'
 export default {
   name: 'FullMenu',
   components: {
     siderMenu,
     soloMenu
   },
-  props:{
-    trigger:{
-      type:Boolean,
-      default:false
+  props: {
+    trigger: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -78,7 +78,7 @@ export default {
     handleChange () {
       layout.isCollapse = true
     },
-    toggle(){
+    toggle () {
       layout.isCollapse = !layout.isCollapse
     }
   },

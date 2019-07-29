@@ -8,8 +8,9 @@ export const layout = Vue.observable({
   // 菜单是否折叠
   isCollapse: false,
   // 布局模式 flow fixed
-  layoutMode: 'fixed'
-
+  layoutMode: 'fixed',
+  // 是否展示标签页
+  isNavTabs: true
 })
 export function mediaQuery () {
   var EventUtil = {

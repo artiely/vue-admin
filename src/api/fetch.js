@@ -1,21 +1,23 @@
+/**
+ * 支持断网提示
+ * 请求取消
+ * __noCancel字段可以让特殊的请求不被取消
+ * 注意：取消请求并没有真正取消发送至服务的请求，而是取消了改请求的结果的处理，而且在B端产品中一般
+ */
 import axios from 'axios'
 import qs from 'qs'
-import router from '@/router'
-import { removeToken, getToken } from '@/common/utils/index'
+import { getToken } from '@/common/utils/index'
 import BASE_URL from './base-url'
 import errorHandler from './error-handler'
 const CancelToken = axios.CancelToken
 // 存储请求的映射
 let requestMap = new Map()
 
-// 是否生产环境
-const PRODUCTION = process.env.VUE_APP_MODE === 'release' || process.env.VUE_APP_MODE === 'production'
-
 window.addEventListener('offline', function (e) {
   this.$message.warning('当前网络已断开！')
 })
 
-export default function fetch(options, argu) {
+export default function fetch (options, argu) {
   if (navigator && navigator.onLine) {
     // ...
   } else {
@@ -119,19 +121,7 @@ export default function fetch(options, argu) {
   return new Promise((resolve, reject) => {
     instance(options)
       .then(res => {
-        if (res.status === 200) {
-          if (res.data.status === 4) {
-            router.replace({ name: 'login', params: { message: '您已在其他地方登录，或登录信息失效，请重新登录' } })
-            removeToken('token')
-          }
-          resolve(res.data)
-        } else if (res.status >= 500) {
-          // router.replace({ name: 'login', params: { message: '服务器繁忙，请稍后再试。' } })
-          // removeToken('token')
-        } else {
-          let data = res.data ? res.data : res
-          reject(data)
-        }
+        resolve(res.data)
         return false
       })
       .catch(error => {

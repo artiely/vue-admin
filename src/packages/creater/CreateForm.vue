@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { layout } from '@/common/observable'
+import { layout } from '@/common/observable/layout'
 export default {
   name: 'v-create-form',
   props: {

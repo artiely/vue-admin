@@ -3,7 +3,7 @@
     :key="props.menuInfo.path"
   >
     <span slot="title">
-      <a-icon type="mail" /><span>{{ props.menuInfo.meta.title }}</span>
+      <a-icon :type="props.menuInfo.meta.icon" /><span>{{ props.menuInfo.meta.title }}</span>
     </span>
     <template v-for="item in props.menuInfo.children">
       <template v-if="!item.meta.hide">
@@ -11,7 +11,7 @@
           v-if="!item.children"
           :key="item.path"
         >
-          <a-icon type="pie-chart" />
+          <a-icon :type="item.meta.icon" />
           <span>{{ item.meta.title }}</span>
         </a-menu-item>
         <sub-menu

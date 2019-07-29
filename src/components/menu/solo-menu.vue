@@ -4,7 +4,7 @@
     <a-menu
       :mode="mode"
       theme="dark"
-      v-model="selectedKeys"
+      :selectedKeys="selectedKeys"
       @select="select"
     >
       <template v-for="item in menu">
@@ -13,7 +13,7 @@
             v-if="!item.children&&!item.meta.hide"
             :key="item.path"
           >
-            <a-icon type="pie-chart" />
+            <a-icon :type="item.meta.icon" />
             <span>{{ item.meta.title }}</span>
           </a-menu-item>
           <sub-menu
@@ -48,11 +48,15 @@ export default {
   data () {
     return {
       collapsed: false,
-      selectedKeys: [this.$route.path],
+      // selectedKeys: [this.$route.path],
       menu
     }
   },
-
+  computed: {
+    selectedKeys () {
+      return [this.$route.path]
+    }
+  },
   methods: {
     select ({ item, key, selectedKeys }) {
       this.$router.push(key)

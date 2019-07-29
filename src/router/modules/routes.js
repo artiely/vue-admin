@@ -7,7 +7,8 @@ export default [
     redirect: '/index',
     component: Home,
     meta: {
-      title: '现场管理'
+      title: '现场管理',
+      icon: 'weibo'
     },
     children: [
       {
@@ -17,7 +18,7 @@ export default [
         meta: {
           auth: true,
           title: '工作台',
-          icon: ''
+          icon: 'android'
         }
       },
       {
@@ -27,7 +28,7 @@ export default [
         meta: {
           auth: true,
           title: '自动生成表单',
-          icon: ''
+          icon: 'apple'
         }
       },
       {
@@ -37,7 +38,7 @@ export default [
         meta: {
           auth: true,
           title: '自动生成表格',
-          icon: ''
+          icon: 'windows'
         }
       },
       {
@@ -47,7 +48,7 @@ export default [
         meta: {
           auth: true,
           title: '表格表单一起',
-          icon: ''
+          icon: 'ie'
         }
       }
     ]
@@ -57,7 +58,8 @@ export default [
     name: 'live',
     component: Home,
     meta: {
-      title: '现场管理'
+      title: '现场管理',
+      icon: 'dingding'
     },
     children: [
       {
@@ -67,7 +69,7 @@ export default [
         meta: {
           auth: true,
           title: '首页',
-          icon: ''
+          icon: 'chrome'
         }
       },
       {
@@ -77,7 +79,7 @@ export default [
         meta: {
           auth: true,
           title: '首页',
-          icon: '',
+          icon: 'github',
           hide: true
         }
       }

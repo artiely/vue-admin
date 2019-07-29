@@ -14,7 +14,7 @@
 
 <script>
 import soloMenu from '../menu/solo-menu'
-import { layout } from '../../common/observable'
+import { layout } from '../../common/observable/layout'
 export default {
   name: 'SiderMenu',
   components: {

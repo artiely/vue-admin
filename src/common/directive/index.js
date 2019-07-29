@@ -34,31 +34,6 @@ Vue.directive('delHtmlTag', {
   }
 })
 
-Vue.directive('exp', {
-  bind: function (el, binding, vnode) {
-    console.log('TCL: vnode', vnode)
-    let keywords = binding.value
-    console.log('TCL: binding', binding)
-    let allText = el.innerText
-    // console.log(el)
-    console.log('TCL: el', el)
-    // let res = allText.replace(
-    //   keywords,
-    //   `<span style="color:red">${keywords}</span>`
-    // )
-    // el.innerHTML = res
-  },
-  update: function (el, binding, vnode) {
-    let keywords = binding.value
-    let allText = el.innerText
-    // let res = allText.replace(
-    //   keywords,
-    //   `<span style="color:red">${keywords}</span>`
-    // )
-    // el.innerHTML = res
-  }
-})
-
 // 格式化金额 展示小羊角 参数 v-currency="1000" 或 v-currency="{value:1000,decimals:0}" 需要设置未数的时候用对象格式
 /**
  * v-currency="{value:1000,decimals:0}" ->1,000
@@ -66,7 +41,7 @@ Vue.directive('exp', {
  * v-currency:w="{value:1000,decimals:2}" ->1,000.00
  * v-currency:w="{value:10000,decimals:2}" ->1.00万
  */
-function format(el, binding) {
+function format (el, binding) {
   let w = binding.arg && binding.arg === 'w'
   let formatMoney = 0
 

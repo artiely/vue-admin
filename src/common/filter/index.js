@@ -5,7 +5,7 @@ import store from '@/store'
  * @param str
  * @returns {*}
  */
-export function star(value) {
+export function star (value) {
   let str = value.toString()
   if (str.length > 0 && str.length < 3) {
     return '*' + str.substring(1)
@@ -21,7 +21,7 @@ export function star(value) {
 /* 格式货币 */
 const digitsRE = /(\d{3})(?=\d)/g
 
-export function currency(value, currency, decimals, separator = ',') {
+export function currency (value, currency, decimals, separator = ',') {
   value = parseFloat(value)
   if (!isFinite(value) || (!value && value !== 0)) return ''
   currency = currency != null ? currency : `￥`
@@ -43,15 +43,15 @@ export function currency(value, currency, decimals, separator = ',') {
  * @param format
  * @returns {*}
  */
-export function timeFormat(time, format) {
+export function timeFormat (time, format) {
   if (!time) return ''
   format = format != null ? format : 'YYYY-MM-DD HH:mm:ss'
   return moment(time).format(format)
 }
-/* 格式化显示手机号 159 9999 9999 
+/* 格式化显示手机号 159 9999 9999
 show boolean 表示是否隐藏中间的手机号 默认false
 */
-export function telFormat(tel, show) {
+export function telFormat (tel, show) {
   if (!tel) return ''
   let startTel = tel.slice(0, 3)
   let midTel
@@ -74,7 +74,7 @@ export function telFormat(tel, show) {
  * @param format
  * @returns {*}
  */
-export function timeFormatToDays(time) {
+export function timeFormatToDays (time) {
   if (!time) return ''
   return moment(time).diff(moment(), 'days') + 1
 }
@@ -84,14 +84,14 @@ export function timeFormatToDays(time) {
  * @param format
  * @returns {*}
  */
-export function carIdFormat(val) {
+export function carIdFormat (val) {
   if (!val) return ''
   let pre = val.slice(0, 2)
   let end = val.slice(2)
   return `${pre} ${end}`
 }
 /* 结算方式 */
-export function chargeType(val) {
+export function chargeType (val) {
   if (!val) return ''
   switch (val) {
     case '0':
@@ -115,7 +115,7 @@ export function chargeType(val) {
   }
 }
 /* 业务类型 */
-export function serviceTypeFormat(val) {
+export function serviceTypeFormat (val) {
   let serviceType = '--'
   if (!val) return
   switch (val) {
@@ -157,7 +157,7 @@ export function serviceTypeFormat(val) {
 }
 
 /* 客户来源/办理类型 */
-export function srcType(val) {
+export function srcType (val) {
   if (!val) return
   switch (val) {
     // <!-- dealType;   // 办理类型（1店员新增/2批量导入/3充值办卡/4领优惠券） -->
@@ -175,7 +175,7 @@ export function srcType(val) {
 }
 
 /* 会员卡消费记录来源业务类型 */
-export function srcBusType(val) {
+export function srcBusType (val) {
   if (!val) return
   switch (val) {
     // "A1 充值活动 "A2 直接充值 "A3 批量导入 "A4 充值活动赠送 "D1 开单划卡

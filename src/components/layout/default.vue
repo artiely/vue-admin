@@ -28,6 +28,7 @@
             固定布局
           </a-radio>
         </a-radio-group>
+        <a-switch checkedChildren="tab开" unCheckedChildren="tab关" defaultChecked @change="navTabsChange"/>
       </div>
       <div
         class="setting-drawer-index-handle"
@@ -50,7 +51,7 @@
 <script>
 import layout1 from './layout1'
 import layout2 from './layout2'
-import { layout } from '../../common/observable'
+import { layout } from '../../common/observable/layout'
 export default {
   components: {
     layout1,
@@ -84,6 +85,9 @@ export default {
     },
     onChange () {
       layout.layoutMode = this.layoutMode
+    },
+    navTabsChange (val) {
+      layout.isNavTabs = val
     }
   }
 }

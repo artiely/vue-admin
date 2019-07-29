@@ -12,6 +12,7 @@ import * as filters from './common/filter'
 import './common/directive'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import 'nprogress/nprogress.css'
 
 Vue.use(iView)
 Vue.config.productionTip = false

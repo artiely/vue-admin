@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import NProgress from 'nprogress'
 // import { getToken } from '@/common/utils'
+import { anthNavTabs } from '@/common/observable/navTabs'
 Vue.use(Router)
-
+NProgress.configure({
+  showSpinner: false
+})
 let routes = []
 const routerContext = require.context('./modules', true, /\.js$/)
 
@@ -19,6 +23,11 @@ const router = new Router({
 
 // export { routes as }
 router.beforeEach((to, from, next) => {
+  // 第一步鉴权
+  // 第二步写入navtabs
+  NProgress.start()
+  anthNavTabs(to)
+
   // let { token } = getToken()
   // if (to.meta.auth) {
   //   // 有用户信息
@@ -41,5 +50,7 @@ router.beforeEach((to, from, next) => {
   // }
   next()
 })
-
+router.afterEach(() => {
+  NProgress.done() // finish progress bar
+})
 export default router
