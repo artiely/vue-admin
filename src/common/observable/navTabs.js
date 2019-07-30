@@ -14,7 +14,7 @@ export const anthNavTabs = menu => {
   }
   let pathIndex = navTabs.navTabs.findIndex(findPathIndex)
   console.log('TCL: pathIndex', pathIndex)
-  if (pathIndex === -1) {
+  if (pathIndex === -1 && !menu.meta.hide) {
     navTabs.navTabs.push(menu)
   }
 }

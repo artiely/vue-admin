@@ -26,7 +26,7 @@
             :data-source="dataSource"
             :pagination="false"
             :loading="loading"
-            size="middle"
+            size="default"
             :bordered="false"
           >
             <a

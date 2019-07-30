@@ -26,7 +26,7 @@
 </template>
 <script>
 export default {
-  name: 'Workspace',
+  name: 'workspace',
   components: {},
   data () {
     return {
@@ -47,7 +47,9 @@ export default {
   destroyed
   errorCaptured
    */
-  created () {},
+  created () {
+    console.log('TCL: created -> created', 'created')
+  },
   methods: {}
 }
 </script>

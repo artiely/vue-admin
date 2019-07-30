@@ -300,7 +300,7 @@ const columns = [
 
 const data = []
 setTimeout(() => {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 10; i++) {
     data.push({
       key: i,
       name: `${i}这是一个基本输入框`,
@@ -336,7 +336,7 @@ export default {
     return {
       data,
       columns,
-      loading: true,
+      loading: false,
       showForm: false,
       defaultData: {
         name: '这是一个基本输入框',
@@ -370,14 +370,14 @@ export default {
   mounted () {
     setTimeout(() => {
       this.loading = false
-    }, 3000)
+    }, 1000)
   },
   methods: {
     handleOne () {
       this.loading = true
       setTimeout(() => {
         this.loading = false
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 10; i++) {
           this.data.push({
             key: i,
             name: `${i}这是一个基本输入框`,
@@ -407,14 +407,14 @@ export default {
             tree: []
           })
         }
-      }, 2000)
+      }, 200)
     },
     handleTwo () {
       this.loading = true
       setTimeout(() => {
         this.data = []
         this.loading = false
-      }, 2000)
+      }, 200)
     },
     handleInfo () {
       alert(1)

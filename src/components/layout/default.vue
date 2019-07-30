@@ -53,6 +53,7 @@ import layout1 from './layout1'
 import layout2 from './layout2'
 import { layout } from '../../common/observable/layout'
 export default {
+  name: 'Home',
   components: {
     layout1,
     layout2

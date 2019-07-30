@@ -1,5 +1,6 @@
 import loading from '../loading'
 import Home from '@/components/layout/default.vue'
+console.log('TCL: Home', Home)
 export default [
   {
     path: '/',
@@ -49,6 +50,36 @@ export default [
           auth: true,
           title: '表格表单一起',
           icon: 'ie'
+        }
+      },
+      {
+        path: '/table-ele',
+        name: 'table-ele',
+        component: loading('views/table-demo/table-ele.vue'),
+        meta: {
+          auth: true,
+          title: '表格ele',
+          icon: 'ie'
+        }
+      },
+      {
+        path: '/workplace',
+        name: 'workplace',
+        component: loading('views/dashboard/workplace'),
+        meta: {
+          auth: true,
+          title: 'workplace',
+          icon: 'laptop'
+        }
+      },
+      {
+        path: '/analysis',
+        name: 'analysis',
+        component: loading('views/dashboard/analysis'),
+        meta: {
+          auth: true,
+          title: 'analysis',
+          icon: 'line-chart'
         }
       }
     ]

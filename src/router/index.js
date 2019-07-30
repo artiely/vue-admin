@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import NProgress from 'nprogress'
 // import { getToken } from '@/common/utils'
 import { anthNavTabs } from '@/common/observable/navTabs'
+// import baseRoutes from './baseRoutes'
 Vue.use(Router)
 NProgress.configure({
   showSpinner: false
@@ -12,7 +13,11 @@ const routerContext = require.context('./modules', true, /\.js$/)
 
 routerContext.keys().forEach(route => {
   const routerModle = routerContext(route)
-  routes = [...routes, ...(routerModle.default || routerModle)]
+  routes = [
+    ...routes,
+    ...(routerModle.default || routerModle)
+    // ...baseRoutes
+  ]
 })
 
 const router = new Router({
@@ -20,8 +25,8 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: routes
 })
+console.log('TCL: routes', routes)
 
-// export { routes as }
 router.beforeEach((to, from, next) => {
   // 第一步鉴权
   // 第二步写入navtabs

@@ -1,7 +1,7 @@
 <template>
   <a-spin :spinning="loading">
     <template v-if="tableData.length">
-    <i-table :columns="columns" :data="tableData" size="small" ref="table" border height="500" @on-selection-change="onSelectionChange">
+    <i-table :columns="columns" :data="tableData" size="small" ref="table" border  @on-selection-change="onSelectionChange">
       <template slot-scope="{ row, index }" :slot="item.slot" v-for="item in columns">
         <slot :name="item.slot" :row="row">
           <template>

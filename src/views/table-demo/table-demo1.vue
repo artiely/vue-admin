@@ -2,7 +2,7 @@
 <!-- 基本表格 -->
 <div>
   <h1>基本表格</h1>
-  <v-create-table :sourceData="columns" :tableData="data" >
+  <v-create-table :sourceData="columns" :tableData="data" :loading="loading">
     <template  v-slot:name="{row}">
       x{{row.name}}
     </template>
@@ -297,7 +297,8 @@ export default {
   data () {
     return {
       data,
-      columns
+      columns,
+      loading: false
     }
   }
 }

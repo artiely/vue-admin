@@ -5,17 +5,17 @@
       <span slot="tab">
         <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
         {{item.meta.title}}
-        <a-icon type="close-circle" class="nav-tabs-close-icon" @click="del(item)"/>
+        <a-icon type="close-circle" v-if="panes.length!=1" class="nav-tabs-close-icon" @click.prevent.stop="del(item)"/>
       </span>
     </a-tab-pane>
   </a-tabs>
   <div class="layout-nav-tabs-actions">
     <a-dropdown>
     <a-menu slot="overlay" @click="handleMenuClick">
-      <a-menu-item key="1"><a-icon type="user" />关闭当前标签</a-menu-item>
-      <a-menu-item key="2"><a-icon type="user" />刷新当前标签</a-menu-item>
-      <a-menu-item key="3"><a-icon type="user" />关闭其他标签</a-menu-item>
-      <a-menu-item key="4"><a-icon type="user" />关闭所有标签</a-menu-item>
+      <a-menu-item key="refresh-curr"><a-icon type="user" />刷新当前标签</a-menu-item>
+      <a-menu-item key="close-curr" :disabled="panes.length==1"><a-icon type="user" />关闭当前标签</a-menu-item>
+      <a-menu-item key="close-other" :disabled="panes.length==1"><a-icon type="user" />关闭其他标签</a-menu-item>
+      <a-menu-item key="close-all" :disabled="panes.length==1"><a-icon type="user" />关闭所有标签</a-menu-item>
       <a-menu-divider />
       <a-menu-item key="line"><a-icon type="user" />内联模式</a-menu-item>
       <a-menu-item key="card"><a-icon type="user" />卡片模式</a-menu-item>
@@ -44,7 +44,36 @@ export default {
   },
   methods: {
     del (item) {
-      alert('删除')
+      /**
+       * 只剩一个禁止删除
+       * 找出对应的索引并删除
+       * 删除后对应跳转的路由
+       * 如果删除的不是当前标签不做响应
+       * 如果删除当前标签并且当前标签不是最后一个则跳转至下一个标签，如果是最后一个标签则跳转至上一个
+       */
+      if (navTabs.navTabs.length === 1) return
+      const findIndexPath = (el) => {
+        return el.path === item.path
+      }
+      let index = navTabs.navTabs.findIndex(findIndexPath)
+      if (index !== -1) {
+        navTabs.navTabs.splice(index, 1)
+      }
+
+      let currPath = this.$route.path
+      // const findIndexCurrPath = (el) => {
+      //   return el.path === currPath
+      // }
+      // let currPathIndex = navTabs.navTabs.findIndex(findIndexCurrPath)
+
+      let navTabsLength = navTabs.navTabs.length
+      if (item.path === currPath) {
+        if (index === navTabsLength) {
+          this.$router.push({ path: navTabs.navTabs[navTabsLength - 1].path })
+        } else {
+          this.$router.push({ path: navTabs.navTabs[index].path })
+        }
+      }
     },
     handleNavTab (path) {
       this.$router.push({ path })
@@ -57,7 +86,54 @@ export default {
         case 'card':
           this.type = 'card'
           break
+        case 'close-curr':
+          this.closeCurr()
+          break
+        case 'close-all':
+          this.closeAll()
+          break
+        case 'close-other':
+          this.closeOther()
+          break
+        case 'refresh-curr':
+          this.refreshCurr()
+          break
       }
+    },
+    closeCurr () {
+      // 关闭当前标签
+      let { currItem } = this.getCurrTab()
+      this.del(currItem)
+    },
+    getCurrTab () {
+      let currPath = this.$route.path
+      const findIndexCurrPath = (el) => {
+        return el.path === currPath
+      }
+      let currPathIndex = navTabs.navTabs.findIndex(findIndexCurrPath)
+      let currItem = navTabs.navTabs[currPathIndex]
+      return { currPathIndex, currItem }
+    },
+    closeOther () {
+      // 关闭其他标签
+      let { currItem } = this.getCurrTab()
+      navTabs.navTabs.splice(0)
+      navTabs.navTabs.splice(0, 0, currItem)
+      this.$router.push(currItem.path)
+    },
+    closeAll () {
+      navTabs.navTabs.splice(1)
+      this.$router.push(navTabs.navTabs[0].path)
+    },
+    refreshCurr () {
+      // 刷新当前标签
+      let { currItem, currPathIndex } = this.getCurrTab()
+      this.$router.replace('/redirect')
+      navTabs.navTabs.splice(currPathIndex, 1)
+      this.$nextTick(() => {
+        navTabs.navTabs.splice(currPathIndex, 0, currItem)
+        this.$router.push(navTabs.navTabs[currPathIndex].path)
+      })
     }
   }
 }

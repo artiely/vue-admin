@@ -10,11 +10,9 @@ import '@/packages'
 import '@/components'
 import * as filters from './common/filter'
 import './common/directive'
-import iView from 'iview'
-import 'iview/dist/styles/iview.css'
-import 'nprogress/nprogress.css'
 
-Vue.use(iView)
+import 'nprogress/nprogress.css'
+import './plugins/element.js'
 Vue.config.productionTip = false
 Vue.use(Antd)
 
