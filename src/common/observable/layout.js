@@ -9,6 +9,8 @@ export const layout = Vue.observable({
   isCollapse: false,
   // 布局模式 flow fixed
   layoutMode: 'fixed',
+  // 当前选择的布局
+  layout: 'layout1',
   // 是否展示标签页
   isNavTabs: true
 })

@@ -4,22 +4,22 @@
      <!-- apex -->
     <a-row :gutter="24" style="margin-bottom:24px;">
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-        <a-card :bordered="true"  hoverable>
+        <a-card :bordered="false"  hoverable>
           <chart-min-chart slot="cover" id="spark1"/>
         </a-card>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-        <a-card :bordered="true"  hoverable>
+        <a-card :bordered="false"  hoverable>
           <chart-min-chart slot="cover" id="chart6"/>
         </a-card>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-        <a-card :bordered="true" hoverable>
+        <a-card :bordered="false" hoverable>
           <chart-min-chart slot="cover" id="chart8"/>
         </a-card>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-        <a-card :bordered="true" hoverable>
+        <a-card :bordered="false" hoverable>
           <chart-min-chart slot="cover" id="chart9"/>
         </a-card>
       </a-col>

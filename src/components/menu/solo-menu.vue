@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="artiely-menu">
     <div class="logo" />
     <a-menu
       :mode="mode"
@@ -13,7 +13,7 @@
             v-if="!item.children&&!item.meta.hide"
             :key="item.path"
           >
-            <a-icon :type="item.meta.icon" />
+            <a-iconfont  :type="item.meta.icon" />
             <span>{{ item.meta.title }}</span>
           </a-menu-item>
           <sub-menu
@@ -65,11 +65,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" >
 .logo {
    height: 32px;
   background: rgba(255,255,255,.2);
   margin: 16px;
+}
+.artiely-menu{
+  .ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
+    opacity: .8;
+  }
 }
 /* .ant-menu-dark.ant-menu-horizontal{
   padding-top: 9px!important;

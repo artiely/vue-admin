@@ -1,6 +1,7 @@
 
 <template>
   <div class="workspace">
+    <a-iconfont type="icon-xiaoxi"></a-iconfont>
     自定义指令和过滤器
     <p>无单位万字</p>
     <div class="money" v-currency="10000.34"></div>
@@ -22,6 +23,7 @@
     <div class="money" v-currency:w="{value:82037889,zoom:0.7,separator:'',decimals:0,unit:'圆'}"></div>
     <p>自定义货币符号</p>
     <div class="money" v-currency="{value:82037889,zoom:1,separator:',',decimals:2,pre:'€'}"></div>
+    <div style="height:1000px;"></div>
   </div>
 </template>
 <script>

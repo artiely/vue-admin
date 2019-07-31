@@ -9,7 +9,7 @@ export default [
     component: Home,
     meta: {
       title: '现场管理',
-      icon: 'weibo'
+      icon: 'icon-xiaoxi'
     },
     children: [
       {
@@ -19,7 +19,7 @@ export default [
         meta: {
           auth: true,
           title: '工作台',
-          icon: 'android'
+          icon: 'icon-zuanshi'
         }
       },
       {
@@ -29,7 +29,7 @@ export default [
         meta: {
           auth: true,
           title: '自动生成表单',
-          icon: 'apple'
+          icon: 'icon-xunzhang'
         }
       },
       {
@@ -39,7 +39,7 @@ export default [
         meta: {
           auth: true,
           title: '自动生成表格',
-          icon: 'windows'
+          icon: 'icon-xiangji'
         }
       },
       {
@@ -49,7 +49,7 @@ export default [
         meta: {
           auth: true,
           title: '表格表单一起',
-          icon: 'ie'
+          icon: 'icon-wenjianjia'
         }
       },
       {
@@ -69,7 +69,7 @@ export default [
         meta: {
           auth: true,
           title: 'workplace',
-          icon: 'laptop'
+          icon: 'icon-xiangce'
         }
       },
       {

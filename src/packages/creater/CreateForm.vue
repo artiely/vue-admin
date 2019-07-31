@@ -63,7 +63,7 @@ export default {
     // 表单的尺寸
     size: {
       type: String,
-      default: 'default'
+      default: 'large'
     }
   },
   data () {

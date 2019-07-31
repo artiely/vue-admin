@@ -13,10 +13,12 @@
       </a-layout-header>
       <a-layout-content style="margin: 0 16px;" class="layout1-content" :style="contentFixed">
         <!-- 面包屑 -->
-        <breadcrumb />
+        <!-- <breadcrumb /> -->
+        <action-bar>
+        </action-bar>
         <div >
           <transition name="slide-fade">
-          <router-view :style="{ padding: '24px', background: '#fff', minHeight: '360px' }" />
+          <router-view :style="{ padding: '24px', minHeight: '360px' }" />
           </transition>
         </div>
       </a-layout-content>
@@ -26,10 +28,11 @@
 </template>
 <script>
 import fullMenu from '../menu/full-menu'
-import breadcrumb from '../breadcrumb'
+// import breadcrumb from '../breadcrumb'
 import { layout } from '../../common/observable/layout'
 import VFooter from './footer'
 import VHeader from './header'
+import actionBar from './action-bar'
 // 标签栏的高度
 const NAV_TABS_HEIGHT = 45
 // 头部的高度
@@ -47,9 +50,10 @@ const joinunit = (val) => {
 export default {
   components: {
     fullMenu,
-    breadcrumb,
+    // breadcrumb,
     VHeader,
-    VFooter
+    VFooter,
+    actionBar
   },
   data () {
     return {
