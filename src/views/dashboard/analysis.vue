@@ -75,10 +75,13 @@ export default {
   computed: {},
   watch: {},
   mounted () {
-    this.renderChart()
-    this.renderChart2()
-    this.renderChart3()
-    this.renderChart4()
+    // alert(1)
+    this.$nextTick(() => {
+      this.renderChart()
+      this.renderChart2()
+      this.renderChart3()
+      this.renderChart4()
+    })
   },
   methods: {
     renderChart () {
@@ -152,6 +155,7 @@ export default {
             enabled: true
           }
         },
+        colors: ['#DCE6EC'],
         fill: {
           opacity: 0.3
         },

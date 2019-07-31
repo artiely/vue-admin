@@ -6,7 +6,9 @@
 import ApexCharts from 'apexcharts'
 export default {
   mounted () {
-    this.renderChart()
+    this.$nextTick(() => {
+      this.renderChart()
+    })
   },
   methods: {
     renderChart () {
