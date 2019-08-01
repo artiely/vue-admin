@@ -1,6 +1,7 @@
 
 <template>
   <div class="workspace">
+    <v-count-to :endVal="1000000" style="font-size:24px;"></v-count-to>
     <a-iconfont type="icon-xiaoxi"></a-iconfont>
     自定义指令和过滤器
     <p>无单位万字</p>
@@ -9,6 +10,7 @@
     <div class="money" v-currency:w="{value:99}"></div>
     <p>万以上</p>
     <div class="money" v-currency:w="{value:1200003}"></div>
+     <a-date-picker  />
     <p>亿以上</p>
     <div class="money" v-currency:w="{value:12000037889}"></div>
     <p>单位与数字的比例</p>

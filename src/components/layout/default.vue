@@ -64,7 +64,7 @@ export default {
     position: relative;
     z-index: 100!important;
     box-shadow: 2px 0 6px rgba(0,21,41,.35);
-    background: @menu-background;
+    // background: @menu-background;
   }
   }
 

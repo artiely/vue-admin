@@ -1,11 +1,15 @@
 <template>
   <div class="artiely-menu">
     <div class="logo" />
+    <!--  :inlineCollapsed="false"   :forceSubMenuRender="true"  :openKeys="openKeys"-->
     <a-menu
       :mode="mode"
-      theme="dark"
+      :theme="layout.menuTheme"
       :selectedKeys="selectedKeys"
+       @openChange="onOpenChange"
       @select="select"
+     :inlineCollapsed="false"   :forceSubMenuRender="true"
+
     >
       <template v-for="item in menu">
         <template v-if="!item.meta.hide">
@@ -30,6 +34,7 @@
 <script>
 import subMenu from './sub-menu'
 import menu from '@/router/modules/routes'
+import { layout } from '@/common/observable/layout'
 export default {
   components: {
     subMenu
@@ -42,11 +47,12 @@ export default {
     },
     theme: {
       type: String,
-      default: 'dark'
+      default: 'light'
     }
   },
   data () {
     return {
+      layout,
       collapsed: false,
       // selectedKeys: [this.$route.path],
       menu
@@ -55,11 +61,27 @@ export default {
   computed: {
     selectedKeys () {
       return [this.$route.path]
+    },
+    openKeys: {
+      get () {
+        return [this.$route.path]
+      },
+      set () {
+
+      }
     }
   },
   methods: {
     select ({ item, key, selectedKeys }) {
       this.$router.push(key)
+    },
+    onOpenChange (openKeys) {
+      // const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1)
+      // if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      //   this.openKeys = openKeys
+      // } else {
+      //   this.openKeys = latestOpenKey ? [latestOpenKey] : []
+      // }
     }
   }
 }
@@ -76,16 +98,4 @@ export default {
     opacity: .8;
   }
 }
-/* .ant-menu-dark.ant-menu-horizontal{
-  padding-top: 9px!important;
-} */
-/* .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu{
-  top: 16px;
-} */
-/* .ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu{
-  top: 10px;
-} */
-/* .ant-menu-item, .ant-menu-submenu-title{
-  padding: 9px 20px;
-} */
 </style>

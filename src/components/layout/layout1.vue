@@ -9,6 +9,16 @@
             :type="layout.isCollapse ? 'menu-unfold' : 'menu-fold'"
             @click="handleClick"
           />
+          <div class="fr">
+            <v-button tip="查看今日订单"><a-iconfont  type="icon-biaoqian" /></v-button>
+            <v-button tip="点击新增一个订单">新增</v-button>
+            <v-button tip="点击新增一个订单"><a-icon type="search" /></v-button>
+            <v-button tip="点击新增一个订单"><a-iconfont type="icon-gouwuche" /></v-button>
+            <v-button tip="点击新增一个订单"> <a-iconfont type="icon-fenlei" /></v-button>
+            <v-button > <a-iconfont type="icon-xiaoxi" /></v-button>
+            <v-button >  <a-iconfont type="icon-biaoqian" /></v-button>
+
+          </div>
         </v-header>
       </a-layout-header>
       <a-layout-content style="margin: 0 16px;" class="layout1-content" :style="contentFixed">
@@ -31,8 +41,11 @@ import fullMenu from '../menu/full-menu'
 // import breadcrumb from '../breadcrumb'
 import { layout } from '../../common/observable/layout'
 import VFooter from './footer'
-import VHeader from './header'
+import VHeader from './header1'
 import actionBar from './action-bar'
+
+import { pxtorem } from '@/common/utils'
+
 // 标签栏的高度
 const NAV_TABS_HEIGHT = 45
 // 头部的高度
@@ -43,10 +56,6 @@ const MENU_COLLAPSE_WIDTH = 80
 const MENU_UNCOLLAPSE_WIDTH = 256
 // 布局改变的动画
 const LAYOUT_TRANSOTION = 'all 0.2s'
-// 拼接单位的方法
-const joinunit = (val) => {
-  return val + 'px'
-}
 export default {
   components: {
     fullMenu,
@@ -70,7 +79,7 @@ export default {
       ) {
         return 0
       }
-      let ml = this.layout.isCollapse ? joinunit(MENU_COLLAPSE_WIDTH) : joinunit(MENU_UNCOLLAPSE_WIDTH)
+      let ml = this.layout.isCollapse ? pxtorem(MENU_COLLAPSE_WIDTH) : pxtorem(MENU_UNCOLLAPSE_WIDTH)
       return ml
     },
     layoutFixed () {
@@ -96,11 +105,11 @@ export default {
     },
     contentFixed () {
       if (this.layout.layoutMode === 'flow') {
-        return { marginTop: joinunit(NAV_TABS_HEIGHT) }
+        return { marginTop: pxtorem(NAV_TABS_HEIGHT) }
       } else if (this.layout.isNavTabs) {
-        return { marginTop: joinunit(NAV_TABS_HEIGHT + HEADER_HEIGHT) }
+        return { marginTop: pxtorem(NAV_TABS_HEIGHT + HEADER_HEIGHT) }
       } else {
-        return { marginTop: joinunit(HEADER_HEIGHT) }
+        return { marginTop: pxtorem(HEADER_HEIGHT) }
       }
     }
   },
@@ -125,7 +134,7 @@ export default {
 }
 #components-layout-demo-side .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  background: #eee;
   margin: 16px;
 }
 

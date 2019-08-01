@@ -35,7 +35,7 @@
       :visible="visible"
     >
       <div>
-        <a-radio-group v-model="currLayout">
+        <a-radio-group v-model="layout.layout">
           <a-radio value="layout1">
             布局1
           </a-radio>
@@ -44,8 +44,7 @@
           </a-radio>
         </a-radio-group>
         <a-radio-group
-          v-model="layoutMode"
-          @change="onChange"
+          v-model="layout.layoutMode"
         >
           <a-radio value="flow">
             流式布局
@@ -54,7 +53,23 @@
             固定布局
           </a-radio>
         </a-radio-group>
+
+        <a-radio-group
+          v-model="layout.menuTheme"
+        >
+          <a-radio value="dark">
+            褐色菜单
+          </a-radio>
+          <a-radio value="light">
+            白色菜单
+          </a-radio>
+        </a-radio-group>
         <a-switch checkedChildren="tab开" unCheckedChildren="tab关" defaultChecked @change="navTabsChange"/>
+        <div class="icon-wrapper">
+    字体大小
+    <a-slider :min="14" :max="20" @change="handleChange"  :value="value" />
+
+  </div>
       </div>
       <!-- <div
         class="setting-drawer-index-handle"
@@ -80,29 +95,10 @@ export default {
   data () {
     return {
       visible: false,
-      layoutMode: layout.layoutMode,
-      currLayout: layout.layout
+      layout,
+      value: 16
     }
   },
-  watch: {
-    currLayout: {
-      handler (val) {
-        layout.layout = val
-      }
-    }
-  },
-  //  computed: {
-  //   layout () {
-  //     switch (layout.layout) {
-  //       case 'layout1':
-  //         return layout1
-  //       case 'layout2':
-  //         return layout2
-  //       default:
-  //         return layout1
-  //     }
-  //   }
-  // },
   methods: {
     toggle () {
       this.visible = !this.visible
@@ -110,11 +106,12 @@ export default {
     onClose () {
       this.visible = false
     },
-    onChange () {
-      layout.layoutMode = this.layoutMode
-    },
     navTabsChange (val) {
       layout.isNavTabs = val
+    },
+    handleChange (val) {
+      this.value = val
+      document.querySelector('html').style.fontSize = val + 'px'
     }
   }
 }

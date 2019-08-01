@@ -59,7 +59,7 @@ export default [
         meta: {
           auth: true,
           title: '表格ele',
-          icon: 'ie'
+          icon: 'icon-dengpao'
         }
       },
       {
@@ -79,7 +79,7 @@ export default [
         meta: {
           auth: true,
           title: 'analysis',
-          icon: 'line-chart'
+          icon: 'icon-dingdan'
         }
       }
     ]
@@ -90,7 +90,7 @@ export default [
     component: Home,
     meta: {
       title: '现场管理',
-      icon: 'dingding'
+      icon: 'icon-gangbi'
     },
     children: [
       {
@@ -100,7 +100,7 @@ export default [
         meta: {
           auth: true,
           title: '首页',
-          icon: 'chrome'
+          icon: 'icon-dianzan'
         }
       },
       {

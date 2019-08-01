@@ -1,32 +1,23 @@
 <template>
   <div style="padding:10px">
-
      <!-- apex -->
     <a-row :gutter="24" style="margin-bottom:24px;">
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-        <a-card :bordered="false"  hoverable>
-          <chart-min-chart slot="cover" id="spark1"/>
-        </a-card>
+          <chart-min-chart  color="#fd397a" :countValue="12542" desc="今日新增客户" separator=""/>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-        <a-card :bordered="false"  hoverable>
-          <chart-min-chart slot="cover" id="chart6"/>
-        </a-card>
+          <chart-min-chart color="#fd7e14" :countValue="745874" desc="今日订单量" separator=""/>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-        <a-card :bordered="false" hoverable>
-          <chart-min-chart slot="cover" id="chart8"/>
-        </a-card>
+          <chart-min-chart color="#20c997" :countValue="156985" desc="剩余库存" separator=""/>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-        <a-card :bordered="false" hoverable>
-          <chart-min-chart slot="cover" id="chart9"/>
-        </a-card>
+          <chart-min-chart color="#ffb822" :countValue="256545" desc="今日营业额" :decimals="2" prefix="￥"/>
       </a-col>
     </a-row>
     <a-row :gutter="24" style="margin-bottom:24px;">
       <a-col :xs="24" :sm="24" :md="12" :lg="12">
-        <a-card :bordered="false" hoverable>
+        <a-card :bordered="false" hoverable >
           <dashed/>
         </a-card>
       </a-col>
@@ -77,10 +68,10 @@ export default {
   mounted () {
     // alert(1)
     this.$nextTick(() => {
-      this.renderChart()
-      this.renderChart2()
-      this.renderChart3()
-      this.renderChart4()
+      // this.renderChart()
+      // this.renderChart2()
+      // this.renderChart3()
+      // this.renderChart4()
     })
   },
   methods: {

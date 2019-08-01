@@ -3,11 +3,14 @@
     id="components-layout-demo-top"
     class="layout"
   >
-    <a-layout-header v-if="!layout.isMobile" class="layout5-header" :class="layout.layoutMode==='fixed'?'fixed':''">
-      <solo-menu
-        mode="horizontal"
-        theme="dark"
-      />
+    <a-layout-header v-if="!layout.isMobile" class="layout2-header" :class="layout.layoutMode==='fixed'?'fixed':''">
+      <div class="layout2-menu" :class="layout.menuTheme==='dark'?'dark':'light'">
+          <solo-menu
+          class="layout2-solo-menu"
+          mode="horizontal"
+          theme="light"
+        />
+      </div>
     </a-layout-header>
     <full-menu v-else trigger />
     <div style="height:64px" v-if="layout.layoutMode==='fixed' && !layout.isMobile"></div>
@@ -43,9 +46,10 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../assets/styles/var.less';
 #components-layout-demo-top{
   min-height: 100%;
-  .layout5-header{
+  .layout2-header{
     &.fixed{
       position: fixed;
       width: 100%;
@@ -53,20 +57,29 @@ export default {
       left: 0;
       z-index: 999;
     }
-    .ant-menu-item, .ant-menu-submenu-title{
-      height: 64px;
-      line-height: 64px;
-    }
-    .ant-menu-dark .ant-menu-submenu-selected{
-      // background: #1890ff;
+    .layout2-menu{
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      &.dark{
+        background: @menu-background-dark;
+      }
+      &.light{
+        background: @menu-background-light
+      }
+      .layout2-solo-menu{
+        padding: 0 50px;
+      }
     }
   }
 }
 #components-layout-demo-top .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255,255,255,.2);
-  margin: 16px 24px 16px 0;
-  float: left;
+  // width: 120px;
+  // height: 31px;
+  // background: rgba(255,255,255,.2);
+  // margin: 16px 24px 16px 0;
+  // float: left;
+  display: none
 }
 </style>

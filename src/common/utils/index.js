@@ -38,3 +38,8 @@ export function isObject (func) {
 //     window.location.reload()
 //   }
 // })
+
+let fontSize = parseFloat(document.querySelector('html').style.fontSize)
+export function pxtorem (val) {
+  return parseFloat(val) / fontSize + 'rem'
+};
