@@ -11,12 +11,11 @@
             :prefix="prefix"
           ></v-count-to>
            <a-tooltip>
-    <template slot='title'>
-      说明
-    </template>
-    <a-icon type="question-circle" class="help-icon" />
-  </a-tooltip>
-          
+            <template slot='title'>
+              说明
+            </template>
+            <a-icon type="question-circle" class="help-icon" />
+          </a-tooltip>
           <p>{{desc}}</p>
         </div>
         <div :id="'uuid'+id" class="min-chart"></div>
@@ -26,41 +25,49 @@
 </template>
 
 <script>
-import uuid from "uuid";
-import ApexCharts from "apexcharts";
+import uuid from 'uuid'
+import ApexCharts from 'apexcharts'
 export default {
   props: {
     color: {
       type: String,
-      default: "#DCE6EC"
+      default: '#DCE6EC'
     },
     separator: String,
     countValue: Number,
     decimals: Number,
     desc: String,
     prefix: String,
+    opacity: {
+      type: Number,
+      default: 0.3
+    },
+    type: {
+      type: String,
+      default: 'area'
+    },
     data: {
       type: Array,
-      default() {
-        return [15, 75, 47, 65, 14, 2, 41, 54, 4, 27, 15];
+      default () {
+        return [15, 75, 47, 65, 14, 2, 41, 54, 4, 27, 15]
       }
     }
   },
-  data() {
+  data () {
     return {
       id: uuid()
-    };
+    }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
-      this.renderChart();
-    });
+      this.renderChart()
+    })
   },
   methods: {
-    renderChart() {
+    renderChart () {
       var options = {
         chart: {
-          type: "area",
+          type: this.type,
           height: 55,
           sparkline: {
             enabled: true
@@ -68,11 +75,11 @@ export default {
         },
         colors: [this.color],
         fill: {
-          opacity: 0.3
+          opacity: this.opacity
         },
         stroke: {
           width: [2],
-          curve: "smooth"
+          curve: 'smooth'
         },
         series: [
           {
@@ -88,8 +95,8 @@ export default {
           },
           y: {
             title: {
-              formatter: function(seriesName) {
-                return "";
+              formatter: function (seriesName) {
+                return ''
               }
             }
           },
@@ -97,14 +104,14 @@ export default {
             show: false
           }
         }
-      };
+      }
       new ApexCharts(
-        document.querySelector("#uuid" + this.id),
+        document.querySelector('#uuid' + this.id),
         options
-      ).render();
+      ).render()
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

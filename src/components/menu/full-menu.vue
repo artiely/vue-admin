@@ -7,21 +7,23 @@
     get-container="body"
     mask-closable
     placement="left"
+    :width="pxtorem(layout.menuWidth)"
     @close="handleChange"
   >
     <solo-menu />
-    <div v-if="trigger" class="menu-drawer-index-handle" slot="handle" @click="toggle">
+    <div v-if="trigger" class="menu-drawer-index-handle" :style="{left:pxtorem(layout.menuWidth)}" slot="handle" @click="toggle">
       <a-icon type="menu-fold" v-if="!layout.isCollapse" />
       <a-icon type="menu-unfold" v-else />
     </div>
   </a-drawer>
-  <sider-menu v-else :is-collapse="layout.isCollapse" :collapsed-width="collapsedWidth" />
+  <sider-menu v-else />
 </template>
 
 <script>
 import siderMenu from './sider-menu'
 import soloMenu from './solo-menu'
 import { layout } from '@/common/observable/layout'
+import { pxtorem } from '@/common/utils'
 export default {
   name: 'FullMenu',
   components: {
@@ -36,6 +38,7 @@ export default {
   },
   data () {
     return {
+      pxtorem,
       collapsedWidth: 80,
       visible: true,
       layout
@@ -47,14 +50,14 @@ export default {
         switch (val) {
           case 'lg':
           case 'md':
-            this.collapsedWidth = 80
+            this.collapsedWidth = this.layout.collapsedWidth
             break
           case 'sm':
           case 'xs':
             this.collapsedWidth = 0
             break
           default:
-            this.collapsedWidth = 80
+            this.collapsedWidth = this.layout.collapsedWidth
         }
       }
     }
@@ -68,8 +71,6 @@ export default {
     }
   },
   mounted () {
-    console.log('>>>>>>>>>>>>>>>', layout)
-    console.log('>>>>>>>>>>>>>>>222222222', this.layout.menuTheme)
   }
 }
 </script>
@@ -82,7 +83,6 @@ export default {
   background: @menu-background-dark;
   width: 40px;
   height: 48px;
-  left: 256px;
   display: flex;
   justify-content: center;
   align-items: center;

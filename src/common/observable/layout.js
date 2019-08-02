@@ -14,8 +14,22 @@ export const layout = Vue.observable({
   // 是否展示标签页
   isNavTabs: true,
   // 菜单的主题
-  menuTheme: 'dark'
+  menuTheme: 'dark',
+  // 默认字体大小
+  fontSize: 16,
+  // 菜单折叠的宽度
+  collapsedWidth: 80,
+  //  菜单的宽度
+  menuWidth: 240
 })
+
+export let mutations = {
+  setFontSize (val) {
+    layout.fontSize = val
+    layout.collapsedWidth = (80 / 16) * val
+    document.querySelector('html').style.fontSize = val + 'px'
+  }
+}
 export function mediaQuery () {
   var EventUtil = {
     addHandler (element, type, handler) {

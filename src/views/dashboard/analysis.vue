@@ -3,16 +3,41 @@
      <!-- apex -->
     <a-row :gutter="24" style="margin-bottom:24px;">
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-          <chart-min-chart  color="#fd397a" :countValue="12542" desc="今日新增客户" separator=""/>
+          <chart-min-chart  color="#fd397a" :countValue="12542" desc="今日新增客户" type="line" separator="" :opacity="0.9"/>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-          <chart-min-chart color="#fd7e14" :countValue="745874" desc="今日订单量" separator=""/>
+          <chart-min-chart color="#fd7e14" :countValue="745874" desc="今日订单量" :data="[25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]" separator=""/>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-          <chart-min-chart color="#20c997" :countValue="156985" desc="剩余库存" separator=""/>
+          <chart-min-chart color="#20c997" :countValue="156985" desc="剩余库存" type="bar" separator="" :data="[25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]"/>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6">
-          <chart-min-chart color="#ffb822" :countValue="256545" desc="今日营业额" :decimals="2" prefix="￥"/>
+          <chart-min-chart color="#ffb822" :countValue="256545" desc="今日营业额" type="area" :decimals="2" prefix="￥"/>
+      </a-col>
+    </a-row>
+     <a-row :gutter="24" style="margin-bottom:24px;">
+      <a-col :xs="24" :sm="24" :md="12" :lg="12">
+        <a-card :bordered="false" hoverable>
+          <pie></pie>
+        </a-card>
+      </a-col>
+      <a-col :xs="24" :sm="24" :md="12" :lg="12">
+        <a-card :bordered="false" hoverable>
+          <pie-platelets></pie-platelets>
+        </a-card>
+      </a-col>
+    </a-row>
+
+     <a-row :gutter="24" style="margin-bottom:24px;">
+      <a-col :xs="24" :sm="24" :md="12" :lg="12">
+        <a-card :bordered="false" hoverable>
+          <pie-multi-level></pie-multi-level>
+        </a-card>
+      </a-col>
+      <a-col :xs="24" :sm="24" :md="12" :lg="12">
+        <a-card :bordered="false" hoverable>
+          <point></point>
+        </a-card>
       </a-col>
     </a-row>
     <a-row :gutter="24" style="margin-bottom:24px;">
@@ -46,19 +71,26 @@
 
 <script>
 
-import ApexCharts from 'apexcharts'
 import dashed from './apex-charts/dashed'
 import splineArea from './apex-charts/spline-area'
 import columnCharts from './apex-charts/column-charts'
 import lineArea from './apex-charts/line-area'
 import chartMinChart from './template/chart-min-chart'
+import pie from './g2/pie'
+import piePlatelets from './g2/pie-platelets'
+import pieMultiLevel from './g2/pie-multi-level'
+import point from './g2/point'
 export default {
   components: {
     dashed,
     splineArea,
     columnCharts,
     lineArea,
-    chartMinChart
+    chartMinChart,
+    pie,
+    piePlatelets,
+    pieMultiLevel,
+    point
   },
   data () {
     return {}
@@ -66,197 +98,8 @@ export default {
   computed: {},
   watch: {},
   mounted () {
-    // alert(1)
-    this.$nextTick(() => {
-      // this.renderChart()
-      // this.renderChart2()
-      // this.renderChart3()
-      // this.renderChart4()
-    })
   },
   methods: {
-    renderChart () {
-      var randomizeArray = function (arg) {
-        var array = arg.slice()
-        var currentIndex = array.length
-        var temporaryValue; var randomIndex
-
-        while (currentIndex !== 0) {
-          randomIndex = Math.floor(Math.random() * currentIndex)
-          currentIndex -= 1
-
-          temporaryValue = array[currentIndex]
-          array[currentIndex] = array[randomIndex]
-          array[randomIndex] = temporaryValue
-        }
-
-        return array
-      }
-
-      // data for the sparklines that appear below header area
-      var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46]
-      var spark1 = {
-        chart: {
-          type: 'area',
-          height: 160,
-          sparkline: {
-            enabled: true
-          }
-        },
-        stroke: {
-          curve: 'straight'
-        },
-        fill: {
-          opacity: 0.3
-        },
-        series: [{
-          data: randomizeArray(sparklineData)
-        }],
-        yaxis: {
-          min: 0
-        },
-        colors: ['#DCE6EC'],
-        title: {
-          text: '$424,652',
-          offsetX: 0,
-          style: {
-            fontSize: '24px',
-            cssClass: 'apexcharts-yaxis-title'
-          }
-        },
-        subtitle: {
-          text: 'Sales',
-          offsetX: 0,
-          style: {
-            fontSize: '14px',
-            cssClass: 'apexcharts-yaxis-title'
-          }
-        }
-      }
-
-      spark1 = new ApexCharts(document.querySelector('#spark1'), spark1)
-      spark1.render()
-    },
-    renderChart2 () {
-      var options4 = {
-        chart: {
-          type: 'area',
-          height: 55,
-          sparkline: {
-            enabled: true
-          }
-        },
-        colors: ['#DCE6EC'],
-        fill: {
-          opacity: 0.3
-        },
-        series: [{
-          data: [15, 75, 47, 65, 14, 2, 41, 54, 4, 27, 15]
-        }],
-        tooltip: {
-          fixed: {
-            enabled: false
-          },
-          x: {
-            show: false
-          },
-          y: {
-            title: {
-              formatter: function (seriesName) {
-                return ''
-              }
-            }
-          },
-          marker: {
-            show: false
-          }
-        }
-      }
-      new ApexCharts(document.querySelector('#chart6'), options4).render()
-    },
-    renderChart3 () {
-      var options8 = {
-        chart: {
-          type: 'bar',
-          height: 55,
-          sparkline: {
-            enabled: true
-          }
-        },
-        fill: {
-          opacity: 0.3
-        },
-        plotOptions: {
-          bar: {
-            columnWidth: '80%'
-          }
-        },
-        series: [{
-          data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
-        }],
-        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-        xaxis: {
-          crosshairs: {
-            width: 1
-          }
-        },
-        tooltip: {
-          fixed: {
-            enabled: false
-          },
-          x: {
-            show: false
-          },
-          y: {
-            title: {
-              formatter: function (seriesName) {
-                return ''
-              }
-            }
-          },
-          marker: {
-            show: false
-          }
-        }
-      }
-      new ApexCharts(document.querySelector('#chart8'), options8).render()
-    },
-    renderChart4 () {
-      var options3 = {
-        chart: {
-          type: 'area',
-          height: 55,
-          sparkline: {
-            enabled: true
-          }
-        },
-        series: [{
-          data: [47, 45, 74, 14, 56, 74, 14, 11, 7, 39, 82]
-        }],
-        fill: {
-          opacity: 0.3
-        },
-        tooltip: {
-          fixed: {
-            enabled: false
-          },
-          x: {
-            show: false
-          },
-          y: {
-            title: {
-              formatter: function (seriesName) {
-                return ''
-              }
-            }
-          },
-          marker: {
-            show: false
-          }
-        }
-      }
-      new ApexCharts(document.querySelector('#chart9'), options3).render()
-    }
   }
 }
 </script>

@@ -17,7 +17,7 @@
     <a-layout-content style="padding: 0 50px" >
       <!-- 面包屑 -->
       <breadcrumb />
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+        <div :style="{ padding: '24px', minHeight: '360px' }">
           <router-view />
         </div>
     </a-layout-content>

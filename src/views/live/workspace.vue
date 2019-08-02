@@ -1,6 +1,7 @@
 
 <template>
   <div class="workspace">
+    <v-avatar-group></v-avatar-group>
     <v-count-to :endVal="1000000" style="font-size:24px;"></v-count-to>
     <a-iconfont type="icon-xiaoxi"></a-iconfont>
     自定义指令和过滤器

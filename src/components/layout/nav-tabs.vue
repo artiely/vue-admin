@@ -3,7 +3,7 @@
    <a-tabs  :type="type" animated  class="layout-nav-tabs"  :activeKey="activeKey" @change="handleNavTab">
     <a-tab-pane :key="item.path" v-for="item in panes">
       <span slot="tab">
-        <a-icon v-if="item.meta.icon" :type="item.meta.icon" />
+        <a-iconfont v-if="item.meta.icon" :type="item.meta.icon" />
         {{item.meta.title}}
         <a-icon type="close-circle" v-if="panes.length!=1" class="nav-tabs-close-icon" @click.prevent.stop="del(item)"/>
       </span>
@@ -197,7 +197,7 @@ export default {
     border: 1px solid transparent;
   }
   &.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab{
-    padding: 0 30px;
+    padding:0 30px 0 15px;
     border-radius: 0;
     margin-right:-1px;
     font-weight: 500;

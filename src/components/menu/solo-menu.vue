@@ -1,15 +1,13 @@
 <template>
   <div class="artiely-menu">
     <div class="logo" />
-    <!--  :inlineCollapsed="false"   :forceSubMenuRender="true"  :openKeys="openKeys"-->
     <a-menu
       :mode="mode"
       :theme="layout.menuTheme"
       :selectedKeys="selectedKeys"
        @openChange="onOpenChange"
       @select="select"
-     :inlineCollapsed="false"   :forceSubMenuRender="true"
-
+     :forceSubMenuRender="true"
     >
       <template v-for="item in menu">
         <template v-if="!item.meta.hide">
@@ -54,7 +52,6 @@ export default {
     return {
       layout,
       collapsed: false,
-      // selectedKeys: [this.$route.path],
       menu
     }
   },

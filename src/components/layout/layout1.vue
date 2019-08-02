@@ -10,9 +10,8 @@
             @click="handleClick"
           />
           <div class="fr">
-            <v-button tip="查看今日订单"><a-iconfont  type="icon-biaoqian" /></v-button>
-            <v-button tip="点击新增一个订单">新增</v-button>
             <v-button tip="点击新增一个订单"><a-icon type="search" /></v-button>
+            <v-button tip="查看今日订单"><a-iconfont  type="icon-biaoqian" /></v-button>
             <v-button tip="点击新增一个订单"><a-iconfont type="icon-gouwuche" /></v-button>
             <v-button tip="点击新增一个订单"> <a-iconfont type="icon-fenlei" /></v-button>
             <v-button > <a-iconfont type="icon-xiaoxi" /></v-button>
@@ -24,8 +23,8 @@
       <a-layout-content style="margin: 0 16px;" class="layout1-content" :style="contentFixed">
         <!-- 面包屑 -->
         <!-- <breadcrumb /> -->
-        <action-bar>
-        </action-bar>
+        <!-- <action-bar>
+        </action-bar> -->
         <div >
           <transition name="slide-fade">
           <router-view :style="{ padding: '24px', minHeight: '360px' }" />
@@ -42,7 +41,7 @@ import fullMenu from '../menu/full-menu'
 import { layout } from '../../common/observable/layout'
 import VFooter from './footer'
 import VHeader from './header1'
-import actionBar from './action-bar'
+// import actionBar from './action-bar'
 
 import { pxtorem } from '@/common/utils'
 
@@ -50,10 +49,6 @@ import { pxtorem } from '@/common/utils'
 const NAV_TABS_HEIGHT = 45
 // 头部的高度
 const HEADER_HEIGHT = 64
-// 菜单折叠的宽度
-const MENU_COLLAPSE_WIDTH = 80
-// 菜单展开的宽度
-const MENU_UNCOLLAPSE_WIDTH = 256
 // 布局改变的动画
 const LAYOUT_TRANSOTION = 'all 0.2s'
 export default {
@@ -61,8 +56,8 @@ export default {
     fullMenu,
     // breadcrumb,
     VHeader,
-    VFooter,
-    actionBar
+    VFooter
+    // actionBar
   },
   data () {
     return {
@@ -79,7 +74,7 @@ export default {
       ) {
         return 0
       }
-      let ml = this.layout.isCollapse ? pxtorem(MENU_COLLAPSE_WIDTH) : pxtorem(MENU_UNCOLLAPSE_WIDTH)
+      let ml = this.layout.isCollapse ? pxtorem(layout.collapsedWidth) : pxtorem(layout.menuWidth)
       return ml
     },
     layoutFixed () {

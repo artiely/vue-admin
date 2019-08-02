@@ -2,12 +2,12 @@
   <a-layout-sider
     breakpoint="xl"
     collapsible
-    :class="style"
+    :class="className"
     :trigger="null"
-    :collapsed-width="pxtorem(collapsedWidth)"
+    :collapsed-width="collapsedWidth"
     v-model="layout.isCollapse"
-    :width="pxtorem(256)"
-    :style="layout.layoutMode=='fixed'?{ overflow: 'hidden', height: '100vh', position: 'fixed', left: 0 }:''"
+    :width="pxtorem(layout.menuWidth)"
+    :style="style"
   >
     <solo-menu />
   </a-layout-sider>
@@ -16,29 +16,31 @@
 <script>
 import soloMenu from '../menu/solo-menu'
 import { layout } from '../../common/observable/layout'
-import { pxtorem } from '@/common/utils'
+import { pxtorem, dynamicByFontSize } from '@/common/utils'
 export default {
   name: 'SiderMenu',
   components: {
     soloMenu
   },
-  props: {
-    collapsedWidth: {
-      type: Number,
-      default: 80
-    }
-  },
   data () {
     return {
       layout,
-      pxtorem
+      pxtorem,
+      dynamicByFontSize,
+      collapsedWidth: 80
     }
   },
   computed: {
-    style () {
+    className () {
       return [
         layout.menuTheme === 'dark' ? 'dark' : 'light',
         layout.isCollapse ? 'is-collapse' : ''
+      ]
+    },
+    style () {
+      return [
+        layout.layoutMode === 'fixed' ? { overflow: 'hidden', height: '100vh', position: 'fixed', left: 0 } : '',
+        layout.isCollapse ? { width: this.pxtorem(layout.collapsedWidth), maxWidth: this.pxtorem(layout.collapsedWidth), minWidth: this.pxtorem(layout.collapsedWidth), flex: `0 0 ${this.pxtorem(layout.collapsedWidth)}` } : ''
       ]
     }
   }
@@ -47,6 +49,10 @@ export default {
 
 <style lang="less">
 @import '../../assets/styles/var.less';
+.ant-menu-inline-collapsed{
+  width: 100%!important;
+  text-align: center;
+}
 .ant-layout-sider{
   &.dark{
     background: @menu-background-dark!important;
@@ -55,6 +61,10 @@ export default {
     background: @menu-background-light!important;
   }
   &.is-collapse{
+    // width: 80px!important;
+    // flex: 0 0 80px!important;
+    // max-width: 80px!important;
+    // min-width: 80px!important;
      .ant-layout-sider-children{
     // width: 97px;
     // overflow-y:hidden;

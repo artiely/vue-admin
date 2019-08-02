@@ -39,7 +39,15 @@ export function isObject (func) {
 //   }
 // })
 
+// 动态的将px转换成rem单位
 let fontSize = parseFloat(document.querySelector('html').style.fontSize)
 export function pxtorem (val) {
+  console.log('TCL: pxtorem -> fontSize', fontSize)
   return parseFloat(val) / fontSize + 'rem'
 };
+// 根据原有尺寸动态的计算现有尺寸
+// export function dynamicByFontSize (val) {
+//   let fontSize = parseFloat(document.querySelector('html').style.fontSize)
+//   console.log('TCL: dynamicByFontSize -> fontSize', fontSize)
+//   return (parseFloat(val) / 16) * fontSize
+// }

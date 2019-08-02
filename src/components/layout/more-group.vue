@@ -67,7 +67,7 @@
         <a-switch checkedChildren="tab开" unCheckedChildren="tab关" defaultChecked @change="navTabsChange"/>
         <div class="icon-wrapper">
     字体大小
-    <a-slider :min="14" :max="20" @change="handleChange"  :value="value" />
+    <a-slider :min="14" :max="20" @change="handleChange"  :value="layout.fontSize" />
 
   </div>
       </div>
@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { layout } from '../../common/observable/layout'
+import { layout, mutations } from '../../common/observable/layout'
 export default {
   data () {
     return {
@@ -100,6 +100,7 @@ export default {
     }
   },
   methods: {
+    handleChange: mutations.setFontSize,
     toggle () {
       this.visible = !this.visible
     },
@@ -108,10 +109,6 @@ export default {
     },
     navTabsChange (val) {
       layout.isNavTabs = val
-    },
-    handleChange (val) {
-      this.value = val
-      document.querySelector('html').style.fontSize = val + 'px'
     }
   }
 }
