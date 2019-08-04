@@ -12,13 +12,13 @@
   <div class="layout-nav-tabs-actions">
     <a-dropdown>
     <a-menu slot="overlay" @click="handleMenuClick">
-      <a-menu-item key="refresh-curr"><a-icon type="user" />刷新当前标签</a-menu-item>
-      <a-menu-item key="close-curr" :disabled="panes.length==1"><a-icon type="user" />关闭当前标签</a-menu-item>
-      <a-menu-item key="close-other" :disabled="panes.length==1"><a-icon type="user" />关闭其他标签</a-menu-item>
-      <a-menu-item key="close-all" :disabled="panes.length==1"><a-icon type="user" />关闭所有标签</a-menu-item>
+      <a-menu-item key="refresh-curr"><v-icon name="icon-refresh" />刷新当前标签</a-menu-item>
+      <a-menu-item key="close-curr" :disabled="panes.length==1"><v-icon name="icon-delete" />关闭当前标签</a-menu-item>
+      <a-menu-item key="close-other" :disabled="panes.length==1"><v-icon name="icon-delete" />关闭其他标签</a-menu-item>
+      <a-menu-item key="close-all" :disabled="panes.length==1"><v-icon name="icon-delete" />关闭所有标签</a-menu-item>
       <a-menu-divider />
-      <a-menu-item key="line"><a-icon type="user" />内联模式</a-menu-item>
-      <a-menu-item key="card"><a-icon type="user" />卡片模式</a-menu-item>
+      <a-menu-item key="line"><v-icon name="icon-keyboard" />内联模式</a-menu-item>
+      <a-menu-item key="card"><v-icon name="icon-label" />卡片模式</a-menu-item>
     </a-menu>
     <div class="layout-nav-tabs-actions-inner">
     <a-icon type="down-square" />

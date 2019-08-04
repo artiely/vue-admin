@@ -193,7 +193,7 @@ export default {
 .count-to{
   font-family: DINPro-Medium;
   .prefix{
-    font-size: .7em
+    font-size: .5em
   }
 }
 </style>

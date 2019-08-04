@@ -104,6 +104,16 @@ export default [
         }
       },
       {
+        path: '/scrollbar',
+        name: 'scrollbar',
+        component: loading('views/live/scrollbar.vue'),
+        meta: {
+          auth: true,
+          title: 'scrollbar',
+          icon: 'icon-dianzan'
+        }
+      },
+      {
         path: '/index3',
         name: 'index3',
         component: loading('views/live/workspace.vue'),
