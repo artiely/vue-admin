@@ -1,12 +1,29 @@
 <template>
-  <a-card>
-    <div id="timeline-chart"></div>
-  </a-card>
+  <div>
+    <a-row  :gutter="24" style="margin-bottom:25px;">
+      <a-col :xs="24" :sm="24" :md="8" :lg="8">
+        <card-chart title="每日销售" type="bar" subTitle="查看每个列以获取更多详细信息"></card-chart>
+      </a-col>
+      <a-col :xs="24" :sm="24" :md="8" :lg="8">
+        <card-chart title="分享利益" type="pie" subTitle="利润在客户之间分享"></card-chart>
+      </a-col>
+      <a-col :xs="24" :sm="24" :md="8" :lg="8">
+        <card-chart title="收入变化" type="triangle" subTitle="按城市划分的收入变化细分"></card-chart>
+      </a-col>
+    </a-row>
+    <a-card>
+      <div id="timeline-chart"></div>
+    </a-card>
+  </div>
 </template>
 
 <script>
 import ApexCharts from 'apexcharts'
+import cardChart from '../../components/card/card-chart'
 export default {
+  components: {
+    cardChart
+  },
   mounted () {
     this.$nextTick(() => {
       this.render()

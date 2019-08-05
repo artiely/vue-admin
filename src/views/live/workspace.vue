@@ -26,15 +26,22 @@
     <div class="money" v-currency:w="{value:82037889,zoom:0.7,separator:'',decimals:0,unit:'圆'}"></div>
     <p>自定义货币符号</p>
     <div class="money" v-currency="{value:82037889,zoom:1,separator:',',decimals:2,pre:'€'}"></div>
+     <a-range-picker
+      :ranges="{ Today: [moment(), moment()], 'This Month': [moment(), moment().endOf('month')] }"
+      showTime
+      format="YYYY/MM/DD HH:mm:ss"
+    />
     <div style="height:1000px;"></div>
   </div>
 </template>
 <script>
+import moment from 'moment'
 export default {
   name: 'workspace',
   components: {},
   data () {
     return {
+      moment
     }
   },
   computed: {},
