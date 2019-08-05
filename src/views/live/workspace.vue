@@ -1,6 +1,9 @@
 
 <template>
   <div class="workspace">
+    123
+    <iconbox></iconbox>
+    456
     <v-avatar-group></v-avatar-group>
     <v-count-to :endVal="1000000" style="font-size:24px;"></v-count-to>
     <a-iconfont type="icon-xiaoxi"></a-iconfont>
