@@ -2,7 +2,7 @@
 <template>
   <div class="workspace">
     123
-    <iconbox></iconbox>
+    <iconbox v-model="iconname"></iconbox>
     456
     <v-avatar-group></v-avatar-group>
     <v-count-to :endVal="1000000" style="font-size:24px;"></v-count-to>
@@ -44,7 +44,8 @@ export default {
   components: {},
   data () {
     return {
-      moment
+      moment,
+      iconname:''
     }
   },
   computed: {},
