@@ -36,6 +36,7 @@
     "iview": "^3.4.2",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.0",
+    "md5": "^2.2.1",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
     "qs": "^6.7.0",
@@ -43,6 +44,8 @@
     "vue": "^2.6.10",
     "vue-clickaway": "^2.2.2",
     "vue-count-to": "^1.0.13",
+    "vue-cropper": "^0.4.9",
+    "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^2.5.4"

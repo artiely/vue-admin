@@ -2,16 +2,16 @@
   <div style="padding:10px">
      <!-- apex -->
     <a-row :gutter="24" style="margin-bottom:24px;">
-      <a-col :xs="24" :sm="24" :md="6" :lg="6">
+      <a-col :xs="24" :sm="12" :md="12" :lg="6">
           <chart-min-chart  color="#fd397a" :countValue="12542" desc="今日新增客户" type="line" separator="" :opacity="0.9"/>
       </a-col>
-      <a-col :xs="24" :sm="24" :md="6" :lg="6">
+      <a-col :xs="24" :sm="12" :md="12" :lg="6">
           <chart-min-chart color="#fd7e14" :countValue="745874" desc="今日订单量" :data="[25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]" separator=""/>
       </a-col>
-      <a-col :xs="24" :sm="24" :md="6" :lg="6">
+      <a-col :xs="24" :sm="12" :md="12" :lg="6">
           <chart-min-chart color="#20c997" :countValue="156985" desc="剩余库存" type="bar" separator="" :data="[25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]"/>
       </a-col>
-      <a-col :xs="24" :sm="24" :md="6" :lg="6">
+      <a-col :xs="24" :sm="12" :md="12" :lg="6">
           <chart-min-chart color="#ffb822" :countValue="256545" desc="今日营业额" type="area" :decimals="2" prefix="￥"/>
       </a-col>
     </a-row>

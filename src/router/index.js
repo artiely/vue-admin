@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import NProgress from 'nprogress'
 // import { getToken } from '@/common/utils'
 import { anthNavTabs } from '@/common/observable/navTabs'
-// import baseRoutes from './baseRoutes'
+import baseRoutes from './baseRoutes'
 Vue.use(Router)
 NProgress.configure({
   showSpinner: false
@@ -15,8 +15,8 @@ routerContext.keys().forEach(route => {
   const routerModle = routerContext(route)
   routes = [
     ...routes,
-    ...(routerModle.default || routerModle)
-    // ...baseRoutes
+    ...(routerModle.default || routerModle),
+    ...baseRoutes
   ]
 })
 

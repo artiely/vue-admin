@@ -16,7 +16,7 @@
 <script>
 import soloMenu from '../menu/solo-menu'
 import { layout } from '../../common/observable/layout'
-import { pxtorem, dynamicByFontSize } from '@/common/utils'
+import { pxtorem } from '@/common/utils'
 export default {
   name: 'SiderMenu',
   components: {
@@ -26,7 +26,6 @@ export default {
     return {
       layout,
       pxtorem,
-      dynamicByFontSize,
       collapsedWidth: 80
     }
   },

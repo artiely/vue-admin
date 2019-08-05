@@ -1,5 +1,6 @@
 import loading from '../loading'
 import Home from '@/components/layout/default.vue'
+import App from '@/App.vue'
 console.log('TCL: Home', Home)
 export default [
   {
@@ -23,7 +24,7 @@ export default [
         }
       },
       {
-        path: '/crud',
+        path: 'crud',
         name: 'crud',
         component: loading('views/crud/crud.vue'),
         meta: {
@@ -85,8 +86,8 @@ export default [
     ]
   },
   {
-    path: '/i',
-    name: 'live',
+    path: '/live-home',
+    name: 'live-home',
     component: Home,
     meta: {
       title: '现场管理',
@@ -117,12 +118,150 @@ export default [
     ]
   },
   {
-    path: '/login',
-    name: 'login',
-    component: loading('views/auth/login.vue'),
+    path: '/result-home',
+    name: 'result-home',
+    component: Home,
     meta: {
-      title: '登录页',
-      hide: true
-    }
+      title: '结果页',
+      icon: 'icon-gangbi'
+    },
+    children: [
+      {
+        path: '/error',
+        name: 'error',
+        component: loading('views/result/error.vue'),
+        meta: {
+          title: '失败',
+          icon: 'icon-dianzan'
+        }
+      },
+      {
+        path: '/success',
+        name: 'success',
+        component: loading('views/result/success.vue'),
+        meta: {
+          title: '成功',
+          icon: 'github'
+        }
+      }
+    ]
+  },
+  {
+    path: '/auth-home',
+    name: 'auth-home',
+    component: App,
+    meta: {
+      title: '鉴权页',
+      icon: 'icon-gangbi'
+    },
+    children: [
+      {
+        path: '/login',
+        name: 'login',
+        component: loading('views/auth/login.vue'),
+        meta: {
+          title: '登录页',
+          icon: 'icon-dianzan'
+        }
+      },
+      {
+        path: '/register',
+        name: 'register',
+        component: loading('views/auth/register.vue'),
+        meta: {
+          title: '注册页',
+          icon: 'github'
+        }
+      }
+    ]
+  },
+  {
+    path: '/error-home',
+    name: 'error-home',
+    component: App,
+    meta: {
+      title: '错误页',
+      icon: 'icon-gangbi'
+    },
+    children: [
+      {
+        path: '/403',
+        name: '403',
+        component: loading('views/exception/403.vue'),
+        meta: {
+          title: '403'
+        }
+      },
+      {
+        path: '/404',
+        name: '404',
+        component: loading('views/exception/404.vue'),
+        meta: {
+          title: '404'
+        }
+      },
+      {
+        path: '/500',
+        name: '500',
+        component: loading('views/exception/500.vue'),
+        meta: {
+          title: '500'
+        }
+      }
+    ]
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: Home,
+    meta: {
+      auth: true,
+      title: '用户中心',
+      icon: 'ant-design',
+      hidden: true
+    },
+    children: [
+      {
+        path: '/userinfo',
+        name: 'userinfo',
+        component: loading('views/user/user'),
+        meta: {
+          auth: true,
+          title: 'userinfo',
+          icon: 'line-chart',
+          hidden: true
+        }
+      },
+      {
+        path: '/todo',
+        name: 'todo',
+        component: loading('views/user/todo'),
+        meta: {
+          auth: true,
+          title: 'todo',
+          icon: 'line-chart'
+        }
+      },
+      {
+        path: '/calendar',
+        name: 'calendar',
+        component: loading('views/user/calendar'),
+        meta: {
+          auth: true,
+          title: 'calendar',
+          icon: 'line-chart'
+        }
+      },
+      {
+        path: '/help',
+        name: 'help',
+        component: loading('views/user/help'),
+        meta: {
+          auth: true,
+          title: 'help',
+          icon: 'line-chart'
+        }
+      }
+    ]
   }
 ]

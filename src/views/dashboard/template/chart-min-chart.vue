@@ -116,6 +116,7 @@ export default {
 
 <style lang="less" scoped>
 .chart-min-chart-wrapper {
+  margin-bottom: 25px;
   .chart-min-chart {
     width: 100%;
     height: 100%;

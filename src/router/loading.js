@@ -1,3 +1,4 @@
+import loadingError from './loadingError.vue'
 const loading = (path, sync) => {
   if (!sync) {
     return () => {
@@ -5,9 +6,10 @@ const loading = (path, sync) => {
         .then(component => {
           return component
         })
-        .catch(() => {
-          console.error('获取页面失败')
-          window.location.reload()
+        .catch((e) => {
+          console.error('获取页面失败', e)
+          return loadingError
+          // window.location.reload()
         })
         .finally(() => {
           // ...
