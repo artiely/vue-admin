@@ -24,20 +24,20 @@ export default [
   //   ]
   // },
   {
-    path: "/redirect",
-    name: "redirect",
-    component: loading("components/layout/redirect.vue"),
+    path: '/redirect',
+    name: 'redirect',
+    component: loading('components/layout/redirect.vue'),
     meta: {
-      title: "重定向",
+      title: '重定向',
       hide: true
     }
   },
   {
-    path: "/lock",
-    name: "lock",
-    component: loading("components/layout/lock.vue"),
+    path: '/lock',
+    name: 'lock',
+    component: loading('components/layout/lock.vue'),
     meta: {
-      title: "页面锁定",
+      title: '页面锁定',
       hide: true
     }
   }
@@ -51,4 +51,4 @@ export default [
   //     hide: true
   //   }
   // }
-];
+]

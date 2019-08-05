@@ -15,8 +15,8 @@ Vue.mixin({
       handler () {
         console.log('this.$chart99999999999999', this.chart)
         setTimeout(() => {
-          this.chart&&this.chart.forceFit()
-        }, 400);
+          this.chart && this.chart.forceFit()
+        }, 400)
       }
     }
   },

@@ -10,7 +10,7 @@
 import uuid from 'uuid'
 import G2 from '@antv/g2'
 import DataSet from '@antv/data-set'
-import {layout} from '@/common/observable/layout'
+import { layout } from '@/common/observable/layout'
 export default {
   name: 'card-chart',
   props: {

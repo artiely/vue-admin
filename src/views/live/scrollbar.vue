@@ -14,17 +14,17 @@
   </div>
 </template>
 <script>
-import VuePerfectScrollbar from "vue-perfect-scrollbar";
+import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 
 export default {
-  name: "scrollbar",
-  components: { VuePerfectScrollbar,  },
-  data() {
+  name: 'scrollbar',
+  components: { VuePerfectScrollbar },
+  data () {
     return {
       settings: {
         maxScrollbarLength: 60
       }
-    };
+    }
   },
   computed: {},
   watch: {},
@@ -41,13 +41,13 @@ export default {
   destroyed
   errorCaptured
    */
-  created() {},
+  created () {},
   methods: {
-    scrollHandle(evt) {
-      console.log(evt);
+    scrollHandle (evt) {
+      console.log(evt)
     }
   }
-};
+}
 </script>
 <style lang="less" scoped>
 .scrollbar {
@@ -58,6 +58,6 @@ export default {
     height: 300px;
     background: #eee;
   }
- 
+
 }
 </style>
