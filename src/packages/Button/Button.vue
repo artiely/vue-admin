@@ -27,7 +27,7 @@ export default {
   methods: {
     handleClick (e) {
       this.active = true
-      this.$emit('click',e)
+      this.$emit('click', e)
     },
     away () {
       this.active = false

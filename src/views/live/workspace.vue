@@ -45,7 +45,7 @@ export default {
   data () {
     return {
       moment,
-      iconname:''
+      iconname: ''
     }
   },
   computed: {},
