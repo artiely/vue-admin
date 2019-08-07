@@ -1,44 +1,26 @@
 <template>
-  <div class="artiely-scroll-top" :class="show?'show':''" @click="scrollToTop">
-    <v-icon name="icon-packup"></v-icon>
+  <div class="artiely-scroll-top" >
+    <a-back-top>
+      <div class="ant-back-top-inner"><v-icon name="icon-packup"></v-icon></div>
+    </a-back-top>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
 export default {
-  data () {
-    return {
-      show: false
-    }
-  },
-  mounted () {
-    $(window).on('scroll', () => {
-      if ($(window).scrollTop() > $(window).height() / 2) {
-        this.show = true
-      } else {
-        this.show = false
-      }
-    })
-  },
-  methods: {
-    scrollToTop () {
-      $('html,body').animate({ scrollTop: 0 }, 500)
-    }
-  }
 }
 </script>
 
 <style lang="less" scoped>
-.artiely-scroll-top {
+.artiely-scroll-top .ant-back-top{
+  bottom: 40px;
+}
+.artiely-scroll-top .ant-back-top-inner {
   display: block;
   justify-content: center;
   align-items: center;
   width: 40px;
   height: 40px;
-  position: fixed;
-  bottom: 0px;
-  right: 20px;
   cursor: pointer;
   z-index: 100;
   background: #5d78ff;
@@ -48,16 +30,8 @@ export default {
   line-height: 40px;
   transition: all 0.3s;
   user-select: none;
-  opacity: 0;
-  &.show {
-    display: block;
-    opacity: 0.5;
-    bottom: 40px;
-  }
-  &:hover{
-    opacity: 1;
-  }
-  .iconfont {
+  opacity: 1;
+  .iconfont{
     color: #fff;
   }
 }

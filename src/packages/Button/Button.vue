@@ -41,14 +41,13 @@ export default {
 .artiely-button {
   display: inline-block;
   cursor: pointer;
-  // padding: 20px;
   height: 32px;
   line-height: 32px !important;
-  padding: 0 12px;
+  padding: 0 10px;
   border-radius: 4px;
   text-decoration: none !important;
   .anticon {
-    font-size: 18px !important;
+    font-size: 22px !important;
     vertical-align: middle;
   }
   &.ghost {

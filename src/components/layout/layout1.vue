@@ -17,6 +17,33 @@
             <v-button tip="代办事项"> <a-iconfont type="icon-time" /></v-button>
             <v-button :tip="screen?'退出全屏':'全屏'" @click="toggleScreen">  <a-iconfont :type="screen?'icon-smallscreen':'icon-send'" /></v-button>
             <v-button tip="锁屏" @click="$router.push('/lock')">  <a-iconfont type="icon-lock" /></v-button>
+             <a-divider type="vertical" />
+              <a-dropdown>
+    <a class="ant-dropdown-link" href="#">
+       <a-badge :count="99">
+      <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+       </a-badge>
+      Artiely <a-icon type="down" />
+    </a>
+    <a-menu slot="overlay">
+      <a-menu-item key="-1">
+        <a rel="noopener noreferrer" @click="$router.push('/userinfo')" href="javascript:;">个人中心</a>
+      </a-menu-item>
+      <a-menu-item key="0">
+        <a rel="noopener noreferrer" href="javascript:;">代办事项</a>
+      </a-menu-item>
+      <a-menu-item key="1">
+        <a rel="noopener noreferrer" href="javascript:;">交班下班</a>
+      </a-menu-item>
+      <a-menu-divider />
+      <a-menu-item key="2">
+        <a rel="noopener noreferrer" href="javascript:;">退出登录</a>
+      </a-menu-item>
+      <a-menu-divider />
+      <a-menu-item key="3" disabled>切换店铺</a-menu-item>
+    </a-menu>
+  </a-dropdown>
+  <a-divider type="vertical" />
           </div>
         </v-header>
       </a-layout-header>
@@ -158,11 +185,11 @@ export default {
     transition: color 0.3s;
   }
 }
-#components-layout-demo-side .logo {
-  height: 32px;
-  background: #eee;
-  margin: 16px;
-}
+// #components-layout-demo-side .logo {
+//   height: 32px;
+//   background: #eee;
+//   margin: 16px;
+// }
 
 .slide-fade-enter{
   transform: translateY(40px);

@@ -15,7 +15,7 @@
     <a-drawer
       v-else-if="model=='drawer'"
       title="Basic Drawer"
-      class="create-form-drawer"
+      wrapClassName="create-form-drawer"
       placement="right"
       :closable="true"
       @close="onClose"
@@ -91,11 +91,15 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
-  right:0;
+  right:10px;
   border-top: 1px solid #e8e8e8;
   background: #fff;
 }
 .create-form-drawer .ant-drawer-body{
-  padding-bottom: 100px;
+  height: calc(100vh - 100px) ;
+}
+.create-form-drawer .ant-drawer-content-wrapper{
+  height: 100vh;
+  overflow: hidden
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="artiely-menu">
-    <div class="logo" />
+    <!-- <div class="logo" /> -->
+    <logo></logo>
     <a-menu
       :mode="mode"
       :theme="layout.menuTheme"
@@ -32,9 +33,11 @@
 <script>
 import subMenu from './sub-menu'
 import { layout } from '@/common/observable/layout'
+import logo from '../layout/logo'
 export default {
   components: {
-    subMenu
+    subMenu,
+    logo
   },
   name: 'SoloMenu',
   props: {
@@ -91,11 +94,7 @@ export default {
 </script>
 
 <style lang="less" >
-.logo {
-   height: 32px;
-  background: rgba(255,255,255,.2);
-  margin: 16px;
-}
+
 .artiely-menu{
   .ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
     opacity: .8;
