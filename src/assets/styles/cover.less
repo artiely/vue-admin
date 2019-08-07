@@ -8,6 +8,7 @@
 // .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
 //   background-color: rgba(29, 165, 122, 0.4) !important;
 // }
+// 自定义滚动条的样式
 ::-webkit-scrollbar
 {
     width: 6px;
@@ -30,6 +31,19 @@
     background-color: #CCCCCC;
     border-radius: 6px;
 }
-.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
-  padding: 0 1rem!important;
+// 菜单的覆盖样式
+// .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
+//   padding: 0 1rem!important;
+// }
+
+.artiely-menu .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
+    padding: 0 !important;
+    text-align: center;
+    .anticon{
+        font-size: 24px!important;
+    }
+}
+.ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
+    font-size: 18px!important;
+    vertical-align:-0.15em!important;
 }

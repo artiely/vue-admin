@@ -1,7 +1,7 @@
 const path = require('path')
 const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const productionGzipExtensions = ['js', 'css']
 // const webpack = require('webpack')
 // const SentryPlugin = require('@sentry/webpack-plugin')
@@ -58,17 +58,17 @@ module.exports = {
           minRatio: 0.8
         }),
         // 添加自定义代码压缩配置
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            warnings: false,
-            compress: {
-              drop_debugger: true,
-              drop_console: true
-            }
-          },
-          sourceMap: false,
-          parallel: true
-        }),
+        // new UglifyJsPlugin({
+        //   uglifyOptions: {
+        //     warnings: false,
+        //     compress: {
+        //       drop_debugger: true,
+        //       drop_console: true
+        //     }
+        //   },
+        //   sourceMap: false,
+        //   parallel: true
+        // }),
         // 对打包文件进行压缩
         new ZipPlugin({
           path: path.join(__dirname, 'dist'),
@@ -78,7 +78,7 @@ module.exports = {
         new SkeletonWebpackPlugin({
           webpackConfig: {
             entry: {
-              app: path.join(__dirname, './src/skeleton.js')
+              app: path.join(__dirname, './src/plugins/skeleton.js')
             }
           },
           minimize: true,

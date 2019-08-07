@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import { currency } from '@/common/filter'
 import { isObject } from '@/common/utils'
 
@@ -67,10 +66,10 @@ function format (el, binding) {
 // })
 
 export default {
-  bind: function(el, binding, vnode) {
-    format(el, binding);
+  bind: function (el, binding, vnode) {
+    format(el, binding)
   },
-  update: function(el, binding, vnode) {
-    format(el, binding);
+  update: function (el, binding, vnode) {
+    format(el, binding)
   }
-};
+}

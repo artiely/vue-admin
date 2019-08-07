@@ -9,15 +9,14 @@
             :type="layout.isCollapse ? 'menu-unfold' : 'menu-fold'"
             @click="handleClick"
           />
-          <div class="fr">
+          <div class="fr" style="padding-right:20px">
             <v-button tip="点击新增一个订单"><a-icon type="search" /></v-button>
             <v-button tip="查看今日订单"><a-iconfont  type="icon-commodity" /></v-button>
             <v-button tip="查看今日营业额"><a-iconfont type="icon-financial_fill" /></v-button>
             <v-button tip="预约消息"> <a-iconfont type="icon-wangwang" /></v-button>
             <v-button tip="代办事项"> <a-iconfont type="icon-time" /></v-button>
-            <v-button tip="退出全屏">  <a-iconfont type="icon-smallscreen" /></v-button>
-            <v-button tip="全屏">  <a-iconfont type="icon-send" /></v-button>
-
+            <v-button :tip="screen?'退出全屏':'全屏'" @click="toggleScreen">  <a-iconfont :type="screen?'icon-smallscreen':'icon-send'" /></v-button>
+            <v-button tip="锁屏" @click="$router.push('/lock')">  <a-iconfont type="icon-lock" /></v-button>
           </div>
         </v-header>
       </a-layout-header>
@@ -64,7 +63,7 @@ export default {
     return {
       layout,
       scrollTop: 0,
-      screen:false
+      screen: false
     }
   },
   computed: {
@@ -115,35 +114,35 @@ export default {
       layout.isCollapse = !layout.isCollapse
     },
     toggleScreen () {
-        if (!this.screen) {
-          var docElm = document.documentElement
-          if (docElm.requestFullscreen) {
-            docElm.requestFullscreen()
-          } else if (docElm.mozRequestFullScreen) {
-            docElm.mozRequestFullScreen()
-          } else if (docElm.webkitRequestFullScreen) {
-            docElm.webkitRequestFullScreen()
-          } else if (docElm.msRequestFullscreen) {
-            docElm.msRequestFullscreen()
-          } else {
-            this.$message.error({content: '除了让你升级浏览器对方没什么好说的！', duration: 3})
-          }
-          this.screen = true
+      if (!this.screen) {
+        var docElm = document.documentElement
+        if (docElm.requestFullscreen) {
+          docElm.requestFullscreen()
+        } else if (docElm.mozRequestFullScreen) {
+          docElm.mozRequestFullScreen()
+        } else if (docElm.webkitRequestFullScreen) {
+          docElm.webkitRequestFullScreen()
+        } else if (docElm.msRequestFullscreen) {
+          docElm.msRequestFullscreen()
         } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen()
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen()
-          } else if (document.webkitCancelFullScreen) {
-            document.webkitCancelFullScreen()
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen()
-          } else {
-            this.$message.error({content: '请升级浏览器，不然我是不会理你的！', duration: 3})
-          }
-          this.screen = false
+          this.$message.error({ content: '除了让你升级浏览器对方没什么好说的！', duration: 3 })
         }
+        this.screen = true
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen()
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen()
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen()
+        } else {
+          this.$message.error({ content: '请升级浏览器，不然我是不会理你的！', duration: 3 })
+        }
+        this.screen = false
       }
+    }
   }
 }
 </script>

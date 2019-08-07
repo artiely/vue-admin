@@ -61,10 +61,6 @@ export default {
       }
 
       let currPath = this.$route.path
-      // const findIndexCurrPath = (el) => {
-      //   return el.path === currPath
-      // }
-      // let currPathIndex = navTabs.navTabs.findIndex(findIndexCurrPath)
 
       let navTabsLength = navTabs.navTabs.length
       if (item.path === currPath) {

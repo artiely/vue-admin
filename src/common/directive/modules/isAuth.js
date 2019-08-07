@@ -22,22 +22,22 @@
 // })
 
 export default {
-  bind: function(el, binding) {
+  bind: function (el, binding) {
     let isAuth =
-      JSON.parse(sessionStorage.getItem("permissions") || "[]").indexOf(
+      JSON.parse(sessionStorage.getItem('permissions') || '[]').indexOf(
         binding.value
-      ) !== -1 || false;
+      ) !== -1 || false
     if (!isAuth) {
-      el.style.display = "none";
+      el.style.display = 'none'
     }
   },
-  update: function(el, binding) {
+  update: function (el, binding) {
     let isAuth =
-      JSON.parse(sessionStorage.getItem("permissions") || "[]").indexOf(
+      JSON.parse(sessionStorage.getItem('permissions') || '[]').indexOf(
         binding.value
-      ) !== -1 || false;
+      ) !== -1 || false
     if (!isAuth) {
-      el.style.display = "none";
+      el.style.display = 'none'
     }
   }
-};
+}

@@ -4,275 +4,284 @@ import App from '@/App.vue'
 console.log('TCL: Home', Home)
 export default [
   {
-    path: "/",
-    name: "home",
-    redirect: "/index",
+    path: '/',
+    name: 'home',
+    redirect: '/index',
     component: Home,
     meta: {
-      title: "现场管理",
-      icon: "icon-shop_fill"
+      title: '现场管理',
+      icon: 'icon-shop_fill'
     },
     children: [
       {
-        path: "/index",
-        name: "index",
-        component: loading("views/live/workspace.vue"),
+        path: '/index',
+        name: 'index',
+        component: loading('views/live/workspace.vue'),
         meta: {
           auth: true,
-          title: "工作台",
-          icon: "icon-tasklist"
+          title: '工作台',
+          icon: 'icon-tasklist'
         }
       },
       {
-        path: "crud",
-        name: "crud",
-        component: loading("views/crud/crud.vue"),
+        path: '/crud',
+        name: 'crud',
+        component: loading('views/crud/crud.vue'),
         meta: {
           auth: true,
-          title: "自动生成表单",
-          icon: "icon-task"
+          title: '自动生成表单',
+          icon: 'icon-task'
         }
       },
       {
-        path: "/table-demo1",
-        name: "table-demo1",
-        component: loading("views/table-demo/table-demo1.vue"),
+        path: '/table-demo1',
+        name: 'table-demo1',
+        component: loading('views/table-demo/table-demo1.vue'),
         meta: {
           auth: true,
-          title: "自动生成表格",
-          icon: "icon-shielding"
+          title: '自动生成表格',
+          icon: 'icon-shielding'
         }
       },
       {
-        path: "/table-demo2",
-        name: "table-demo2",
-        component: loading("views/table-demo/table-demo2.vue"),
+        path: '/table-demo2',
+        name: 'table-demo2',
+        component: loading('views/table-demo/table-demo2.vue'),
         meta: {
           auth: true,
-          title: "表格表单一起",
-          icon: "icon-order"
+          title: '表格表单一起',
+          icon: 'icon-order'
         }
       },
       {
-        path: "/table-ele",
-        name: "table-ele",
-        component: loading("views/table-demo/table-ele.vue"),
+        path: '/table-ele',
+        name: 'table-ele',
+        component: loading('views/table-demo/table-ele.vue'),
         meta: {
           auth: true,
-          title: "表格ele",
-          icon: "icon-order"
+          title: '表格ele',
+          icon: 'icon-order'
         }
       },
       {
-        path: "/workplace",
-        name: "workplace",
-        component: loading("views/dashboard/workplace"),
+        path: '/workplace',
+        name: 'workplace',
+        component: loading('views/dashboard/workplace'),
         meta: {
           auth: true,
-          title: "workplace",
-          icon: "icon-mobilephone"
+          title: 'workplace',
+          icon: 'icon-mobilephone'
         }
       },
       {
-        path: "/analysis",
-        name: "analysis",
-        component: loading("views/dashboard/analysis"),
+        path: '/analysis',
+        name: 'analysis',
+        component: loading('views/dashboard/analysis'),
         meta: {
           auth: true,
-          title: "analysis",
-          icon: "icon-picture"
+          title: 'analysis',
+          icon: 'icon-picture'
         }
       }
     ]
   },
   {
-    path: "/live-home",
-    name: "live-home",
+    path: '/live-home',
+    name: 'live-home',
     component: Home,
     meta: {
-      title: "现场管理",
-      icon: "icon-redpacket"
+      title: '现场管理',
+      icon: 'icon-redpacket'
     },
     children: [
       {
-        path: "/index2",
-        name: "index2",
-        component: loading("views/live/workspace.vue"),
+        path: '/index2',
+        name: 'index2',
+        component: loading('views/live/workspace.vue'),
         meta: {
           auth: true,
-          title: "首页",
-          icon: "icon-supply"
+          title: '首页',
+          icon: 'icon-supply'
         }
       },
       {
-        path: "/scrollbar",
-        name: "scrollbar",
-        component: loading("views/live/scrollbar.vue"),
+        path: '/scrollbar',
+        name: 'scrollbar',
+        component: loading('views/live/scrollbar.vue'),
         meta: {
           auth: true,
-          title: "scrollbar",
-          icon: "icon-questions"
+          title: 'scrollbar',
+          icon: 'icon-questions'
         }
       },
       {
-        path: "/index3",
-        name: "index3",
-        component: loading("views/live/workspace.vue"),
+        path: '/index3',
+        name: 'index3',
+        component: loading('views/live/workspace.vue'),
         meta: {
           auth: true,
-          title: "首页",
-          icon: "icon-publishgoods_fill",
+          title: '首页',
+          icon: 'icon-publishgoods_fill',
           hide: true
         }
       }
     ]
   },
   {
-    path: "/result-home",
-    name: "result-home",
+    path: '/result-home',
+    name: 'result-home',
     component: Home,
     meta: {
-      title: "结果页",
-      icon: "icon-warning"
+      title: '结果页',
+      icon: 'icon-warning'
     },
     children: [
       {
-        path: "/error",
-        name: "error",
-        component: loading("views/result/error.vue"),
+        path: '/error',
+        name: 'error',
+        component: loading('views/result/error.vue'),
         meta: {
-          title: "失败",
-          icon: "icon-warning"
+          title: '失败',
+          icon: 'icon-warning'
         }
       },
       {
-        path: "/success",
-        name: "success",
-        component: loading("views/result/success.vue"),
+        path: '/success',
+        name: 'success',
+        component: loading('views/result/success.vue'),
         meta: {
-          title: "成功",
-          icon: "icon-task"
+          title: '成功',
+          icon: 'icon-task'
         }
       }
     ]
   },
   {
-    path: "/auth-home",
-    name: "auth-home",
+    path: '/auth-home',
+    name: 'auth-home',
     component: App,
     meta: {
-      title: "鉴权页",
-      icon: "icon-zhiwen"
+      title: '鉴权页',
+      icon: 'icon-zhiwen'
     },
     children: [
       {
-        path: "/login",
-        name: "login",
-        component: loading("views/auth/login.vue"),
+        path: '/login',
+        name: 'login',
+        component: loading('views/auth/login.vue'),
         meta: {
-          title: "登录页",
-          icon: "icon-addressbook"
+          title: '登录页',
+          icon: 'icon-addressbook'
         }
       },
       {
-        path: "/register",
-        name: "register",
-        component: loading("views/auth/register.vue"),
+        path: '/register',
+        name: 'register',
+        component: loading('views/auth/register.vue'),
         meta: {
-          title: "注册页",
-          icon: "icon-addpeople"
+          title: '注册页',
+          icon: 'icon-addpeople'
         }
       }
     ]
   },
   {
-    path: "/error-home",
-    name: "error-home",
+    path: '/error-home',
+    name: 'error-home',
     component: App,
     meta: {
-      title: "错误页",
-      icon: "icon-delete"
+      title: '错误页',
+      icon: 'icon-delete'
     },
     children: [
       {
-        path: "/403",
-        name: "403",
-        component: loading("views/exception/403.vue"),
+        path: '/403',
+        name: '403',
+        component: loading('views/exception/403.vue'),
         meta: {
-          title: "403",
-          icon: "icon-xiaomi"
+          title: '403',
+          icon: 'icon-xiaomi'
         }
       },
       {
-        path: "/404",
-        name: "404",
-        component: loading("views/exception/404.vue"),
+        path: '/404',
+        name: '404',
+        component: loading('views/exception/404.vue'),
         meta: {
-          title: "404",
-          icon: "icon-xiaomi"
+          title: '404',
+          icon: 'icon-xiaomi'
         }
       },
       {
-        path: "/500",
-        name: "500",
-        component: loading("views/exception/500.vue"),
+        path: '/500',
+        name: '500',
+        component: loading('views/exception/500.vue'),
         meta: {
-          title: "500",
-          icon: "icon-xiaomi"
+          title: '500',
+          icon: 'icon-xiaomi'
+        }
+      },
+      {
+        path: '/600',
+        name: '600',
+        component: loading('views/exception/600.vue'),
+        meta: {
+          title: '路由配置错误',
+          icon: 'icon-xiaomi'
         }
       }
     ]
   },
   {
-    path: "/user",
-    name: "user",
+    path: '/user',
+    name: 'user',
     component: Home,
     meta: {
       auth: true,
-      title: "用户中心",
-      icon: "icon-mine"
+      title: '用户中心',
+      icon: 'icon-mine'
     },
     children: [
       {
-        path: "/userinfo",
-        name: "userinfo",
-        component: loading("views/user/user"),
+        path: '/userinfo',
+        name: 'userinfo',
+        component: loading('views/user/user'),
         meta: {
           auth: true,
-          title: "userinfo",
-          icon: "icon-people"
+          title: 'userinfo',
+          icon: 'icon-people'
         }
       },
       {
-        path: "/todo",
-        name: "todo",
-        component: loading("views/user/todo"),
+        path: '/todo',
+        name: 'todo',
+        component: loading('views/user/todo'),
         meta: {
           auth: true,
-          title: "todo",
-          icon: "icon-other"
+          title: 'todo',
+          icon: 'icon-other'
         }
       },
       {
-        path: "/calendar",
-        name: "calendar",
-        component: loading("views/user/calendar"),
+        path: '/calendar',
+        name: 'calendar',
+        component: loading('views/user/calendar'),
         meta: {
           auth: true,
-          title: "calendar",
-          icon: "icon-createtask"
+          title: 'calendar',
+          icon: 'icon-createtask'
         }
       },
       {
-        path: "/help",
-        name: "help",
-        component: loading("views/user/help"),
+        path: '/help',
+        name: 'help',
+        component: loading('views/user/help'),
         meta: {
           auth: true,
-          title: "help",
-          icon: "icon-customerservice"
+          title: 'help',
+          icon: 'icon-customerservice'
         }
       }
     ]
   }
-];
+]

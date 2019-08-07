@@ -8,7 +8,7 @@ export const layout = Vue.observable({
   // 菜单是否折叠
   isCollapse: false,
   // 布局模式 flow fixed
-  layoutMode: 'fixed',
+  layoutMode: 'flow',
   // 当前选择的布局
   layout: 'layout1',
   // 是否展示标签页

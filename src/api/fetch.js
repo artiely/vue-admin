@@ -44,7 +44,7 @@ export default function fetch (options, argu) {
           return data
         } else {
           return {
-            status: 4
+            status: 500
           }
         }
       }

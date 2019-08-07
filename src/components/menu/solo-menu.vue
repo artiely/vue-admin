@@ -31,7 +31,6 @@
 
 <script>
 import subMenu from './sub-menu'
-import menu from '@/router/modules/routes'
 import { layout } from '@/common/observable/layout'
 export default {
   components: {
@@ -51,13 +50,15 @@ export default {
   data () {
     return {
       layout,
-      collapsed: false,
-      menu
+      collapsed: false
     }
   },
   computed: {
     selectedKeys () {
       return [this.$route.path]
+    },
+    menu () {
+      return this.$store.state.sys.menu
     },
     openKeys: {
       get () {
@@ -73,8 +74,13 @@ export default {
       this.$router.push(key)
     },
     onOpenChange (openKeys) {
+
       // const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1)
-      // if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      // const findIndex=(el)=>{
+      //   return el.path===latestOpenKey
+      // }
+      // let index = this.menu.findIndex(findIndex)
+      // if (index === -1) {
       //   this.openKeys = openKeys
       // } else {
       //   this.openKeys = latestOpenKey ? [latestOpenKey] : []

@@ -263,7 +263,7 @@ export default {
   animation: loading-text-opacity 2s linear 0s infinite normal;
   color: #fff;
   font-family: 'Helvetica Neue, ' Helvetica ', ' 'arial';
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
   margin-top: 45px;
   opacity: 0;
