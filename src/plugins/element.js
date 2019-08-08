@@ -5,6 +5,9 @@ import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import forceFit from './forceFit.js'
 import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+import VueMarkdown from 'vue-markdown'
+// Vue.use(VueMarkdown)
+Vue.component("vue-markdown", VueMarkdown);
 Vue.use(ElementUI)
 Vue.use(VuePerfectScrollbar)
 Vue.use(iView)

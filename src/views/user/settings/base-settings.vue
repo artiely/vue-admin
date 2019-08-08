@@ -4,7 +4,7 @@
       <a-col :md="24" :lg="16">
         <a-form layout="vertical">
           <a-form-item label="昵称">
-            <a-input placeholder="给自己起个名字"/>
+            <a-input placeholder="给自己起个名字" id="id3"/>
           </a-form-item>
           <a-form-item label="Bio">
             <a-textarea rows="4" placeholder="You are not alone."/>

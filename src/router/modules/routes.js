@@ -283,5 +283,37 @@ export default [
         }
       }
     ]
+  },
+  {
+    path: '/tools-home',
+    name: 'tools-home',
+    component: Home,
+    meta: {
+      auth: true,
+      title: '工具使用',
+      icon: 'icon-decoration_fill'
+    },
+    children: [
+      {
+        path: '/filter',
+        name: 'filter',
+        component: loading('views/tools/filter'),
+        meta: {
+          auth: true,
+          title: '过滤器',
+          icon: 'icon-people'
+        }
+      },
+      {
+        path: '/directive',
+        name: 'directive',
+        component: loading('views/tools/directive'),
+        meta: {
+          auth: true,
+          title: '自定义指令',
+          icon: 'icon-other'
+        }
+      }
+    ]
   }
 ]

@@ -95,11 +95,6 @@ export default {
 </script>
 
 <style lang="less">
-.lock-wrapper * {
-  font-family: STXihei, '华文细黑', Heiti, '黑体', 'Microsoft YaHei', '微软雅黑',
-    SimSun, '宋体', sans-serif, 'PingFang SC', 'Hiragino Sans GB', -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica !important;
-}
 .lock-wrapper {
   display: flex;
   flex: 1;
@@ -141,6 +136,7 @@ export default {
   letter-spacing: 0.05em;
   font-size: 80px;
   padding: 5px 0;
+  font-family: 'DINPro-Medium';
 }
 #clock .date {
   letter-spacing: 0.1em;

@@ -1,5 +1,4 @@
 import moment from 'moment'
-import store from '@/store'
 /**
  * 隐藏姓名 手机号 身份证 银行卡 等中间字符信息
  * @param str
@@ -55,15 +54,11 @@ export function telFormat (tel, show) {
   if (!tel) return ''
   let startTel = tel.slice(0, 3)
   let midTel
-  if (store.state.auth.isExp && !show) {
+  if (show) {
     midTel = '****'
   } else {
     midTel = tel.slice(3, 7)
   }
-  console.log(
-    'TCL: telFormat -> store.state.auth.isExp',
-    store.state.auth.isExp
-  )
   let endTel = tel.slice(7, 11)
   return `${startTel} ${midTel} ${endTel}`
 }

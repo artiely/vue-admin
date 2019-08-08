@@ -1,5 +1,5 @@
 <template>
-  <div class="artiely-menu">
+  <div class="artiely-menu select-none">
     <!-- <div class="logo" /> -->
     <logo></logo>
     <a-menu

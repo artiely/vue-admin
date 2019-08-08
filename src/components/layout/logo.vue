@@ -20,16 +20,16 @@ export default {
   height: 32px;
   margin: 16px;
   text-align: center;
-  color: #eee;
   transition: all .3s;
   overflow: hidden;
+  user-select: none;
   img{
     height: 100%;
   }
   h1{
     display: inline-block;
     margin: 0 0 0 12px;
-    color: #fff;
+    color: #f8f8f8;
     font-size: 20px;
     vertical-align: middle;
     // font-family: 'DINPro-Medium';
