@@ -10,7 +10,6 @@
 import uuid from 'uuid'
 import G2 from '@antv/g2'
 import DataSet from '@antv/data-set'
-import { layout } from '@/common/observable/layout'
 export default {
   name: 'card-chart',
   props: {
@@ -23,11 +22,9 @@ export default {
     return {
       id: 'uuid' + uuid(),
       chart: null,
-      layout
     }
   },
   mounted () {
-    this.forceFit.forceFit()
     this.$nextTick(() => {
       if (this.type === 'bar') {
         this.renderChart()

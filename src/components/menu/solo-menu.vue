@@ -56,6 +56,14 @@ export default {
       collapsed: false
     }
   },
+  watch:{
+    'layout.isCollapse':{
+      handler(){
+        let E=new Event('resize')
+        window.dispatchEvent(E)
+      }
+    }
+  },
   computed: {
     selectedKeys () {
       return [this.$route.path]

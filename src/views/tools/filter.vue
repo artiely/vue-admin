@@ -11,6 +11,13 @@
     {{tel|telFormat(true)}}
     </p>
     <vue-markdown>
+      SyntaxHighlighter by highlight.html:
+      ```html
+      <div></div>
+      ```
+    </vue-markdown>
+    <vue-markdown>
+      SyntaxHighlighter by highlight.js:
       ```js
       tel|telFormat()
       tel|telFormat(true)
@@ -29,15 +36,29 @@
 - [ ] Neptune
 - [ ] Comet Haley
     </vue-markdown>
+    <markdown-run
+    :mark="markdown"
+    highlight-style-file-name="github"
+  />
+  <textarea name="" id="" cols="30" rows="10" ref="mark1">
+  
+  </textarea>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import markdown from './README.md'
+
 export default {
   data () {
     return {
-      tel: '18999999999'
+      tel: '18999999999',
+      markdown
     }
+  },
+  mounted () {
+    
   }
 }
 </script>

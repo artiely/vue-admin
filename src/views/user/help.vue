@@ -1,6 +1,7 @@
 <template>
   <a-card>
     <vue-markdown :source="msg" ></vue-markdown>
+
   </a-card>
 </template>
 

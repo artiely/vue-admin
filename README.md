@@ -48,9 +48,6 @@ npm run new
 
 
 
-
-
-
 ## Project setup
 ```
 npm install

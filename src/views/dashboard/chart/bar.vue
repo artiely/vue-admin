@@ -76,9 +76,7 @@ export default {
     })
     this.chart.interval().position('year*sales')
     this.chart.render()
-    this.$nextTick(() => {
-      this.chart.forceFit()
-    })
+    
   }
 }
 </script>
