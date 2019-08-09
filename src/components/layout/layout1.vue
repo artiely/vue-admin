@@ -10,13 +10,13 @@
             @click="handleClick"
           />
           <div class="fr" style="padding-right:20px">
-            <v-button tip="点击新增一个订单"><a-icon type="search" /></v-button>
-            <v-button tip="查看今日订单"><a-iconfont  type="icon-commodity" /></v-button>
-            <v-button tip="查看今日营业额"><a-iconfont type="icon-financial_fill" /></v-button>
-            <v-button tip="预约消息"> <a-iconfont type="icon-wangwang" /></v-button>
-            <v-button tip="代办事项"> <a-iconfont type="icon-time" /></v-button>
-            <v-button :tip="screen?'退出全屏':'全屏'" @click="toggleScreen">  <a-iconfont :type="screen?'icon-smallscreen':'icon-send'" /></v-button>
-            <v-button tip="锁屏" @click="$router.push('/lock')">  <a-iconfont type="icon-lock" /></v-button>
+            <v-button tip="点击新增一个订单" class="hidden-xs-only"><a-icon type="search" /></v-button>
+            <v-button tip="查看今日订单"  class="hidden-xs-only"><a-iconfont  type="icon-commodity" /></v-button>
+            <v-button tip="查看今日营业额"  class="hidden-xs-only"><a-iconfont type="icon-financial_fill" /></v-button>
+            <v-button tip="预约消息" > <a-iconfont type="icon-wangwang" /></v-button>
+            <v-button tip="代办事项"  class="hidden-xs-only"> <a-iconfont type="icon-time" /></v-button>
+            <v-button :tip="screen?'退出全屏':'全屏'"  class="hidden-xs-only" @click="toggleScreen">  <a-iconfont :type="screen?'icon-smallscreen':'icon-send'" /></v-button>
+            <v-button tip="锁屏" @click="$router.push('/lock')"  class="hidden-xs-only">  <a-iconfont type="icon-lock" /></v-button>
              <a-divider type="vertical" />
               <a-dropdown>
     <a class="ant-dropdown-link" href="#">

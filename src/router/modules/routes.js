@@ -332,7 +332,17 @@ export default [
         component: loading('views/widgets/captcha'),
         meta: {
           auth: true,
-          title: '过滤器',
+          title: '验证码组件',
+          icon: 'icon-people'
+        }
+      },
+      {
+        path: '/amount',
+        name: 'amount',
+        component: loading('views/widgets/amount'),
+        meta: {
+          auth: true,
+          title: '金额组件',
           icon: 'icon-people'
         }
       }
