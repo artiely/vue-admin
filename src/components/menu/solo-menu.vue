@@ -56,10 +56,10 @@ export default {
       collapsed: false
     }
   },
-  watch:{
-    'layout.isCollapse':{
-      handler(){
-        let E=new Event('resize')
+  watch: {
+    'layout.isCollapse': {
+      handler () {
+        let E = new Event('resize')
         window.dispatchEvent(E)
       }
     }

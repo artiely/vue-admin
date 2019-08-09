@@ -76,7 +76,6 @@ export default {
     })
     this.chart.interval().position('year*sales')
     this.chart.render()
-    
   }
 }
 </script>

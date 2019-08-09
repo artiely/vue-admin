@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       id: 'uuid' + uuid(),
-      chart: null,
+      chart: null
     }
   },
   mounted () {

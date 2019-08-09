@@ -41,13 +41,12 @@
     highlight-style-file-name="github"
   />
   <textarea name="" id="" cols="30" rows="10" ref="mark1">
-  
+
   </textarea>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
 import markdown from './README.md'
 
 export default {
@@ -58,7 +57,7 @@ export default {
     }
   },
   mounted () {
-    
+
   }
 }
 </script>
