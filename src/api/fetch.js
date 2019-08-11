@@ -6,9 +6,10 @@
  */
 import axios from 'axios'
 import qs from 'qs'
-import { getToken } from '@/common/utils/index'
+import utils from '@/common/utils'
 import BASE_URL from './base-url'
 import errorHandler from './error-handler'
+let { getToken } = utils
 const CancelToken = axios.CancelToken
 // 存储请求的映射
 let requestMap = new Map()

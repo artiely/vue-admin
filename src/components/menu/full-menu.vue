@@ -4,10 +4,9 @@
     v-if="layout.isMobile"
     :visible="!layout.isCollapse"
     :closable="false"
-    get-container="body"
     mask-closable
     placement="left"
-    :width="pxtorem(layout.menuWidth)"
+    :width="layout.menuWidth"
     @close="handleChange"
   >
     <solo-menu />
@@ -23,7 +22,9 @@
 import siderMenu from './sider-menu'
 import soloMenu from './solo-menu'
 import { layout } from '@/common/observable/layout'
-import { pxtorem } from '@/common/utils'
+import utils from '@/common/utils'
+let { pxtorem } = utils
+console.log('lauout', layout)
 export default {
   name: 'FullMenu',
   components: {
@@ -62,6 +63,12 @@ export default {
       }
     }
   },
+  created () {
+    // 小屏打开时折叠起菜单解决无法初始化style属性的问题，如果想打开可在mounted中设置为false
+    if (layout.isMobile) {
+      layout.isCollapse = true
+    }
+  },
   methods: {
     handleChange () {
       layout.isCollapse = true
@@ -71,6 +78,7 @@ export default {
     }
   },
   mounted () {
+    // layout.isCollapse=false
   }
 }
 </script>

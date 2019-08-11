@@ -16,7 +16,8 @@
 <script>
 import soloMenu from '../menu/solo-menu'
 import { layout } from '../../common/observable/layout'
-import { pxtorem } from '@/common/utils'
+import utils from '@/common/utils'
+let { pxtorem } = utils
 export default {
   name: 'SiderMenu',
   components: {
@@ -39,7 +40,7 @@ export default {
     style () {
       return [
         layout.layoutMode === 'fixed' ? { overflow: 'hidden', height: '100vh', position: 'fixed', left: 0 } : '',
-        layout.isCollapse ? { width: this.pxtorem(layout.collapsedWidth), maxWidth: this.pxtorem(layout.collapsedWidth), minWidth: this.pxtorem(layout.collapsedWidth), flex: `0 0 ${this.pxtorem(layout.collapsedWidth)}` } : ''
+        layout.isCollapse ? { width: this.pxtorem(layout.collapsedWidth), maxWidth: this.pxtorem(this.layout.collapsedWidth), minWidth: this.pxtorem(this.layout.collapsedWidth), flex: `0 0 ${this.pxtorem(this.layout.collapsedWidth)}` } : ''
       ]
     }
   }

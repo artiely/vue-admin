@@ -281,6 +281,16 @@ export default [
           title: 'help',
           icon: 'icon-customerservice'
         }
+      },
+      {
+        path: '/handler-over',
+        name: 'handler-over',
+        component: loading('views/user/handler-over'),
+        meta: {
+          auth: true,
+          title: 'handler-over',
+          icon: 'icon-customerservice'
+        }
       }
     ]
   },

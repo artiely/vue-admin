@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-card>
     <v-amount
       :value="1234"
       is-capital
@@ -25,6 +26,7 @@
     ></v-amount>
     <a-button @click="value=value+100">数字改变动画</a-button>
     </p>
+    </v-card>
   </div>
 </template>
 

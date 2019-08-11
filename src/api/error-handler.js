@@ -1,5 +1,6 @@
 import router from '@/router'
-import { removeToken } from '@/common/utils/index'
+import utils from '@/common/utils'
+let { removeToken } = utils
 // 是否生产环境
 const PRODUCTION = process.env.VUE_APP_MODE === 'release' || process.env.VUE_APP_MODE === 'production'
 

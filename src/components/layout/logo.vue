@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img :src="require('../../assets/img/logo.svg')" alt="">  <h1 v-if="!layout.isCollapse">Ant Desgin Pro</h1>
+    <img :src="require('../../assets/img/logo.svg')" alt="logo">  <h1 v-if="!layout.isCollapse">Ant Desgin Pro</h1>
   </div>
 </template>
 

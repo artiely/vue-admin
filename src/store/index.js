@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 import createPersistedState from 'vuex-persistedstate'
-import { getVersion } from '@/common/utils'
+import utils from '@/common/utils'
+let { getVersion } = utils
 Vue.use(Vuex)
 
 const storeContext = require.context('./modules', true, /\.js$/)

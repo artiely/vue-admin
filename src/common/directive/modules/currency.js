@@ -1,5 +1,6 @@
 import { currency } from '@/common/filter'
-import { isObject } from '@/common/utils'
+import utils from '@/common/utils'
+let { isObject } = utils
 
 // 格式化金额 展示小羊角 参数 v-currency="1000" 或 v-currency="{value:1000,decimals:0}" 需要设置未数的时候用对象格式
 /**

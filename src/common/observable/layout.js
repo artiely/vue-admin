@@ -25,7 +25,7 @@ export const layout = Vue.observable({
 
 export let mutations = {
   setFontSize (val) {
-    layout.fontSize = val
+    layout.fontSize = val || 16
     layout.collapsedWidth = (80 / 16) * val
     document.querySelector('html').style.fontSize = val + 'px'
   }

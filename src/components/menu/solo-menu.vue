@@ -1,6 +1,5 @@
 <template>
   <div class="artiely-menu select-none">
-    <!-- <div class="logo" /> -->
     <logo></logo>
     <a-menu
       :mode="mode"
@@ -8,7 +7,6 @@
       :selectedKeys="selectedKeys"
        @openChange="onOpenChange"
       @select="select"
-     :forceSubMenuRender="true"
     >
       <template v-for="item in menu">
         <template v-if="!item.meta.hide">

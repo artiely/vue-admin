@@ -1,41 +1,22 @@
 <template>
   <span class="md-amount" :class="{numerical: !isCapital}">
-    <template v-if="!isCapital">{{ formatValue | doPrecision(legalPrecision, isRoundUp) | doFormat(hasSeparator, separator) }}</template>
-    <template v-else> {{ formatValue | doPrecision(4, isRoundUp) | doCapital }} </template>
+    <template
+      v-if="!isCapital"
+    >{{ formatValue | doPrecision(legalPrecision, isRoundUp) | doFormat(hasSeparator, separator) }}</template>
+    <template v-else>{{ formatValue | doPrecision(4, isRoundUp) | doCapital }}</template>
   </span>
 </template>
 
 <script>
-import { inBrowser } from '@/common/utils'
-import Animate from '@/common/utils/animate'
-import { formatValueByGapStep } from '@/common/utils/formate-value'
-import numberCapital from './number-capital'
+import utils from '@/common/utils'
 
+import numberCapital from './number-capital'
+let { inBrowser, Animate, formatValueByGapStep } = utils
+console.log('utils', utils)
+console.log('inBrowser', inBrowser)
+console.log('Animate', Animate)
 export default {
   name: 'v-amount',
-
-  filters: {
-    doPrecision (value, precision, isRoundUp) {
-      const exponentialForm = Number(`${value}e${precision}`)
-      const rounded = isRoundUp ? Math.round(exponentialForm) : Math.floor(exponentialForm)
-      return Number(`${rounded}e-${precision}`).toFixed(precision)
-    },
-    doFormat (value, hasSeparator, separator) {
-      if (!hasSeparator) {
-        return value
-      }
-
-      const numberParts = value.split('.')
-      const integerValue = numberParts[0]
-      const decimalValue = numberParts[1] || ''
-      const formateValue = formatValueByGapStep(3, integerValue, separator, 'right', 0, 1)
-      return decimalValue ? `${formateValue.value}.${decimalValue}` : `${formateValue.value}`
-    },
-    doCapital (value) {
-      return numberCapital(value)
-    }
-  },
-
   props: {
     value: {
       type: Number,
@@ -79,6 +60,38 @@ export default {
     return {
       formatValue: 0,
       isMounted: false
+    }
+  },
+  filters: {
+    doPrecision (value, precision, isRoundUp) {
+      const exponentialForm = Number(`${value}e${precision}`)
+      const rounded = isRoundUp
+        ? Math.round(exponentialForm)
+        : Math.floor(exponentialForm)
+      return Number(`${rounded}e-${precision}`).toFixed(precision)
+    },
+    doFormat (value, hasSeparator, separator) {
+      if (!hasSeparator) {
+        return value
+      }
+
+      const numberParts = value.split('.')
+      const integerValue = numberParts[0]
+      const decimalValue = numberParts[1] || ''
+      const formateValue = formatValueByGapStep(
+        3,
+        integerValue,
+        separator,
+        'right',
+        0,
+        1
+      )
+      return decimalValue
+        ? `${formateValue.value}.${decimalValue}`
+        : `${formateValue.value}`
+    },
+    doCapital (value) {
+      return numberCapital(value)
     }
   },
 
@@ -128,11 +141,12 @@ export default {
     }
   }
 }
-
 </script>
 
-<style lang="stylus">
-.md-amount
-  &.numerical
-    font-family font-family-number
+<style lang="less">
+.md-amount {
+  &.numerical {
+    font-family: DINPro-Medium;
+  }
+}
 </style>

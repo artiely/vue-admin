@@ -68,9 +68,8 @@ import fullMenu from '../menu/full-menu'
 import { layout } from '../../common/observable/layout'
 import VFooter from './footer'
 import VHeader from './header1'
-// import actionBar from './action-bar'
-
-import { pxtorem } from '@/common/utils'
+import utils from '@/common/utils'
+let { pxtorem } = utils
 
 // 标签栏的高度
 const NAV_TABS_HEIGHT = 45
