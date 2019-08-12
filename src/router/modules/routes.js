@@ -175,6 +175,15 @@ export default [
         }
       },
       {
+        path: '/login2',
+        name: 'login2',
+        component: loading('views/auth/login2.vue'),
+        meta: {
+          title: '登录页2',
+          icon: 'icon-addressbook'
+        }
+      },
+      {
         path: '/register',
         name: 'register',
         component: loading('views/auth/register.vue'),
@@ -353,6 +362,48 @@ export default [
         meta: {
           auth: true,
           title: '金额组件',
+          icon: 'icon-people'
+        }
+      },
+      {
+        path: '/iconbox',
+        name: 'iconbox',
+        component: loading('views/widgets/iconbox'),
+        meta: {
+          auth: true,
+          title: '图标组件',
+          icon: 'icon-people'
+        }
+      },
+      {
+        path: '/avatar-group',
+        name: 'avatar-group',
+        component: loading('views/widgets/avatar-group'),
+        meta: {
+          auth: true,
+          title: '头像组组件',
+          icon: 'icon-people'
+        }
+      }
+    ]
+  },
+  {
+    path: '/plugin-home',
+    name: 'plugin-home',
+    component: Home,
+    meta: {
+      auth: true,
+      title: '插件使用',
+      icon: 'icon-decoration_fill'
+    },
+    children: [
+      {
+        path: '/print',
+        name: 'print',
+        component: loading('views/plugin/print'),
+        meta: {
+          auth: true,
+          title: '打印',
           icon: 'icon-people'
         }
       }

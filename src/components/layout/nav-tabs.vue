@@ -1,7 +1,7 @@
 <template>
 <div class="layout-nav-tabs-wrapper">
-   <a-tabs  :type="type" animated  class="layout-nav-tabs"  :activeKey="activeKey" @change="handleNavTab">
-    <a-tab-pane :key="item.path" v-for="item in panes">
+   <a-tabs  :type="type" animated  class="layout-nav-tabs"  :activeKey="activeKey" @change="handleNavTab" :class="capsule?'capsule':''">
+    <a-tab-pane :key="item.path" v-for="item in panes" >
       <span slot="tab">
         <a-iconfont v-if="item.meta.icon" :type="item.meta.icon" />
         {{item.meta.title}}
@@ -19,6 +19,7 @@
       <a-menu-divider />
       <a-menu-item key="line"><v-icon name="icon-keyboard" />内联模式</a-menu-item>
       <a-menu-item key="card"><v-icon name="icon-label" />卡片模式</a-menu-item>
+      <a-menu-item key="capsule"><v-icon name="icon-label" />胶囊模式</a-menu-item>
     </a-menu>
     <div class="layout-nav-tabs-actions-inner">
     <a-icon type="down-square" />
@@ -34,7 +35,8 @@ export default {
   data () {
     return {
       panes: navTabs.navTabs,
-      type: 'card'
+      type: 'card',
+      capsule: false// 胶囊模式
     }
   },
   computed: {
@@ -78,9 +80,16 @@ export default {
       switch (e.key) {
         case 'line':
           this.type = 'line'
+          this.capsule = false
           break
         case 'card':
           this.type = 'card'
+          this.capsule = false
+          break
+          // 胶囊模式只是对样式的覆写
+        case 'capsule':
+          this.type = 'card'
+          this.capsule = true
           break
         case 'close-curr':
           this.closeCurr()
@@ -136,6 +145,20 @@ export default {
 </script>
 
 <style lang="less">
+.layout-nav-tabs-wrapper .layout-nav-tabs.capsule /deep/ .ant-tabs-tab {
+    height: 30px!important;
+    line-height: 30px!important;
+    border-radius: 17px!important;
+    border: 1px solid #e8e8e8!important;
+    margin-top:5px !important;
+    margin-right: 5px !important;
+    .nav-tabs-close-icon{
+      top: 8px!important;
+    }
+    &.ant-tabs-tab-active{
+      border-color: #1690ff!important;
+    }
+}
 .layout-nav-tabs-wrapper{
   display: flex;
   background: #f9f9f9;

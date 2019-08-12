@@ -12,7 +12,7 @@ export default {
   props: {
     value: Boolean,
     code: { type: String, default: '' },
-    maxlength: Number,
+    maxlength: [Number, String],
     title: {
       type: String,
       default: '请输入验证码'

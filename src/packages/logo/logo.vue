@@ -1,12 +1,16 @@
 <template>
   <div class="logo">
-    <img :src="require('../../assets/img/logo.svg')" alt="logo">  <h1 v-if="!layout.isCollapse">Ant Desgin Pro</h1>
+    <img :src="require('../../assets/img/logo.svg')" alt="logo">  <h1 v-if="!layout.isCollapse" :style="{color:color}">Ant Desgin Pro</h1>
   </div>
 </template>
 
 <script>
 import { layout } from '@/common/observable/layout'
 export default {
+  name: 'v-logo',
+  props: {
+    color: { type: String, default: '#f8f8f8' }
+  },
   data () {
     return {
       layout

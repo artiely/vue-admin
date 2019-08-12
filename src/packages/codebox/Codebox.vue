@@ -1,7 +1,6 @@
 <template>
   <div class="code-box select-none">
-    <div class="item" :class="item==value.length+1 && autofocus?'active':''" v-for="(item,i) in maxlength" :key="item">
-
+    <div class="item" :class="item==value.length+1 && autofocus?'active':''" v-for="(item,i) in Number(maxlength)" :key="item">
       <span v-if="mask"><v-icon name="icon-dian" v-if="item<=value.length"></v-icon></span>
       <span v-else>{{value[i]}}</span>
       </div>
@@ -28,7 +27,7 @@ export default {
     value: String,
     mask: Boolean,
     maxlength: {
-      type: Number,
+      type: [Number, String],
       default: 4
     }
   },

@@ -1,17 +1,16 @@
 <template>
-  <div class="avatar-group">
-    <!-- <div > -->
+<div :style="styleWidth">
+  <div class="avatar-group" :style="style">
     <a-tooltip  v-for="(item,index) in list" :key="index">
     <template slot='title'>
       {{item.label}}
     </template>
-    <a-avatar  class="artiely-avatar " :class="index!==0?'ml':''"  :src="item.url" />
+    <a-avatar :size="size" class="artiely-avatar " :style="{left:(index*50)+'%'}" :class="index!==0?'ml':''"  :src="item.url" />
   </a-tooltip>
-    <a-avatar  class="artiely-avatar ml" v-if="avatarList.length>maxlength"   >+{{avatarList.length-maxlength}}</a-avatar>
-  <!-- </div> -->
-    <!-- <a-avatar  class="artiely-avatar ml" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-    <a-avatar  class="artiely-avatar ml" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /> -->
+    <a-avatar :size="size" class="artiely-avatar ml" :style="{left:(list.length*50)+'%'}" v-if="avatarList.length>maxlength"   >+{{avatarList.length-maxlength}}</a-avatar>
   </div>
+</div>
+
 </template>
 
 <script>
@@ -22,44 +21,39 @@ export default {
       type: Array,
       default () {
         return [
-          {
-            url: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            label: '头像提示1'
-          },
-          {
-            url: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            label: '头像提示2'
-          },
-          {
-            url: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            label: '头像提示3'
-          },
-          {
-            url: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            label: '头像提示4'
-          },
-          {
-            url: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            label: '头像提示5'
-          },
-          {
-            url: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-            label: '头像提示6'
-          }
         ]
       }
     },
     maxlength: {
+      type: [Number, String]
+    },
+    size: {
       type: Number,
-      default: 4
+      default: 30
     }
   },
   computed: {
     list () {
-      if (this.avatarList.length > this.maxlength) {
-        return this.avatarList.slice(0, this.maxlength)
+      if (this.avatarList.length > Number(this.maxlength)) {
+        return this.avatarList.slice(0, Number(this.maxlength))
       }
       return this.avatarList
+    },
+    style () {
+      return {
+        width: this.size + 'px',
+        height: this.size + 'px'
+
+      }
+    },
+    styleWidth () {
+      let len = this.maxlength ? this.maxlength : this.avatarList.length
+      let w = (Number(len) + 2) * (this.size / 2)
+      return {
+        display: 'inline-block',
+        width: w + 'px',
+        fontSize: 0
+      }
     }
   }
 }
@@ -70,14 +64,21 @@ export default {
 .avatar-group{
   display: inline-block;
   position: relative;
+  width: 30px;
+  height: 30px;
   .artiely-avatar{
     position: relative;
     border: 1px solid #fff;
     background: #eee;
     user-select: none;
     cursor: pointer;
+    position: absolute;
+      top: 0;
     &.ml{
-      margin-left: -10px;
+      // margin-left: -8%;
+      position: absolute;
+      top: 0;
+      // left: -8%;
     }
     .ant-avatar-string{
       color: @primary;

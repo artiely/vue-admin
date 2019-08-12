@@ -7,14 +7,17 @@
 @font-face {
     font-family: 'Artiely';
     src: url('../fonts/ArtielySans-Medium.woff2') format('woff'); /*non-IE*/
-     font-style: normal;
+    font-style: normal;
     font-weight: 200
 }
 .ant-menu-submenu-title,.ant-menu-item{
   font-family: 'Artiely';
 }
-html *{
+html *:not(.number){
   font-family: 'Artiely';
+}
+.number{
+    font-family: 'DINPro-Medium'!important;
 }
 /* @font-face {
     font-family: "AFont-Bold";

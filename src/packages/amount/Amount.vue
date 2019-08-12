@@ -1,8 +1,14 @@
 <template>
-  <span class="md-amount" :class="{numerical: !isCapital}">
+  <span class="md-amount " :class="{numerical: !isCapital}">
+    <!-- 其他 -->
     <template
       v-if="!isCapital"
-    >{{ formatValue | doPrecision(legalPrecision, isRoundUp) | doFormat(hasSeparator, separator) }}</template>
+    >
+    <span v-if="prefix" :style="{fontSize:prefixSize+'em'}">{{prefix}}</span>
+    <span class="number">{{ formatValue | doPrecision(legalPrecision, isRoundUp) | doFormat(hasSeparator, separator) }}</span>
+    <span v-if="suffix" :style="{fontSize:suffixSize+'em'}">{{suffix}}</span>
+    </template>
+    <!-- 大写 -->
     <template v-else>{{ formatValue | doPrecision(4, isRoundUp) | doCapital }}</template>
   </span>
 </template>
@@ -12,9 +18,6 @@ import utils from '@/common/utils'
 
 import numberCapital from './number-capital'
 let { inBrowser, Animate, formatValueByGapStep } = utils
-console.log('utils', utils)
-console.log('inBrowser', inBrowser)
-console.log('Animate', Animate)
 export default {
   name: 'v-amount',
   props: {
@@ -32,11 +35,11 @@ export default {
     },
     hasSeparator: {
       type: Boolean,
-      default: false
+      default: true
     },
     separator: {
       type: String,
-      default: ','
+      default: ''
     },
     isAnimated: {
       type: Boolean,
@@ -53,6 +56,22 @@ export default {
     duration: {
       type: Number,
       default: 1000
+    },
+    prefix: {
+      type: String,
+      default: ''
+    },
+    prefixSize: {
+      type: Number,
+      default: 1
+    },
+    suffix: {
+      type: String,
+      default: ''
+    },
+    suffixSize: {
+      type: Number,
+      default: 1
     }
   },
 
@@ -63,13 +82,22 @@ export default {
     }
   },
   filters: {
-    doPrecision (value, precision, isRoundUp) {
+    /**
+     * doPrecision格式化保留的小数位
+     * value 原始值
+     * precision 小数点的保留位数
+     * isRoundUp 是否四舍五入
+     */
+    doPrecision (value, precision, isRoundUp, simple) {
       const exponentialForm = Number(`${value}e${precision}`)
       const rounded = isRoundUp
         ? Math.round(exponentialForm)
         : Math.floor(exponentialForm)
       return Number(`${rounded}e-${precision}`).toFixed(precision)
     },
+    /**
+     * 是否加入千分符
+     */
     doFormat (value, hasSeparator, separator) {
       if (!hasSeparator) {
         return value
@@ -142,11 +170,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-.md-amount {
-  &.numerical {
-    font-family: DINPro-Medium;
-  }
-}
-</style>

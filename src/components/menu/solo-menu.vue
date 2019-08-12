@@ -1,6 +1,6 @@
 <template>
   <div class="artiely-menu select-none">
-    <logo></logo>
+    <v-logo/>
     <a-menu
       :mode="mode"
       :theme="layout.menuTheme"
@@ -31,11 +31,9 @@
 <script>
 import subMenu from './sub-menu'
 import { layout } from '@/common/observable/layout'
-import logo from '../layout/logo'
 export default {
   components: {
-    subMenu,
-    logo
+    subMenu
   },
   name: 'SoloMenu',
   props: {

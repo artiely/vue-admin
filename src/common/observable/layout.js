@@ -75,6 +75,7 @@ export function mediaQuery () {
         layout.breakPoint = 'xs'
         layout.isMobile = true
       }
+      console.log('TCL: outputSize -> layout.breakPoint', layout.breakPoint)
     }
   }
   return mediaQuery.init()

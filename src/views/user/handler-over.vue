@@ -71,14 +71,7 @@ export default {
       color: #1690ff;
     }
   }
-  .action-box {
-    background: rgba(255,255,255,.8);
-    padding: 10px;
-    box-shadow: 0 4px 3px -3px rgba(10, 10, 10, 0.1);
-    position: relative;
-    z-index: 100;
-    border-radius: 4px;
-  }
+
   .list-item {
     &:hover {
       background: repeating-linear-gradient(

@@ -4,7 +4,7 @@
     123
     <a-button @click="guide">开始引导</a-button>
     <div id="id1">
-      <iconbox v-model="iconname"></iconbox>
+      <v-iconbox v-model="iconname"/>
     </div>456
     <v-avatar-group></v-avatar-group>
     <v-count-to :endVal="1000000" style="font-size:24px;"></v-count-to>

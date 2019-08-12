@@ -1,84 +1,90 @@
 <template>
-  <div class="v-bg">
+  <div class="v-bg login">
     <a-modal
-      title="Artiely系统欢迎您"
       :mask="false"
       v-model="centerDialogVisible"
-      width="400px"
-      style="width:300px!important"
+      :width="layout.breakPoint!=='lg'?'400px':'1000px'"
       :maskClosable="false"
-      center
+      centered
+      :bodyStyle="{padding:0}"
+      wrapClassName="my-login-modal"
+      :footer="null"
       :show-close="false"
       :modal="false"
       :closable="false"
       :keyboard="false"
-      class="login-modal my-login-modal"
+      class="login-modal"
     >
-    <a-alert type="error" message="新用户请注册账号后登录" banner closable style="margin-bottom:10px"/>
-      <a-spin :spinning="loading">
-        <a-form :form="form">
-          <!--  label='账号'  -->
-          <a-form-item
-            :labelCol="formItemLayout.labelCol"
-            :wrapperCol="formItemLayout.wrapperCol"
-            v-decorator="['username',{rules: [{ required: true, message: '请输入邮箱地址'}],initialValue:username}]"
-          >
-            <a-input placeholder="请输入邮箱地址" size="large">
-              <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)"/>
-            </a-input>
-          </a-form-item>
-          <!--  label='密码' -->
-          <a-form-item
-            :labelCol="formItemLayout.labelCol"
-            :wrapperCol="formItemLayout.wrapperCol"
-            v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }],initialValue:password}]"
-          >
-            <a-input placeholder="请输入密码" size="large" type="password">
-              <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)"/>
-            </a-input>
-          </a-form-item>
-          <a-form-item
-            :labelCol="formItemLayout.labelCol"
-            :wrapperCol="formItemLayout.wrapperCol"
-            v-decorator="['captcha',{rules: [{ required: true, message: '请输入右侧验证码' }],initialValue:captcha}]"
-          >
-            <a-input
-              placeholder="请输入右侧验证码"
-              class="captch-img"
-              size="large"
-              autocomplete="off"
-              :value="captcha"
-            >
-              <div slot="addonAfter">
-                <img :src="captchPath" style="width:152px;cursor:pointer" @click="getCaptch">
-              </div>
-            </a-input>
-          </a-form-item>
-          <a-form-item
-            :labelCol="formItemLayout.labelCol"
-            :wrapperCol="formItemLayout.wrapperCol"
-            style="margin-bottom:0"
-          >
-            <a-checkbox v-model="memory" @change="memory!=memory">记住密码</a-checkbox>
-            <a href class="pull-right">忘记密码</a>
-          </a-form-item>
-        </a-form>
-      </a-spin>
-      <div slot="footer">
-        <a-button
-          type="primary"
-          @click="check"
-          style="width:100%"
-          size="large"
-          :loading="loading"
-        >登录</a-button>
-        <a-button
-          style="width:100%;margin:10px 0 0 0"
-          size="large"
-          :loading="loading"
-          @click="toRegister"
-        >立即注册</a-button>
+    <div style="display:flex">
+      <div class="hidden-md-and-down" style="flex:2">
+         <a-carousel autoplay>
+            <div>
+              <h3>1</h3>
+            </div>
+            <div>
+              <h3>2</h3>
+            </div>
+            <div>
+              <h3>3</h3>
+            </div>
+            <div>
+              <h3>4</h3>
+            </div>
+          </a-carousel>
       </div>
+      <div style="flex:1">
+         <a-spin :spinning="loading">
+            <div style="padding:40px" class="login1">
+              <v-logo color="#333" />
+              <a-form :form="form">
+                <!--  label='账号'  -->
+                <a-form-item
+                  :labelCol="formItemLayout.labelCol"
+                  :wrapperCol="formItemLayout.wrapperCol"
+                  v-decorator="['username',{rules: [{ required: true, message: '请输入邮箱地址'}],initialValue:username}]"
+                >
+                  <a-input placeholder="请输入邮箱地址" size="large">
+                    <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)" />
+                  </a-input>
+                </a-form-item>
+                <!--  label='密码' -->
+                <a-form-item
+                  :labelCol="formItemLayout.labelCol"
+                  :wrapperCol="formItemLayout.wrapperCol"
+                  v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }],initialValue:password}]"
+                >
+                  <a-input placeholder="请输入密码" size="large" type="password">
+                    <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
+                  </a-input>
+                </a-form-item>
+                <a-form-item
+                  :labelCol="formItemLayout.labelCol"
+                  :wrapperCol="formItemLayout.wrapperCol"
+                  style="margin-bottom:0"
+                >
+                  <a-checkbox v-model="memory" @change="memory!=memory">下次自动登录</a-checkbox>
+                </a-form-item>
+              </a-form>
+
+              <a-button
+                type="primary"
+                @click="check"
+                style="width:100%;margin-bottom:10px"
+                size="large"
+                :loading="loading"
+              >登录</a-button>
+              <a
+                @click="toRegister"
+              >还没有账号？立即注册</a>
+
+              <a href class="fr">忘记密码</a>
+              <div style="padding-top:50px">
+                为了您的流畅体验和避免广告骚扰，我们推荐您使用chrome浏览器，<a href="">点击下载</a>
+              </div>
+            </div>
+          </a-spin>
+      </div>
+    </div>
     </a-modal>
     <div id="particles-js"></div>
   </div>
@@ -86,6 +92,7 @@
 <script>
 import uuid from 'uuid'
 import md5 from 'md5'
+import { layout } from '@/common/observable/layout'
 const formItemLayout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 24 }
@@ -93,6 +100,7 @@ const formItemLayout = {
 export default {
   data () {
     return {
+      layout,
       memory: true,
       formItemLayout,
       centerDialogVisible: true,
@@ -165,114 +173,114 @@ export default {
       particlesJS(
         'particles-js',
         {
-          particles: {
-            number: {
-              value: 6,
-              density: {
-                enable: true,
-                value_area: 800
+          'particles': {
+            'number': {
+              'value': 80,
+              'density': {
+                'enable': true,
+                'value_area': 800
               }
             },
-            color: {
-              value: '#1b1e34'
+            'color': {
+              'value': '#888888'
             },
-            shape: {
-              type: 'polygon',
-              stroke: {
-                width: 0,
-                color: '#000'
+            'shape': {
+              'type': 'circle',
+              'stroke': {
+                'width': 0,
+                'color': '#000000'
               },
-              polygon: {
-                nb_sides: 6
+              'polygon': {
+                'nb_sides': 5
               },
-              image: {
-                src: 'img/github.svg',
-                width: 100,
-                height: 100
+              'image': {
+                'src': 'img/github.svg',
+                'width': 100,
+                'height': 100
               }
             },
-            opacity: {
-              value: 0.3,
-              random: true,
-              anim: {
-                enable: false,
-                speed: 1,
-                opacity_min: 0.1,
-                sync: false
+            'opacity': {
+              'value': 0.5,
+              'random': false,
+              'anim': {
+                'enable': false,
+                'speed': 1,
+                'opacity_min': 0.1,
+                'sync': false
               }
             },
-            size: {
-              value: 160,
-              random: false,
-              anim: {
-                enable: true,
-                speed: 10,
-                size_min: 40,
-                sync: false
+            'size': {
+              'value': 3,
+              'random': true,
+              'anim': {
+                'enable': false,
+                'speed': 40,
+                'size_min': 0.1,
+                'sync': false
               }
             },
-            line_linked: {
-              enable: false,
-              distance: 200,
-              color: '#ffffff',
-              opacity: 1,
-              width: 2
+            'line_linked': {
+              'enable': true,
+              'distance': 150,
+              'color': '#999999',
+              'opacity': 0.4,
+              'width': 1
             },
-            move: {
-              enable: true,
-              speed: 8,
-              direction: 'none',
-              random: false,
-              straight: false,
-              out_mode: 'out',
-              bounce: false,
-              attract: {
-                enable: false,
-                rotateX: 600,
-                rotateY: 1200
+            'move': {
+              'enable': true,
+              'speed': 6,
+              'direction': 'none',
+              'random': false,
+              'straight': false,
+              'out_mode': 'out',
+              'bounce': false,
+              'attract': {
+                'enable': false,
+                'rotateX': 600,
+                'rotateY': 1200
               }
             }
           },
-          interactivity: {
-            detect_on: 'canvas',
-            events: {
-              onhover: {
-                enable: false,
-                mode: 'grab'
+          'interactivity': {
+            'detect_on': 'canvas',
+            'events': {
+              'onhover': {
+                'enable': true,
+                'mode': 'repulse'
               },
-              onclick: {
-                enable: false,
-                mode: 'push'
+              'onclick': {
+                'enable': true,
+                'mode': 'push'
               },
-              resize: true
+              'resize': true
             },
-            modes: {
-              grab: {
-                distance: 400,
-                line_linked: {
-                  opacity: 1
+            'modes': {
+              'grab': {
+                'distance': 400,
+                'line_linked': {
+                  'opacity': 1
                 }
               },
-              bubble: {
-                distance: 400,
-                size: 40,
-                duration: 2,
-                opacity: 8,
-                speed: 3
+              'bubble': {
+                'distance': 400,
+                'size': 40,
+                'duration': 2,
+                'opacity': 8,
+                'speed': 3
               },
-              repulse: {
-                distance: 200,
-                duration: 0.4
+              'repulse': {
+                'distance': 200,
+                'duration': 0.4
               },
-              push: {
-                particles_nb: 4
+              'push': {
+                'particles_nb': 4
               },
-              remove: {
-                particles_nb: 2
+              'remove': {
+                'particles_nb': 2
               }
             }
           },
-          retina_detect: true
+          'retina_detect': true
         },
         function () {
           console.log('callback - particles.js config loaded')
@@ -282,16 +290,25 @@ export default {
   }
 }
 </script>
-<style lang="less">
-.my-login-modal {
-  .ant-modal-content {
-    border-radius: 0;
-  }
+<style lang="less" >
+/* For demo */
+.ant-carousel{
+  width: 667px;
 }
-.captch-img {
-  .ant-input-group-addon {
-    padding: 0;
-  }
+.ant-carousel /deep/ .slick-slide {
+  text-align: center;
+  height: 500px;
+  line-height: 500px;
+  background: #364d79;
+  overflow: hidden;
+}
+.login1 /deep/ .ant-form-item-control /deep/ .ant-input{
+  border: none;
+  border-bottom:1px solid #1690ff;
+  border-radius: 0;
+}
+.ant-carousel /deep/ .slick-slide h3 {
+  color: #fff;
 }
 .v-bg {
   height: 100%;
@@ -299,12 +316,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: url('../../assets/fullstack.jpg');
-}
-.login-modal {
-  .ant-modal-body {
-    padding-bottom: 0 !important;
-  }
+  background: #eee;
 }
 canvas {
   display: block;
@@ -315,40 +327,9 @@ canvas {
   width: 100%;
   height: 100%;
   background-color: none;
-  background-image: url('');
+  background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
 } /* ---- stats.js ---- */
-.count-particles {
-  background: #000022;
-  position: absolute;
-  top: 48px;
-  left: 0;
-  width: 80px;
-  color: #13e8e9;
-  font-size: 0.8em;
-  text-align: left;
-  text-indent: 4px;
-  line-height: 14px;
-  padding-bottom: 2px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-}
-.js-count-particles {
-  font-size: 1.1em;
-}
-#stats,
-.count-particles {
-  -webkit-user-select: none;
-  margin-top: 5px;
-  margin-left: 5px;
-}
-#stats {
-  border-radius: 3px 3px 0 0;
-  overflow: hidden;
-}
-.count-particles {
-  border-radius: 0 0 3px 3px;
-}
 </style>
