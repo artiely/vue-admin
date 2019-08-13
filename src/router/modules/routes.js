@@ -320,7 +320,7 @@ export default [
         meta: {
           auth: true,
           title: '过滤器',
-          icon: 'icon-people'
+          icon: 'icon-shaixuan'
         }
       },
       {
@@ -342,7 +342,7 @@ export default [
     meta: {
       auth: true,
       title: '组件使用',
-      icon: 'icon-decoration_fill'
+      icon: 'icon-manage'
     },
     children: [
       {
@@ -352,7 +352,7 @@ export default [
         meta: {
           auth: true,
           title: '验证码组件',
-          icon: 'icon-people'
+          icon: 'icon-anquan'
         }
       },
       {
@@ -362,7 +362,7 @@ export default [
         meta: {
           auth: true,
           title: '金额组件',
-          icon: 'icon-people'
+          icon: 'icon-yulebao'
         }
       },
       {
@@ -394,7 +394,7 @@ export default [
     meta: {
       auth: true,
       title: '插件使用',
-      icon: 'icon-decoration_fill'
+      icon: 'icon-tools'
     },
     children: [
       {
@@ -404,7 +404,17 @@ export default [
         meta: {
           auth: true,
           title: '打印',
-          icon: 'icon-people'
+          icon: 'icon-weibiaoti526'
+        }
+      },
+      {
+        path: '/api-test',
+        name: 'api-test',
+        component: loading('views/plugin/api-test'),
+        meta: {
+          auth: true,
+          title: '接口管理',
+          icon: 'icon-supply'
         }
       }
     ]

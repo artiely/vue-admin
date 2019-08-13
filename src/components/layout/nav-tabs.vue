@@ -1,42 +1,69 @@
 <template>
-<div class="layout-nav-tabs-wrapper">
-   <a-tabs  :type="type" animated  class="layout-nav-tabs"  :activeKey="activeKey" @change="handleNavTab" :class="capsule?'capsule':''">
-    <a-tab-pane :key="item.path" v-for="item in panes" >
-      <span slot="tab">
-        <a-iconfont v-if="item.meta.icon" :type="item.meta.icon" />
-        {{item.meta.title}}
-        <a-icon type="close-circle" v-if="panes.length!=1" class="nav-tabs-close-icon" @click.prevent.stop="del(item)"/>
-      </span>
-    </a-tab-pane>
-  </a-tabs>
-  <div class="layout-nav-tabs-actions">
-    <a-dropdown>
-    <a-menu slot="overlay" @click="handleMenuClick">
-      <a-menu-item key="refresh-curr"><v-icon name="icon-refresh" />刷新当前标签</a-menu-item>
-      <a-menu-item key="close-curr" :disabled="panes.length==1"><v-icon name="icon-delete" />关闭当前标签</a-menu-item>
-      <a-menu-item key="close-other" :disabled="panes.length==1"><v-icon name="icon-delete" />关闭其他标签</a-menu-item>
-      <a-menu-item key="close-all" :disabled="panes.length==1"><v-icon name="icon-delete" />关闭所有标签</a-menu-item>
-      <a-menu-divider />
-      <a-menu-item key="line"><v-icon name="icon-keyboard" />内联模式</a-menu-item>
-      <a-menu-item key="card"><v-icon name="icon-label" />卡片模式</a-menu-item>
-      <a-menu-item key="capsule"><v-icon name="icon-label" />胶囊模式</a-menu-item>
-    </a-menu>
-    <div class="layout-nav-tabs-actions-inner">
-    <a-icon type="down-square" />
+  <div class="layout-nav-tabs-wrapper">
+    <a-tabs
+      :type="type"
+      animated
+      class="layout-nav-tabs"
+      :activeKey="activeKey"
+      @change="handleNavTab"
+      :class="capsule?'capsule':''"
+    >
+      <a-tab-pane :key="item.path" v-for="item in panes">
+        <span slot="tab">
+          <a-iconfont v-if="item.meta.icon" :type="item.meta.icon" />
+          {{item.meta.title}}
+          <a-icon
+            type="close-circle"
+            v-if="panes.length!=1"
+            class="nav-tabs-close-icon"
+            @click.prevent.stop="del(item)"
+          />
+        </span>
+      </a-tab-pane>
+    </a-tabs>
+    <div class="layout-nav-tabs-actions">
+      <a-dropdown>
+        <a-menu slot="overlay" @click="handleMenuClick">
+          <a-menu-item key="refresh-curr">
+            <v-icon name="icon-refresh" />刷新当前标签
+          </a-menu-item>
+          <a-menu-item key="close-curr" :disabled="panes.length==1">
+            <v-icon name="icon-delete" />关闭当前标签
+          </a-menu-item>
+          <a-menu-item key="close-other" :disabled="panes.length==1">
+            <v-icon name="icon-delete" />关闭其他标签
+          </a-menu-item>
+          <a-menu-item key="close-all" :disabled="panes.length==1">
+            <v-icon name="icon-delete" />关闭所有标签
+          </a-menu-item>
+          <a-menu-divider />
+          <a-menu-item key="line">
+            <v-icon name="icon-keyboard" />内联模式
+          </a-menu-item>
+          <a-menu-item key="card">
+            <v-icon name="icon-label" />卡片模式
+          </a-menu-item>
+          <a-menu-item key="capsule">
+            <v-icon name="icon-label" />胶囊模式
+          </a-menu-item>
+        </a-menu>
+        <div class="layout-nav-tabs-actions-inner">
+          <a-icon type="down-square" />
+        </div>
+      </a-dropdown>
     </div>
-  </a-dropdown>
-  </div>
   </div>
 </template>
 
 <script>
 import { navTabs } from '@/common/observable/navTabs'
+import { layout } from '@/common/observable/layout'
 export default {
   data () {
     return {
       panes: navTabs.navTabs,
       type: 'card',
-      capsule: false// 胶囊模式
+      capsule: false // 胶囊模式
     }
   },
   computed: {
@@ -54,7 +81,7 @@ export default {
        * 如果删除当前标签并且当前标签不是最后一个则跳转至下一个标签，如果是最后一个标签则跳转至上一个
        */
       if (navTabs.navTabs.length === 1) return
-      const findIndexPath = (el) => {
+      const findIndexPath = el => {
         return el.path === item.path
       }
       let index = navTabs.navTabs.findIndex(findIndexPath)
@@ -86,7 +113,7 @@ export default {
           this.type = 'card'
           this.capsule = false
           break
-          // 胶囊模式只是对样式的覆写
+        // 胶囊模式只是对样式的覆写
         case 'capsule':
           this.type = 'card'
           this.capsule = true
@@ -112,7 +139,7 @@ export default {
     },
     getCurrTab () {
       let currPath = this.$route.path
-      const findIndexCurrPath = (el) => {
+      const findIndexCurrPath = el => {
         return el.path === currPath
       }
       let currPathIndex = navTabs.navTabs.findIndex(findIndexCurrPath)
@@ -132,12 +159,9 @@ export default {
     },
     refreshCurr () {
       // 刷新当前标签
-      let { currItem, currPathIndex } = this.getCurrTab()
-      this.$router.replace('/redirect')
-      navTabs.navTabs.splice(currPathIndex, 1)
+      layout.refreshLoad = false
       this.$nextTick(() => {
-        navTabs.navTabs.splice(currPathIndex, 0, currItem)
-        this.$router.push(navTabs.navTabs[currPathIndex].path)
+        layout.refreshLoad = true
       })
     }
   }
@@ -146,30 +170,30 @@ export default {
 
 <style lang="less">
 .layout-nav-tabs-wrapper .layout-nav-tabs.capsule /deep/ .ant-tabs-tab {
-    height: 30px!important;
-    line-height: 30px!important;
-    border-radius: 17px!important;
-    border: 1px solid #e8e8e8!important;
-    margin-top:5px !important;
-    margin-right: 5px !important;
-    .nav-tabs-close-icon{
-      top: 8px!important;
-    }
-    &.ant-tabs-tab-active{
-      border-color: #1690ff!important;
-    }
+  height: 30px !important;
+  line-height: 30px !important;
+  border-radius: 17px !important;
+  border: 1px solid #e8e8e8 !important;
+  margin-top: 5px !important;
+  margin-right: 5px !important;
+  .nav-tabs-close-icon {
+    top: 8px !important;
+  }
+  &.ant-tabs-tab-active {
+    border-color: #1690ff !important;
+  }
 }
-.layout-nav-tabs-wrapper{
+.layout-nav-tabs-wrapper {
   display: flex;
   background: #f9f9f9;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   position: relative;
   z-index: 100;
-  user-select:none;
-  .layout-nav-tabs{
+  user-select: none;
+  .layout-nav-tabs {
     flex: 1;
   }
-  .layout-nav-tabs-actions{
+  .layout-nav-tabs-actions {
     width: 32px;
     height: 40px;
     line-height: 40px;
@@ -178,51 +202,49 @@ export default {
     background: #f9f9f9;
     cursor: pointer;
     font-size: 12px;
-    .layout-nav-tabs-actions-inner{
+    .layout-nav-tabs-actions-inner {
       width: 100%;
       height: 100%;
     }
   }
 }
-.layout-nav-tabs{
-  .ant-tabs-bar{
+.layout-nav-tabs {
+  .ant-tabs-bar {
     margin: 0;
     border: 0;
   }
-  .nav-tabs-close-icon{
+  .nav-tabs-close-icon {
     position: absolute;
     right: -2px;
     top: 12px;
     display: none;
   }
-  .ant-tabs-tab:hover{
-    .nav-tabs-close-icon{
-      display: block
+  .ant-tabs-tab:hover {
+    .nav-tabs-close-icon {
+      display: block;
     }
   }
-  .ant-tabs-tab-prev{
-    box-shadow: 1px 0 6px rgba(0, 21, 41, 0.20);
+  .ant-tabs-tab-prev {
+    box-shadow: 1px 0 6px rgba(0, 21, 41, 0.2);
     background: #f8f8f8;
   }
-  .ant-tabs-tab-next{
-  box-shadow: -1px 0 6px rgba(0, 21, 41, 0.20);
-  background: #f8f8f8;
+  .ant-tabs-tab-next {
+    box-shadow: -1px 0 6px rgba(0, 21, 41, 0.2);
+    background: #f8f8f8;
   }
-  .ant-tabs-nav .ant-tabs-tab{
+  .ant-tabs-nav .ant-tabs-tab {
     height: 41px;
     line-height: 40px;
     padding: 0 30px;
     margin: 0;
     border: 1px solid transparent;
   }
-  &.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab{
-    padding:0 30px 0 15px;
+  &.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab {
+    padding: 0 30px 0 15px;
     border-radius: 0;
-    margin-right:-1px;
+    margin-right: -1px;
     font-weight: 500;
     border-top: 1px solid #fff;
-
   }
 }
-
 </style>

@@ -30,14 +30,14 @@
         <a rel="noopener noreferrer" @click="$router.push('/userinfo')" href="javascript:;">个人中心</a>
       </a-menu-item>
       <a-menu-item key="0">
-        <a rel="noopener noreferrer" href="javascript:;">代办事项</a>
+        <a rel="noopener noreferrer" href="javascript:;"  @click="$router.push('/todo')">代办事项</a>
       </a-menu-item>
       <a-menu-item key="1">
-        <a rel="noopener noreferrer" href="javascript:;">交班下班</a>
+        <a rel="noopener noreferrer" href="javascript:;"  @click="$router.push('/handler-over')">交班下班</a>
       </a-menu-item>
       <a-menu-divider />
       <a-menu-item key="2">
-        <a rel="noopener noreferrer" href="javascript:;">退出登录</a>
+        <a rel="noopener noreferrer" href="javascript:;"  @click="$router.replace('/login')">退出登录</a>
       </a-menu-item>
       <a-menu-divider />
       <a-menu-item key="3" disabled>切换店铺</a-menu-item>
@@ -53,9 +53,7 @@
         <!-- <action-bar>
         </action-bar> -->
         <div >
-          <transition name="slide-fade">
-          <router-view :style="{ padding: '24px', minHeight: '360px' }" />
-          </transition>
+          <router-page></router-page>
         </div>
       </a-layout-content>
       <v-footer></v-footer>
@@ -69,6 +67,7 @@ import { layout } from '../../common/observable/layout'
 import VFooter from './footer'
 import VHeader from './header1'
 import utils from '@/common/utils'
+import routerPage from './router-page'
 let { pxtorem } = utils
 
 // 标签栏的高度
@@ -80,6 +79,7 @@ const LAYOUT_TRANSOTION = 'all 0.2s'
 export default {
   components: {
     fullMenu,
+    routerPage,
     // breadcrumb,
     VHeader,
     VFooter
@@ -183,22 +183,5 @@ export default {
     cursor: pointer;
     transition: color 0.3s;
   }
-}
-// #components-layout-demo-side .logo {
-//   height: 32px;
-//   background: #eee;
-//   margin: 16px;
-// }
-
-.slide-fade-enter{
-  transform: translateY(40px);
-  opacity: 0;
-}
-.slide-fade-enter-active {
-  transition: all .2s ease-out;
-  opacity: 0.6;
-}
-.slide-fade-leave-active {
-  opacity: 0.5;
 }
 </style>

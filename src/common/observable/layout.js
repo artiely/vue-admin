@@ -20,7 +20,9 @@ export const layout = Vue.observable({
   // 菜单折叠的宽度
   collapsedWidth: 80,
   //  菜单的宽度
-  menuWidth: 240
+  menuWidth: 240,
+  //  刷新当前页使用
+  refreshLoad: true
 })
 
 export let mutations = {

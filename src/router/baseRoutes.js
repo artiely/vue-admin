@@ -1,15 +1,6 @@
 import loading from './loading'
 export default [
   {
-    path: '/redirect',
-    name: 'redirect',
-    component: loading('components/layout/redirect.vue'),
-    meta: {
-      title: '重定向',
-      hide: true
-    }
-  },
-  {
     path: '/lock',
     name: 'lock',
     component: loading('components/layout/lock.vue'),

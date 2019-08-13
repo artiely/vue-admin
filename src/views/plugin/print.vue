@@ -8,26 +8,26 @@
         <p>啦啦啦啦</p>
         <p>...</p>
       </div>
-    </vue-easy-print> 
+    </vue-easy-print>
     <a-button @click="print">打印</a-button>
   </div>
 </template>
 
 <script>
-import vueEasyPrint from "vue-easy-print";
+import vueEasyPrint from 'vue-easy-print'
 export default {
   components: {
     vueEasyPrint
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {
-    print() {
-      this.$refs.easyPrint.print();
+    print () {
+      this.$refs.easyPrint.print()
     }
   }
-};
+}
 </script>
 
 <style>
