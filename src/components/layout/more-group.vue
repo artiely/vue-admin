@@ -13,7 +13,7 @@
         <template slot="title">
           文档说明
       </template>
-      <div class="item">
+      <div class="item" >
         <v-icon name="icon-shoucang"></v-icon>
       </div>
       </a-tooltip>
@@ -21,7 +21,7 @@
         <template slot="title">
           联系我们
       </template>
-      <div class="item">
+      <div class="item" @click="handleChart">
         <v-icon name="icon-tishi"></v-icon>
       </div>
       </a-tooltip>
@@ -86,6 +86,7 @@
         />
       </div> -->
     </a-drawer>
+    <v-chat v-model="chartShow"></v-chat>
   </div>
 </template>
 
@@ -95,6 +96,7 @@ export default {
   data () {
     return {
       visible: false,
+      chartShow:false,
       layout,
       value: 16
     }
@@ -109,6 +111,9 @@ export default {
     },
     navTabsChange (val) {
       layout.isNavTabs = val
+    },
+    handleChart(){
+      this.chartShow=true
     }
   }
 }

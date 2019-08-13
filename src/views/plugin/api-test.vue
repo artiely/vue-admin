@@ -44,6 +44,7 @@
               :selectable-type="'single'"
               :show-select-controller="false"
             ></vue-json-pretty>
+            <div v-else-if="error" style="font-size:14px;color:red">{{error}}</div>
             <div v-else style="font-size:14px;color:#999">暂无数据，点击查询查看结果</div>
           </div>
         </div>
@@ -103,6 +104,7 @@ export default {
       url: 'http://gank.io/api/today',
       renderOK: false,
       loading: false,
+      error:'',
       // 当前的接口
       currApi: {
         url: '',
@@ -187,7 +189,10 @@ export default {
           }
         }
       }).then(res => {
+        this.error=false
+        console.log('>>>>',res)
         this.val = JSON.stringify(res.data)
+
         if (this.currApi.url === 'login') {
           this.token = res.data.message
           this.storeid = res.data.data
@@ -196,6 +201,9 @@ export default {
           this.renderOK = true
           this.loading = false
         })
+      }).catch((err)=>{
+        this.error=err
+        console.log('>>>>',err)
       })
     }
   }

@@ -1,10 +1,18 @@
 <template>
-  <a-card>
+  <a-card :bodyStyle="{padding:0}">
     <a-calendar>
       <ul class="events" slot="dateCellRender" slot-scope="value">
-        <li v-for="item in getListData(value)" :key="item.content">
+        <a-popover title="事件详情">
+    <template slot="content">
+      <li v-for="item in getListData(value)" :key="item.content">
           <a-badge :status="item.type" :text="item.content"/>
         </li>
+    </template>
+    <a-button type="primary" size="small" v-if="getListData(value).length">{{getListData(value).length}} 个事件</a-button>
+  </a-popover>
+        <!-- <li v-for="item in getListData(value)" :key="item.content">
+          <a-badge :status="item.type" :text="item.content"/>
+        </li> -->
       </ul>
       <template slot="monthCellRender" slot-scope="value">
         <div v-if="getMonthData(value)" class="notes-month">
