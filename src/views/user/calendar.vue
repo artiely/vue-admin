@@ -1,18 +1,31 @@
 <template>
   <a-card :bodyStyle="{padding:0}">
+    <a-switch checkedChildren="农历开" unCheckedChildren="农历关" v-model="lunarInfoShow" :loading="loading"/>
     <a-calendar>
       <ul class="events" slot="dateCellRender" slot-scope="value">
+        <format-date-to-zh v-if="lunarInfoShow" :date="value"></format-date-to-zh>
         <a-popover title="事件详情">
-    <template slot="content">
-      <li v-for="item in getListData(value)" :key="item.content">
-          <a-badge :status="item.type" :text="item.content"/>
-        </li>
-    </template>
-    <a-button type="primary" size="small" v-if="getListData(value).length">{{getListData(value).length}} 个事件</a-button>
-  </a-popover>
-        <!-- <li v-for="item in getListData(value)" :key="item.content">
-          <a-badge :status="item.type" :text="item.content"/>
-        </li> -->
+          <template slot="content">
+            <li v-for="item in getListData(value)" :key="item.content">
+              <a-badge :status="item.type" :text="item.content" />
+            </li>
+          </template>
+          <template v-if="getListData(value).length<=2">
+            <li v-for="item in getListData(value).slice(0,2)" :key="item.content">
+              <a-badge :status="item.type" :text="item.content" />
+            </li>
+          </template>
+          <template v-else>
+            <li v-for="item in getListData(value).slice(0,1)" :key="item.content">
+              <a-badge :status="item.type" :text="item.content" />
+            </li>
+            <a-badge
+              :count="`${getListData(value).length-1} 个更多事件`"
+              :numberStyle="{backgroundColor: '#52c41a'} "
+              v-if="getListData(value).length&&getListData(value).length>2"
+            />
+          </template>
+        </a-popover>
       </ul>
       <template slot="monthCellRender" slot-scope="value">
         <div v-if="getMonthData(value)" class="notes-month">
@@ -24,7 +37,34 @@
   </a-card>
 </template>
 <script>
+import calendar from './lib/calendar.js'
+import moment from 'moment'
+import formatDateToZh from './template/formatDateToZh'
+let lunarInfo = calendar.solar2lunar('2019', '02', '05')
+console.log('TCL: lunarInfo', lunarInfo)
 export default {
+  components: {
+    formatDateToZh
+  },
+  data () {
+    return {
+      moment,
+      calendar,
+      lunarInfoShow: false,
+      loading: false,
+      timer: null
+    }
+  },
+  watch: {
+    lunarInfoShow (val) {
+      if (val) {
+        this.loading = true
+        this.timer = setTimeout(() => {
+          this.loading = false
+        }, 2000)
+      }
+    }
+  },
   methods: {
     getListData (value) {
       let listData
@@ -65,6 +105,9 @@ export default {
         return 1394
       }
     }
+  },
+  destroyed () {
+    clearTimeout(this.timer)
   }
 }
 </script>

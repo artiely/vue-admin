@@ -104,7 +104,7 @@ export default {
       url: 'http://gank.io/api/today',
       renderOK: false,
       loading: false,
-      error:'',
+      error: '',
       // 当前的接口
       currApi: {
         url: '',
@@ -189,8 +189,8 @@ export default {
           }
         }
       }).then(res => {
-        this.error=false
-        console.log('>>>>',res)
+        this.error = false
+        console.log('>>>>', res)
         this.val = JSON.stringify(res.data)
 
         if (this.currApi.url === 'login') {
@@ -201,9 +201,9 @@ export default {
           this.renderOK = true
           this.loading = false
         })
-      }).catch((err)=>{
-        this.error=err
-        console.log('>>>>',err)
+      }).catch((err) => {
+        this.error = err
+        console.log('>>>>', err)
       })
     }
   }

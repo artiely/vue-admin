@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { Draggable } from 'draggable-vue-directive'
 const content = require.context('./modules', true, /\.js$/)
 let modules = {}
 content.keys().forEach(d => {
@@ -13,3 +14,4 @@ content.keys().forEach(d => {
 Object.keys(modules).forEach(key => {
   Vue.directive(key, modules[key])
 })
+Vue.directive('draggable', Draggable)

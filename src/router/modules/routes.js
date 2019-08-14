@@ -372,7 +372,7 @@ export default [
         meta: {
           auth: true,
           title: '图标组件',
-          icon: 'icon-people'
+          icon: 'icon-eit'
         }
       },
       {
@@ -382,7 +382,17 @@ export default [
         meta: {
           auth: true,
           title: '头像组组件',
-          icon: 'icon-people'
+          icon: 'icon-emoji'
+        }
+      },
+      {
+        path: '/guide',
+        name: 'guide',
+        component: loading('views/widgets/guide'),
+        meta: {
+          auth: true,
+          title: '向导组件',
+          icon: 'icon-flag'
         }
       }
     ]

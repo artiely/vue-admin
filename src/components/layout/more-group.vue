@@ -96,7 +96,7 @@ export default {
   data () {
     return {
       visible: false,
-      chartShow:false,
+      chartShow: false,
       layout,
       value: 16
     }
@@ -112,8 +112,8 @@ export default {
     navTabsChange (val) {
       layout.isNavTabs = val
     },
-    handleChart(){
-      this.chartShow=true
+    handleChart () {
+      this.chartShow = true
     }
   }
 }
