@@ -394,6 +394,16 @@ export default [
           title: '向导组件',
           icon: 'icon-flag'
         }
+      },
+      {
+        path: '/filterbox',
+        name: 'filterbox',
+        component: loading('views/widgets/filterbox'),
+        meta: {
+          auth: true,
+          title: '筛选组件',
+          icon: 'icon-flag'
+        }
       }
     ]
   },

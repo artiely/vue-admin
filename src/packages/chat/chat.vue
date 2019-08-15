@@ -109,7 +109,7 @@ export default {
   data () {
     return {
       list,
-      messageInfo:'',
+      messageInfo: '',
       list1: [
         {
           url:
@@ -151,8 +151,8 @@ export default {
     close () {
       this.$emit('input', false)
     },
-    handleEmoji(emoji){
-      this.messageInfo+=emoji
+    handleEmoji (emoji) {
+      this.messageInfo += emoji
     }
   },
   mounted () {
