@@ -9,6 +9,8 @@ var ZipPlugin = require('zip-webpack-plugin')
 const resolve = file => path.resolve(__dirname, file)
 const isProduction = process.env.NODE_ENV === 'production'
 
+const darkTheme = require('./theme/dark')
+
 const cdn = {
   css: [],
   js: []
@@ -17,12 +19,13 @@ module.exports = {
   css: {
     loaderOptions: {
       less: {
-        modifyVars: {
-          // 'primary-color': '#1DA57A',
-          // 'link-color': '#1DA57A',
-          'border-radius-base': '4px',
-          'input-border-color': '#e2e5ec'
-        },
+        // modifyVars: {
+        //   'primary-color': '#1DA57A',
+        //   'link-color': '#1DA57A',
+        //   'border-radius-base': '4px',
+        //   'input-border-color': '#e2e5ec'
+        // },
+        modifyVars: darkTheme,
         javascriptEnabled: true
       }
     }

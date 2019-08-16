@@ -295,7 +295,7 @@ export default {
   padding: 25px;
   height: 260px;
   border-radius: 4px;
-  background: #fff;
+  border: 1px solid ;
   box-shadow: 0 0 13px 0 rgba(82, 63, 105, 0.05);
   position: relative;
   margin-bottom: 25px;
