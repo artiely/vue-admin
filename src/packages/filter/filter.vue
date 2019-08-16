@@ -140,7 +140,7 @@ export default {
     },
     emitEmpty (e) {
       this.$refs.input.focus()
-      this.$refs.input.value = ''
+      this.keywords = ''
     },
     focus () {
       this.show = true
