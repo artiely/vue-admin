@@ -402,7 +402,7 @@ export default [
         meta: {
           auth: true,
           title: '筛选组件',
-          icon: 'icon-flag'
+          icon: 'icon-shaixuan'
         }
       }
     ]

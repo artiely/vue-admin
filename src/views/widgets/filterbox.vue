@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-card>
-      <v-filter v-model="filter" :data="data"></v-filter>
+      <v-filter v-model="filter" :data="data" placeholder="请输入客户名/客户手机号等查询"></v-filter>
       <!-- <pre>{{filter}}</pre> -->
-      <!-- <v-pre-code>{{filter}}</v-pre-code> -->
+      <v-pre-code>{{filter}}</v-pre-code>
     </v-card>
     <div style="height:1000px"></div>
   </div>
@@ -15,11 +15,6 @@ export default {
     return {
       filter: {},
       data: [
-        {
-          label: '请输入客户名/客户手机号等查询',
-          dataIndex: 'keywords',
-          type: 'input'
-        },
         {
           label: '结算方式',
           dataIndex: 'payType',

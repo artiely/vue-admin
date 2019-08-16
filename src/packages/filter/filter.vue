@@ -3,52 +3,69 @@
     <a-input
       size="large"
       class="filter-input"
+      ref="input"
       @focus="focus"
-      :placeholder="mainInput.label||placeholder"
+      v-model="keywords"
+      :placeholder="placeholder"
     >
       <a-icon slot="prefix" type="search" class="filter-search" />
+      <a-icon slot="suffix" type="close-circle" @click="emitEmpty" />
     </a-input>
-    <div class="filterbox-group" v-show="show">
-      <div class="filterbox-item" v-for="(filterItem,index) in finalData" :key="index">
+    <div class="filterbox-group" v-show="show" :key="1">
+      <div class="filterbox-item" v-for="(filterItem,index) in data" :key="index">
         <a-popover placement="bottomLeft" :getPopupContainer="(e)=>e.parentNode">
           <template slot="content">
-            <a-checkbox-group v-if="filterItem.type=='checkbox'">
+            <a-checkbox-group v-if="filterItem.type=='checkbox'" v-model="data[index].defaultValue">
               <a-row v-for="(item,i) in filterItem.options" :key="i">
                 <a-col>
-                  <a-checkbox :value="item" @change="handleChange(item ,i,finalData)">{{item.label}}</a-checkbox>
+                  <a-checkbox :value="item.value">{{item.label}}</a-checkbox>
                 </a-col>
               </a-row>
             </a-checkbox-group>
-            <a-radio-group v-else-if="filterItem.type=='radio'">
+            <a-radio-group v-else-if="filterItem.type=='radio'" v-model="data[index].defaultValue">
               <a-row v-for="(item,i) in filterItem.options" :key="i">
                 <a-col>
-                  <a-radio :value="item">{{item.label}}</a-radio>
+                  <a-radio :value="item.value">{{item.label}}</a-radio>
                 </a-col>
               </a-row>
             </a-radio-group>
           </template>
-          <a>
-            <a-badge :dot="filterItem.type=='radio'&&selectData.options?true:false">
+          <div>
+            <a-badge :dot="filterItem.type=='radio'&&data[index].defaultValue?true:false">
               {{filterItem.label}}
-              <!-- <a-badge
+              <a-badge
                 v-if="filterItem.type=='checkbox'"
                 class="checkbox-badge"
-                :count="selectData.options.length"
-              />-->
+                :count="data[index].defaultValue.length"
+              />
             </a-badge>
             <v-icon name="icon-xiala" class="fr"></v-icon>
-          </a>
+          </div>
         </a-popover>
       </div>
     </div>
-    <div>
-      <!-- <div v-for="(item,eq) in finalData" :key="eq">
+    <div class="filter-tags" v-if="hasTag">
+      <span v-for="(item,eq) in data" :key="eq">
         <template v-for="(sub,i) in item.options">
-          <a-tag closable :key="i">{{sub.label}}</a-tag>
+          <template v-if="item.type=='checkbox'">
+            <a-tag
+              closable
+              :key="i"
+              v-if="item.defaultValue.indexOf(sub.value)!=-1"
+              @close="closeCheck(eq,sub.value)"
+            >{{sub.label}}</a-tag>
+          </template>
+          <template v-else-if="item.type=='radio'">
+            <a-tag
+              closable
+              :key="i"
+              v-if="item.defaultValue==sub.value"
+              @close="closeRadio(eq,sub.value)"
+            >{{sub.label}}</a-tag>
+          </template>
         </template>
-      </div>-->
+      </span>
     </div>
-    <v-pre-code>{{selectData}}</v-pre-code>
   </div>
 </template>
 
@@ -64,6 +81,10 @@ export default {
         return []
       }
     },
+    dataIndex: {
+      type: String,
+      default: 'keywords'
+    },
     placeholder: {
       type: String,
       default: '搜索'
@@ -78,65 +99,61 @@ export default {
   data () {
     return {
       show: false,
-      finalFilter: {},
-      selectData: {}
+      keywords: '',
+      timer: null
     }
   },
   watch: {
-    //   遍历出最终提交的数据结构
+    keywords: {
+      handler () {
+        clearTimeout(this.timer)
+        this.timer = setTimeout(() => {
+          this.finalFilter()
+        }, 400)
+      }
+    },
     data: {
       handler (val) {
-        // let obj = {};
-        // let newObj=[]
-        // this.data.map(v => {
-        //   obj[v.dataIndex] = v.defaultValue || null;
-        //   newObj.options=[]
-        //   newObj.dataIndex=v.dataIndex
-        // });
-        // this.finalFilter = obj;
-        // let obj = val.map(v => {
-        //   v.options = [];
-        //   return v;
-        // });
-        // this.selectData = obj;
-      },
-      deep: true,
-      immediate: true
-    },
-    finalFilter: {
-      handler (val) {
-        this.$emit('input', val)
+        this.finalFilter()
       },
       deep: true,
       immediate: true
     }
   },
   computed: {
-    //   确定输入框的字段
-    mainInput () {
-      return this.data.filter(v => {
-        return v.type === 'input'
-      })[0]
-    },
-    // 处输入框以外的选择字段
-    finalData () {
-      return this.data.filter(v => {
-        return v.type !== 'input'
+    hasTag () {
+      let values = Object.values(this.value)
+      let len = values.filter(v => {
+        return v && v.toString().length
       })
+      return !!len.length
     }
   },
   methods: {
+    finalFilter () {
+      let obj = {}
+      this.data.map(v => {
+        obj[v.dataIndex] = v.defaultValue
+      })
+      obj[this.dataIndex] = this.keywords
+      this.$emit('input', obj)
+    },
+    emitEmpty (e) {
+      this.$refs.input.focus()
+      this.$refs.input.value = ''
+    },
     focus () {
       this.show = true
     },
     blur () {
       this.show = false
     },
-    handleChange (a, b, c) {
-      console.log('TCL: handleChange -> e', a, b, c)
+    closeCheck (eq, val) {
+      let index = this.data[eq].defaultValue.indexOf(val)
+      this.data[eq].defaultValue.splice(index, 1)
     },
-    handleChange1 (s) {
-      console.log('TCL: s', s)
+    closeRadio (eq, val) {
+      this.data[eq].defaultValue = null
     }
   }
 }
@@ -148,6 +165,11 @@ export default {
   border-radius: 4px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  .filter-tags {
+    padding: 0 20px;
+    padding-bottom: 10px;
+    border-top: 1px solid #d5d5d5;
+  }
   .filter-search {
     font-size: 16px;
   }
