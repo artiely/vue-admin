@@ -24,7 +24,10 @@ export default {
   transition: all 0.2s ease-out;
   opacity: 0.6;
 }
+.slide-fade-leave{
+  display: none;
+}
 .slide-fade-leave-active {
-  opacity: 0.5;
+  display: none;
 }
 </style>

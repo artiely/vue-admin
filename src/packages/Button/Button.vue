@@ -54,14 +54,14 @@ export default {
     background: transparent;
     color: #959cb6;
     &:visited {
-      background: #f2f3f7;
+      background: rgba(#f2f3f7,.5);
     }
     &:hover {
-      background: #f2f3f7;
-      color: @primary;
+      background: rgba(#f2f3f7,.5);
+      color: @primary-color;
     }
     &.active {
-      background: #f2f3f7;
+      background: rgba(#f2f3f7,.5);
     }
   }
 }

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { Draggable } from 'draggable-vue-directive'
+import resize from 'vue-resize-directive'
 const content = require.context('./modules', true, /\.js$/)
 let modules = {}
 content.keys().forEach(d => {
@@ -15,3 +16,4 @@ Object.keys(modules).forEach(key => {
   Vue.directive(key, modules[key])
 })
 Vue.directive('draggable', Draggable)
+Vue.directive('resize', resize)

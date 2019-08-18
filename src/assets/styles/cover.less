@@ -1,13 +1,7 @@
 // ui库覆盖样式
 @import './var.less';
-// .ant-menu-dark,
-// .ant-menu-dark .ant-menu-sub {
-//   background: @menu-background-dark!important;
-// }
-// .ant-menu.ant-menu-dark .ant-menu-item-selected,
-// .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
-//   background-color: rgba(29, 165, 122, 0.4) !important;
-// }
+// @import "~ant-design-vue/dist/antd.less"; 
+
 // 自定义滚动条的样式
 ::-webkit-scrollbar
 {
@@ -31,10 +25,6 @@
     background-color: #eee;
     border-radius: 4px;
 }
-// 菜单的覆盖样式
-// .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
-//   padding: 0 1rem!important;
-// }
 
 .artiely-menu .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
     padding: 0 !important;
@@ -46,4 +36,25 @@
 .ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
     font-size: 18px!important;
     vertical-align:-0.15em!important;
+}
+
+#app{
+    
+.ant-layout-header{
+    background: @header-bg;
+}
+.layout-nav-tabs-wrapper{
+    background: @nav-tab-bg;
+}
+.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab{
+    background: @nav-tab-bg;
+    color: @text-color-secondary;
+}
+.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active{
+    background:@nav-tab-active-bg;
+    color: @nav-tab-active-color;
+}
+.number{
+    color: @number-color
+}
 }

@@ -54,11 +54,11 @@ export default {
   text-align: center;
 }
 .ant-layout-sider{
-  // &.dark{
-  //   background: @menu-background-dark!important;
-  // }
   &.light{
     background: @menu-background-light!important;
+  }
+  &.dark{
+    background: @menu-background-dark!important;
   }
   &.is-collapse{
     // width: 80px!important;

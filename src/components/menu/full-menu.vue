@@ -1,6 +1,6 @@
 <template>
   <a-drawer
-    :wrap-class-name="layout.menuTheme==='dark'?'my-draw-menu-dark':'my-draw-menu-light'"
+    :wrap-class-name="`my-draw-menu ${layout.menuTheme==='dark'?'dark':'light'}`"
     v-if="layout.isMobile"
     :visible="!layout.isCollapse"
     :closable="false"
@@ -10,7 +10,13 @@
     @close="handleChange"
   >
     <solo-menu />
-    <div v-if="trigger" class="menu-drawer-index-handle" :style="{left:pxtorem(layout.menuWidth)}" slot="handle" @click="toggle">
+    <div
+      v-if="trigger"
+      class="menu-drawer-index-handle"
+      :style="{left:pxtorem(layout.menuWidth)}"
+      slot="handle"
+      @click="toggle"
+    >
       <a-icon type="menu-fold" v-if="!layout.isCollapse" />
       <a-icon type="menu-unfold" v-else />
     </div>
@@ -88,7 +94,7 @@ export default {
 .menu-drawer-index-handle {
   position: absolute;
   top: 62px;
-  background: @menu-background-dark;
+  background: @primary-color;
   width: 40px;
   height: 48px;
   display: flex;
@@ -106,20 +112,21 @@ export default {
   }
 }
 
-.my-draw-menu-dark {
-  .ant-drawer-body {
-  padding: 0;
-}
+.my-draw-menu {
   .ant-drawer-content {
-    background: @menu-background-dark !important;
+    .ant-drawer-body {
+      padding: 0 !important;
+    }
   }
-}
-.my-draw-menu-light {
-  .ant-drawer-body {
-    padding: 0;
+  &.light {
+    .ant-drawer-wrapper-body {
+      background: @menu-background-light;
+    }
   }
-  .ant-drawer-content {
-    background: @menu-background-light !important;
+  &.dark {
+    .ant-drawer-wrapper-body {
+      background: @menu-background-dark;
+    }
   }
 }
 </style>

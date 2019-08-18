@@ -1,9 +1,9 @@
 <template>
-  <div class="card-chart">
+  <a-card  v-resize:debounce.250="onResize" class="card-chart" :bodyStyle="{padding:0}">
     <h3 class="title">{{title}}</h3>
     <p class="sub-title">{{subTitle}}</p>
     <div :id="id" class="chart-box"></div>
-  </div>
+  </a-card>
 </template>
 
 <script>
@@ -15,8 +15,9 @@ export default {
   props: {
     title: String,
     subTitle: String,
-    data: Array,
-    type: String
+    data: [Array, Object],
+    type: String,
+    transform: [Object]
   },
   data () {
     return {
@@ -36,64 +37,15 @@ export default {
     })
   },
   methods: {
+    onResize () {
+      this.chart.forceFit()
+    },
     renderChart () {
       // 此处数据使用了按行组织的模式，所以需要使用 DataSet 的 fold 方法对数据进行加工
-      var data = [
-        {
-          name: 'London',
-          'Jan.': 18.9,
-          'Feb.': 28.8,
-          'Mar.': 39.3,
-          'Apr.': 81.4,
-          May: 47,
-          'Jun.': 20.3,
-          'Jul.': 24,
-          'Aug.': 35.6,
-          'Apr1.': 81.4,
-          May1: 47,
-          'Jun1.': 20.3,
-          'Jul1.': 24,
-          'Aug1.': 35.6
-        },
-        {
-          name: 'Berlin',
-          'Jan.': 12.4,
-          'Feb.': 23.2,
-          'Mar.': 34.5,
-          'Apr.': 99.7,
-          May: 52.6,
-          'Jun.': 35.5,
-          'Jul.': 37.4,
-          'Aug.': 42.4,
-          'Apr1.': 81.4,
-          May1: 47,
-          'Jun1.': 20.3,
-          'Jul1.': 24,
-          'Aug1.': 35.6
-        }
-      ]
+
       var ds = new DataSet()
-      var dv = ds.createView().source(data)
-      dv.transform({
-        type: 'fold',
-        fields: [
-          'Jan.',
-          'Feb.',
-          'Mar.',
-          'Apr.',
-          'May',
-          'Jun.',
-          'Jul.',
-          'Aug.',
-          'Apr1.',
-          'May1',
-          'Jun1.',
-          'Jul1.',
-          'Aug1.'
-        ], // 展开字段集
-        key: '月份', // key字段
-        value: '月均降雨量' // value字段
-      })
+      var dv = ds.createView().source(this.data)
+      dv.transform(this.transform)
 
       this.chart = new G2.Chart({
         container: this.id,
@@ -104,30 +56,11 @@ export default {
       this.chart.source(dv)
       this.chart
         .intervalStack()
-        .position('月份*月均降雨量')
+        .position(`${this.transform.key}*${this.transform.value}`)
         .color('name', ['#e1e1ef', '#20c997'])
       this.chart.render()
     },
     renderChartPie () {
-      var data = [
-        {
-          type: '分类一',
-          value: 20
-        },
-        {
-          type: '分类二',
-          value: 18
-        },
-        {
-          type: '分类三',
-          value: 32
-        },
-        {
-          type: '分类四',
-          value: 15
-        }
-      ]
-
       // 可以通过调整这个数值控制分割空白处的间距，0-1 之间的数值
       var sliceNumber = 0.01
 
@@ -174,7 +107,7 @@ export default {
         // offsetX: -100
       })
 
-      view.source(data)
+      view.source(this.data)
       view.coord('theta', {
         innerRadius: 0.75
       })
@@ -190,29 +123,6 @@ export default {
       this.chart.render()
     },
     renderChartTriangle () {
-      var data = [
-        {
-          type: '分类一',
-          value: 20
-        },
-        {
-          type: '分类二',
-          value: 18
-        },
-        {
-          type: '分类三',
-          value: 32
-        },
-        {
-          type: '分类四',
-          value: 15
-        },
-        {
-          type: 'Other',
-          value: 15
-        }
-      ]
-
       // 根据比例，获取两点之间的点
       function getPoint (p0, p1, ratio) {
         return {
@@ -274,7 +184,7 @@ export default {
         position: 'right-center'
         // offsetX: -100
       })
-      view.source(data)
+      view.source(this.data)
       view.coord('theta', {
         radius: 1
       })

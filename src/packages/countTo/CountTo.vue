@@ -1,6 +1,6 @@
 <template>
 <span class="count-to">
-    <slot name="prefix"><span class="prefix">{{prefix}}</span></slot><span>{{displayValue}}</span></span>
+    <slot name="prefix"><span class="prefix">{{prefix}}</span></slot><span class="number">{{displayValue}}</span></span>
 </template>
 <script>
 import { requestAnimationFrame, cancelAnimationFrame } from './requestAnimationFrame.js'

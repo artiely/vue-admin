@@ -81,7 +81,7 @@ export default {
       // left: -8%;
     }
     .ant-avatar-string{
-      color: @primary;
+      color: @primary-color;
       font-weight: bold;
     }
   }

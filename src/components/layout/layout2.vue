@@ -4,11 +4,11 @@
     class="layout"
   >
     <a-layout-header v-if="!layout.isMobile" class="layout2-header" :class="layout.layoutMode==='fixed'?'fixed':''">
-      <div class="layout2-menu" :class="layout.menuTheme==='dark'?'dark':'light'">
+      <common-header></common-header>
+      <div class="layout2-menu" :class="layout.menuTheme==='dark'?'dark':'light'" >
           <solo-menu
           class="layout2-solo-menu"
           mode="horizontal"
-          theme="light"
         />
       </div>
     </a-layout-header>
@@ -32,13 +32,15 @@ import { layout } from '../../common/observable/layout'
 import fullMenu from '../menu/full-menu'
 import VFooter from './footer'
 import routerPage from './router-page'
+import commonHeader from './common-header'
 export default {
   components: {
     breadcrumb,
     routerPage,
     soloMenu,
     fullMenu,
-    VFooter
+    VFooter,
+    commonHeader
   },
   data () {
     return {
@@ -65,11 +67,12 @@ export default {
       top: 64px;
       left: 0;
       right: 0;
+      background: @layout-sider-background;
+      transition: all .28s;
       &.dark{
         background: @menu-background-dark;
-      }
-      &.light{
-        background: @menu-background-light
+      }&.light{
+        background:@menu-background-light
       }
       .layout2-solo-menu{
         padding: 0 50px;

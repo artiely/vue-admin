@@ -9,7 +9,24 @@ var ZipPlugin = require('zip-webpack-plugin')
 const resolve = file => path.resolve(__dirname, file)
 const isProduction = process.env.NODE_ENV === 'production'
 
-const darkTheme = require('./theme/dark')
+// const darkTheme = require('./theme/dark')
+// const AntDesignThemePlugin = require('antd-theme-webpack-plugin')
+
+// const options = {
+//   antDir: path.join(__dirname, './node_modules/ant-design-vue'),
+//   // src下的样式都打包到一起
+//   stylesDir: path.join(__dirname, './src'),
+//   varFile: path.join(__dirname, './node_modules/ant-design-vue/lib/style/themes/default.less'),
+//   // mainLessFile: path.join(__dirname, './src/styles/index.less'),
+//   mainLessFile: '',
+//   themeVariables: ['@primary-color'],
+//   indexFileName: false,
+//   generateOnce: false,
+//   lessUrl: 'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js',
+//   publicPath: ''
+// }
+
+// const themePlugin = new AntDesignThemePlugin(options)
 
 const cdn = {
   css: [],
@@ -25,7 +42,7 @@ module.exports = {
         //   'border-radius-base': '4px',
         //   'input-border-color': '#e2e5ec'
         // },
-        modifyVars: darkTheme,
+        // modifyVars: darkTheme,
         javascriptEnabled: true
       }
     }
@@ -37,6 +54,7 @@ module.exports = {
   // 静态资源目录
   assetsDir: 'static',
   configureWebpack: config => {
+    // config.plugins.push(themePlugin)
     if (isProduction) {
       // config.externals = {
       // vue: 'Vue',
@@ -53,6 +71,7 @@ module.exports = {
       // 'highlight.js': 'hljs',
       // }
       config.plugins.push(
+
         // 打包生产.gz包
         new CompressionWebpackPlugin({
           algorithm: 'gzip',

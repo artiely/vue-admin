@@ -3,7 +3,7 @@
      <!-- apex -->
     <a-row :gutter="24" style="margin-bottom:24px;">
       <a-col :xs="24" :sm="12" :md="12" :lg="6">
-          <chart-min-chart v-resize  color="#fd397a" :countValue="12542" desc="今日新增客户" type="line" separator="" :opacity="0.9"/>
+          <chart-min-chart   color="#fd397a" :countValue="12542" desc="今日新增客户" type="line" separator="" :opacity="0.9"/>
       </a-col>
       <a-col :xs="24" :sm="12" :md="12" :lg="6">
           <chart-min-chart color="#fd7e14" :countValue="745874" desc="今日订单量" :data="[25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]" separator=""/>

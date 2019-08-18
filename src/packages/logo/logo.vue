@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img :src="require('../../assets/img/logo.svg')" alt="logo">  <h1 v-if="!layout.isCollapse" :style="{color:color}">Ant Desgin Pro</h1>
+    <img :src="require('../../assets/img/logo.svg')" alt="logo">  <h1 v-if="!layout.isCollapse" >Ant Desgin Pro</h1>
   </div>
 </template>
 
@@ -8,9 +8,6 @@
 import { layout } from '@/common/observable/layout'
 export default {
   name: 'v-logo',
-  props: {
-    color: { type: String, default: '#f8f8f8' }
-  },
   data () {
     return {
       layout
@@ -20,6 +17,7 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../assets/styles/var.less';
 .logo {
   height: 32px;
   margin: 16px;
@@ -33,10 +31,9 @@ export default {
   h1{
     display: inline-block;
     margin: 0 0 0 12px;
-    color: #f8f8f8;
+    color: @primary-color;
     font-size: 20px;
     vertical-align: middle;
-    // font-family: 'DINPro-Medium';
   }
 }
 </style>

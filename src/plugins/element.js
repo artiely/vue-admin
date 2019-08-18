@@ -7,17 +7,11 @@ import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 import VueMarkdown from 'vue-markdown'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
-// 引入
-// import MarkdownRun from 'vue-markdown-run'
 
 moment.locale('zh-cn')
-// import Print from 'vue-print-nb'
 
-// Vue.use(Print)
-// Vue.use(VueMarkdown)
 Vue.component('vue-markdown', VueMarkdown)
 // 全局注入
-// Vue.use(MarkdownRun)
 Vue.use(ElementUI)
 Vue.use(VuePerfectScrollbar)
 Vue.use(iView)

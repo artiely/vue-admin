@@ -16,7 +16,6 @@
     >
       <a-spin :spinning="loading">
         <v-logo color="#333"></v-logo>
-    <a-alert type="error" message="新用户请注册账号后登录" banner closable style="margin-bottom:10px"/>
         <a-form :form="form">
           <!--  label='账号'  -->
           <a-form-item

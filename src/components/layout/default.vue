@@ -36,7 +36,7 @@ export default {
  .setting-drawer-index-handle {
     position: absolute;
     top: 240px;
-    background: @primary;
+    background: @primary-color;
     width: 48px;
     height: 48px;
     right: 300px;

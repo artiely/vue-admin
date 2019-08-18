@@ -169,11 +169,12 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../assets/styles/var.less';
 .layout-nav-tabs-wrapper .layout-nav-tabs.capsule /deep/ .ant-tabs-tab {
   height: 30px !important;
   line-height: 30px !important;
   border-radius: 17px !important;
-  border: 1px solid #e8e8e8 !important;
+  border: 1px solid @nav-tab-bg !important;
   margin-top: 5px !important;
   margin-right: 5px !important;
   .nav-tabs-close-icon {
@@ -185,7 +186,6 @@ export default {
 }
 .layout-nav-tabs-wrapper {
   display: flex;
-  background: #f9f9f9;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   position: relative;
   z-index: 100;
@@ -199,7 +199,6 @@ export default {
     line-height: 40px;
     text-align: center;
     color: rgba(0, 0, 0, 0.45);
-    background: #f9f9f9;
     cursor: pointer;
     font-size: 12px;
     .layout-nav-tabs-actions-inner {
@@ -226,11 +225,9 @@ export default {
   }
   .ant-tabs-tab-prev {
     box-shadow: 1px 0 6px rgba(0, 21, 41, 0.2);
-    background: #f8f8f8;
   }
   .ant-tabs-tab-next {
     box-shadow: -1px 0 6px rgba(0, 21, 41, 0.2);
-    background: #f8f8f8;
   }
   .ant-tabs-nav .ant-tabs-tab {
     height: 41px;
@@ -244,7 +241,6 @@ export default {
     border-radius: 0;
     margin-right: -1px;
     font-weight: 500;
-    border-top: 1px solid #fff;
   }
 }
 </style>

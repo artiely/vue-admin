@@ -40,10 +40,6 @@ export default {
     mode: {
       type: String,
       default: 'inline'
-    },
-    theme: {
-      type: String,
-      default: 'light'
     }
   },
   data () {
