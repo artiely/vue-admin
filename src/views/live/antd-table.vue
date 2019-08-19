@@ -1,7 +1,9 @@
 <template>
-  <a-table :columns="columns" :dataSource="data" :scroll="{ x: 1500, y: 300 }">
+<a-card>
+  <a-table :columns="columns" :dataSource="data" :scroll="{ x: 1500}">
     <a slot="action" href="javascript:;">action</a>
   </a-table>
+  </a-card>
 </template>
 <script>
 const columns = [
