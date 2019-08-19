@@ -24,6 +24,14 @@ export default [
         }
       },
       {
+        path: 'http://www.baidu.com',
+        meta: {
+          auth: true,
+          title: '跳转外链百度',
+          icon: 'icon-tasklist'
+        }
+      },
+      {
         path: '/crud',
         name: 'crud',
         component: loading('views/crud/crud.vue'),
@@ -123,6 +131,16 @@ export default [
           title: '首页',
           icon: 'icon-publishgoods_fill',
           hide: true
+        }
+      },
+      {
+        path: '/antd-table',
+        name: 'antd-table',
+        component: loading('views/live/antd-table.vue'),
+        meta: {
+          auth: true,
+          title: 'antd-table',
+          icon: 'icon-publishgoods_fill'
         }
       }
     ]

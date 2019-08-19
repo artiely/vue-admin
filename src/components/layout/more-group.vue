@@ -1,6 +1,6 @@
 <template>
   <div class="artiely-more-group">
-    <div class="artiely-more-group-btn">
+    <a-card class="artiely-more-group-btn" :bodyStyle="{padding:0}" :bordered="false">
       <a-tooltip placement="left">
         <template slot="title">
           主题配置
@@ -25,7 +25,7 @@
         <v-icon name="icon-tishi"></v-icon>
       </div>
       </a-tooltip>
-    </div>
+    </a-card>
 
      <a-drawer
       title="布局设置"
@@ -120,6 +120,7 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../assets/styles/var.less';
 .artiely-more-group {
   .artiely-more-group-btn {
     position: fixed;
@@ -127,16 +128,15 @@ export default {
     top: 40%;
     display: flex;
     flex-direction: column;
-    background: #fff;
-    box-shadow: 0 0 50px 0 rgba(82, 63, 105, 0.15);
+    box-shadow: 0 0 20px 0 rgba(@primary-color, 0.5);
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     z-index: 88;
     .item {
       width: 30px;
       height: 30px;
-      margin: 10px;
-      background: #f4f4f8;
+      margin: 5px;
+      background: @component-background;
       text-align: center;
       line-height: 30px;
       cursor: pointer;

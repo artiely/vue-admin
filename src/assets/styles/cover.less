@@ -1,60 +1,66 @@
 // ui库覆盖样式
-@import './var.less';
-// @import "~ant-design-vue/dist/antd.less"; 
+@import "./var.less";
 
 // 自定义滚动条的样式
-::-webkit-scrollbar
-{
-    width: 4px;
-    height: 4px;
+::-webkit-scrollbar-track-piece{
+	background-color:@component-background;
+	-webkit-border-radius:0;
 }
-::-webkit-scrollbar-track-piece
-{
-    background-color: #eee;
-    border-radius: 4px;
+::-webkit-scrollbar{
+	width:12px;
+	height:12px;
 }
-::-webkit-scrollbar-thumb:vertical
-{
-    height: 5px;
-    background-color: #ddd;
-    border-radius: 4px;
+::-webkit-scrollbar-thumb{
+	height:50px;
+	background-color:@text-color-secondary;
+	-webkit-border-radius:6px;
+	outline:2px solid @component-background;
+	outline-offset:-2px;
+	border: 2px solid @component-background;
 }
-::-webkit-scrollbar-thumb:horizontal
-{
-    width: 5px;
-    background-color: #eee;
-    border-radius: 4px;
-}
-
-.artiely-menu .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
-    padding: 0 !important;
-    text-align: center;
-    .anticon{
-        font-size: 24px!important;
-    }
-}
-.ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
-    font-size: 18px!important;
-    vertical-align:-0.15em!important;
+::-webkit-scrollbar-thumb:hover{
+	height:50px;
+	background-color:@text-color;
+	-webkit-border-radius:6px;
 }
 
-#app{
-    
-.ant-layout-header{
+.artiely-menu
+  .ant-menu-inline-collapsed
+  > .ant-menu-submenu
+  > .ant-menu-submenu-title {
+  padding: 0 !important;
+  text-align: center;
+  .anticon {
+    font-size: 24px !important;
+  }
+}
+.ant-menu-item .anticon,
+.ant-menu-submenu-title .anticon {
+  font-size: 18px !important;
+  vertical-align: -0.15em !important;
+}
+
+#app {
+  .ant-layout-header {
     background: @header-bg;
-}
-.layout-nav-tabs-wrapper{
-    background: @nav-tab-bg;
-}
-.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab{
+  }
+  .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab {
     background: @nav-tab-bg;
     color: @text-color-secondary;
-}
-.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active{
-    background:@nav-tab-active-bg;
+  }
+  .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
+    background: @nav-tab-active-bg;
     color: @nav-tab-active-color;
-}
-.number{
-    color: @number-color
-}
+  }
+  .number {
+    color: @number-color;
+  }
+  .ant-input-affix-wrapper .ant-input-prefix .anticon {
+    // color: @text-color-secondary;
+  }
+  .ivu-divider-horizontal.ivu-divider-with-text-center,
+  .ivu-divider-horizontal.ivu-divider-with-text-left,
+  .ivu-divider-horizontal.ivu-divider-with-text-right {
+    color: @text-color-secondary;
+  }
 }

@@ -26,7 +26,7 @@
             :fieldDecoratorOptions="{rules: [{ required: true, message: '请输入用户名'}]}"
           >
             <a-input placeholder="请输入用户名" size="large">
-              <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)"/>
+              <a-icon slot="prefix" type="user" />
             </a-input>
           </a-form-item>
           <!--  label='密码' -->
@@ -37,7 +37,7 @@
             :fieldDecoratorOptions="{rules: [{ required: true, message: '请输入密码' }]}"
           >
             <a-input placeholder="请输入密码" size="large" type="password">
-              <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)"/>
+              <a-icon slot="prefix" type="lock" />
             </a-input>
           </a-form-item>
           <a-form-item
@@ -49,7 +49,7 @@
             }]}"
           >
             <a-input placeholder="请确认密码" size="large" type="password">
-              <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)"/>
+              <a-icon slot="prefix" type="lock" />
             </a-input>
           </a-form-item>
         </a-form>
@@ -268,11 +268,6 @@ export default {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-image: url('../../assets/fullstack.jpg');
-}
-.login-modal {
-  .ant-modal-body {
-    padding-bottom: 0 !important;
-  }
 }
 canvas {
   display: block;

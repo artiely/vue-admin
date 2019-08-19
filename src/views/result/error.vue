@@ -6,7 +6,7 @@
       </template>
       <div>
         <div
-          style="font-size: 16px; color: rgba(0, 0, 0, 0.85); font-weight: 500; margin-bottom: 16px"
+          style="font-size: 16px;  font-weight: 500; margin-bottom: 16px"
         >您提交的内容有如下错误：</div>
         <div style="margin-bottom: 16px">
           <a-icon type="close-circle-o" style="color: #f5222d; margin-right: 8px"/>您的账户已被冻结

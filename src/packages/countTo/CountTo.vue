@@ -1,5 +1,5 @@
 <template>
-<span class="count-to">
+<span class="count-to number">
     <slot name="prefix"><span class="prefix">{{prefix}}</span></slot><span class="number">{{displayValue}}</span></span>
 </template>
 <script>

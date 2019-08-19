@@ -1,27 +1,20 @@
 <template>
   <div class="artiely-menu select-none">
-    <v-logo/>
+    <v-logo />
     <a-menu
       :mode="mode"
       :theme="layout.menuTheme"
       :selectedKeys="selectedKeys"
-       @openChange="onOpenChange"
+      @openChange="onOpenChange"
       @select="select"
     >
       <template v-for="item in menu">
         <template v-if="!item.meta.hide">
-          <a-menu-item
-            v-if="!item.children&&!item.meta.hide"
-            :key="item.path"
-          >
-            <a-iconfont  :type="item.meta.icon" />
+          <a-menu-item v-if="!item.children&&!item.meta.hide" :key="item.path">
+            <a-iconfont :type="item.meta.icon" />
             <span>{{ item.meta.title }}</span>
           </a-menu-item>
-          <sub-menu
-            v-else
-            :menu-info="item"
-            :key="item.path"
-          />
+          <sub-menu v-else :menu-info="item" :key="item.path" />
         </template>
       </template>
     </a-menu>
@@ -31,6 +24,7 @@
 <script>
 import subMenu from './sub-menu'
 import { layout } from '@/common/observable/layout'
+let reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&:/~+#]*[\w\-@?^=%&/~+#])?/
 export default {
   components: {
     subMenu
@@ -67,17 +61,19 @@ export default {
       get () {
         return [this.$route.path]
       },
-      set () {
-
-      }
+      set () {}
     }
   },
   methods: {
     select ({ item, key, selectedKeys }) {
-      this.$router.push(key)
+      let bool = reg.test(key)
+      if (bool) {
+        window.open(key, '_blank')
+      } else {
+        this.$router.push(key)
+      }
     },
     onOpenChange (openKeys) {
-
       // const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1)
       // const findIndex=(el)=>{
       //   return el.path===latestOpenKey
@@ -94,13 +90,23 @@ export default {
 </script>
 
 <style lang="less" >
-
-.artiely-menu{
-  .ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
-    opacity: .8;
+.artiely-menu {
+  .ant-menu-item .anticon,
+  .ant-menu-submenu-title .anticon {
+    opacity: 0.8;
   }
 }
-.ant-menu-inline-collapsed > .ant-menu-item, .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item, .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title{
-  padding: 0 1rem!important;
+.ant-menu-inline-collapsed > .ant-menu-item,
+.ant-menu-inline-collapsed
+  > .ant-menu-item-group
+  > .ant-menu-item-group-list
+  > .ant-menu-item,
+.ant-menu-inline-collapsed
+  > .ant-menu-item-group
+  > .ant-menu-item-group-list
+  > .ant-menu-submenu
+  > .ant-menu-submenu-title,
+.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
+  padding: 0 1rem !important;
 }
 </style>

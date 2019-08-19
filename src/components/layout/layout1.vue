@@ -113,6 +113,7 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../assets/styles/var.less';
 #components-layout-demo-side {
   min-height: 100%;
   .trigger {
@@ -121,6 +122,10 @@ export default {
     padding: 0 24px;
     cursor: pointer;
     transition: color 0.3s;
+    &:hover{
+    background: fade(@primary-color,10%);
+
+    }
   }
 }
 </style>

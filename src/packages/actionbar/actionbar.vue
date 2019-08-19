@@ -24,9 +24,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+@import '../../assets/styles/var.less';
 .action-box {
-    background: rgba(255,255,255,.8);
+    background: fade(@component-background,90%);
     padding: 10px;
     box-shadow: 0 4px 3px -3px rgba(10, 10, 10, 0.1);
     position: relative;

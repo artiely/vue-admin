@@ -190,6 +190,7 @@ export default {
   position: relative;
   z-index: 100;
   user-select: none;
+  background: @nav-tab-bg;
   .layout-nav-tabs {
     flex: 1;
   }

@@ -74,13 +74,13 @@ export default {
 
   .list-item {
     &:hover {
-      background: repeating-linear-gradient(
-        45deg,
-        #fff 0%,
-        #fff 5%,
-        #f0f0f0 5%,
-        #f0f0f0 10%
-      );
+      // background: repeating-linear-gradient(
+      //   45deg,
+      //   #fff 0%,
+      //   #fff 5%,
+      //   #f0f0f0 5%,
+      //   #f0f0f0 10%
+      // );
     }
   }
 }

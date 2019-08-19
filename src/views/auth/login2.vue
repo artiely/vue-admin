@@ -24,7 +24,7 @@
             v-decorator="['username',{rules: [{ required: true, message: '请输入邮箱地址'}],initialValue:username}]"
           >
             <a-input placeholder="请输入邮箱地址" size="large">
-              <a-icon slot="prefix" type="user" style="color: rgba(0,0,0,.25)"/>
+              <a-icon slot="prefix" type="user" />
             </a-input>
           </a-form-item>
           <!--  label='密码' -->
@@ -34,7 +34,7 @@
             v-decorator="['password',{rules: [{ required: true, message: '请输入密码' }],initialValue:password}]"
           >
             <a-input placeholder="请输入密码" size="large" type="password">
-              <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)"/>
+              <a-icon slot="prefix" type="lock" />
             </a-input>
           </a-form-item>
           <a-form-item

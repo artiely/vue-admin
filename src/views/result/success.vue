@@ -8,19 +8,19 @@
       </template>
       <div>
         <div
-          style="font-size: 16px; color: rgba(0, 0, 0, 0.85); font-weight: 500; margin-bottom: 20px;"
+          style="font-size: 16px;  font-weight: 500; margin-bottom: 20px;"
         >项目名称</div>
         <a-row style="margin-bottom: 16px">
           <a-col :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
-            <span style="color: rgba(0, 0, 0, 0.85)">项目 ID：</span>
+            <span >项目 ID：</span>
             20180724089
           </a-col>
           <a-col :xs="24" :sm="12" :md="12" :lg="12" :xl="6">
-            <span style="color: rgba(0, 0, 0, 0.85)">负责人：</span>
+            <span >负责人：</span>
             曲丽丽是谁？
           </a-col>
           <a-col :xs="24" :sm="24" :md="24" :lg="24" :xl="12">
-            <span style="color: rgba(0, 0, 0, 0.85)">生效时间：</span>
+            <span >生效时间：</span>
             2016-12-12 ~ 2017-12-12
           </a-col>
         </a-row>
@@ -33,7 +33,7 @@
             <span style="font-size: 14px" slot="title">创建项目</span>
             <template slot="description">
               <div
-                style="fontSize: 12px; color: rgba(0, 0, 0, 0.45); position: relative; left: 42px;"
+                style="fontSize: 12px;  position: relative; left: 42px;"
                 slot="description"
               >
                 <div style="margin: 8px 0 4px">曲丽丽
@@ -47,7 +47,7 @@
             <span style="font-size: 14px" slot="title">部门初审</span>
             <template slot="description">
               <div
-                style="fontSize: 12px; color: rgba(0, 0, 0, 0.45); position: relative; left: 42px;"
+                style="fontSize: 12px; position: relative; left: 42px;"
                 slot="description"
               >
                 <div style="margin: 8px 0 4px">周毛毛

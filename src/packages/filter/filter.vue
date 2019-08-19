@@ -160,14 +160,14 @@ export default {
 </script>
 
 <style lang="less" >
+@import '../../assets/styles/var.less';
 .filterbox {
-  background: #fff;
+  background: @input-bg;
   border-radius: 4px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   .filter-tags {
-    padding: 0 20px;
-    padding-bottom: 10px;
+    padding: 10px 20px;
     border-top: 1px solid #d5d5d5;
   }
   .filter-search {
@@ -181,7 +181,7 @@ export default {
   .filterbox-group {
     border-top: 1px solid #d5d5d5;
     display: flex;
-    background: #fff;
+    // background: @background-color-base;
     .filterbox-item {
       font-size: 14px;
       padding: 10px;

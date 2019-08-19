@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '../../../assets/styles/var.less';
 .result {
   text-align: center;
   width: 72%;
@@ -61,7 +62,7 @@ export default {
   }
   .title {
     font-size: 24px;
-    color: rgba(0, 0, 0, 0.85);
+    color: @text-color;
     font-weight: 500;
     line-height: 32px;
     margin-bottom: 16px;
@@ -69,11 +70,11 @@ export default {
   .description {
     font-size: 14px;
     line-height: 22px;
-    color: rgba(0, 0, 0, 0.45);
+    color: @text-color-secondary;
     margin-bottom: 24px;
   }
   .content {
-    background: #fafafa;
+    // background: #fafafa;
     padding: 24px 40px;
     border-radius: 2px;
     text-align: left;
