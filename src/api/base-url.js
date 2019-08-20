@@ -5,7 +5,7 @@ let BASE_URL = ''
 switch (MODE) {
   case 'dev':
     // 开发模式一般为空
-    BASE_URL = ''
+    BASE_URL = 'api/'
     break
   case 'test':
     // 本地测试模式

@@ -1,8 +1,11 @@
 import router from '@/router'
 import utils from '@/common/utils'
+import { notification } from 'ant-design-vue'
 let { removeToken } = utils
 // 是否生产环境
-const PRODUCTION = process.env.VUE_APP_MODE === 'release' || process.env.VUE_APP_MODE === 'production'
+const PRODUCTION =
+  process.env.VUE_APP_MODE === 'release' ||
+  process.env.VUE_APP_MODE === 'production'
 
 export default function errorHandler (error) {
   // 断网 或者 请求超时 状态
@@ -23,7 +26,10 @@ export default function errorHandler (error) {
     switch (responseCode) {
       case 4:
         // 跳转登录页
-        router.replace({ name: 'login', params: { message: '您已在其他地方登录，或登录信息失效，请重新登录' } })
+        router.replace({
+          name: 'login',
+          params: { message: '您已在其他地方登录，或登录信息失效，请重新登录' }
+        })
         removeToken()
         break
       default:
@@ -34,9 +40,15 @@ export default function errorHandler (error) {
       let code = error.response.status
       let status = error.response.data.status
       // 如果不是成产环境
-      this.$notification.open({
+      notification.error({
         message: '这是请求错误提示，只会出现在测试环境',
-        description: `<div style="width:6rem;padding:.2rem;word-break: break-all">出错的url<p >${url}</p>参数<p >${params}</p>请求状态码<p>${code}</p>业务状态码<p>${status}</p></div>`,
+        duration: 0,
+        description: h => (
+          <div style="width:6rem;padding:.2rem;word-break: break-all">
+            出错的url<p>{url}</p>参数<p>{params}</p>请求状态码<p>{code}</p>
+            业务状态码<p>{status}</p>
+          </div>
+        ),
         onClick: () => {
           console.log('Notification Clicked!')
         }

@@ -142,6 +142,26 @@ export default [
           title: 'antd-table',
           icon: 'icon-publishgoods_fill'
         }
+      },
+      {
+        path: '/antd-table-creater',
+        name: 'antd-table-creater',
+        component: loading('views/live/antd-table-creater.vue'),
+        meta: {
+          auth: true,
+          title: 'antd-table-creater',
+          icon: 'icon-publishgoods_fill'
+        }
+      },
+      {
+        path: '/antd-table-creater2',
+        name: 'antd-table-creater2',
+        component: loading('views/live/antd-table-creater2.vue'),
+        meta: {
+          auth: true,
+          title: 'antd-table-creater2',
+          icon: 'icon-publishgoods_fill'
+        }
       }
     ]
   },

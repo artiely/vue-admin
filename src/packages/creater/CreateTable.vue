@@ -95,14 +95,17 @@ export default {
     onSelectionChange (selection) {
       console.log('TCL: onSelectionChange -> selection', selection)
     },
-    handleEdit (row, index) {
-      this.$emit('handle-edit', row, index)
+    handleEdit (text, record) {
+      this.$emit('handle-edit', text, record)
+      this.$emit('handleEdit', text, record)
     },
-    handleInfo (row, index) {
-      this.$emit('handle-info', row, index)
+    handleInfo (text, record) {
+      this.$emit('handle-info', text, record)
+      this.$emit('handleInfo', text, record)
     },
-    handleDel (row, index) {
-      this.$emit('handle-del', row, index)
+    handleDel (text, record) {
+      this.$emit('handle-del', text, record)
+      this.$emit('handleDel', text, record)
     }
   }
 }
