@@ -169,7 +169,7 @@ export default {
       axios({
         url: this.currApi.url,
         method: this.currApi.method || 'get',
-        baseURL: '/store/rest/',
+        baseURL: '/api/',
         params: this.currApi.method === 'get' ? curData : {},
         data: qs.stringify(data, {
           arrayFormat: 'indices',
@@ -184,8 +184,7 @@ export default {
         },
         proxy: {
           '/store': {
-            host: 'http://192.168.2.242',
-            port: 8091
+            host: 'https://www.easy-mock.com/mock/5d5b9eddaf6abb3d1b4270ad',
           }
         }
       }).then(res => {
