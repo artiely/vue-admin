@@ -241,4 +241,4 @@ export const easeInOutCubic = pos => {
   return 0.5 * (Math.pow(pos - 2, 3) + 2)
 }
 
-export { Animate }
+export default { Animate }

@@ -9,7 +9,7 @@ switch (MODE) {
     break
   case 'test':
     // 本地测试模式
-    BASE_URL = ''
+    BASE_URL = 'api/'
     break
   case 'production':
     // 线上测试

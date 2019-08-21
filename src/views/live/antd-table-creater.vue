@@ -3,18 +3,21 @@
   <div>
     <a-card>
       <h1>基本表格</h1>
-      <v-create-table2
+      <v-create-table
         :sourceData="columns"
         :tableData="data"
         :loading="loading"
         @handle-edit="handleEdit"
       >
-        <template v-slot:name="{row}"><a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />{{row.name}}</template>
+        <template v-slot:name="{row}">
+          <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+          {{row.name}}
+        </template>
         <template v-slot:rate="{row}">
           <a-rate :value="row.rate" disabled />
         </template>
         <template v-slot:select="{row}">
-           <a-popover title="Title">
+          <a-popover title="Title">
             <template slot="content">
               <p>{{row.select}}</p>
               <p>{{row.select}}</p>
@@ -29,7 +32,7 @@
             :color="item=='Apple'?'red':'pink'"
           >{{item}}</a-tag>
         </template>
-      </v-create-table2>
+      </v-create-table>
     </a-card>
     <v-create-form
       :sourceData="columns"

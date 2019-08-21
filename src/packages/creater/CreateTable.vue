@@ -1,48 +1,68 @@
 <template>
-  <a-spin :spinning="loading">
-    <template v-if="tableData.length">
-    <i-table :columns="columns" :data="tableData" size="small" ref="table" :border="false"  @on-selection-change="onSelectionChange">
-      <template slot-scope="{ row, index }" :slot="item.slot" v-for="item in columns">
-        <slot :name="item.slot" :row="row">
-          <template>
-            <div v-if="item.tooltip" :key="item.dataIndex" >
-              <a-tooltip>
-                <template slot='title'>
-                  {{row[item.dataIndex]}}
+  <a-spin :spinning="loading||!reRender" :style="{minHeight:tableBoxHeight+'px'}">
+    <template v-if="tableData.length&&reRender">
+      <div ref="tableBox">
+        <a-table
+          :rowSelection="rowSelection"
+          :columns="columns"
+          :indentSize="0"
+          :dataSource="tableData"
+          :bordered="bordered"
+          :size="size"
+          ref="table"
+          :loading="!reRender"
+          :rowKey="rowKey"
+          :scroll="{x:width}"
+          v-resize.debounce.500="getDomWidth"
+        >
+          <template slot-scope="text, record" :slot="item.slot" v-for="item in columns">
+            <div :style="{width:item.width+'px'}" :key="item.dataIndex" >
+              <slot :name="item.slot" :row="record" :header="item">
+                <template v-if="item.slot=='action'">
+                  <div :style="{width:item.width+'px'}" >
+                    <a href="javascript:void(0);">
+                      <span @click="handleInfo(text, record)">详情</span>
+                      <a-divider type="vertical" />
+                      <span @click="handleEdit(text, record)">编辑</span>
+                      <a-divider type="vertical" />
+                      <a-popconfirm
+                        v-if="tableData.length"
+                        title="确定删除？"
+                        @confirm="() => handleDel(text, record)"
+                      >
+                        <span style="color:#f00">删除</span>
+                      </a-popconfirm>
+                    </a>
+                  </div>
                 </template>
-                <div class="textover1">
-                  {{row[item.dataIndex]}}
-                </div>
-              </a-tooltip>
-            </div>
-            <div v-else :key="item.dataIndex">
-              {{row[item.dataIndex]}}
+                <template v-else>
+                  <div v-if="item.tooltip" >
+                    <a-tooltip>
+                      <template slot="title">{{text}}</template>
+                      <div class="textover1" :style="{width:item.width+'px'}">{{text}}</div>
+                    </a-tooltip>
+                  </div>
+                  <div
+                    v-else
+                    class="textover1"
+                    :style="{width:item.width+'px'}"
+                  >{{text}}</div>
+                </template>
+              </slot>
             </div>
           </template>
-          <template v-if="item.slot=='action'" >
-            <a href="javascript:void(0);" :key="item.dataIndex">
-              <span @click="handleInfo(row, index)">详情</span>
-              <a-divider type="vertical" />
-              <span @click="handleEdit(row, index)">编辑</span>
-              <a-divider type="vertical" />
-              <a-popconfirm v-if="tableData.length" title="确定删除？" @confirm="() => handleDel(row, index)">
-                <span style="color:#f00">删除</span>
-              </a-popconfirm>
-            </a>
-          </template>
-        </slot>
-      </template>
-    </i-table>
-    <div class="clearfix" style="padding:20px 0">
-      <a-pagination class="fr" :total="50" showSizeChanger showQuickJumper />
-    </div>
+        </a-table>
+      </div>
+      <div class="clearfix" style="padding:20px 0">
+        <!-- <a-pagination class="fr" :total="50" showSizeChanger showQuickJumper /> -->
+      </div>
     </template>
-    <a-card :loading="loading" v-else style="height:200px">
-      暂无数据
-    </a-card>
+    <a-card :loading="loading" v-else :style="{minHeight:tableBoxHeight+'px'}">暂无数据</a-card>
+
   </a-spin>
 </template>
 <script>
+import { layout } from '@/common/observable/layout'
 export default {
   name: 'v-create-table',
   props: {
@@ -58,42 +78,111 @@ export default {
         return []
       }
     },
+    rowKey: Function,
     loading: {
       type: Boolean,
       default: true
+    },
+    size: {
+      type: String,
+      default: 'default'
+    },
+    bordered: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
     return {
-      columns: [
-        {
-          type: 'selection',
-          width: 50,
-          fixed: 'left',
-          align: 'center'
-        }
-      ].concat(
-        this.sourceData
-          .map(v => {
-            v.key = v.dataIndex
-            v.slot = v.dataIndex
-            return v
-          })
-          .concat([
-            {
-              title: '操作',
-              key: 'operation',
-              width: 200,
-              fixed: 'right',
-              slot: 'action'
-            }
-          ])
-      )
+      reRender: true,
+      tableBoxWidth: 0,
+      tableBoxHeight: 0,
+      layout
     }
   },
+  watch: {
+    size (val) {
+      this.reRender = false
+      this.$nextTick(() => {
+        this.reRender = true
+        let E = new Event('resize')
+        window.dispatchEvent(E)
+      })
+    },
+    'layout.isCollapse' (val) {
+      this.reRender = false
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.reRender = true
+          let E = new Event('resize')
+          window.dispatchEvent(E)
+        }, 300)
+      })
+    }
+  },
+  computed: {
+    rowSelection () {
+      return {
+        columnWidth: '50px',
+        onChange: (selectedRowKeys, selectedRows) => {
+          console.log(
+            `selectedRowKeys: ${selectedRowKeys}`,
+            'selectedRows: ',
+            selectedRows
+          )
+        }
+      }
+    },
+    // 表格的固定宽之和用于滚动
+    width () {
+      let w = 0
+      let tdPadding = this.size === 'small' ? 16 : 32
+      this.sourceData.map(v => {
+        if (!v.hidden) {
+          w += v.width + tdPadding
+        }
+      })
+      return w + 200 + 32
+    },
+    columns () {
+      // 滚动宽度小于容器宽度的时候去掉fixed
+      return this.sourceData
+        .map((v, i) => {
+          if (i === 0 && this.width > this.tableBoxWidth) {
+            v.fixed = 'left'
+          } else {
+            v.fixed = false
+          }
+
+          v.key = v.dataIndex
+          v.slot = v.dataIndex
+          v.scopedSlots = { customRender: v.dataIndex }
+          return v
+        })
+        .filter(v => {
+          return !v.hidden
+        })
+        .concat([
+          {
+            title: '操作',
+            key: 'operation',
+            width: 200,
+            fixed: this.width < this.tableBoxWidth ? false : 'right',
+            slot: 'action',
+            scopedSlots: { customRender: 'action' }
+          }
+        ])
+    }
+  },
+
   methods: {
-    onSelectionChange (selection) {
-      console.log('TCL: onSelectionChange -> selection', selection)
+    getDomWidth () {
+      this.tableBoxWidth = this.$refs.tableBox.clientWidth
+      this.tableBoxHeight = this.$refs.tableBox.clientHeight
+      console.log(
+        'TCL: getDomWidth -> this.$refs.tableBox',
+        this.$refs.tableBox
+      )
     },
     handleEdit (text, record) {
       this.$emit('handle-edit', text, record)

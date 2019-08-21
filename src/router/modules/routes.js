@@ -42,36 +42,6 @@ export default [
         }
       },
       {
-        path: '/table-demo1',
-        name: 'table-demo1',
-        component: loading('views/table-demo/table-demo1.vue'),
-        meta: {
-          auth: true,
-          title: '自动生成表格',
-          icon: 'icon-shielding'
-        }
-      },
-      {
-        path: '/table-demo2',
-        name: 'table-demo2',
-        component: loading('views/table-demo/table-demo2.vue'),
-        meta: {
-          auth: true,
-          title: '表格表单一起',
-          icon: 'icon-order'
-        }
-      },
-      {
-        path: '/table-ele',
-        name: 'table-ele',
-        component: loading('views/table-demo/table-ele.vue'),
-        meta: {
-          auth: true,
-          title: '表格ele',
-          icon: 'icon-order'
-        }
-      },
-      {
         path: '/workplace',
         name: 'workplace',
         component: loading('views/dashboard/workplace'),

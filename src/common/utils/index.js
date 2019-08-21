@@ -9,6 +9,7 @@ toolContext.keys().forEach(tool => {
   utils = { ...utils, ...(toolModle.default || toolModle) }
 })
 export default utils
+console.log('TCL: utils', utils)
 
 // document.addEventListener('visibilitychange', function () {
 //   // 浏览器切换事件

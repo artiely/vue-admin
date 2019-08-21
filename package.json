@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 8082",
     "build": "vue-cli-service build && node server.js",
     "lint": "vue-cli-service lint",
     "//build": "打包本地代码 一般用与线上测试",
@@ -14,7 +14,7 @@
     "build-release": "vue-cli-service build --mode release",
     "build-staging": "vue-cli-service build --mode staging",
     "commit": "npx git-cz",
-    "dev": "vue-cli-service serve",
+    "dev": "vue-cli-service serve --port 8082",
     "dev-test": "vue-cli-service build --mode test && node server.js",
     "new": "node ./script/generateView",
     "x-prebuild": "npm version patch",
