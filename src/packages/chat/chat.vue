@@ -18,16 +18,16 @@
       <!-- 客户列表 -->
       <div class="chat-custom-wrapper">
         <div class="custom-wrapper">
-          <div class="custom-list" v-for="i in 10" :key="i">
+          <div class="custom-list" v-for="item in list2" :key="item.id">
             <a-avatar
               slot="avatar"
-              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            />
+              :style="{background:item.color}"
+            >{{item.name.split('')[0]}}</a-avatar>
             <div class="userinfo">
-              <h1 class="name">谭杰</h1>
-              <h1 class="tel">{{'15926290460'|telFormat()}}</h1>
+              <h1 class="name">{{item.name}}</h1>
+              <h1 class="tel number">{{item.tel|telFormat()}}</h1>
             </div>
-            <a-badge count="25" class="message-count" />
+            <a-badge :count="item.count" class="message-count" />
           </div>
         </div>
       </div>
@@ -110,6 +110,7 @@ export default {
     return {
       list,
       messageInfo: '',
+      list2: [],
       list1: [
         {
           url:
@@ -153,9 +154,15 @@ export default {
     },
     handleEmoji (emoji) {
       this.messageInfo += emoji
+    },
+    getData () {
+      this.$api.USER_LIST().then(res => {
+        this.list2 = res.list
+      })
     }
   },
   mounted () {
+    this.getData()
     this.draggableValue.handle = this.$refs.handle
     console.log('TCL: mounted -> this.$refs.handle', this.$refs.handle)
   }
@@ -226,9 +233,11 @@ export default {
       display: flex;
       flex: 1;
       flex-direction: column;
+      padding-left: 5px;
       .name {
         font-size: 14px;
         color: #333;
+        margin: 0;
       }
       .tel {
         font-size: 10px;

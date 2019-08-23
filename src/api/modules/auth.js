@@ -8,6 +8,11 @@ export const ORDER_LIST = {
   method: 'get',
   __remark: '订单列表信息'
 }
+export const USER_LIST = {
+  url: 'userlist',
+  method: 'get',
+  __remark: '用户列表信息'
+}
 // export const LOGIN = {
 //   url: 'login',
 //   method: 'post',
