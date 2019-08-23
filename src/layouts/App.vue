@@ -23,14 +23,6 @@ export default {
       locale: zhCN
     }
   },
-  // watch:{
-  //   '$router':{
-  //     handler(){
-  //       anthNavTabs(to)
-  //     },
-  //     deep:true
-  //   }
-  // },
   beforeRouteUpdate (to, from, next) {
     console.log('TCL: beforeRouteUpdate -> to', to)
     // ....
