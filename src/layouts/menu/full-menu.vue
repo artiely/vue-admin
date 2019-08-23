@@ -27,7 +27,7 @@
 <script>
 import siderMenu from './sider-menu'
 import soloMenu from './solo-menu'
-import { layout } from '@/common/observable/layout'
+import { layout } from '@layouts'
 import utils from '@/common/utils'
 let { pxtorem } = utils
 console.log('lauout', layout)

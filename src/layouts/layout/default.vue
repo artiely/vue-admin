@@ -10,7 +10,7 @@
 import layout1 from './layout1'
 import layout2 from './layout2'
 import moreGroup from './more-group'
-import { layout } from '../../common/observable/layout'
+import { layout } from '../observable/layout'
 import scrollTop from './scroll-top'
 export default {
   name: 'Home',

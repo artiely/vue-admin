@@ -9,7 +9,7 @@
 
 <script>
 import navTabs from './nav-tabs'
-import { layout } from '@/common/observable/layout'
+import { layout } from '@layouts'
 export default {
   components: {
     navTabs

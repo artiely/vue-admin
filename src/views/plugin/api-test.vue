@@ -184,7 +184,7 @@ export default {
         },
         proxy: {
           '/store': {
-            host: 'https://www.easy-mock.com/mock/5d5b9eddaf6abb3d1b4270ad',
+            host: 'https://www.easy-mock.com/mock/5d5b9eddaf6abb3d1b4270ad'
           }
         }
       }).then(res => {

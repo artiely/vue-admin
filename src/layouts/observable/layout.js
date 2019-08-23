@@ -25,12 +25,10 @@ export const layout = Vue.observable({
   refreshLoad: true
 })
 
-export let mutations = {
-  setFontSize (val) {
-    layout.fontSize = val || 16
-    layout.collapsedWidth = (80 / 16) * val
-    document.querySelector('html').style.fontSize = val + 'px'
-  }
+export function setFontSize (val) {
+  layout.fontSize = val || 16
+  layout.collapsedWidth = (80 / 16) * val
+  document.querySelector('html').style.fontSize = val + 'px'
 }
 export function mediaQuery () {
   var EventUtil = {

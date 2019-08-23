@@ -19,7 +19,7 @@
 
 <script>
 import ApexCharts from 'apexcharts'
-import cardChart from '../../components/card/card-chart'
+import cardChart from './template/card-chart'
 let dataTriangle = [
   {
     type: '城市一',

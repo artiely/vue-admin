@@ -28,7 +28,7 @@
 <script>
 import soloMenu from '../menu/solo-menu'
 import breadcrumb from '../breadcrumb'
-import { layout } from '../../common/observable/layout'
+import { layout } from '../observable/layout'
 import fullMenu from '../menu/full-menu'
 import VFooter from './footer'
 import routerPage from './router-page'

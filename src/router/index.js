@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NProgress from 'nprogress'
 // import { getToken } from '@/common/utils'
-import { anthNavTabs } from '@/common/observable/navTabs'
+import { anthNavTabs } from '@layouts'
 import baseRoutes from './baseRoutes'
 import store from '../store'
 Vue.use(Router)

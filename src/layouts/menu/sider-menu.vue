@@ -15,7 +15,7 @@
 
 <script>
 import soloMenu from '../menu/solo-menu'
-import { layout } from '../../common/observable/layout'
+import { layout } from '../observable/layout'
 import utils from '@/common/utils'
 let { pxtorem } = utils
 export default {

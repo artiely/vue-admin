@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { layout, mutations } from '../../common/observable/layout'
+import { layout, setFontSize } from '../observable/layout'
 export default {
   data () {
     return {
@@ -88,7 +88,7 @@ export default {
     }
   },
   methods: {
-    handleChange: mutations.setFontSize,
+    handleChange: setFontSize,
     toggle () {
       this.visible = !this.visible
     },

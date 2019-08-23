@@ -122,11 +122,11 @@ module.exports = {
   // 加入markdown解析
   chainWebpack: config => {
     config.resolve.alias
-    .set('@layout', resolve('src/layout'))
-    .set('@router', resolve('src/router'))
-    .set('@api', resolve('src/api'))
-    .set('@store', resolve('src/store'))
-    .set('@utils', resolve('src/store/common/utils'))
+      .set('@layouts', resolve('src/layouts'))
+      .set('@router', resolve('src/router'))
+      .set('@api', resolve('src/api'))
+      .set('@store', resolve('src/store'))
+      .set('@utils', resolve('src/store/common/utils'))
     config.module
       .rule('md')
       .test(/\.md$/)
@@ -140,7 +140,7 @@ module.exports = {
     }
   },
   devServer: {
-    open: true, // 启动服务后是否打开浏览器
+    // open: true, // 启动服务后是否打开浏览器
     // https: false,
     hotOnly: false,
     compress: true, // 开启压缩

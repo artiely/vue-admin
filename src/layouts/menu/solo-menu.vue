@@ -23,7 +23,7 @@
 
 <script>
 import subMenu from './sub-menu'
-import { layout } from '@/common/observable/layout'
+import { layout } from '@layouts'
 let reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&:/~+#]*[\w\-@?^=%&/~+#])?/
 export default {
   components: {

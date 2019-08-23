@@ -62,7 +62,7 @@
   </a-spin>
 </template>
 <script>
-import { layout } from '@/common/observable/layout'
+import { layout } from '@layouts'
 export default {
   name: 'v-create-table',
   props: {

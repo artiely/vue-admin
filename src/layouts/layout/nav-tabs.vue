@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import { navTabs } from '@/common/observable/navTabs'
-import { layout } from '@/common/observable/layout'
+import { navTabs } from '../observable/navTabs'
+import { layout } from '@layouts'
 export default {
   data () {
     return {

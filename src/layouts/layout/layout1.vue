@@ -28,7 +28,7 @@
 <script>
 import fullMenu from '../menu/full-menu'
 // import breadcrumb from '../breadcrumb'
-import { layout } from '../../common/observable/layout'
+import { layout } from '../observable/layout'
 import VFooter from './footer'
 import VHeader from './header1'
 import utils from '@/common/utils'

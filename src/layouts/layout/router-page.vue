@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { layout } from '@/common/observable/layout'
+import { layout } from '@layouts'
 export default {
   data () {
     return {

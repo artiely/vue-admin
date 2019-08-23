@@ -1,7 +1,5 @@
 import loading from '../loading'
-import Home from '@/components/layout/default.vue'
-import App from '@/App.vue'
-console.log('TCL: Home', Home)
+import { App, Home } from '@layouts'
 export default [
   {
     path: '/',

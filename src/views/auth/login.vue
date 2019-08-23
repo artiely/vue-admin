@@ -92,7 +92,7 @@
 <script>
 import uuid from 'uuid'
 import md5 from 'md5'
-import { layout } from '@/common/observable/layout'
+import { layout } from '@layouts'
 const formItemLayout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 24 }
