@@ -1,17 +1,16 @@
 import '@babel/polyfill'
 import Vue from 'vue'
 import { App } from '@layouts'
-import router from './router'
-import store from './store/index'
+import router from '@router'
+import store from '@store'
 import Antd from 'ant-design-vue'
 import './assets/styles/main.less'
-import '@/packages'
 import * as filters from './common/filter'
 import './common/directive'
 import { Api } from '@/api'
-
+import './packages'
 import 'nprogress/nprogress.css'
-import './plugins/element.js'
+import './plugins'
 Vue.config.productionTip = false
 Vue.use(Antd)
 Vue.use(Api)
