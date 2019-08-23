@@ -1,7 +1,7 @@
 <template>
 <div class="router-error">
   <h1>页面找不到家了！</h1>
-  <p>兄嘚~！你的路由地址可能配错了,具体错误请查看控制台 <a-button @click="$router.replace('/index')" type="primary">返回首页</a-button></p>
+  <p>兄嘚~！你的路由地址可能配错了,具体错误请查看控制台 <a-button @click="$router.replace('/')" type="primary">返回首页</a-button></p>
 
   <img :src="require('../../assets/img/cute-gray-kitty.jpg')" alt="">
 </div>

@@ -8,6 +8,7 @@
       type="info"
       showIcon
     />
+    <br>
       <v-create-table
         :sourceData="columns"
         :tableData="data"

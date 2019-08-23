@@ -4,23 +4,23 @@ export default [
   {
     path: '/',
     name: 'home',
-    redirect: '/index',
+    redirect: '/analysis',
     component: Home,
     meta: {
       title: '现场管理',
       icon: 'icon-shop_fill'
     },
     children: [
-      {
-        path: '/index',
-        name: 'index',
-        component: loading('views/live/workspace.vue'),
-        meta: {
-          auth: true,
-          title: '工作台',
-          icon: 'icon-tasklist'
-        }
-      },
+      // {
+      //   path: '/index',
+      //   name: 'index',
+      //   component: loading('views/live/workspace.vue'),
+      //   meta: {
+      //     auth: true,
+      //     title: '工作台',
+      //     icon: 'icon-tasklist'
+      //   }
+      // },
       {
         path: 'http://www.baidu.com',
         meta: {
@@ -29,16 +29,7 @@ export default [
           icon: 'icon-tasklist'
         }
       },
-      {
-        path: '/crud',
-        name: 'crud',
-        component: loading('views/crud/crud.vue'),
-        meta: {
-          auth: true,
-          title: '自动生成表单',
-          icon: 'icon-task'
-        }
-      },
+
       {
         path: '/workplace',
         name: 'workplace',
@@ -66,68 +57,78 @@ export default [
     name: 'live-home',
     component: Home,
     meta: {
-      title: '现场管理',
+      title: '表格表单',
       icon: 'icon-redpacket'
     },
     children: [
       {
-        path: '/index2',
-        name: 'index2',
-        component: loading('views/live/workspace.vue'),
+        path: '/crud',
+        name: 'crud',
+        component: loading('views/crud/crud.vue'),
         meta: {
           auth: true,
-          title: '首页',
-          icon: 'icon-supply'
+          title: '表单生成器',
+          icon: 'icon-task'
         }
       },
-      {
-        path: '/scrollbar',
-        name: 'scrollbar',
-        component: loading('views/live/scrollbar.vue'),
-        meta: {
-          auth: true,
-          title: 'scrollbar',
-          icon: 'icon-questions'
-        }
-      },
-      {
-        path: '/index3',
-        name: 'index3',
-        component: loading('views/live/workspace.vue'),
-        meta: {
-          auth: true,
-          title: '首页',
-          icon: 'icon-publishgoods_fill',
-          hide: true
-        }
-      },
-      {
-        path: '/antd-table',
-        name: 'antd-table',
-        component: loading('views/live/antd-table.vue'),
-        meta: {
-          auth: true,
-          title: 'antd-table',
-          icon: 'icon-publishgoods_fill'
-        }
-      },
+      // {
+      //   path: '/index2',
+      //   name: 'index2',
+      //   component: loading('views/live/workspace.vue'),
+      //   meta: {
+      //     auth: true,
+      //     title: '首页',
+      //     icon: 'icon-supply'
+      //   }
+      // },
+      // {
+      //   path: '/scrollbar',
+      //   name: 'scrollbar',
+      //   component: loading('views/live/scrollbar.vue'),
+      //   meta: {
+      //     auth: true,
+      //     title: 'scrollbar',
+      //     icon: 'icon-questions'
+      //   }
+      // },
+      // {
+      //   path: '/index3',
+      //   name: 'index3',
+      //   component: loading('views/live/workspace.vue'),
+      //   meta: {
+      //     auth: true,
+      //     title: '首页',
+      //     icon: 'icon-publishgoods_fill',
+      //     hide: true
+      //   }
+      // },
+      // {
+      //   path: '/antd-table',
+      //   name: 'antd-table',
+      //   component: loading('views/live/antd-table.vue'),
+      //   meta: {
+      //     auth: true,
+      //     title: '表格生成器',
+      //     icon: 'icon-publishgoods_fill'
+      //   }
+      // },
       {
         path: '/antd-table-creater',
         name: 'antd-table-creater',
-        component: loading('views/live/antd-table-creater.vue'),
+        component: loading('views/crud/antd-table-creater.vue'),
         meta: {
           auth: true,
-          title: 'antd-table-creater',
+          title: '表格生成器',
           icon: 'icon-publishgoods_fill'
         }
       },
       {
         path: '/antd-table-creater2',
         name: 'antd-table-creater2',
-        component: loading('views/live/antd-table-creater2.vue'),
+        component: loading('views/crud/antd-table-creater2.vue'),
         meta: {
           auth: true,
-          title: 'antd-table-creater2',
+          title: '高级表格',
           icon: 'icon-publishgoods_fill'
         }
       }

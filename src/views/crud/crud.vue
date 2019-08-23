@@ -1,5 +1,12 @@
 <template>
-  <div>
+  <v-card>
+      <a-alert
+      message="表单生成器"
+      description="一段JSON配置自动生成表单，支持view modal drawer"
+      type="info"
+      showIcon
+    />
+    <br>
     <v-create-form :sourceData="columns"  :defaultData="defaultData">
       <template v-slot:input3="{scope,value}">
         <a-form-item :label="scope.title" :labelCol="{ span: 5 }"
@@ -20,7 +27,7 @@
       <v-create-form v-model="visible" model="drawer" :sourceData="columns"  :defaultData="defaultData"></v-create-form>
       <v-create-form v-model="visible2" model="modal" :sourceData="columns"  :defaultData="defaultData"></v-create-form>
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script>
