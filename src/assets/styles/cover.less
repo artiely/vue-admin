@@ -7,21 +7,21 @@
 	-webkit-border-radius:0;
 }
 ::-webkit-scrollbar{
-	width:12px;
-	height:12px;
+	width:10px;
+	height:10px;
 }
 ::-webkit-scrollbar-thumb{
 	height:50px;
 	background-color:@text-color-secondary;
-	-webkit-border-radius:6px;
-	outline:2px solid @layout-body-background;
-	outline-offset:-2px;
-	border: 2px solid @layout-body-background;
+	-webkit-border-radius:5px;
+	outline:1px solid @layout-body-background;
+	outline-offset:-1px;
+	border: 1px solid @layout-body-background;
 }
 ::-webkit-scrollbar-thumb:hover{
 	height:50px;
 	background-color:@text-color;
-	-webkit-border-radius:6px;
+	-webkit-border-radius:5px;
 }
 
 .artiely-menu
@@ -62,5 +62,8 @@
   .ivu-divider-horizontal.ivu-divider-with-text-left,
   .ivu-divider-horizontal.ivu-divider-with-text-right {
     color: @text-color-secondary;
+  }
+  .ant-alert-message{
+    color: @text-color!important;
   }
 }
