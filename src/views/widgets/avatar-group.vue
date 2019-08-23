@@ -1,11 +1,11 @@
 <template>
   <v-card>
     <a-alert message="头像组" description="用于展示多个用户的使用场景" type="info" showIcon></a-alert>
-    <divider >默认</divider>
+    <a-divider >默认</a-divider>
     <v-avatar-group :avatarList="list1"></v-avatar-group>
-    <divider>设置最大显示</divider>
+    <a-divider>设置最大显示</a-divider>
     <v-avatar-group :avatarList="list1" maxlength="4"></v-avatar-group>
-    <divider>设置尺寸</divider>
+    <a-divider>设置尺寸</a-divider>
     <v-avatar-group :avatarList="list1" maxlength="4" :size="64"></v-avatar-group> 123
   </v-card>
 </template>

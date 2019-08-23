@@ -8,15 +8,15 @@
       <div class="example">
         <div class="example-box">
           <div class="block">
-            <divider orientation="left">鉴权信息</divider>
+            <a-divider orientation="left">鉴权信息</a-divider>
             <div style="font-size:12px" v-if="token">
               {{token}}
               {{storeid}}
             </div>
              <a-alert v-else message="还没有鉴权信息，请先获取鉴权" banner />
-            <divider orientation="left">参数JSON格式</divider>
+            <a-divider orientation="left">参数JSON格式</a-divider>
             <a-textarea v-model="currData" placeholder="请输入参数JSON格式" autosize />
-            <divider orientation="left">方法及地址</divider>
+            <a-divider orientation="left">方法及地址</a-divider>
             <a-input-group compact>
               <a-select v-model="currApi.method" style="width:90px">
                 <a-select-option value="get">get</a-select-option>
@@ -27,7 +27,7 @@
               <a-input style="width: 50%" placeholder="输入接口地址查询结果" v-model="currApi.url" />
               <a-button type="primary" style="width:100px" @click="onSearch" :loading="loading">查询</a-button>
             </a-input-group>
-            <divider orientation="left">响应结果</divider>
+            <a-divider orientation="left">响应结果</a-divider>
             <vue-json-pretty
               v-if="renderOK"
               :data="json"
@@ -66,7 +66,7 @@
               {{item.url}}
             </p>
           </div>
-          <divider dashed style="margin:5px 0"></divider>
+          <a-divider dashed style="margin:5px 0"></a-divider>
         </a-radio>
       </a-radio-group>
     </a-drawer>

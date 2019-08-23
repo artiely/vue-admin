@@ -2,7 +2,7 @@
   <div>
     <v-card>
       <a-button @click="guide" type="primary">点我开启向导</a-button>
-      <divider></divider>
+      <a-divider></a-divider>
       <a-alert
         id="id1"
         message="Error"
@@ -10,7 +10,7 @@
         type="error"
         showIcon
       />
-      <divider></divider>
+      <a-divider></a-divider>
       <a-list itemLayout="horizontal" :dataSource="data">
         <a-list-item slot="renderItem" slot-scope="item" id="id2">
           <a-list-item-meta
@@ -24,7 +24,7 @@
           </a-list-item-meta>
         </a-list-item>
       </a-list>
-      <divider></divider>
+      <a-divider></a-divider>
       <a-comment id="id3">
         <template slot="actions">
           <span>

@@ -5,28 +5,28 @@
       description="用于发票等使用金额场景"
       type="info"
       showIcon>  </a-alert>
-       <divider>转大写</divider>
+       <a-divider>转大写</a-divider>
     <v-amount
       :value="1234"
       is-capital
     ></v-amount>
-    <divider>千分符</divider>
+    <a-divider>千分符</a-divider>
     <v-amount
       :value="1234"
       separator=","
     ></v-amount>
-   <divider>小数精度</divider>
+   <a-divider>小数精度</a-divider>
     <v-amount :value="1234.125" :precision="3"></v-amount>
      <p>
 
-      <divider>四舍五入</divider>
+      <a-divider>四舍五入</a-divider>
       <v-amount :value="1234.125"></v-amount>
     </p>
     <p>
-       <divider>不四舍五入</divider>
+       <a-divider>不四舍五入</a-divider>
       <v-amount :value="1234.123" :is-round-up="false"></v-amount>
       <br>
-      <divider>动画</divider>
+      <a-divider>动画</a-divider>
        <v-amount
       :value="value"
       :duration="800"
@@ -34,13 +34,13 @@
     ></v-amount>
     <a-button @click="value=value+100">数字改变动画</a-button>
     </p>
-    <divider>货币符号</divider>
+    <a-divider>货币符号</a-divider>
       <v-amount :value="1234.123" prefix="¥"></v-amount>
-    <divider>货币符号大小</divider>
+    <a-divider>货币符号大小</a-divider>
       <v-amount :value="1234.123" prefix="¥" :prefix-size="0.5"></v-amount>
-       <divider>后缀</divider>
+       <a-divider>后缀</a-divider>
        <v-amount :value="1234.123" suffix="元" ></v-amount>
-        <divider>后缀大小</divider>
+        <a-divider>后缀大小</a-divider>
        <v-amount :value="1234.123" suffix="元" :suffix-size="0.7"></v-amount>
     </v-card>
   </div>
