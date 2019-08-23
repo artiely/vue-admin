@@ -170,6 +170,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '../../assets/styles/var.less';
 .artiely-chat {
   height: 500px;
   width: 800px;
@@ -180,7 +181,7 @@ export default {
   border-radius: 8px;
   box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.1);
   display: flex;
-  background: rgba(#fff, 0.95);
+  background: darken(@layout-body-background, 70%);
   flex-direction: column;
   overflow: hidden;
   .chat-top {
@@ -196,7 +197,7 @@ export default {
     .top-m {
       flex: 1;
       font-size: 18px;
-      color: #333;
+      color: @text-color;
       line-height: 40px;
     }
     .top-r {
@@ -227,7 +228,7 @@ export default {
   }
   .custom-list {
     display: flex;
-    border-top: 1px solid #f8f8f8;
+    border-top: 1px solid @layout-body-background;
     padding: 10px 0;
     .userinfo {
       display: flex;
@@ -236,7 +237,7 @@ export default {
       padding-left: 5px;
       .name {
         font-size: 14px;
-        color: #333;
+        color: @text-color-secondary;
         margin: 0;
       }
       .tel {
@@ -263,7 +264,7 @@ export default {
   }
   .chat-content-wrapper {
     flex: 2;
-    background: rgba(#f8f8f8, 0.9);
+    background: rgba(@layout-body-background, 0.9);
     display: flex;
     flex-direction: column;
     .chat-list {
@@ -321,7 +322,7 @@ export default {
     }
     .chat-input {
       flex: 1;
-      background: #fff;
+      background: @layout-body-background;
       display: flex;
       flex-direction: column;
       .input-field {
@@ -345,13 +346,13 @@ export default {
     width: 180px;
     overflow-y: scroll;
     .message-item {
-      background: #e8e8e8;
+      background: @body-background;
       cursor: pointer;
       padding: 3px 8px;
       border-radius: 4px;
       margin: 5px 10px;
       &:hover {
-        background: #f8f8f8;
+        background: darken(@body-background,10%);
       }
     }
   }
