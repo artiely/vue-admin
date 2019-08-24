@@ -65,6 +65,8 @@
     "vue-prism-component": "^1.1.1",
     "vue-resize-directive": "^1.2.0",
     "vue-router": "^3.0.3",
+    "vue-text-mask": "^6.1.2",
+    "vue-the-mask": "^0.11.1",
     "vue2-scrollbar": "0.0.3",
     "vue2-transitions": "^0.3.0",
     "vuex": "^3.0.1",

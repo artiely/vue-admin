@@ -17,38 +17,111 @@
 
       <p>关键词高亮</p>
       <a-input v-model="keyword" placeholder="请输入关键词"></a-input>
-      <div
-        v-highlight="{value:tel,keyword:keyword,color:'#f86c6b'}"
-      ></div>
+      <div v-highlight="{value:tel,keyword:keyword,color:'#f86c6b'}"></div>
+
+      <!-- <masked-input
+      type="text"
+      name="phone"
+      class="form-control"
+      v-model="phone"
+      :mask="['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]"
+      :guide="false"
+      placeholderChar="#">-->
+      <!-- </masked-input> -->
+      <a-form :form="form">
+        <a-form-item
+          :label-col="formItemLayout.labelCol"
+          :wrapper-col="formItemLayout.wrapperCol"
+          label="Name"
+        >
+          <the-mask
+            :mask="['### #### ####']"
+            class="v-input ant-input"
+            v-decorator="[
+                'phone',
+                {
+                  'initialValue':'',
+                  rules: [{
+                    required: true,
+                    message: 'Input something!',
+                  }],
+                }
+              ]"
+          />
+        </a-form-item>
+        <a-form-item
+          :label-col="formItemLayout.labelCol"
+          :wrapper-col="formItemLayout.wrapperCol"
+          label="Name"
+        >
+          <a-input
+            v-decorator="[
+          'phone2',
+          {
+            rules: [{ required: true, message: 'Please input your phone number!' }],
+          }
+        ]"
+            style="width: 100%"
+          />
+        </a-form-item>
+      </a-form>
+      <a-button type="primary" @click="check">Check</a-button>
+      {{phone}}
     </v-card>
   </div>
 </template>
 
 <script>
+const formItemLayout = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 8 }
+};
+const formTailLayout = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 8, offset: 4 }
+};
+let myOptions = {
+  onFieldsChange: (props, fields) => {
+    console.log(fields);
+  }
+};
 export default {
-  data () {
+  data() {
     return {
-      tel: ' 159 2629 0460 J ava是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程',
-      keyword: '',
+      formItemLayout,
+      formTailLayout,
+      form: this.$form.createForm(this, myOptions),
+      phone: "",
+      tel:
+        " 159 2629 0460 J ava是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程",
+      keyword: "",
       options: {
-        trigger: '.draggable-btn',
-        body: '.draggable-btn'
+        trigger: ".draggable-btn",
+        body: ".draggable-btn"
       },
       draggableValue: {
         onPositionChange: this.onPosChanged
       }
-    }
+    };
   },
   methods: {
-    onPosChanged: function (positionDiff, absolutePosition, event) {},
-    success () {
-      this.$message.info('已复制到粘贴板')
+    onPosChanged: function(positionDiff, absolutePosition, event) {},
+    success() {
+      this.$message.info("已复制到粘贴板");
     },
-    error () {
-      this.$message.error('搞错了，再来')
+    error() {
+      this.$message.error("搞错了，再来");
+    },
+    check() {
+      this.form.validateFields((err, values) => {
+        this.form.setFieldsValue("phone");
+        if (!err) {
+          console.info("success", values);
+        }
+      });
     }
   }
-}
+};
 </script>
 
 <style>
