@@ -1,49 +1,21 @@
 <template>
-  <div>
-    手机号码格式化
-    18999999999
-    <p>
+  <v-card>
 
+    <p>
+手机号码格式化
+<br>
     {{tel|telFormat()}}
     </p>
     <p>
-      数据脱敏
+      数据脱敏<br>
     {{tel|telFormat(true)}}
     </p>
-    <vue-markdown>
-      SyntaxHighlighter by highlight.html:
-      ```html
-      <div></div>
-      ```
-    </vue-markdown>
-    <vue-markdown>
-      SyntaxHighlighter by highlight.js:
-      ```js
-      tel|telFormat()
-      tel|telFormat(true)
-      ```
-    </vue-markdown>
-    <vue-markdown>
-# 过滤器基本使用
+    <p>
+      车牌格式化
+      <br>{{'粤A00000'|carIdFormat()}}
+    </p>
 
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
-    </vue-markdown>
-    <markdown-run
-    :mark="markdown"
-    highlight-style-file-name="github"
-  />
-  <textarea name="" id="" cols="30" rows="10" ref="mark1">
-
-  </textarea>
-  </div>
+  </v-card>
 </template>
 
 <script>

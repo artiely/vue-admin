@@ -4,9 +4,11 @@
     class="layout"
   >
     <a-layout-header v-if="!layout.isMobile" class="layout2-header" :class="layout.layoutMode==='fixed'?'fixed':''">
+      <v-logo style="display:inline" :isCollapse="false"></v-logo>
       <common-header></common-header>
       <div class="layout2-menu" :class="layout.menuTheme==='dark'?'dark':'light'" >
           <solo-menu
+          :logo="false"
           class="layout2-solo-menu"
           mode="horizontal"
         />
@@ -86,6 +88,6 @@ export default {
   // background: rgba(255,255,255,.2);
   // margin: 16px 24px 16px 0;
   // float: left;
-  display: none
+  // display: none
 }
 </style>

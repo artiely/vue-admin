@@ -1,6 +1,6 @@
 <template>
   <div class="artiely-menu select-none">
-    <v-logo />
+    <v-logo v-if="logo" />
     <a-menu
       :mode="mode"
       :theme="layout.menuTheme"
@@ -34,6 +34,10 @@ export default {
     mode: {
       type: String,
       default: 'inline'
+    },
+    logo: {
+      type: Boolean,
+      default: true
     }
   },
   data () {

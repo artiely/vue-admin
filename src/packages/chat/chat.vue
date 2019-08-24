@@ -181,7 +181,7 @@ export default {
   border-radius: 8px;
   box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.1);
   display: flex;
-  background: darken(@layout-body-background, 70%);
+  background: fade(@background-color-base, 90%);
   flex-direction: column;
   overflow: hidden;
   .chat-top {
@@ -228,7 +228,7 @@ export default {
   }
   .custom-list {
     display: flex;
-    border-top: 1px solid @layout-body-background;
+    border-top: 1px solid @background-color-base;
     padding: 10px 0;
     .userinfo {
       display: flex;

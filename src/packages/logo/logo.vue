@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img :src="require('../../assets/img/logo.svg')" alt="logo">  <h1 v-if="!layout.isCollapse" >Ant Desgin Pro</h1>
+    <img :src="logoUrl" alt="logo">  <h1 v-if="!layout.isCollapse&&!isCollapse" >{{logoText}}</h1>
   </div>
 </template>
 
@@ -8,6 +8,20 @@
 import { layout } from '@layouts'
 export default {
   name: 'v-logo',
+  props: {
+    logoUrl: {
+      type: String,
+      default: require('../../assets/img/logo.svg')
+    },
+    logoText: {
+      type: String,
+      default: 'Ant Desgin Pro'
+    },
+    isCollapse: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       layout
@@ -26,7 +40,8 @@ export default {
   overflow: hidden;
   user-select: none;
   img{
-    height: 100%;
+    width: 32px;
+    // height: 100%;
   }
   h1{
     display: inline-block;
