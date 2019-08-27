@@ -40,6 +40,12 @@ export default {
             { label: '上月', value: '4' },
             { label: '本年', value: '5' }
           ]
+        },
+        {
+          label: '自定义时间',
+          dataIndex: 'endTime',
+          defaultValue: [],
+          type: 'date-range-picker'
         }
       ]
     }

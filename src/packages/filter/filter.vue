@@ -13,8 +13,16 @@
     </a-input>
     <div class="filterbox-group" v-show="show" :key="1">
       <div class="filterbox-item" v-for="(filterItem,index) in data" :key="index">
-        <a-popover placement="bottomLeft" :getPopupContainer="(e)=>e.parentNode">
+        <!-- 自定义时间 -->
+        <template v-if="filterItem.type=='date-range-picker'">
+          <v-date-range-picker @change="dateChange">
+            <a-badge :dot="data[index].defaultValue.filter(v=>v).length?true:false">{{filterItem.label}}</a-badge>
+            <v-icon name="icon-xiala" class="fr"></v-icon>
+          </v-date-range-picker>
+        </template>
+        <a-popover v-else placement="bottomLeft" :getPopupContainer="(e)=>e.parentNode">
           <template slot="content">
+            <!-- 多选 -->
             <a-checkbox-group v-if="filterItem.type=='checkbox'" v-model="data[index].defaultValue">
               <a-row v-for="(item,i) in filterItem.options" :key="i">
                 <a-col>
@@ -22,6 +30,7 @@
                 </a-col>
               </a-row>
             </a-checkbox-group>
+            <!-- 单选 -->
             <a-radio-group v-else-if="filterItem.type=='radio'" v-model="data[index].defaultValue">
               <a-row v-for="(item,i) in filterItem.options" :key="i">
                 <a-col>
@@ -44,26 +53,40 @@
         </a-popover>
       </div>
     </div>
+    <!-- tags -->
     <div class="filter-tags" v-if="hasTag">
-      <span v-for="(item,eq) in data" :key="eq">
-        <template v-for="(sub,i) in item.options">
-          <template v-if="item.type=='checkbox'">
+      <span v-for="(item,j) in data" :key="j">
+        <span v-if="item.type=='date-range-picker'">
+          <span>
             <a-tag
               closable
-              :key="i"
-              v-if="item.defaultValue.indexOf(sub.value)!=-1"
-              @close="closeCheck(eq,sub.value)"
-            >{{sub.label}}</a-tag>
+              @close="closeTime(j)"
+              v-if="item.defaultValue.length"
+            >
+            {{item.defaultValue.join(' ~ ')}}
+            </a-tag>
+          </span>
+        </span>
+        <span v-else>
+          <template v-for="(sub,i) in item.options">
+            <template v-if="item.type=='checkbox'">
+              <a-tag
+                closable
+                :key="i"
+                v-if="item.defaultValue.indexOf(sub.value)!=-1"
+                @close="closeCheck(eq,sub.value)"
+              >{{sub.label}}</a-tag>
+            </template>
+            <template v-else-if="item.type=='radio'">
+              <a-tag
+                closable
+                :key="i"
+                v-if="item.defaultValue==sub.value"
+                @close="closeRadio(eq,sub.value)"
+              >{{sub.label}}</a-tag>
+            </template>
           </template>
-          <template v-else-if="item.type=='radio'">
-            <a-tag
-              closable
-              :key="i"
-              v-if="item.defaultValue==sub.value"
-              @close="closeRadio(eq,sub.value)"
-            >{{sub.label}}</a-tag>
-          </template>
-        </template>
+        </span>
       </span>
     </div>
   </div>
@@ -130,6 +153,22 @@ export default {
     }
   },
   methods: {
+    dateChange (dateString) {
+      let index = this.data.findIndex(el => el.type === 'date-range-picker')
+
+      // this.data[index].defaultValue.splice(0)
+      this.data[index].defaultValue.splice(0, 2, ...dateString)
+      this.$set(this.data[index], 'defaultValue', dateString)
+      this.data[index].defaultValue = dateString
+      // let time = this.data[index]
+      // time.defaultValue = dateString
+      // console.log("TCL: dateChange -> time", time)
+      // this.data.splice(index,1,time)
+      console.log('TCL: dateChange -> this.data', this.data)
+    },
+    closeTime (j) {
+      this.data[j].defaultValue.splice(0)
+    },
     finalFilter () {
       let obj = {}
       this.data.map(v => {
@@ -160,12 +199,12 @@ export default {
 </script>
 
 <style lang="less" >
-@import '../../assets/styles/var.less';
+@import "../../assets/styles/var.less";
 .filterbox {
   background: @input-bg;
   border-radius: 4px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  // overflow: hidden;
   .filter-tags {
     padding: 10px 20px;
     border-top: 1px solid #d5d5d5;
@@ -185,7 +224,7 @@ export default {
     .filterbox-item {
       font-size: 14px;
       padding: 10px;
-      width: 120px;
+      min-width: 100px;
       border-right: 1px solid #eee;
       .checkbox-badge {
         transform: scale(0.8);
