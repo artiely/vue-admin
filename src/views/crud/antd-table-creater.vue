@@ -107,8 +107,6 @@ const columns = [
     ],
     filterMultiple: true,
     filterMethod (value, row) {
-      console.log(value)
-      console.log('TCL: filterMethod -> value', value)
     }
   },
   // 星级

@@ -127,6 +127,7 @@ module.exports = {
       .set('@api', resolve('src/api'))
       .set('@store', resolve('src/store'))
       .set('@utils', resolve('src/common/utils'))
+      .set('@config', resolve('src/config'))
     config.module
       .rule('md')
       .test(/\.md$/)

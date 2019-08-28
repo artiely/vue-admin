@@ -6,41 +6,40 @@
  */
 import axios from 'axios'
 import qs from 'qs'
-import utils from '@/common/utils'
-import BASE_URL from './base-url'
 import errorHandler from './error-handler'
-let { getToken } = utils
+import configs from '@config'
+import { message } from 'ant-design-vue'
+
 const CancelToken = axios.CancelToken
 // 存储请求的映射
 let requestMap = new Map()
 
 window.addEventListener('offline', function (e) {
-  this.$message.warning('当前网络已断开！')
+  message.warning('当前网络已断开！')
 })
 
 export default function fetch (options, argu) {
-  if (navigator && navigator.onLine) {
-    // ...
-  } else {
-    this.$message.warning('请检查当前网络！')
-  }
-  const instance = axios.create({
-    baseURL: BASE_URL,
-    headers: {
+  configs.api_before_fetch && configs.api_before_fetch()
+  let headers = Object.assign(
+    {
       'Cache-Control': 'no-cache',
       'Content-type': 'application/x-www-form-urlencoded'
     },
+    configs.headers
+  )
+  let timeout = configs.timeout || 10000
+  const instance = axios.create({
+    baseURL: configs.api_url,
+    headers: headers,
     validateStatus: function (status) {
-      // return status >= 200 && status < 500 // default 标准restful需要
       return status === 200
     },
     responseType: 'json',
     responseEncoding: 'utf8', // default
-    maxRedirects: 15, // default
     // `transformResponse` 在传递给 then/catch 前，允许修改响应数据
     transformResponse: [
       data => {
-        // 此处可以拦截某些状态做相应处理(如果返回数据为null就返回状态 4 直接到登录页)
+        // 此处可以拦截某些状态做相应处理
         if (data) {
           return data
         } else {
@@ -50,7 +49,7 @@ export default function fetch (options, argu) {
         }
       }
     ],
-    timeout: 10000, // default is `0` (no timeout)
+    timeout: timeout, // default is `0` (no timeout)
     withCredentials: false // default
   })
 
@@ -80,17 +79,9 @@ export default function fetch (options, argu) {
 
       Object.assign(config, { _keyString: keyString })
 
-      let { token, storeid } = getToken()
-      if (token) {
-        config.headers.token = `${token}`
-        config.headers.storeid = `${storeid}`
-      }
-      config.data = qs.stringify(config.data, {
-        arrayFormat: 'indices',
-        allowDots: true
-      })
+      let cusConfig = configs.api_set_config(config)
 
-      return config
+      return { ...config, ...cusConfig }
     },
     error => {
       return Promise.reject(error)
@@ -126,7 +117,6 @@ export default function fetch (options, argu) {
         return false
       })
       .catch(error => {
-        console.error(`来自响应结果的错误:${error}`)
         reject(error)
       })
   })

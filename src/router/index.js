@@ -26,7 +26,6 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: routes
 })
-console.log('TCL: routes456', routes)
 // 将路由处理成菜单
 
 store.commit('sys/setMenu', routes)
@@ -63,5 +62,4 @@ router.afterEach(() => {
   NProgress.done() // finish progress bar
 })
 export { routes }
-console.log('TCL: routes', routes)
 export default router

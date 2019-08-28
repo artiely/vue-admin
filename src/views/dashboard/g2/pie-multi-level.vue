@@ -5,10 +5,7 @@
 <script>
 import uuid from 'uuid'
 import G2 from '@antv/g2'
-// import {DataSet} from '@antv/g2'
-// import DataSet from '@antv/g2/dist/DataSet'
 import { DataSet } from '@antv/data-set'
-console.log('TCL: DataSet', DataSet)
 export default {
   data () {
     return {

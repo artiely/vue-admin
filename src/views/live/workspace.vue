@@ -94,14 +94,12 @@ export default {
   errorCaptured
    */
   created () {
-    console.log('TCL: created -> created', 'created')
   },
   mounted () {
     this.$nextTick(() => {})
   },
   methods: {
     guide () {
-      console.log('TCL: guide -> this.$refs', this.$refs)
       this.$refs.guide.start()
     }
   }

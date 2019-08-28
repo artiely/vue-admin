@@ -235,15 +235,12 @@ export default {
       return eval('this.defaultData.' + s)
     },
     emitEmpty (value) {
-      // this.formAction.getFieldsValue()
-      console.log(this.formAction.getFieldsValue([value])[value])
       this.formAction.setFieldsValue({ [value]: '' })
     },
     handleSubmit (e) {
       e.preventDefault()
       this.formAction.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values)
           this.$emit('handle-submit', values)
           this.formAction.resetFields()
         } else {
@@ -260,14 +257,12 @@ export default {
     },
     handleChange ({ fileList }) {
       this.fileList = fileList
-      console.log('TCL: handleChange -> fileList', fileList)
       this.formAction.setFieldsValue({ upload: fileList })
     },
     handleRemove (file) {
       console.log('TCL: remove -> file', file)
     },
     normFile (e) {
-      console.log('Upload event:', e)
       if (Array.isArray(e)) {
         return e
       }

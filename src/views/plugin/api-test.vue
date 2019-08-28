@@ -78,12 +78,8 @@ import VueJsonPretty from 'vue-json-pretty'
 import axios from 'axios'
 import { apiSource } from '@/api'
 import qs from 'qs'
-console.log('TCL: apiSource', apiSource)
 let apiArr = []
 let keys = Object.keys(apiSource)
-for (var i in apiSource) {
-  console.log(i)
-}
 apiArr = keys.map(v => {
   return {
     method: apiSource[v].method,
@@ -125,7 +121,6 @@ export default {
   watch: {
     currApi: {
       handler (val) {
-        console.log('TCL: handler -> val', val)
         this.currData = JSON.stringify(val.data, null, 2)
       },
       deep: true,
@@ -189,7 +184,6 @@ export default {
         }
       }).then(res => {
         this.error = false
-        console.log('>>>>', res)
         this.val = JSON.stringify(res.data)
 
         if (this.currApi.url === 'login') {
@@ -202,7 +196,6 @@ export default {
         })
       }).catch((err) => {
         this.error = err
-        console.log('>>>>', err)
       })
     }
   }

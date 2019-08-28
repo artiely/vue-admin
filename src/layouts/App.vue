@@ -24,13 +24,9 @@ export default {
     }
   },
   beforeRouteUpdate (to, from, next) {
-    console.log('TCL: beforeRouteUpdate -> to', to)
-    // ....
     next()
   },
   mounted () {
-    console.log('>>>>>>>>>>>>>>>>', this.abc)
-    console.log('>>>>>>>>>>>>>>>>11111111111111', this.$router)
     mediaQuery()
   },
   methods: {

@@ -30,7 +30,6 @@ import soloMenu from './solo-menu'
 import { layout } from '@layouts'
 import utils from '@/common/utils'
 let { pxtorem } = utils
-console.log('lauout', layout)
 export default {
   name: 'FullMenu',
   components: {

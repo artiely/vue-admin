@@ -1,7 +1,6 @@
-import router from '@/router'
-import utils from '@/common/utils'
 import { notification } from 'ant-design-vue'
-let { removeToken } = utils
+import configs from '@config'
+import log from 'consola/src/browser'
 // 是否生产环境
 const PRODUCTION =
   process.env.VUE_APP_MODE === 'release' ||
@@ -12,28 +11,17 @@ export default function errorHandler (error) {
   if (!error.response) {
     // 请求超时状态
     if (error.message && error.message.includes('timeout')) {
-      console.error('超时了')
+      log.error('超时了')
     } else if (error.message && error.message === '请求重复') {
-      console.error('请求重复')
+      log.error('请求重复')
     } else if (error.message && error.message.includes('cancel')) {
-      console.error('请求被取消')
+      log.error('请求被取消')
     } else {
       // 可以展示断网组件
-      console.error('请求失败')
+      log.error('请求失败', error)
     }
   } else {
-    const responseCode = error.response.data.status
-    switch (responseCode) {
-      case 4:
-        // 跳转登录页
-        router.replace({
-          name: 'login',
-          params: { message: '您已在其他地方登录，或登录信息失效，请重新登录' }
-        })
-        removeToken()
-        break
-      default:
-    }
+    configs.api_error_handler && configs.api_error_handler(error)
     if (!PRODUCTION) {
       let url = error.response.config.url
       let params = error.response.config.data
@@ -49,9 +37,7 @@ export default function errorHandler (error) {
             业务状态码<p>{status}</p>
           </div>
         ),
-        onClick: () => {
-          console.log('Notification Clicked!')
-        }
+        onClick: () => {}
       })
     }
   }

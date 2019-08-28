@@ -40,8 +40,6 @@
 import calendar from './lib/calendar.js'
 import moment from 'moment'
 import formatDateToZh from './template/formatDateToZh'
-let lunarInfo = calendar.solar2lunar('2019', '02', '05')
-console.log('TCL: lunarInfo', lunarInfo)
 export default {
   components: {
     formatDateToZh

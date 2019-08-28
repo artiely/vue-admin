@@ -164,7 +164,6 @@ export default {
   mounted () {
     this.getData()
     this.draggableValue.handle = this.$refs.handle
-    console.log('TCL: mounted -> this.$refs.handle', this.$refs.handle)
   }
 }
 </script>

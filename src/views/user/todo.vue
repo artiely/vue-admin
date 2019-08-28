@@ -97,7 +97,6 @@ export default {
       this.visible = false
     },
     onChange (date, dateString) {
-      console.log(date, dateString)
     },
     onToogle: function () {
       this.$emit('clicked', this.isactive)
@@ -130,7 +129,6 @@ export default {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values)
           this.visible = false
           this.todo.unshift({ ...values, done: false })
         }

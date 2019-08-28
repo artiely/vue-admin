@@ -1,5 +1,4 @@
 import loadingError from '@/views/exception/routeError.vue'
-// const isProduction = process.env.NODE_ENV === "production";
 const loading = (path) => {
   return () => {
     return import(`@/${path}`)
@@ -9,7 +8,6 @@ const loading = (path) => {
       .catch(e => {
         console.error('获取页面失败', e)
         return loadingError
-        // window.location.reload()
       })
       .finally(() => {
         // ...

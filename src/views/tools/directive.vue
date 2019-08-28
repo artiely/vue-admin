@@ -82,7 +82,6 @@ const formTailLayout = {
 }
 let myOptions = {
   onFieldsChange: (props, fields) => {
-    console.log(fields)
   }
 }
 export default {

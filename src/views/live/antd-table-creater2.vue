@@ -175,8 +175,6 @@ export default {
       let i = val.target.value
       cols[i].hidden = cols[i].hidden ? !cols[i].hidden : true
       this.columns = [...cols]
-
-      console.log('TCL: onChangeTableColumn -> val', val)
     },
     onChangeSize (val) {
       this.size = val ? 'small' : 'default'
@@ -191,8 +189,6 @@ export default {
       this.$message.info('复制失败')
     },
     handleEdit (text, record) {
-      console.log('TCL: handleEdit -> record', record)
-      console.log('TCL: handleEdit -> text', text)
       this.showForm = true
       this.defaultData = record
     }

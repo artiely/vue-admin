@@ -9,7 +9,6 @@ var proxy = require('http-proxy-middleware')
 // env = env.toLowerCase()
 // 本地测试环境staging
 let port = 3999
-console.log('开发环境<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
 let options = {
   target: 'http://192.168.2.242:8091', // 测试
   // target: 'http://dppre.51chebian.com', // 预生产

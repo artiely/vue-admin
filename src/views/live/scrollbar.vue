@@ -44,7 +44,6 @@ export default {
   created () {},
   methods: {
     scrollHandle (evt) {
-      console.log(evt)
     }
   }
 }

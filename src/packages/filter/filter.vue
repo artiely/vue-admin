@@ -155,16 +155,9 @@ export default {
   methods: {
     dateChange (dateString) {
       let index = this.data.findIndex(el => el.type === 'date-range-picker')
-
-      // this.data[index].defaultValue.splice(0)
       this.data[index].defaultValue.splice(0, 2, ...dateString)
       this.$set(this.data[index], 'defaultValue', dateString)
       this.data[index].defaultValue = dateString
-      // let time = this.data[index]
-      // time.defaultValue = dateString
-      // console.log("TCL: dateChange -> time", time)
-      // this.data.splice(index,1,time)
-      console.log('TCL: dateChange -> this.data', this.data)
     },
     closeTime (j) {
       this.data[j].defaultValue.splice(0)

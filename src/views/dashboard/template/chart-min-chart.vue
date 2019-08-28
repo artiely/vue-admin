@@ -1,5 +1,5 @@
 <template>
-  <div class="chart-min-chart-wrapper" v-resize:throttle.100="onresize">
+  <div class="chart-min-chart-wrapper" >
     <a-card hoverable :bordered="false">
       <div class="chart-min-chart">
         <div class="main">
@@ -64,10 +64,6 @@ export default {
     })
   },
   methods: {
-    onresize () {
-      console.log('resized')
-      // this.chart.forceFit()
-    },
     renderChart () {
       var options = {
         chart: {
