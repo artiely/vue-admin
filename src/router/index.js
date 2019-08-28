@@ -2,24 +2,28 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NProgress from 'nprogress'
 import { anthNavTabs } from '@layouts'
-import baseRoutes from './baseRoutes'
-// import store from '../store'
+// import baseRoutes from './baseRoutes'
 import configs from '@config'
+import { abc } from '../core/abc'
+import path from 'path'
 Vue.use(Router)
 NProgress.configure({
   showSpinner: false
 })
 let routes = []
-const routerContext = require.context('./modules', true, /\.js$/)
-
-routerContext.keys().forEach(route => {
-  const routerModle = routerContext(route)
-  routes = [
-    ...routes,
-    ...(routerModle.default || routerModle),
-    ...baseRoutes
-  ]
-})
+// function abc(){
+//   const routerContext = require.context('./modules', true, /\.js$/)
+//   routerContext.keys().forEach(route => {
+//     const routerModle = routerContext(route)
+//     routes = [
+//       ...routes,
+//       ...(routerModle.default || routerModle),
+//       ...baseRoutes
+//     ]
+//   })
+// }
+console.log(path.resolve(__dirname, 'src/utils'))
+routes = abc()
 
 const router = new Router({
   mode: 'hash',
