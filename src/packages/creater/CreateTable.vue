@@ -179,10 +179,6 @@ export default {
     getDomWidth () {
       this.tableBoxWidth = this.$refs.tableBox.clientWidth
       this.tableBoxHeight = this.$refs.tableBox.clientHeight
-      console.log(
-        'TCL: getDomWidth -> this.$refs.tableBox',
-        this.$refs.tableBox
-      )
     },
     handleEdit (text, record) {
       this.$emit('handle-edit', text, record)

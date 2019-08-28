@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import NProgress from 'nprogress'
-// import { getToken } from '@/common/utils'
 import { anthNavTabs } from '@layouts'
 import baseRoutes from './baseRoutes'
-import store from '../store'
+// import store from '../store'
+import configs from '@config'
 Vue.use(Router)
 NProgress.configure({
   showSpinner: false
@@ -28,35 +28,18 @@ const router = new Router({
 })
 // 将路由处理成菜单
 
-store.commit('sys/setMenu', routes)
+// store.commit('sys/setMenu', routes)
 
 router.beforeEach((to, from, next) => {
   // 第一步鉴权
   // 第二步写入navtabs
   NProgress.start()
+  if (configs.router_auth) {
+    configs.router_before_each(to, from, next)
+  } else {
+    next()
+  }
   anthNavTabs(to)
-
-  // let { token } = getToken()
-  // if (to.meta.auth) {
-  //   // 有用户信息
-  //   if (token) {
-  //     next({
-  //       query: {
-  //         redirect: to.fullPath
-  //       }
-  //     })
-  //   } else {
-  //     next({
-  //       path: '/login',
-  //       query: {
-  //         redirect: to.fullPath
-  //       }
-  //     })
-  //   }
-  // } else {
-  //   next()
-  // }
-  next()
 })
 router.afterEach(() => {
   NProgress.done() // finish progress bar

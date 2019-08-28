@@ -11,12 +11,17 @@ import { Api } from '@/api'
 import './packages'
 import 'nprogress/nprogress.css'
 import './plugins'
+
+// import r from 'admin'
+// console.log('TCL: r', r)
 Vue.config.productionTip = false
 Vue.use(Antd)
 Vue.use(Api)
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
+// let s = r('router/modules').getMain()
+// console.log('TCL: s', s)
 
 new Vue({
   router,

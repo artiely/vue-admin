@@ -33,6 +33,7 @@ const cdn = {
   js: []
 }
 module.exports = {
+  // transpileDependencies: ['admin'],
   css: {
     loaderOptions: {
       less: {
