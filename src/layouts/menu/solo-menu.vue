@@ -24,6 +24,7 @@
 <script>
 import subMenu from './sub-menu'
 import { layout } from '@layouts'
+import { routes } from '@router'
 let reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&:/~+#]*[\w\-@?^=%&/~+#])?/
 export default {
   components: {
@@ -59,7 +60,7 @@ export default {
       return [this.$route.path]
     },
     menu () {
-      return this.$store.state.sys.menu
+      return routes
     },
     openKeys: {
       get () {

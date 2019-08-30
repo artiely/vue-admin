@@ -1,52 +1,43 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import NProgress from 'nprogress'
-import { anthNavTabs } from '@layouts'
-// import baseRoutes from './baseRoutes'
-import configs from '@config'
-import { abc } from '../core/abc'
-import path from 'path'
-Vue.use(Router)
+import Vue from "vue";
+import Router from "vue-router";
+import NProgress from "nprogress";
+import { anthNavTabs } from "@layouts";
+import baseRoutes from "./baseRoutes";
+import configs from "@config";
+import { abc } from "../core/abc";
+import path from "path";
+Vue.use(Router);
 NProgress.configure({
   showSpinner: false
-})
-let routes = []
-// function abc(){
-//   const routerContext = require.context('./modules', true, /\.js$/)
-//   routerContext.keys().forEach(route => {
-//     const routerModle = routerContext(route)
-//     routes = [
-//       ...routes,
-//       ...(routerModle.default || routerModle),
-//       ...baseRoutes
-//     ]
-//   })
-// }
-console.log(path.resolve(__dirname, 'src/utils'))
-routes = abc()
+});
+let routes = [];
+const routerContext = require.context("./modules", true, /\.js$/);
+routerContext.keys().forEach(route => {
+  const routerModle = routerContext(route);
+  routes = [...routes, ...(routerModle.default || routerModle), ...baseRoutes];
+});
+console.log(path.resolve(__dirname, "src/utils"));
 
 const router = new Router({
-  mode: 'hash',
+  mode: "hash",
   base: process.env.BASE_URL,
   routes: routes
-})
+});
 // 将路由处理成菜单
-
-// store.commit('sys/setMenu', routes)
 
 router.beforeEach((to, from, next) => {
   // 第一步鉴权
   // 第二步写入navtabs
-  NProgress.start()
+  NProgress.start();
   if (configs.router_auth) {
-    configs.router_before_each(to, from, next)
+    configs.router_before_each(to, from, next);
   } else {
-    next()
+    next();
   }
-  anthNavTabs(to)
-})
+  anthNavTabs(to);
+});
 router.afterEach(() => {
-  NProgress.done() // finish progress bar
-})
-export { routes }
-export default router
+  NProgress.done(); // finish progress bar
+});
+export { routes };
+export default router;
