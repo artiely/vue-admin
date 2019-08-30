@@ -1,7 +1,5 @@
-import loading from '../loading'
-import { App, Home } from '../../layouts'
-console.log('TCL: Home', Home)
-console.log('TCL: App', App)
+import { loader } from '@core'
+import { App, Home } from '@layouts'
 export default [
   {
     path: '/',
@@ -16,7 +14,7 @@ export default [
       // {
       //   path: '/index',
       //   name: 'index',
-      //   component: loading('views/live/workspace.vue'),
+      //   component: loader('views/live/workspace.vue'),
       //   meta: {
       //     auth: true,
       //     title: '工作台',
@@ -35,7 +33,7 @@ export default [
       {
         path: '/workplace',
         name: 'workplace',
-        component: loading('views/dashboard/workplace'),
+        component: loader('views/dashboard/workplace'),
         meta: {
           auth: true,
           title: 'workplace',
@@ -45,7 +43,7 @@ export default [
       {
         path: '/analysis',
         name: 'analysis',
-        component: loading('views/dashboard/analysis'),
+        component: loader('views/dashboard/analysis'),
         meta: {
           auth: true,
           title: 'analysis',
@@ -66,7 +64,7 @@ export default [
       {
         path: '/crud',
         name: 'crud',
-        component: loading('views/crud/crud.vue'),
+        component: loader('views/crud/crud.vue'),
         meta: {
           auth: true,
           title: '表单生成器',
@@ -76,7 +74,7 @@ export default [
       // {
       //   path: '/index2',
       //   name: 'index2',
-      //   component: loading('views/live/workspace.vue'),
+      //   component: loader('views/live/workspace.vue'),
       //   meta: {
       //     auth: true,
       //     title: '首页',
@@ -86,7 +84,7 @@ export default [
       // {
       //   path: '/scrollbar',
       //   name: 'scrollbar',
-      //   component: loading('views/live/scrollbar.vue'),
+      //   component: loader('views/live/scrollbar.vue'),
       //   meta: {
       //     auth: true,
       //     title: 'scrollbar',
@@ -96,7 +94,7 @@ export default [
       // {
       //   path: '/index3',
       //   name: 'index3',
-      //   component: loading('views/live/workspace.vue'),
+      //   component: loader('views/live/workspace.vue'),
       //   meta: {
       //     auth: true,
       //     title: '首页',
@@ -107,7 +105,7 @@ export default [
       // {
       //   path: '/antd-table',
       //   name: 'antd-table',
-      //   component: loading('views/live/antd-table.vue'),
+      //   component: loader('views/live/antd-table.vue'),
       //   meta: {
       //     auth: true,
       //     title: '表格生成器',
@@ -117,7 +115,7 @@ export default [
       {
         path: '/antd-table-creater',
         name: 'antd-table-creater',
-        component: loading('views/crud/antd-table-creater.vue'),
+        component: loader('views/crud/antd-table-creater.vue'),
         meta: {
           auth: true,
           title: '表格生成器',
@@ -127,7 +125,7 @@ export default [
       {
         path: '/antd-table-creater2',
         name: 'antd-table-creater2',
-        component: loading('views/crud/antd-table-creater2.vue'),
+        component: loader('views/crud/antd-table-creater2.vue'),
         meta: {
           auth: true,
           title: '高级表格',
@@ -148,7 +146,7 @@ export default [
       {
         path: '/error',
         name: 'error',
-        component: loading('views/result/error.vue'),
+        component: loader('views/result/error.vue'),
         meta: {
           title: '失败',
           icon: 'icon-warning'
@@ -157,7 +155,7 @@ export default [
       {
         path: '/success',
         name: 'success',
-        component: loading('views/result/success.vue'),
+        component: loader('views/result/success.vue'),
         meta: {
           title: '成功',
           icon: 'icon-task'
@@ -177,7 +175,7 @@ export default [
       {
         path: '/login',
         name: 'login',
-        component: loading('views/auth/login.vue'),
+        component: loader('views/auth/login.vue'),
         meta: {
           title: '登录页',
           icon: 'icon-addressbook'
@@ -186,7 +184,7 @@ export default [
       {
         path: '/login2',
         name: 'login2',
-        component: loading('views/auth/login2.vue'),
+        component: loader('views/auth/login2.vue'),
         meta: {
           title: '登录页2',
           icon: 'icon-addressbook'
@@ -195,7 +193,7 @@ export default [
       {
         path: '/register',
         name: 'register',
-        component: loading('views/auth/register.vue'),
+        component: loader('views/auth/register.vue'),
         meta: {
           title: '注册页',
           icon: 'icon-addpeople'
@@ -215,7 +213,7 @@ export default [
       {
         path: '/403',
         name: '403',
-        component: loading('views/exception/403.vue'),
+        component: loader('views/exception/403.vue'),
         meta: {
           title: '403',
           icon: 'icon-xiaomi'
@@ -224,7 +222,7 @@ export default [
       {
         path: '/404',
         name: '404',
-        component: loading('views/exception/404.vue'),
+        component: loader('views/exception/404.vue'),
         meta: {
           title: '404',
           icon: 'icon-xiaomi'
@@ -233,7 +231,7 @@ export default [
       {
         path: '/500',
         name: '500',
-        component: loading('views/exception/500.vue'),
+        component: loader('views/exception/500.vue'),
         meta: {
           title: '500',
           icon: 'icon-xiaomi'
@@ -242,7 +240,7 @@ export default [
       {
         path: '/600',
         name: '600',
-        component: loading('views/exception/600.vue'),
+        component: loader('views/exception/600.vue'),
         meta: {
           title: '路由配置错误',
           icon: 'icon-xiaomi'
@@ -263,7 +261,7 @@ export default [
       {
         path: '/userinfo',
         name: 'userinfo',
-        component: loading('views/user/user'),
+        component: loader('views/user/user'),
         meta: {
           auth: true,
           title: 'userinfo',
@@ -273,7 +271,7 @@ export default [
       {
         path: '/todo',
         name: 'todo',
-        component: loading('views/user/todo'),
+        component: loader('views/user/todo'),
         meta: {
           auth: true,
           title: 'todo',
@@ -283,7 +281,7 @@ export default [
       {
         path: '/calendar',
         name: 'calendar',
-        component: loading('views/user/calendar'),
+        component: loader('views/user/calendar'),
         meta: {
           auth: true,
           title: 'calendar',
@@ -293,7 +291,7 @@ export default [
       {
         path: '/help',
         name: 'help',
-        component: loading('views/user/help'),
+        component: loader('views/user/help'),
         meta: {
           auth: true,
           title: 'help',
@@ -303,7 +301,7 @@ export default [
       {
         path: '/handler-over',
         name: 'handler-over',
-        component: loading('views/user/handler-over'),
+        component: loader('views/user/handler-over'),
         meta: {
           auth: true,
           title: 'handler-over',
@@ -325,7 +323,7 @@ export default [
       {
         path: '/filter',
         name: 'filter',
-        component: loading('views/tools/filter'),
+        component: loader('views/tools/filter'),
         meta: {
           auth: true,
           title: '过滤器',
@@ -335,7 +333,7 @@ export default [
       {
         path: '/directive',
         name: 'directive',
-        component: loading('views/tools/directive'),
+        component: loader('views/tools/directive'),
         meta: {
           auth: true,
           title: '自定义指令',
@@ -357,7 +355,7 @@ export default [
       {
         path: '/captcha',
         name: 'captcha',
-        component: loading('views/widgets/captcha'),
+        component: loader('views/widgets/captcha'),
         meta: {
           auth: true,
           title: '验证码组件',
@@ -367,7 +365,7 @@ export default [
       {
         path: '/amount',
         name: 'amount',
-        component: loading('views/widgets/amount'),
+        component: loader('views/widgets/amount'),
         meta: {
           auth: true,
           title: '金额组件',
@@ -377,7 +375,7 @@ export default [
       {
         path: '/iconbox',
         name: 'iconbox',
-        component: loading('views/widgets/iconbox'),
+        component: loader('views/widgets/iconbox'),
         meta: {
           auth: true,
           title: '图标组件',
@@ -387,7 +385,7 @@ export default [
       {
         path: '/avatar-group',
         name: 'avatar-group',
-        component: loading('views/widgets/avatar-group'),
+        component: loader('views/widgets/avatar-group'),
         meta: {
           auth: true,
           title: '头像组组件',
@@ -397,7 +395,7 @@ export default [
       {
         path: '/guide',
         name: 'guide',
-        component: loading('views/widgets/guide'),
+        component: loader('views/widgets/guide'),
         meta: {
           auth: true,
           title: '向导组件',
@@ -407,7 +405,7 @@ export default [
       {
         path: '/filterbox',
         name: 'filterbox',
-        component: loading('views/widgets/filterbox'),
+        component: loader('views/widgets/filterbox'),
         meta: {
           auth: true,
           title: '筛选组件',
@@ -429,7 +427,7 @@ export default [
       {
         path: '/print',
         name: 'print',
-        component: loading('views/plugin/print'),
+        component: loader('views/plugin/print'),
         meta: {
           auth: true,
           title: '打印',
@@ -439,7 +437,7 @@ export default [
       {
         path: '/api-test',
         name: 'api-test',
-        component: loading('views/plugin/api-test'),
+        component: loader('views/plugin/api-test'),
         meta: {
           auth: true,
           title: '接口管理',

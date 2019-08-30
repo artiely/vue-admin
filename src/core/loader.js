@@ -1,5 +1,5 @@
 import loadingError from '@/views/exception/routeError.vue'
-const loading = (path) => {
+const loader = path => {
   return () => {
     return import(`@/${path}`)
       .then(component => {
@@ -14,4 +14,4 @@ const loading = (path) => {
       })
   }
 }
-export default loading
+export default loader

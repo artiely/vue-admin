@@ -129,6 +129,7 @@ module.exports = {
       .set('@store', resolve('src/store'))
       .set('@utils', resolve('src/common/utils'))
       .set('@config', resolve('src/config'))
+      .set('@core', resolve('src/core'))
     config.module
       .rule('md')
       .test(/\.md$/)

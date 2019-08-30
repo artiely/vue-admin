@@ -1,9 +1,9 @@
-import loading from './loading'
+import loader from './loader'
 export default [
   {
     path: '/lock',
     name: 'lock',
-    component: loading('layouts/layout/lock.vue'),
+    component: loader('layouts/layout/lock.vue'),
     meta: {
       title: '页面锁定',
       hide: true
@@ -12,7 +12,7 @@ export default [
   {
     path: '*',
     name: 'notFount',
-    component: loading('views/exception/404.vue'),
+    component: loader('views/exception/404.vue'),
     meta: {
       title: '该页面不存在',
       hide: true
