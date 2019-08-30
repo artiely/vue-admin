@@ -1,5 +1,7 @@
 import loading from '../loading'
-import { App, Home } from '@layouts'
+import { App, Home } from '../../layouts'
+console.log('TCL: Home', Home)
+console.log('TCL: App', App)
 export default [
   {
     path: '/',

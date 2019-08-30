@@ -23,6 +23,7 @@ Object.keys(filters).forEach(key => {
 // let s = r('router/modules').getMain()
 // console.log('TCL: s', s)
 
+console.log('TCL: router', router)
 new Vue({
   router,
   store,

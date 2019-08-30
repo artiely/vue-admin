@@ -3,7 +3,7 @@ export default [
   {
     path: '/lock',
     name: 'lock',
-    component: loading('components/layout/lock.vue'),
+    component: loading('layouts/layout/lock.vue'),
     meta: {
       title: '页面锁定',
       hide: true

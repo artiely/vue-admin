@@ -13,7 +13,6 @@ import moreGroup from './more-group'
 import { layout } from '../observable/layout'
 import scrollTop from './scroll-top'
 export default {
-  name: 'Home',
   components: {
     layout1,
     layout2,
