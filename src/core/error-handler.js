@@ -7,9 +7,7 @@ const PRODUCTION =
   process.env.VUE_APP_MODE === 'production'
 
 export default function errorHandler (error) {
-  // 断网 或者 请求超时 状态
   if (!error.response) {
-    // 请求超时状态
     if (error.message && error.message.includes('timeout')) {
       log.error('超时了')
     } else if (error.message && error.message === '请求重复') {
@@ -17,7 +15,6 @@ export default function errorHandler (error) {
     } else if (error.message && error.message.includes('cancel')) {
       log.error('请求被取消')
     } else {
-      // 可以展示断网组件
       log.error('请求失败', error)
     }
   } else {
@@ -27,7 +24,6 @@ export default function errorHandler (error) {
       let params = error.response.config.data
       let code = error.response.status
       let status = error.response.data.status
-      // 如果不是成产环境
       notification.error({
         message: '这是请求错误提示，只会出现在测试环境',
         duration: 0,
