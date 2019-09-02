@@ -3,7 +3,6 @@
 
     <!-- register -->
     <a-modal
-      title="Artiely系统欢迎您"
       :mask="false"
       v-model="registerDialogVisible"
       width="400px"
@@ -16,7 +15,9 @@
       :keyboard="false"
       class="login-modal my-login-modal"
     >
+
       <a-spin :spinning="loading">
+        <v-logo></v-logo>
         <a-form :form="form">
           <!--  label='账号'  -->
           <a-form-item

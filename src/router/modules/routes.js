@@ -421,6 +421,16 @@ export default [
           title: '格式化输入内容',
           icon: 'icon-shaixuan'
         }
+      },
+      {
+        path: '/city-picker',
+        name: 'city-picker',
+        component: loader('views/widgets/city-picker'),
+        meta: {
+          auth: true,
+          title: '城市选择器',
+          icon: 'icon-supply'
+        }
       }
     ]
   },
