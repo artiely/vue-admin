@@ -1,14 +1,16 @@
 <template>
+    <div id="app">
+      <template v-if="layout.appReload">
   <a-locale-provider :locale="locale">
     <a-config-provider :getPopupContainer="getPopupContainer">
-    <div id="app">
       <router-view
         class="router-view"
         :key="$route.fullpath"
       />
-    </div>
     </a-config-provider>
   </a-locale-provider>
+  </template>
+    </div>
 </template>
 
 <script>
@@ -20,6 +22,7 @@ export default {
   },
   data () {
     return {
+      layout,
       locale: zhCN
     }
   },

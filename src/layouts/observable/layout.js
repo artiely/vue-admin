@@ -22,7 +22,9 @@ export const layout = Vue.observable({
   //  菜单的宽度
   menuWidth: 240,
   //  刷新当前页使用
-  refreshLoad: true
+  homeReload: true,
+  // 这个应用重置
+  appReload: true
 })
 
 export function setFontSize (val) {

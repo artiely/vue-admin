@@ -8,8 +8,10 @@ toolContext.keys().forEach(tool => {
   const toolModle = toolContext(tool)
   utils = { ...utils, ...(toolModle.default || toolModle) }
 })
-export default utils
 
+export default utils
+console.log('TCL: utils>>>>>>>>>>>>>>>>>>>>', utils)
+// class utils
 // document.addEventListener('visibilitychange', function () {
 //   // 浏览器切换事件
 //   if (document.visibilityState === 'hidden') {

@@ -159,9 +159,9 @@ export default {
     },
     refreshCurr () {
       // 刷新当前标签
-      layout.refreshLoad = false
+      layout.homeReload = false
       this.$nextTick(() => {
-        layout.refreshLoad = true
+        layout.homeReload = true
       })
     }
   }

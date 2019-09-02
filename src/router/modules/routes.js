@@ -411,6 +411,16 @@ export default [
           title: '筛选组件',
           icon: 'icon-shaixuan'
         }
+      },
+      {
+        path: '/mask',
+        name: 'mask',
+        component: loader('views/widgets/mask'),
+        meta: {
+          auth: true,
+          title: '格式化输入内容',
+          icon: 'icon-shaixuan'
+        }
       }
     ]
   },
@@ -443,6 +453,50 @@ export default [
           title: '接口管理',
           icon: 'icon-supply'
         }
+      },
+      {
+        path: '/amap',
+        name: 'amap',
+        component: loader('views/map/amap'),
+        meta: {
+          auth: true,
+          title: '高德地图',
+          icon: 'icon-supply'
+        }
+      }
+    ]
+  },
+  {
+    path: '/router-home',
+    name: 'router-home',
+    component: Home,
+    meta: {
+      auth: true,
+      title: '路由嵌套',
+      icon: 'icon-tools'
+    },
+    children: [
+      {
+        path: '/print1',
+        name: 'print1',
+        component: loader('views/plugin/print'),
+        meta: {
+          auth: true,
+          title: '一级菜单',
+          icon: 'icon-weibiaoti526'
+        },
+        children: [
+          {
+            path: '/api-test1',
+            name: 'api-test1',
+            component: loader('views/plugin/api-test'),
+            meta: {
+              auth: true,
+              title: '二级菜单',
+              icon: 'icon-supply'
+            }
+          }
+        ]
       }
     ]
   }

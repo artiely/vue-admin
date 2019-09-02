@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <router-view
-      v-if="layout.refreshLoad"
+      v-if="layout.homeReload"
       id="router-view"
       :style="{ padding: '24px', minHeight: '360px' }"
     />

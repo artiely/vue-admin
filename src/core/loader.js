@@ -1,4 +1,4 @@
-import loadingError from '@/views/exception/routeError.vue'
+import loadingError from '@/packages/exception/routeError.vue'
 const loader = path => {
   return () => {
     return import(`@/${path}`)

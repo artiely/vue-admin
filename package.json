@@ -47,6 +47,7 @@
     "qs": "^6.7.0",
     "uuid": "^3.3.2",
     "vue": "^2.6.10",
+    "vue-amap": "^0.5.10",
     "vue-clickaway": "^2.2.2",
     "vue-count-to": "^1.0.13",
     "vue-cropper": "^0.4.9",
