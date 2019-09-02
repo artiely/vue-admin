@@ -16,15 +16,10 @@
     </a-layout-header>
     <full-menu v-else trigger />
     <div style="height:64px" v-if="layout.layoutMode==='fixed' && !layout.isMobile"></div>
-    <a-layout-content style="padding: 0 50px" >
+    <a-layout-content style="padding:50px" >
       <!-- 面包屑 -->
       <breadcrumb />
-        <!-- <div :style="{ padding: '24px', minHeight: '360px' }">
-          <router-view />
-        </div> -->
-         <slot>
-          <!-- <router-page></router-page> -->
-          </slot>
+         <slot/>
     </a-layout-content>
     <v-footer></v-footer>
   </a-layout>

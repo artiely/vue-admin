@@ -116,7 +116,7 @@ export default {
           this.reRender = true
           let E = new Event('resize')
           window.dispatchEvent(E)
-        }, 300)
+        }, 220)
       })
     }
   },

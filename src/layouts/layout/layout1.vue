@@ -15,12 +15,8 @@
       <a-layout-content style="margin: 0 16px;" class="layout1-content" :style="contentFixed">
         <!-- 面包屑 -->
         <!-- <breadcrumb /> -->
-        <!-- <action-bar>
-        </action-bar>-->
         <div>
-          <slot>
-          <!-- <router-page></router-page> -->
-          </slot>
+          <slot/>
         </div>
       </a-layout-content>
       <v-footer></v-footer>
@@ -34,25 +30,16 @@ import { layout } from '../observable/layout'
 import VFooter from './footer'
 import VHeader from './header1'
 import utils from '@/common/utils'
-// import routerPage from './router-page'
 import commonHeader from './common-header'
 let { pxtorem } = utils
 
-// 标签栏的高度
-const NAV_TABS_HEIGHT = 45
-// 头部的高度
-const HEADER_HEIGHT = 64
-// 布局改变的动画
-const LAYOUT_TRANSOTION = 'all 0.2s'
+let { navTabsHeight: NAV_TABS_HEIGHT, headerHeight: HEADER_HEIGHT, layoutTransition: LAYOUT_TRANSITION } = layout
 export default {
   components: {
     fullMenu,
-    // routerPage,
-    // breadcrumb,
     VHeader,
     VFooter,
     commonHeader
-    // actionBar
   },
   data () {
     return {
@@ -77,7 +64,7 @@ export default {
       } else {
         return {
           'margin-left': this.marginLeft,
-          transition: LAYOUT_TRANSOTION
+          transition: LAYOUT_TRANSITION
         }
       }
     },
@@ -91,17 +78,23 @@ export default {
           right: 0,
           top: 0,
           zIndex: 99,
-          transition: LAYOUT_TRANSOTION
+          transition: LAYOUT_TRANSITION
         }
       }
     },
     contentFixed () {
       if (this.layout.layoutMode === 'flow') {
-        return { marginTop: pxtorem(NAV_TABS_HEIGHT) }
-      } else if (this.layout.isNavTabs) {
-        return { marginTop: pxtorem(NAV_TABS_HEIGHT + HEADER_HEIGHT) }
+        if (this.layout.isNavTabs) {
+          return { marginTop: pxtorem(NAV_TABS_HEIGHT) }
+        } else {
+          return { marginTop: '16px' }
+        }
       } else {
-        return { marginTop: pxtorem(HEADER_HEIGHT) }
+        if (this.layout.isNavTabs) {
+          return { marginTop: pxtorem(NAV_TABS_HEIGHT + HEADER_HEIGHT) }
+        } else {
+          return { marginTop: pxtorem(HEADER_HEIGHT) }
+        }
       }
     }
   },
@@ -109,7 +102,6 @@ export default {
     handleClick () {
       layout.isCollapse = !layout.isCollapse
     }
-
   }
 }
 </script>

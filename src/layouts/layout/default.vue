@@ -1,7 +1,7 @@
 <template>
   <div style="height:100%">
     <component :is="layout" >
-      <slot>123456<router-page></router-page></slot>
+      <slot><router-page></router-page></slot>
     </component>
     <more-group></more-group>
     <scroll-top></scroll-top>

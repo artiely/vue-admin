@@ -41,7 +41,6 @@ export default {
     },
 
     onChange (checked) {
-      this.$store.commit('sys/changeMenuTheme')
     }
   },
   render () {

@@ -1,6 +1,6 @@
 <template>
   <div class="chart-min-chart-wrapper" >
-    <a-card hoverable :bordered="false">
+    <a-card hoverable :bordered="false" :loading="loading">
       <div class="chart-min-chart">
         <div class="main">
           <v-count-to
@@ -27,6 +27,7 @@
 <script>
 import uuid from 'uuid'
 import ApexCharts from 'apexcharts'
+import { layout } from '@layouts'
 export default {
   props: {
     color: {
@@ -55,8 +56,20 @@ export default {
   },
   data () {
     return {
-      id: uuid()
+      id: uuid(),
+      layout,
+      loading: false
     }
+  },
+  watch: {
+    // 'layout.isCollapse':{
+    //   handler(){
+    //     this.loading=true
+    //     setTimeout(()=>{
+    //       this.loading=false
+    //     },220)
+    //   }
+    // }
   },
   mounted () {
     this.$nextTick(() => {

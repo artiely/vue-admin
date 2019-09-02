@@ -24,7 +24,13 @@ export const layout = Vue.observable({
   //  刷新当前页使用
   homeReload: true,
   // 这个应用重置
-  appReload: true
+  appReload: true,
+  // 标签页的高度
+  navTabsHeight: 45,
+  // 头部的高度
+  headerHeight: 64,
+  // 菜单收起的动画和时间
+  layoutTransition: 'all 0.2s'
 })
 
 export function setFontSize (val) {

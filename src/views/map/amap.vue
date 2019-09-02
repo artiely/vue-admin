@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="amap-page-container">
-      <el-amap-search-box class="search-box" :search-option="searchOption" :on-search-result="onSearchResult"></el-amap-search-box>
+      <!-- <el-amap-search-box class="search-box" :search-option="searchOption" :on-search-result="onSearchResult"></el-amap-search-box> -->
       <el-amap vid="amapDemo" :center="mapCenter" :zoom="15" class="amap-demo" :mapStyle="mapStyle" resizeEnable>
         <el-amap-marker v-for="(marker,i) in markers" :key="i" :position="marker" ></el-amap-marker>
       </el-amap>

@@ -27,6 +27,9 @@
           <a-menu-item key="refresh-curr">
             <v-icon name="icon-refresh" />刷新当前标签
           </a-menu-item>
+           <a-menu-item key="refresh-all">
+            <v-icon name="icon-refresh" />刷新全部标签
+          </a-menu-item>
           <a-menu-item key="close-curr" :disabled="panes.length==1">
             <v-icon name="icon-delete" />关闭当前标签
           </a-menu-item>
@@ -130,6 +133,8 @@ export default {
         case 'refresh-curr':
           this.refreshCurr()
           break
+        case 'refresh-all':
+          this.refreshAll()
       }
     },
     closeCurr () {
@@ -162,6 +167,13 @@ export default {
       layout.homeReload = false
       this.$nextTick(() => {
         layout.homeReload = true
+      })
+    },
+    refreshAll () {
+      // 刷新当前标签
+      layout.appReload = false
+      this.$nextTick(() => {
+        layout.appReload = true
       })
     }
   }
@@ -199,7 +211,7 @@ export default {
     height: 40px;
     line-height: 40px;
     text-align: center;
-    color: rgba(0, 0, 0, 0.45);
+    color: @text-color;
     cursor: pointer;
     font-size: 12px;
     .layout-nav-tabs-actions-inner {

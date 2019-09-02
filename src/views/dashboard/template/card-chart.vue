@@ -1,5 +1,6 @@
 <template>
-  <a-card  v-resize:debounce.250="onResize" class="card-chart" :bodyStyle="{padding:0}">
+<!-- v-resize:debounce.250="onResize" -->
+  <a-card   class="card-chart" :bodyStyle="{padding:0}">
     <h3 class="title">{{title}}</h3>
     <p class="sub-title">{{subTitle}}</p>
     <div :id="id" class="chart-box"></div>
@@ -38,7 +39,7 @@ export default {
   },
   methods: {
     onResize () {
-      this.chart.forceFit()
+      // this.chart.forceFit()
     },
     renderChart () {
       // 此处数据使用了按行组织的模式，所以需要使用 DataSet 的 fold 方法对数据进行加工
