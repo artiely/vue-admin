@@ -473,7 +473,7 @@ export default [
     meta: {
       auth: true,
       title: '路由嵌套',
-      icon: 'icon-tools'
+      icon: 'icon-lubiaosignpost3'
     },
     children: [
       {
@@ -483,7 +483,7 @@ export default [
         meta: {
           auth: true,
           title: '一级菜单',
-          icon: 'icon-weibiaoti526'
+          icon: 'icon-lubiaosignpost3'
         },
         children: [
           {
@@ -493,11 +493,21 @@ export default [
             meta: {
               auth: true,
               title: '二级菜单',
-              icon: 'icon-supply'
+              icon: 'icon-lubiaosignpost3'
             }
           }
         ]
       }
     ]
+  },
+  {
+    path: '/level1',
+    name: 'level1',
+    component: loader('views/widgets/level1'),
+    meta: {
+      auth: true,
+      title: '一级可点击菜单',
+      icon: 'icon-lubiaosignpost3'
+    }
   }
 ]

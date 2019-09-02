@@ -1,6 +1,8 @@
 <template>
   <div style="height:100%">
-    <component :is="layout" />
+    <component :is="layout" >
+      <slot>123456<router-page></router-page></slot>
+    </component>
     <more-group></more-group>
     <scroll-top></scroll-top>
   </div>
@@ -12,12 +14,14 @@ import layout2 from './layout2'
 import moreGroup from './more-group'
 import { layout } from '../observable/layout'
 import scrollTop from './scroll-top'
+import routerPage from './router-page'
 export default {
   components: {
     layout1,
     layout2,
     moreGroup,
-    scrollTop
+    scrollTop,
+    routerPage
   },
   computed: {
     layout () {

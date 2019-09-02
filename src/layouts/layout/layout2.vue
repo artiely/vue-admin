@@ -22,7 +22,9 @@
         <!-- <div :style="{ padding: '24px', minHeight: '360px' }">
           <router-view />
         </div> -->
-        <router-page></router-page>
+         <slot>
+          <!-- <router-page></router-page> -->
+          </slot>
     </a-layout-content>
     <v-footer></v-footer>
   </a-layout>
@@ -33,12 +35,12 @@ import breadcrumb from '../breadcrumb'
 import { layout } from '../observable/layout'
 import fullMenu from '../menu/full-menu'
 import VFooter from './footer'
-import routerPage from './router-page'
+// import routerPage from './router-page'
 import commonHeader from './common-header'
 export default {
   components: {
     breadcrumb,
-    routerPage,
+    // routerPage,
     soloMenu,
     fullMenu,
     VFooter,

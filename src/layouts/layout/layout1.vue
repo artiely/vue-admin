@@ -18,7 +18,9 @@
         <!-- <action-bar>
         </action-bar>-->
         <div>
-          <router-page></router-page>
+          <slot>
+          <!-- <router-page></router-page> -->
+          </slot>
         </div>
       </a-layout-content>
       <v-footer></v-footer>
@@ -32,7 +34,7 @@ import { layout } from '../observable/layout'
 import VFooter from './footer'
 import VHeader from './header1'
 import utils from '@/common/utils'
-import routerPage from './router-page'
+// import routerPage from './router-page'
 import commonHeader from './common-header'
 let { pxtorem } = utils
 
@@ -45,7 +47,7 @@ const LAYOUT_TRANSOTION = 'all 0.2s'
 export default {
   components: {
     fullMenu,
-    routerPage,
+    // routerPage,
     // breadcrumb,
     VHeader,
     VFooter,
