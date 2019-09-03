@@ -44,14 +44,18 @@ export default {
   data () {
     return {
       layout,
-      collapsed: false
+      collapsed: false,
+      timer: null
     }
   },
   watch: {
     'layout.isCollapse': {
       handler () {
-        let E = new Event('resize')
-        window.dispatchEvent(E)
+        clearTimeout(this.timer)
+        this.timer = setTimeout(() => {
+          let E = new Event('resize')
+          window.dispatchEvent(E)
+        }, 220)
       }
     }
   },
@@ -90,6 +94,9 @@ export default {
       //   this.openKeys = latestOpenKey ? [latestOpenKey] : []
       // }
     }
+  },
+  deactivated () {
+    clearTimeout(this.timer)
   }
 }
 </script>
