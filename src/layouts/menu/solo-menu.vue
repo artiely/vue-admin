@@ -45,7 +45,8 @@ export default {
     return {
       layout,
       collapsed: false,
-      timer: null
+      timer: null,
+      menu: Object.freeze(routes)
     }
   },
   watch: {
@@ -55,16 +56,13 @@ export default {
         this.timer = setTimeout(() => {
           let E = new Event('resize')
           window.dispatchEvent(E)
-        }, 220)
+        }, 200)
       }
     }
   },
   computed: {
     selectedKeys () {
       return [this.$route.path]
-    },
-    menu () {
-      return routes
     },
     openKeys: {
       get () {

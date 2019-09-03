@@ -31,6 +31,18 @@ export default {
   },
   mounted () {
     mediaQuery()
+    document.addEventListener('visibilitychange', () => {
+    // 浏览器切换事件
+      if (document.visibilityState === 'hidden') {
+        document.title = '车边（冻结）'
+      } else {
+        document.title = '车边'
+        layout.appReload = false
+        this.$nextTick(() => {
+          layout.appReload = true
+        })
+      }
+    })
   },
   methods: {
     getPopupContainer (trigger) {

@@ -105,8 +105,6 @@ export default {
       this.reRender = false
       this.$nextTick(() => {
         this.reRender = true
-        let E = new Event('resize')
-        window.dispatchEvent(E)
       })
     },
     'layout.isCollapse' (val) {
@@ -114,9 +112,7 @@ export default {
       this.$nextTick(() => {
         setTimeout(() => {
           this.reRender = true
-          let E = new Event('resize')
-          window.dispatchEvent(E)
-        }, 220)
+        }, 317)
       })
     }
   },

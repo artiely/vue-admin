@@ -13,27 +13,14 @@ import { layout } from '@layouts'
 export default {
   data () {
     return {
-      layout,
-      timer: null
+      layout
     }
   },
   methods: {
-    handle () {
-      this.$nextTick(() => {
-        let E = new Event('resize')
-        window.dispatchEvent(E)
-      })
-    }
   },
   mounted () {
-    // 路由有2s的动画，可能导致表格组件渲染不对齐
-    this.timer = setTimeout(() => {
-      this.handle()
-    }, 300)
   },
   destroyed () {
-    clearTimeout(this.timer)
-    this.timer = null
   }
 }
 </script>
