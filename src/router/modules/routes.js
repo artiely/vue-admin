@@ -431,6 +431,16 @@ export default [
           title: '城市选择器',
           icon: 'icon-supply'
         }
+      },
+      {
+        path: '/licence-plate',
+        name: 'licence-plate',
+        component: loader('views/widgets/licence-plate'),
+        meta: {
+          auth: true,
+          title: '车牌选择器',
+          icon: 'icon-supply'
+        }
       }
     ]
   },

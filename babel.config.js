@@ -2,7 +2,7 @@ module.exports = {
   env: {
     // 新增插件配置
     development: {
-      plugins: ['dynamic-import-node']
+      plugins: ['dynamic-import-node', '@babel/plugin-proposal-optional-chaining', '@babel/plugin-proposal-nullish-coalescing-operator']
     }
   },
   presets: [

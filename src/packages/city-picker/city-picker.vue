@@ -2,6 +2,7 @@
   <a-popover>
     <template slot="content">
       <h5>城市选择</h5>
+      <!-- <a-input size="small" placeholder="搜索您的城市" v-model="keyword"></a-input> -->
       <ul class="vcp-tags">
         <template v-for="(item,i) in keys">
           <li v-if="item=='hot'" class="hot" @click="choiceTag(item)" :key="i">热门</li>
@@ -21,15 +22,19 @@
         </div>
       </div>
     </template>
-    <a-input v-model="result.name" :placeholder="placeholder"></a-input>
+    <a-input :value="result.name" :placeholder="placeholder"></a-input>
   </a-popover>
 </template>
 <script>
 import cityList from 'china-city-data'
+// import _ from 'loadsh'
 let keys = Object.keys(cityList)
 keys.splice(-1)
 keys.unshift('hot')
 let defaultView = cityList['hot']
+let values = Object.values(cityList)
+values = [].concat.apply([], values)
+console.log('TCL: values', values)
 export default {
   name: 'v-city-picker',
   props: {
@@ -49,6 +54,7 @@ export default {
     return {
       keys,
       defaultView,
+      keyword: '',
       result: {}
     }
   },
@@ -109,7 +115,7 @@ export default {
   padding-left: 4px;
   &:hover {
     color: @primary-color;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.1);
   }
 }
 </style>

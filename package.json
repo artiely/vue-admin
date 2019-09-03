@@ -41,6 +41,7 @@
     "iview": "^3.4.2",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.0",
+    "loadsh": "0.0.4",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
@@ -71,6 +72,8 @@
     "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@sentry/webpack-plugin": "^1.6.2",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-e2e-nightwatch": "^3.7.0",
