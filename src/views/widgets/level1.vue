@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-home>
-      <v-card>我是一级可点击菜单{{s}} {{e}} {{f}}
-        <h1 >{{a.b.c}}</h1>
+      <v-card>我是一级可点击菜单
+        <!-- <h1 >{{a.b.c}}</h1> -->
       </v-card>
     </v-home>
   </div>
@@ -24,15 +24,15 @@ export default {
     }
   },
   computed: {
-    s () {
-      return this.a?.b?.c ?? true
-    },
-    e () {
-      return this.a?.b?.d ?? true
-    },
-    f () {
-      return this.a?.b?.d?.m ?? false
-    }
+    // s () {
+    //   return this.a?.b?.c ?? true
+    // },
+    // e () {
+    //   return this.a?.b?.d ?? true
+    // },
+    // f () {
+    //   return this.a?.b?.d?.m ?? false
+    // }
   }
 }
 </script>

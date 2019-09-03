@@ -2,13 +2,8 @@
   <!-- 基本表格 -->
   <div>
     <a-card>
-        <a-alert
-      message="高级表格"
-      description="在表格生成器下支持自定义实现丰富的业务需求"
-      type="info"
-      showIcon
-    />
-    <br>
+      <a-alert message="高级表格" description="在表格生成器下支持自定义实现丰富的业务需求" type="info" showIcon />
+      <br />
       <div>
         <a-button-group>
           <a-button type="primary" icon="cloud-download">导入数据</a-button>
@@ -16,19 +11,25 @@
           <a-button type="dashed" icon="cloud-download">下载到本地</a-button>
           <a-popover title="显示设置">
             <template slot="content">
-              <p>
-                紧凑型
-                <a-switch :defaultChecked="size==='small'" @change="onChangeSize" />
-              </p>
-              <p>
-                显示边框
-                <a-switch :defaultChecked="bordered==='bordered'" @change="onChangeBorder" />
-              </p>
+              <div style="width:200px">
+                <v-cell onoff title="紧凑型" @change="onChangeSize"></v-cell>
+                <v-cell
+                  onoff
+                  title="显示边框"
+                  :defaultChecked="bordered==='bordered'"
+                  @change="onChangeBorder"
+                ></v-cell>
+              </div>
               <p>显示字段</p>
-              <div >
+              <div>
                 <a-row>
                   <a-col :span="8" v-for="(item,index) in columns" :key="item.title">
-                    <a-checkbox :value="index" :checked="!item.hidden" :disabled="index===0"  @change="onChangeTableColumn">{{item.title}} {{item.hidden}}</a-checkbox>
+                    <a-checkbox
+                      :value="index"
+                      :checked="!item.hidden"
+                      :disabled="index===0"
+                      @change="onChangeTableColumn"
+                    >{{item.title}} {{item.hidden}}</a-checkbox>
                   </a-col>
                 </a-row>
               </div>

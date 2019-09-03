@@ -7,7 +7,7 @@ var opn = require('opn')
 var proxy = require('http-proxy-middleware')
 let port = 3999
 let options = {
-  target: 'http://192.168.2.242:8091', // 测试
+  target: 'https://www.easy-mock.com/mock/5d5b9eddaf6abb3d1b4270ad', // 测试
   changeOrigin: true // 需要虚拟主机站点
 }
 let exampleProxy = proxy(options) // 开启代理功能，并加载配置

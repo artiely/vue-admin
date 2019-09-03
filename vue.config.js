@@ -28,12 +28,21 @@ const options = {
 
 const themePlugin = new AntDesignThemePlugin(options)
 
+const skeleton = new SkeletonWebpackPlugin({
+  webpackConfig: {
+    entry: {
+      app: path.join(__dirname, './src/plugins/skeleton.js')
+    }
+  },
+  minimize: true,
+  quiet: true
+})
+
 const cdn = {
   css: [],
   js: []
 }
 module.exports = {
-  // transpileDependencies: ['admin'],
   css: {
     loaderOptions: {
       less: {
@@ -55,7 +64,7 @@ module.exports = {
   // 静态资源目录
   assetsDir: 'static',
   configureWebpack: config => {
-    config.plugins.push(themePlugin)
+    config.plugins.push(themePlugin, skeleton)
     if (isProduction) {
       // config.externals = {
       // vue: 'Vue',
@@ -96,17 +105,17 @@ module.exports = {
         new ZipPlugin({
           path: path.join(__dirname, 'dist'),
           filename: 'dist.zip'
-        }),
-        // 骨架的配置
-        new SkeletonWebpackPlugin({
-          webpackConfig: {
-            entry: {
-              app: path.join(__dirname, './src/plugins/skeleton.js')
-            }
-          },
-          minimize: true,
-          quiet: true
         })
+        // 骨架的配置
+        // new SkeletonWebpackPlugin({
+        //   webpackConfig: {
+        //     entry: {
+        //       app: path.join(__dirname, './src/plugins/skeleton.js')
+        //     }
+        //   },
+        //   minimize: true,
+        //   quiet: true
+        // })
         // Sentry 的配置
         // new SentryPlugin({
         //   include: './dist',

@@ -66,7 +66,7 @@ export default {
   .ant-layout-sider{
     position: relative;
     z-index: 100!important;
-    box-shadow: 2px 0 6px rgba(0,21,41,.35);
+    box-shadow: 2px 0 6px rgba(0,21,41,.15);
     // background: @menu-background;
   }
   }

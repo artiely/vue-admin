@@ -33,7 +33,6 @@ switch (MODE) {
 export default {
   // api请求地址的根路径
   api_url: BASE_URL,
-
   api_timeout: 10000,
   api_header: {
     'Cache-Control': 'no-cache',
