@@ -50,7 +50,7 @@ const cdn = {
     'https://cdn.bootcss.com/vue/2.6.10/vue.min.js',
     'https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js',
     'https://cdn.bootcss.com/vuex/3.1.1/vuex.min.js',
-    // 'https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js',
+    'https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js',
     'https://cdn.jsdelivr.net/npm/moment@2.24.0/locale/zh-cn.js',
     'https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js',
     'https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.js',
@@ -92,7 +92,7 @@ module.exports = {
         vue: 'Vue',
         'vue-router': 'VueRouter',
         // FIXME: moment无效
-        // moment: 'moment',
+        moment: 'moment',
         'ant-design-vue': 'antd',
         jquery: '$',
         axios: 'axios',
@@ -140,7 +140,7 @@ module.exports = {
         //   ignore: ['dist.zip']
         // }),
         /* 精简moment打包体积 */
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+        // new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
       )
     }
   },
