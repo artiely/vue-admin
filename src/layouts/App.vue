@@ -59,6 +59,7 @@ export default {
   },
   destroyed () {
     mediaQuery.remove()
+    document.removeEventListener('visibilitychange')
   }
 
 }
