@@ -17,10 +17,7 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      data: [
+let data =[
         {
           title: '账户密码',
           description: '当前密码强度',
@@ -77,6 +74,10 @@ export default {
           }
         }
       ]
+export default {
+  data () {
+    return {
+      data: Object.freeze(data)
     }
   }
 }

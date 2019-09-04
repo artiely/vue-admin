@@ -84,8 +84,8 @@ const formTailLayout = {
 export default {
   data () {
     return {
-      formItemLayout,
-      formTailLayout,
+      formItemLayout:Object.freeze(formItemLayout),
+      formTailLayout:Object.freeze(formTailLayout),
       result: {}
     }
   },

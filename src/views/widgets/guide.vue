@@ -119,7 +119,7 @@ export default {
       dislikes: 0,
       action: null,
       moment,
-      steps: steps
+      steps: Object.freeze(steps)
     }
   },
   methods: {

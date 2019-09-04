@@ -32,25 +32,7 @@
 </template>
 
 <script>
-export default {
-  name: 'v-iconbox',
-  props: {
-    value: {
-      type: String,
-      default: 'icon-supply'
-    },
-    selectType: {
-      type: String,
-      default: '',
-      validator (val) {
-        return ['tag', 'name', ''].indexOf(val) !== -1
-      }
-    }
-  },
-  data () {
-    return {
-      type: 1,
-      data: [
+let icons =[
         'icon-inport',
         'icon-daochu',
         'icon-download-fill',
@@ -92,6 +74,25 @@ export default {
         'icon-time',
         'icon-time_fill'
       ]
+export default {
+  name: 'v-iconbox',
+  props: {
+    value: {
+      type: String,
+      default: 'icon-supply'
+    },
+    selectType: {
+      type: String,
+      default: '',
+      validator (val) {
+        return ['tag', 'name', ''].indexOf(val) !== -1
+      }
+    }
+  },
+  data () {
+    return {
+      type: 1,
+      data:Object.freeze(icons)
     }
   },
   computed: {

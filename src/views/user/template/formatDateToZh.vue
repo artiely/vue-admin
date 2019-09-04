@@ -15,9 +15,9 @@ export default {
   },
   data () {
     return {
-      moment,
+      moment:Object.freeze(moment),
       calendar: Object.freeze(calendar),
-      festival: {
+      festival: Object.freeze({
         lunar: {
           '01-01': '春节',
           '01-15': '元宵节',
@@ -48,7 +48,7 @@ export default {
           '12-24': '平安夜',
           '12-25': '圣诞节'
         }
-      }
+      })
     }
   },
   computed: {

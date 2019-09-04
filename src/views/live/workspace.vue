@@ -73,7 +73,7 @@ export default {
   components: {},
   data () {
     return {
-      moment,
+      moment:Object.freeze(moment),
       steps,
       iconname: ''
     }

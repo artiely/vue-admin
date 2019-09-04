@@ -110,11 +110,10 @@ export default {
   },
   data () {
     return {
-      dataTriangle,
-      dataPie,
-      transform,
-      dataBar
-
+      dataTriangle:Object.freeze(dataTriangle),
+      dataPie:Object.freeze(dataPie),
+      transform:Object.freeze(transform),
+      dataBar:Object.freeze(dataBar)
     }
   },
   mounted () {
