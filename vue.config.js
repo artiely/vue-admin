@@ -1,50 +1,19 @@
 const path = require('path')
-const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin')
-const CompressionWebpackPlugin = require('compression-webpack-plugin')
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const productionGzipExtensions = ['js', 'css']
-const webpack = require('webpack')
-// const SentryPlugin = require('@sentry/webpack-plugin')
-var ZipPlugin = require('zip-webpack-plugin')
 const resolve = file => path.resolve(__dirname, file)
 const isProduction = process.env.NODE_ENV === 'production'
-
-// const darkTheme = require('./theme/dark')
-const AntDesignThemePlugin = require('antd-theme-webpack-plugin')
-// const theme = require('./theme/dark')
-const options = {
-  antDir: path.join(__dirname, './node_modules/ant-design-vue'),
-  // src下的样式都打包到一起
-  stylesDir: path.join(__dirname, './src'),
-  varFile: path.join(
-    __dirname,
-    './node_modules/ant-design-vue/lib/style/themes/default.less'
-  ),
-  // mainLessFile: path.join(__dirname, './src/styles/index.less'),
-  mainLessFile: '',
-  themeVariables: ['@primary-color'],
-  indexFileName: false,
-  generateOnce: false,
-  lessUrl: 'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js',
-  publicPath: ''
-}
-// 主题插件
-const themePlugin = new AntDesignThemePlugin(options)
-// 骨架插件
-const skeleton = new SkeletonWebpackPlugin({
-  webpackConfig: {
-    entry: {
-      app: path.join(__dirname, './src/plugins/skeleton.js')
-    }
-  },
-  minimize: true,
-  quiet: true
-})
+const {
+  themePlugin,
+  skeleton,
+  uglifyJsPlugin,
+  compressionWebpackPlugin,
+  zipPlugin
+} = require('./webpack.config')
 
 const cdn = {
   css: [
     '//at.alicdn.com/t/font_1326052_lr1bez3k2nc.css',
-    'https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.css'
+    'https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.css',
+    'https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.css'
   ],
   js: [
     'https://cdn.bootcss.com/vue/2.6.10/vue.min.js',
@@ -59,7 +28,9 @@ const cdn = {
     'https://cdn.jsdelivr.net/npm/apexcharts',
     'https://cdn.jsdelivr.net/npm/@antv/g2@3.5.8-beta.3/build/g2.min.js',
     'https://cdn.jsdelivr.net/npm/@antv/data-set@0.10.2/build/data-set.min.js',
-    'https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js'
+    'https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js',
+    'https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.js',
+    'https://cdn.jsdelivr.net/npm/vue-amap@0.5.10/dist/index.min.js'
     // 'https://cdn.jsdelivr.net/npm/vue-markdown@2.2.4/dist/vue-markdown.common.js',
     // 'https://cdn.jsdelivr.net/npm/vue-markdown@2.2.4/dist/vue-markdown.js',
   ]
@@ -93,6 +64,7 @@ module.exports = {
         'vue-router': 'VueRouter',
         // FIXME: moment无效
         moment: 'moment',
+        'moment/locale/zh-cn': 'moment.locale',
         'ant-design-vue': 'antd',
         jquery: '$',
         axios: 'axios',
@@ -102,45 +74,17 @@ module.exports = {
         lodash: '_',
         // "mavon-editor": "mavon-editor",
         // wangEditor: "E",
-        'highlight.js': 'hljs'
+        'highlight.js': 'hljs',
         // "vue-markdown": "VueMarkdown",
+        'driver.js': 'Driver',
+        'vue-amap': 'VueAMap'
       }
       config.plugins.push(
         // 打包生产.gz包
-        new CompressionWebpackPlugin({
-          algorithm: 'gzip',
-          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-          threshold: 10240,
-          minRatio: 0.8
-        }),
-        // 添加自定义代码压缩配置
-        // new UglifyJsPlugin({
-        //   uglifyOptions: {
-        //     warnings: false,
-        //     compress: {
-        //       drop_debugger: true,
-        //       drop_console: true
-        //     }
-        //   },
-        //   sourceMap: false,
-        //   parallel: true
-        // }),
+        compressionWebpackPlugin,
+        uglifyJsPlugin,
         // 对打包文件进行压缩
-        new ZipPlugin({
-          path: path.join(__dirname, 'dist'),
-          filename: 'dist.zip'
-        }),
-
-        // Sentry 的配置
-        // new SentryPlugin({
-        //   include: './dist',
-        //   release: process.env.VUE_APP_VERSION,
-        //   configFile: 'sentry.properties',
-        //   urlPrefix: '~/android_asset/dist/',
-        //   ignore: ['dist.zip']
-        // }),
-        /* 精简moment打包体积 */
-        // new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+        zipPlugin
       )
     }
   },
@@ -181,9 +125,7 @@ module.exports = {
       '/api': {
         target: 'https://www.easy-mock.com/mock/5d5b9eddaf6abb3d1b4270ad', // mock
         changeOrigin: true,
-        pathRewrite: {
-          // '^/ns-index': ''
-        }
+        pathRewrite: {}
       }
     }
   }

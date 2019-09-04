@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       moment,
-      calendar,
+      calendar: Object.freeze(calendar),
       festival: {
         lunar: {
           '01-01': '春节',
