@@ -30,7 +30,7 @@ export default {
     next()
   },
   mounted () {
-    mediaQuery()
+    mediaQuery.init()
     document.addEventListener('visibilitychange', () => {
     // 浏览器切换事件
       if (document.visibilityState === 'hidden') {

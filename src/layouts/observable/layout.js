@@ -50,7 +50,7 @@ export function mediaQuery () {
   //     }
   //   }
   // };
-  var mediaQuery = {
+  const mediaQuery = {
     init () {
       var _this = this
       var timer = null
@@ -96,5 +96,5 @@ export function mediaQuery () {
       console.log('TCL: outputSize -> layout.breakPoint', layout.breakPoint)
     }
   }
-  return mediaQuery.init()
+  return mediaQuery
 }
