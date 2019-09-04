@@ -55,7 +55,7 @@ export function mediaQuery () {
       var _this = this
       var timer = null
       _this.outputSize()
-      window.addEventListener.addEventListener(
+      window.addEventListener(
         'resize',
         () => {
           clearTimeout(timer)
