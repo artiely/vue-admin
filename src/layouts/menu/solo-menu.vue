@@ -1,10 +1,12 @@
 <template>
   <div class="artiely-menu select-none">
     <v-logo v-if="logo" />
+    <!-- :selectedKeys="selectedKeys" -->
     <a-menu
       :mode="mode"
-      :theme="layout.menuTheme"
       :selectedKeys="selectedKeys"
+      :theme="layout.menuTheme"
+      :openKeys="openKeys"
       @openChange="onOpenChange"
       @select="select"
     >
@@ -46,29 +48,27 @@ export default {
       layout,
       collapsed: false,
       timer: null,
-      menu: Object.freeze(routes)
+      menu: Object.freeze(routes),
+      openKeys: []
     }
   },
   watch: {
     'layout.isCollapse': {
-      handler () {
+      handler (val) {
+        if (val) {
+          this.openKeys = []
+        }
         clearTimeout(this.timer)
         this.timer = setTimeout(() => {
           let E = new Event('resize')
           window.dispatchEvent(E)
-        }, 200)
+        }, 250)
       }
     }
   },
   computed: {
     selectedKeys () {
       return [this.$route.path]
-    },
-    openKeys: {
-      get () {
-        return [this.$route.path]
-      },
-      set () {}
     }
   },
   methods: {
@@ -81,16 +81,19 @@ export default {
       }
     },
     onOpenChange (openKeys) {
-      // const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1)
-      // const findIndex=(el)=>{
-      //   return el.path===latestOpenKey
-      // }
-      // let index = this.menu.findIndex(findIndex)
-      // if (index === -1) {
-      //   this.openKeys = openKeys
-      // } else {
-      //   this.openKeys = latestOpenKey ? [latestOpenKey] : []
-      // }
+      console.log('TCL: onOpenChange -> openKeys', openKeys)
+      const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1)
+      console.log('TCL: onOpenChange -> latestOpenKey', latestOpenKey)
+      const findIndex = (el) => {
+        return el.path === latestOpenKey
+      }
+      let index = this.menu.findIndex(findIndex)
+      console.log('TCL: onOpenChange -> index', index)
+      if (index === -1) {
+        this.openKeys = openKeys
+      } else {
+        this.openKeys = latestOpenKey ? [latestOpenKey] : []
+      }
     }
   },
   deactivated () {

@@ -56,6 +56,9 @@ export default {
         return trigger.parentNode
       }
     }
+  },
+  destroyed () {
+    mediaQuery.remove()
   }
 
 }

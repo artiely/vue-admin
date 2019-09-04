@@ -39,28 +39,38 @@ export function setFontSize (val) {
   document.querySelector('html').style.fontSize = val + 'px'
 }
 export function mediaQuery () {
-  var EventUtil = {
-    addHandler (element, type, handler) {
-      if (element.addEventListener) {
-        element.addEventListener(type, handler, false)
-      } else if (element.attachEvent) {
-        element.attachEvent('on' + type, handler)
-      } else {
-        element['on' + type] = handler
-      }
-    }
-  }
+  // var EventUtil = {
+  //   addHandler(element, type, handler) {
+  //     if (element.addEventListener) {
+  //       element.addEventListener(type, handler, false);
+  //     } else if (element.attachEvent) {
+  //       element.attachEvent("on" + type, handler);
+  //     } else {
+  //       element["on" + type] = handler;
+  //     }
+  //   }
+  // };
   var mediaQuery = {
     init () {
       var _this = this
       var timer = null
       _this.outputSize()
-      EventUtil.addHandler(window, 'resize', function () {
-        clearTimeout(timer)
-        timer = setTimeout(() => {
-          _this.outputSize()
-        }, 500)
-      })
+      window.addEventListener.addEventListener(
+        'resize',
+        () => {
+          clearTimeout(timer)
+          timer = setTimeout(() => {
+            _this.outputSize()
+          }, 500)
+        },
+        false
+      )
+      // EventUtil.addHandler(window, 'resize', function () {
+
+      // })
+    },
+    remove () {
+      window.removeEventListener('resize')
     },
     outputSize () {
       var result1 = window.matchMedia('(min-width:1200px)')
