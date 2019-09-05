@@ -12,7 +12,7 @@
           :key="item.path"
         >
           <a-iconfont  :type="item.meta.icon" />
-          <span >{{ item.meta.title }}</span>
+          <span v-if="!isCollapse">{{ item.meta.title }}</span>
         </a-menu-item>
         <sub-menu
           v-else
@@ -24,18 +24,19 @@
   </a-sub-menu>
 </template>
 <script>
-import { layout } from '../observable/layout'
 export default {
   props: {
     menuInfo: {
       type: Object,
       default: () => {}
+    },
+    isCollapse: {
+      type: Boolean,
+      default: false
     }
   },
-  data () {
-    return {
-      layout
-    }
+  created () {
+    console.log(this.isCollapse)
   }
 }
 </script>

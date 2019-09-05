@@ -14,9 +14,9 @@
         <template v-if="!item.meta.hide">
           <a-menu-item v-if="!item.children&&!item.meta.hide" :key="item.path">
             <a-iconfont :type="item.meta.icon" />
-            <span >{{ item.meta.title }}</span>
+            <span v-if="!layout.isCollapse">{{ item.meta.title }}</span>
           </a-menu-item>
-          <sub-menu v-else :menu-info="item" :key="item.path" />
+          <sub-menu :isCollapse="layout.isCollapse" v-else :menu-info="item" :key="item.path" />
         </template>
       </template>
     </a-menu>
@@ -55,6 +55,7 @@ export default {
   watch: {
     'layout.isCollapse': {
       handler (val) {
+        console.log('TCL: handler -> val', val)
         if (val) {
           this.openKeys = []
         }
@@ -63,8 +64,12 @@ export default {
           let E = new Event('resize')
           window.dispatchEvent(E)
         }, 250)
-      }
+      },
+      immediate: true
     }
+  },
+  created () {
+    console.log('TCL: created -> layout', layout.isCollapse)
   },
   computed: {
     selectedKeys () {
