@@ -1,6 +1,5 @@
 import { notification } from 'ant-design-vue'
 import configs from '@config'
-import log from 'consola/src/browser'
 // 是否生产环境
 const PRODUCTION =
   process.env.VUE_APP_MODE === 'release' ||
@@ -9,13 +8,13 @@ const PRODUCTION =
 export default function errorHandler (error) {
   if (!error.response) {
     if (error.message && error.message.includes('timeout')) {
-      log.error('超时了')
+      console.error('超时了')
     } else if (error.message && error.message === '请求重复') {
-      log.error('请求重复')
+      console.error('请求重复')
     } else if (error.message && error.message.includes('cancel')) {
-      log.error('请求被取消')
+      console.error('请求被取消')
     } else {
-      log.error('请求失败', error)
+      console.error('请求失败', error)
     }
   } else {
     configs.api_error_handler && configs.api_error_handler(error)

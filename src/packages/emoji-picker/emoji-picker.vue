@@ -31,7 +31,7 @@ export default {
   name: 'v-emoji-picker',
   data () {
     return {
-      emojis:Object.freeze(emojis)
+      emojis: Object.freeze(emojis)
     }
   },
   methods: {

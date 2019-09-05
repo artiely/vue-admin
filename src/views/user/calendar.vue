@@ -46,7 +46,7 @@ export default {
   },
   data () {
     return {
-      moment:Object.freeze(moment),
+      moment: Object.freeze(moment),
       calendar,
       lunarInfoShow: false,
       loading: false,

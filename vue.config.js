@@ -4,14 +4,13 @@ const isProduction = process.env.NODE_ENV === 'production'
 const {
   themePlugin,
   skeleton,
-  uglifyJsPlugin,
+  // uglifyJsPlugin,
   compressionWebpackPlugin,
   zipPlugin
 } = require('./webpack.config')
 
 const cdn = {
   css: [
-    '//at.alicdn.com/t/font_1326052_lr1bez3k2nc.css',
     'https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.css',
     'https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.css'
   ],
@@ -82,7 +81,7 @@ module.exports = {
       config.plugins.push(
         // 打包生产.gz包
         compressionWebpackPlugin,
-        uglifyJsPlugin,
+        // uglifyJsPlugin,
         // 对打包文件进行压缩
         zipPlugin
       )
@@ -103,12 +102,10 @@ module.exports = {
       .test(/\.md$/)
       .use('vue-loader')
       .loader('raw-loader')
-    if (isProduction) {
-      config.plugin('html').tap(args => {
-        args[0].cdn = cdn
-        return args
-      })
-    }
+    config.plugin('html').tap(args => {
+      args[0].cdn = cdn
+      return args
+    })
   },
   devServer: {
     // open: true, // 启动服务后是否打开浏览器

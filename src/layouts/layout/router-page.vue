@@ -26,9 +26,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#router-view{
+  position: relative;
+}
 .slide-fade-enter {
-  transform: translateY(40px);
-  opacity: 0.1;
+  transform: translateY(100px);
+  opacity: 0;
 }
 .slide-fade-enter-active {
   transition: all 0.2s ease-out;

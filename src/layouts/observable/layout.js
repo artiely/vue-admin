@@ -70,7 +70,7 @@ export function mediaQuery () {
       // })
     },
     remove () {
-      window.removeEventListener('resize')
+      window.removeEventListener('resize', (event) => { event.preventDefault() }, false)
     },
     outputSize () {
       var result1 = window.matchMedia('(min-width:1200px)')

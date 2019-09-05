@@ -23,14 +23,15 @@ export default {
   data () {
     return {
       layout,
-      locale: zhCN
+      locale: zhCN,
+      timer: null
     }
   },
   beforeRouteUpdate (to, from, next) {
     next()
   },
   mounted () {
-    mediaQuery.init()
+    mediaQuery().init()
     document.addEventListener('visibilitychange', () => {
     // 浏览器切换事件
       if (document.visibilityState === 'hidden') {
@@ -44,8 +45,10 @@ export default {
       }
     })
     this.$nextTick(() => {
-      let E = new Event('resize')
-      window.dispatchEvent(E)
+      this.timer = setTimeout(() => {
+        let E = new Event('resize')
+        window.dispatchEvent(E)
+      }, 300)
     })
   },
   methods: {
@@ -58,8 +61,9 @@ export default {
     }
   },
   destroyed () {
-    mediaQuery.remove()
-    document.removeEventListener('visibilitychange')
+    mediaQuery().remove()
+    clearTimeout(this.timer)
+    document.body.removeEventListener('visibilitychange', (event) => { event.preventDefault() }, false)
   }
 
 }

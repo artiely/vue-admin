@@ -4,16 +4,28 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!-- 360 使用Google Chrome Frame -->
+    <meta name="renderer" content="webkit" />
+    <!-- 优先使用 IE 最新版本和 Chrome -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" /> -->
+    <!-- 如果安装了 Google Chrome Frame，则使用 GCF 来渲染页面，如果没有安装 GCF，则使用最高版本的 IE 内核进行渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <!-- 百度禁止转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title>车边</title>
+    <link
+      rel="stylesheet"
+      href="//at.alicdn.com/t/font_1326052_lr1bez3k2nc.css"
+    />
     <% if (process.env.NODE_ENV === 'production') { %> <% for(var css of
-      htmlWebpackPlugin.options.cdn.css) { %>
-      <link href="<%=css%>" rel="preload" as="style" />
-      <link rel="stylesheet" href="<%=css%>" as="style" />
-      <% } %> <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
-      <link href="<%=js%>" rel="preload" as="script" />
-      <script src="<%=js%>"></script>
-      <% } %> <% } %>
+    htmlWebpackPlugin.options.cdn.css) { %>
+    <link href="<%=css%>" rel="preload" as="style" />
+    <link rel="stylesheet" href="<%=css%>" as="style" />
+    <% } %> <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
+    <link href="<%=js%>" rel="preload" as="script" />
+    <script src="<%=js%>"></script>
+    <% } %> <% } %>
   </head>
   <body>
     <noscript>

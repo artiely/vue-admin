@@ -53,7 +53,7 @@ const data = [
 export default {
   data () {
     return {
-      data:Object.freeze(data)
+      data: Object.freeze(data)
     }
   }
 

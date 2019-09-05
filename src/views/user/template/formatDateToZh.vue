@@ -15,7 +15,7 @@ export default {
   },
   data () {
     return {
-      moment:Object.freeze(moment),
+      moment: Object.freeze(moment),
       calendar: Object.freeze(calendar),
       festival: Object.freeze({
         lunar: {

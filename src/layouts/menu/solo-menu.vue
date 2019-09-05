@@ -14,7 +14,7 @@
         <template v-if="!item.meta.hide">
           <a-menu-item v-if="!item.children&&!item.meta.hide" :key="item.path">
             <a-iconfont :type="item.meta.icon" />
-            <span>{{ item.meta.title }}</span>
+            <span >{{ item.meta.title }}</span>
           </a-menu-item>
           <sub-menu v-else :menu-info="item" :key="item.path" />
         </template>
@@ -25,7 +25,7 @@
 
 <script>
 import subMenu from './sub-menu'
-import { layout } from '@layouts'
+import { layout } from '../observable/layout'
 import { routes } from '@router'
 let reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&:/~+#]*[\w\-@?^=%&/~+#])?/
 export default {

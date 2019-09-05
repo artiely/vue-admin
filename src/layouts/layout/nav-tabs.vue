@@ -64,7 +64,7 @@ import { layout } from '@layouts'
 export default {
   data () {
     return {
-      panes: Object.freeze(navTabs.navTabs),
+      panes: navTabs.navTabs,
       type: 'card',
       capsule: false // 胶囊模式
     }

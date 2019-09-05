@@ -12,7 +12,7 @@
           :key="item.path"
         >
           <a-iconfont  :type="item.meta.icon" />
-          <span>{{ item.meta.title }}</span>
+          <span >{{ item.meta.title }}</span>
         </a-menu-item>
         <sub-menu
           v-else
@@ -24,11 +24,17 @@
   </a-sub-menu>
 </template>
 <script>
+import { layout } from '../observable/layout'
 export default {
   props: {
     menuInfo: {
       type: Object,
       default: () => {}
+    }
+  },
+  data () {
+    return {
+      layout
     }
   }
 }
