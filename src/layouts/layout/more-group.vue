@@ -42,7 +42,7 @@
         </a-radio-group>
         <a-divider></a-divider>
         <h1>布局配置</h1>
-        <a-radio-group v-model="layout.layout">
+        <a-radio-group v-model="layout.layoutShap">
           <a-radio value="layout1">布局1</a-radio>
           <a-radio value="layout2">布局2</a-radio>
         </a-radio-group>

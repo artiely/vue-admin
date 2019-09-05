@@ -1,12 +1,12 @@
 <template>
   <div class="layout-nav-tabs-wrapper">
     <a-tabs
-      :type="type"
+      :type="layout.navTabsShap==='capsule'?'card':layout.navTabsShap"
       animated
       class="layout-nav-tabs"
       :activeKey="activeKey"
       @change="handleNavTab"
-      :class="capsule?'capsule':''"
+      :class="layout.navTabsShap==='capsule'?'capsule':''"
     >
       <a-tab-pane :key="item.path" v-for="item in panes">
         <span slot="tab">
@@ -64,6 +64,7 @@ import { layout } from '@layouts'
 export default {
   data () {
     return {
+      layout,
       panes: navTabs.navTabs,
       type: 'card',
       capsule: false // 胶囊模式
@@ -109,17 +110,14 @@ export default {
     handleMenuClick (e) {
       switch (e.key) {
         case 'line':
-          this.type = 'line'
-          this.capsule = false
+          layout.navTabsShap = 'line'
           break
         case 'card':
-          this.type = 'card'
-          this.capsule = false
+          layout.navTabsShap = 'card'
           break
         // 胶囊模式只是对样式的覆写
         case 'capsule':
-          this.type = 'card'
-          this.capsule = true
+          layout.navTabsShap = 'capsule'
           break
         case 'close-curr':
           this.closeCurr()

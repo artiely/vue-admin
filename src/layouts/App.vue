@@ -27,6 +27,15 @@ export default {
       timer: null
     }
   },
+  watch: {
+    layout: {
+      handler (val) {
+        localStorage.setItem('layout', JSON.stringify(val))
+      },
+      deep: true,
+      immediate: true
+    }
+  },
   beforeRouteUpdate (to, from, next) {
     next()
   },
@@ -53,9 +62,9 @@ export default {
   },
   methods: {
     getPopupContainer (trigger) {
-      if (layout.layout === 'layout1') {
+      if (layout.layoutShap === 'layout1') {
         return document.body
-      } else if (layout.layout === 'layout2') {
+      } else if (layout.layoutShap === 'layout2') {
         return trigger.parentNode
       }
     }

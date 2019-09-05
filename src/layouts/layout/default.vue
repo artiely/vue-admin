@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     layout () {
-      return layout.layout
+      return layout.layoutShap
     }
   },
   methods: {

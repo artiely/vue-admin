@@ -10,7 +10,7 @@ export const layout = Vue.observable({
   // 布局模式 flow fixed
   layoutMode: 'flow',
   // 当前选择的布局
-  layout: 'layout1',
+  layoutShap: 'layout1',
   // 是否展示标签页
   isNavTabs: true,
   // 菜单的主题
@@ -27,11 +27,34 @@ export const layout = Vue.observable({
   appReload: true,
   // 标签页的高度
   navTabsHeight: 45,
+  // 标签页的样式
+  navTabsShap: 'card',
   // 头部的高度
   headerHeight: 64,
   // 菜单收起的动画和时间
   layoutTransition: 'all 0.2s'
 })
+
+let layoutStr = localStorage.getItem('layout')
+try {
+  let {
+    isCollapse,
+    layoutMode,
+    layoutShap,
+    isNavTabs,
+    navTabsShap,
+    menuTheme,
+    fontSize
+  } = JSON.parse(layoutStr)
+
+  layout.isCollapse = isCollapse
+  layout.layoutMode = layoutMode
+  layout.layoutShap = layoutShap
+  layout.isNavTabs = isNavTabs
+  layout.menuTheme = menuTheme
+  layout.fontSize = fontSize
+  layout.navTabsShap = navTabsShap
+} catch (e) {}
 
 export function setFontSize (val) {
   layout.fontSize = val || 16
@@ -39,17 +62,6 @@ export function setFontSize (val) {
   document.querySelector('html').style.fontSize = val + 'px'
 }
 export function mediaQuery () {
-  // var EventUtil = {
-  //   addHandler(element, type, handler) {
-  //     if (element.addEventListener) {
-  //       element.addEventListener(type, handler, false);
-  //     } else if (element.attachEvent) {
-  //       element.attachEvent("on" + type, handler);
-  //     } else {
-  //       element["on" + type] = handler;
-  //     }
-  //   }
-  // };
   const mediaQuery = {
     init () {
       var _this = this
@@ -65,12 +77,15 @@ export function mediaQuery () {
         },
         false
       )
-      // EventUtil.addHandler(window, 'resize', function () {
-
-      // })
     },
     remove () {
-      window.removeEventListener('resize', (event) => { event.preventDefault() }, false)
+      window.removeEventListener(
+        'resize',
+        event => {
+          event.preventDefault()
+        },
+        false
+      )
     },
     outputSize () {
       var result1 = window.matchMedia('(min-width:1200px)')
