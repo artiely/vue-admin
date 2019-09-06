@@ -1,5 +1,18 @@
 <template>
-  <transition name="slide-fade">
+
+<!--  name="slide-fade" -->
+  <transition
+    name="slide-fade"
+    mode="out-in"
+  >
+  <!--  v-on:before-enter="beforeEnter"
+    v-on:enter="enter"
+    v-on:after-enter="afterEnter"
+    v-on:enter-cancelled="enterCancelled"
+    v-on:before-leave="beforeLeave"
+    v-on:leave="leave"
+    v-on:after-leave="afterLeave"
+    v-on:leave-cancelled="leaveCancelled" -->
     <router-view
       v-if="layout.homeReload"
       id="router-view"
@@ -18,29 +31,28 @@ export default {
   },
   methods: {
   },
-  mounted () {
-  },
-  destroyed () {
-  }
+  mounted () {},
+  destroyed () {}
 }
 </script>
 
 <style lang="less" scoped>
-#router-view{
+#router-view {
   position: relative;
 }
 .slide-fade-enter {
-  transform: translateY(100px);
+  transform: translate3D(0, -100px, 0);
   opacity: 0;
 }
 .slide-fade-enter-active {
-  transition: all 0.2s ease-out;
+  transform: translate3D(0, 40, 0);
+  transition: transform 0.2s cubic-bezier(0.1, 0.88, 0.45, 0.94);
   opacity: 0.6;
 }
 .slide-fade-leave {
-  display: none;
+  display:none
 }
 .slide-fade-leave-active {
-  display: none;
+   display:none
 }
 </style>

@@ -30,13 +30,6 @@ export default {
   position: relative;
   z-index: 101;
   box-shadow: 0 1px 3px rgba(0, 21, 41, 0.08);
-  // background: #fff;
-  // .trigger{
-  //   height:64px;
-  //   &:hover{
-  //     background: rgba(#eee,.5);
-  //   }
-  // }
 }
 
 </style>

@@ -28,6 +28,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // 第一步鉴权
   // 第二步写入navtabs
+  // layout.homeReload=true
   NProgress.start()
   if (configs.router_auth) {
     configs.router_before_each(to, from, next)
