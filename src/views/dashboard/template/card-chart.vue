@@ -1,10 +1,13 @@
 <template>
 <!-- v-resize:debounce.250="onResize" -->
-  <a-card   class="card-chart" :bodyStyle="{padding:0}">
+<div>
+<a-card v-show="loading" class="card-chart"></a-card>
+  <a-card v-show="!loading" :loading="loading"  class="card-chart" :bodyStyle="{padding:0}">
     <h3 class="title">{{title}}</h3>
     <p class="sub-title">{{subTitle}}</p>
     <div :id="id" class="chart-box"></div>
   </a-card>
+  </div>
 </template>
 
 <script>
@@ -18,7 +21,8 @@ export default {
     subTitle: String,
     data: [Array, Object],
     type: String,
-    transform: [Object]
+    transform: [Object],
+    loading: Boolean
   },
   data () {
     return {

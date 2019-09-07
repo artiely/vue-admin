@@ -2,13 +2,13 @@
   <div>
     <a-row  :gutter="24" style="margin-bottom:25px;">
       <a-col :xs="24" :sm="24" :md="8" :lg="8">
-        <card-chart title="每日销售" :data="dataBar" :transform="transform" type="bar" subTitle="查看每个列以获取更多详细信息"></card-chart>
+        <card-chart title="每日销售" :loading="loading" :data="dataBar" :transform="transform" type="bar" subTitle="查看每个列以获取更多详细信息"></card-chart>
       </a-col>
       <a-col :xs="24" :sm="24" :md="8" :lg="8">
-        <card-chart title="分享利益" :data="dataPie" type="pie" subTitle="利润在客户之间分享"></card-chart>
+        <card-chart title="分享利益" :loading="loading" :data="dataPie" type="pie" subTitle="利润在客户之间分享"></card-chart>
       </a-col>
       <a-col :xs="24" :sm="24" :md="8" :lg="8">
-        <card-chart title="收入变化" :data="dataTriangle" type="triangle" subTitle="按城市划分的收入变化细分"></card-chart>
+        <card-chart title="收入变化" :loading="loading" :data="dataTriangle" type="triangle" subTitle="按城市划分的收入变化细分"></card-chart>
       </a-col>
     </a-row>
     <a-card>
@@ -20,89 +20,6 @@
 <script>
 import ApexCharts from 'apexcharts'
 import cardChart from './template/card-chart'
-let dataTriangle = [
-  {
-    type: '城市一',
-    value: 20
-  },
-  {
-    type: '城市二',
-    value: 18
-  },
-  {
-    type: '城市三',
-    value: 32
-  },
-  {
-    type: '城市四',
-    value: 15
-  },
-  {
-    type: 'Other',
-    value: 15
-  }
-]
-
-let dataPie = [
-  {
-    type: '分类一',
-    value: 20
-  },
-  {
-    type: '分类二',
-    value: 18
-  },
-  {
-    type: '分类三',
-    value: 32
-  },
-  {
-    type: '分类四',
-    value: 15
-  }
-]
-let dataBar = [
-  {
-    name: 'London',
-    'Jan.': 18.9,
-    'Feb.': 28.8,
-    'Mar.': 39.3,
-    'Apr.': 81.4,
-    May: 47,
-    'Jun.': 20.3,
-    'Jul.': 24,
-    'Aug.': 35.6,
-    'Apr1.': 81.4
-  },
-  {
-    name: 'Berlin',
-    'Jan.': 12.4,
-    'Feb.': 23.2,
-    'Mar.': 34.5,
-    'Apr.': 99.7,
-    May: 52.6,
-    'Jun.': 35.5,
-    'Jul.': 37.4,
-    'Aug.': 42.4,
-    'Apr1.': 81.4
-  }
-]
-
-let transform = {
-  type: 'fold',
-  fields: [
-    'Jan.',
-    'Feb.',
-    'Mar.',
-    'Apr.',
-    'May',
-    'Jun.',
-    'Jul.',
-    'Aug.'
-  ], // 展开字段集
-  key: '月份', // key字段
-  value: '月均降雨量' // value字段
-}
 
 export default {
   components: {
@@ -110,13 +27,15 @@ export default {
   },
   data () {
     return {
-      dataTriangle: Object.freeze(dataTriangle),
-      dataPie: Object.freeze(dataPie),
-      transform: Object.freeze(transform),
-      dataBar: Object.freeze(dataBar)
+      dataTriangle: [],
+      dataPie: [],
+      transform: {},
+      dataBar: [],
+      loading: false
     }
   },
   mounted () {
+    this.getData()
     this.$nextTick(() => {
       this.render()
     })
@@ -251,6 +170,21 @@ export default {
         }
         return series
       }
+    },
+    getData () {
+      this.loading = true
+      this.$api.GET_DASHBOARD().then(res => {
+        console.log('TCL: getData -> res', res)
+        this.loading = false
+        this.$nextTick(() => {
+          this.dataTriangle = Object.freeze(res.data.dataTriangle)
+          this.dataPie = Object.freeze(res.data.dataPie)
+          this.transform = Object.freeze(res.data.transform)
+          this.dataBar = Object.freeze(res.data.dataBar)
+        })
+      }).finally(() => {
+
+      })
     }
   }
 }
