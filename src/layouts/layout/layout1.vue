@@ -6,6 +6,7 @@
         <v-header>
           <a-icon
             class="trigger"
+            :style="{cursor:flag?'pointer':'not-allowed'}"
             :type="layout.isCollapse ? 'menu-unfold' : 'menu-fold'"
             @click="handleClick"
           />
@@ -57,7 +58,7 @@ export default {
       layout,
       scrollTop: 0,
       flag: true,
-      timer: false
+      o: null
     }
   },
   computed: {
@@ -109,20 +110,24 @@ export default {
       }
     }
   },
+  mounted () {
+    this.o = document.querySelector('.ant-layout-sider')
+  },
   methods: {
     handleClick () {
+      let callBack = () => {
+        this.flag = true
+        this.o.removeEventListener('transitionend', callBack)
+      }
+      this.o.addEventListener('transitionend', callBack)
       if (this.flag) {
         layout.isCollapse = !layout.isCollapse
         this.flag = false
-        this.timer = setTimeout(() => {
-          this.flag = true
-        }, 217)
       }
     }
   },
   destroyed () {
-    clearTimeout(this.timer)
-    this.timer = null
+    removeEventListener('transitionend')
   }
 }
 </script>

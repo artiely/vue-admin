@@ -30,6 +30,9 @@ export default {
       collapsedWidth: pxtorem(layout.collapsedWidth)
     }
   },
+  mounted () {
+
+  },
   computed: {
     className () {
       return [
