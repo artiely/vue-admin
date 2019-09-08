@@ -1,8 +1,6 @@
 <template>
-<!-- v-resize:debounce.250="onResize" -->
 <div>
-<a-card v-show="loading" class="card-chart"></a-card>
-  <a-card v-show="!loading" :loading="loading"  class="card-chart" :bodyStyle="{padding:0}">
+  <a-card  class="card-chart" :bodyStyle="{padding:0}">
     <h3 class="title">{{title}}</h3>
     <p class="sub-title">{{subTitle}}</p>
     <div :id="id" class="chart-box"></div>
@@ -30,20 +28,28 @@ export default {
       chart: null
     }
   },
+  watch: {
+    data: {
+      handler () {
+        this.render()
+      },
+      deep: true
+    }
+  },
   mounted () {
-    this.$nextTick(() => {
-      if (this.type === 'bar') {
-        this.renderChart()
-      } else if (this.type === 'pie') {
-        this.renderChartPie()
-      } else if (this.type === 'triangle') {
-        this.renderChartTriangle()
-      }
-    })
+
   },
   methods: {
-    onResize () {
-      // this.chart.forceFit()
+    render () {
+      this.$nextTick(() => {
+        if (this.type === 'bar') {
+          this.renderChart()
+        } else if (this.type === 'pie') {
+          this.renderChartPie()
+        } else if (this.type === 'triangle') {
+          this.renderChartTriangle()
+        }
+      })
     },
     renderChart () {
       // 此处数据使用了按行组织的模式，所以需要使用 DataSet 的 fold 方法对数据进行加工

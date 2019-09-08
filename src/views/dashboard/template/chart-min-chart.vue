@@ -62,19 +62,17 @@ export default {
     }
   },
   watch: {
-    // 'layout.isCollapse':{
-    //   handler(){
-    //     this.loading=true
-    //     setTimeout(()=>{
-    //       this.loading=false
-    //     },220)
-    //   }
-    // }
+    'data': {
+      handler () {
+        this.renderChart()
+      },
+      deep: true
+    }
   },
   mounted () {
-    this.$nextTick(() => {
-      this.renderChart()
-    })
+    // this.$nextTick(() => {
+    //   this.renderChart()
+    // })
   },
   methods: {
     renderChart () {

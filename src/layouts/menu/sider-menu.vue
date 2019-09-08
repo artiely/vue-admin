@@ -6,7 +6,7 @@
     :trigger="null"
     :collapsed-width="collapsedWidth"
     v-model="layout.isCollapse"
-    :width="pxtorem(layout.menuWidth)"
+    :width="menuWidth"
     :style="style"
   >
     <solo-menu />
@@ -26,8 +26,8 @@ export default {
   data () {
     return {
       layout,
-      pxtorem,
-      collapsedWidth: 80
+      menuWidth: pxtorem(layout.menuWidth),
+      collapsedWidth: pxtorem(layout.collapsedWidth)
     }
   },
   computed: {
@@ -40,7 +40,7 @@ export default {
     style () {
       return [
         layout.layoutMode === 'fixed' ? { overflow: 'hidden', height: '100vh', position: 'fixed', left: 0 } : '',
-        layout.isCollapse ? { width: this.pxtorem(layout.collapsedWidth), maxWidth: this.pxtorem(this.layout.collapsedWidth), minWidth: this.pxtorem(this.layout.collapsedWidth), flex: `0 0 ${this.pxtorem(this.layout.collapsedWidth)}` } : ''
+        layout.isCollapse ? { width: this.collapsedWidth, maxWidth: this.collapsedWidth, minWidth: this.collapsedWidth, flex: `0 0 ${this.collapsedWidth}` } : ''
       ]
     }
   }

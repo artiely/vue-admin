@@ -1,5 +1,6 @@
 <template>
   <div>
+    <a-spin :spinning="loading">
     <a-row  :gutter="24" style="margin-bottom:25px;">
       <a-col :xs="24" :sm="24" :md="8" :lg="8">
         <card-chart title="每日销售" :loading="loading" :data="dataBar" :transform="transform" type="bar" subTitle="查看每个列以获取更多详细信息"></card-chart>
@@ -14,6 +15,7 @@
     <a-card>
       <div id="timeline-chart"></div>
     </a-card>
+    </a-spin>
   </div>
 </template>
 

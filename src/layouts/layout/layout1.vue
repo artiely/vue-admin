@@ -16,7 +16,7 @@
         <!-- 面包屑 -->
         <!-- <breadcrumb /> -->
         <div>
-          <slot/>
+          <slot />
         </div>
       </a-layout-content>
       <v-footer></v-footer>
@@ -29,11 +29,22 @@ import fullMenu from '../menu/full-menu'
 import { layout } from '../observable/layout'
 import VFooter from './footer'
 import VHeader from './header1'
-import utils from '@/common/utils'
 import commonHeader from './common-header'
+import utils from '@/common/utils'
 let { pxtorem } = utils
 
-let { navTabsHeight: NAV_TABS_HEIGHT, headerHeight: HEADER_HEIGHT, layoutTransition: LAYOUT_TRANSITION } = layout
+let {
+  navTabsHeight: NAV_TABS_HEIGHT,
+  headerHeight: HEADER_HEIGHT,
+  layoutTransition: LAYOUT_TRANSITION
+} = layout
+
+let collapsedWidthRem = pxtorem(layout.collapsedWidth)
+let menuWidthRem = pxtorem(layout.menuWidth)
+let navTabsHeightRem = pxtorem(NAV_TABS_HEIGHT)
+let headerHeightRem = pxtorem(HEADER_HEIGHT)
+let navTabsHeightAddHeaderHeightRem = pxtorem(NAV_TABS_HEIGHT + HEADER_HEIGHT)
+
 export default {
   components: {
     fullMenu,
@@ -44,7 +55,9 @@ export default {
   data () {
     return {
       layout,
-      scrollTop: 0
+      scrollTop: 0,
+      flag: true,
+      timer: false
     }
   },
   computed: {
@@ -53,9 +66,7 @@ export default {
       if (this.layout.breakPoint === 'xs' || this.layout.breakPoint === 'sm') {
         return 0
       }
-      let ml = this.layout.isCollapse
-        ? pxtorem(layout.collapsedWidth)
-        : pxtorem(layout.menuWidth)
+      let ml = this.layout.isCollapse ? collapsedWidthRem : menuWidthRem
       return ml
     },
     layoutFixed () {
@@ -85,29 +96,39 @@ export default {
     contentFixed () {
       if (this.layout.layoutMode === 'flow') {
         if (this.layout.isNavTabs) {
-          return { marginTop: pxtorem(NAV_TABS_HEIGHT) }
+          return { marginTop: navTabsHeightRem }
         } else {
           return { marginTop: '16px' }
         }
       } else {
         if (this.layout.isNavTabs) {
-          return { marginTop: pxtorem(NAV_TABS_HEIGHT + HEADER_HEIGHT) }
+          return { marginTop: navTabsHeightAddHeaderHeightRem }
         } else {
-          return { marginTop: pxtorem(HEADER_HEIGHT) }
+          return { marginTop: headerHeightRem }
         }
       }
     }
   },
   methods: {
     handleClick () {
-      layout.isCollapse = !layout.isCollapse
+      if (this.flag) {
+        layout.isCollapse = !layout.isCollapse
+        this.flag = false
+        this.timer = setTimeout(() => {
+          this.flag = true
+        }, 217)
+      }
     }
+  },
+  destroyed () {
+    clearTimeout(this.timer)
+    this.timer = null
   }
 }
 </script>
 
 <style lang="less">
-@import '../../assets/styles/var.less';
+@import "../../assets/styles/var.less";
 #components-layout-demo-side {
   min-height: 100%;
   .trigger {
@@ -116,9 +137,8 @@ export default {
     padding: 0 24px;
     cursor: pointer;
     transition: color 0.3s;
-    &:hover{
-    background: fade(@primary-color,10%);
-
+    &:hover {
+      background: fade(@primary-color, 10%);
     }
   }
 }

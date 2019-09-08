@@ -173,6 +173,7 @@ export default {
 
   methods: {
     getDomWidth () {
+      console.log('>>>>>>>>>>>>>>>>>>>>>>')
       this.tableBoxWidth = this.$refs.tableBox.clientWidth
       this.tableBoxHeight = this.$refs.tableBox.clientHeight
     },

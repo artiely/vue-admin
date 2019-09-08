@@ -13,7 +13,7 @@
     <div
       v-if="trigger"
       class="menu-drawer-index-handle"
-      :style="{left:pxtorem(layout.menuWidth)}"
+      :style="{left:menuWidth}"
       slot="handle"
       @click="toggle"
     >
@@ -44,10 +44,10 @@ export default {
   },
   data () {
     return {
-      pxtorem,
       collapsedWidth: 80,
       visible: true,
-      layout
+      layout,
+      menuWidth: pxtorem(layout.menuWidth)
     }
   },
   watch: {
