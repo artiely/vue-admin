@@ -35,16 +35,18 @@ import utils from '@/common/utils'
 let { pxtorem } = utils
 
 let {
-  navTabsHeight: NAV_TABS_HEIGHT,
-  headerHeight: HEADER_HEIGHT,
-  layoutTransition: LAYOUT_TRANSITION
+  navTabsHeight,
+  headerHeight,
+  layoutTransition,
+  collapsedWidth,
+  menuWidth
 } = layout
 
-let collapsedWidthRem = pxtorem(layout.collapsedWidth)
-let menuWidthRem = pxtorem(layout.menuWidth)
-let navTabsHeightRem = pxtorem(NAV_TABS_HEIGHT)
-let headerHeightRem = pxtorem(HEADER_HEIGHT)
-let navTabsHeightAddHeaderHeightRem = pxtorem(NAV_TABS_HEIGHT + HEADER_HEIGHT)
+let collapsedWidthRem = pxtorem(collapsedWidth)
+let menuWidthRem = pxtorem(menuWidth)
+let navTabsHeightRem = pxtorem(navTabsHeight)
+let headerHeightRem = pxtorem(headerHeight)
+let navTabsHeightAddHeaderHeightRem = pxtorem(navTabsHeight + headerHeight)
 
 export default {
   components: {
@@ -58,7 +60,8 @@ export default {
       layout,
       scrollTop: 0,
       flag: true,
-      o: null
+      o: null,
+      timer: null
     }
   },
   computed: {
@@ -76,7 +79,7 @@ export default {
       } else {
         return {
           'margin-left': this.marginLeft,
-          transition: LAYOUT_TRANSITION
+          transition: layoutTransition
         }
       }
     },
@@ -90,7 +93,7 @@ export default {
           right: 0,
           top: 0,
           zIndex: 99,
-          transition: LAYOUT_TRANSITION
+          transition: layoutTransition
         }
       }
     },
@@ -117,17 +120,22 @@ export default {
     handleClick () {
       let callBack = () => {
         this.flag = true
-        this.o.removeEventListener('transitionend', callBack)
+        this.o && this.o.removeEventListener('transitionend', callBack)
       }
-      this.o.addEventListener('transitionend', callBack)
+      this.o && this.o.addEventListener('transitionend', callBack)
       if (this.flag) {
         layout.isCollapse = !layout.isCollapse
         this.flag = false
       }
+      if (!this.o) {
+        this.timer = setTimeout(() => { this.flag = true }, 200)
+      }
     }
   },
   destroyed () {
-    removeEventListener('transitionend')
+    this.o && this.o.removeEventListener('transitionend')
+    clearTimeout(this.timer)
+    console.log('TCL: destroyed -> this.timer', this.timer)
   }
 }
 </script>

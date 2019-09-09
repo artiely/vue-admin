@@ -109,9 +109,10 @@ export default {
     getData () {
       this.loading = true
       this.$api.GET_ANALYSIS().then(r => {
-        this.loading = false
         this.count = r.data.count
         this.list = r.data.list
+      }).finally(() => {
+        this.loading = false
       })
     }
   }

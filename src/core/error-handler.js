@@ -9,6 +9,11 @@ export default function errorHandler (error) {
   if (!error.response) {
     if (error.message && error.message.includes('timeout')) {
       console.error('超时了')
+      notification.error({
+        message: '请求超时',
+        description: '超时了,请您稍后再试。',
+        onClick: () => {}
+      })
     } else if (error.message && error.message === '请求重复') {
       console.error('请求重复')
     } else if (error.message && error.message.includes('cancel')) {
