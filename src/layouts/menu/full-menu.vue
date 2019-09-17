@@ -37,6 +37,7 @@ export default {
     soloMenu
   },
   props: {
+    // 是否展示trigger按钮
     trigger: {
       type: Boolean,
       default: false

@@ -53,12 +53,14 @@ export default {
         })
       }
     })
+    /*
     this.$nextTick(() => {
       this.timer = setTimeout(() => {
         let E = new Event('resize')
         window.dispatchEvent(E)
       }, 300)
     })
+    */
   },
   methods: {
     getPopupContainer (trigger) {

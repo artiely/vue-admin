@@ -117,23 +117,25 @@ export default {
     this.o = document.querySelector('.ant-layout-sider')
   },
   methods: {
+    callBack () {
+      this.flag = true
+      this.o && this.o.removeEventListener('transitionend', this.callBack)
+    },
     handleClick () {
-      let callBack = () => {
-        this.flag = true
-        this.o && this.o.removeEventListener('transitionend', callBack)
-      }
-      this.o && this.o.addEventListener('transitionend', callBack)
+      this.o && this.o.addEventListener('transitionend', this.callBack)
       if (this.flag) {
         layout.isCollapse = !layout.isCollapse
         this.flag = false
       }
       if (!this.o) {
         this.timer = setTimeout(() => { this.flag = true }, 200)
+      } else {
+        this.flag = true
       }
     }
   },
   destroyed () {
-    this.o && this.o.removeEventListener('transitionend')
+    this.o && this.o.removeEventListener('transitionend', this.callBack)
     clearTimeout(this.timer)
     console.log('TCL: destroyed -> this.timer', this.timer)
   }

@@ -60,10 +60,11 @@ export default {
           this.openKeys = []
         }
         clearTimeout(this.timer)
+        /* 这是一种粗暴的方式，性能开销大
         this.timer = setTimeout(() => {
           let E = new Event('resize')
           window.dispatchEvent(E)
-        }, 250)
+        }, 250) */
       },
       immediate: true
     }
