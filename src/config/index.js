@@ -32,63 +32,71 @@ switch (MODE) {
 }
 export default {
   // api请求地址的根路径
-  api_url: BASE_URL,
-  api_timeout: 10000,
-  api_header: {
-    'Cache-Control': 'no-cache',
-    'Content-type': 'application/x-www-form-urlencoded'
-  },
-  //   设置请求头
-  api_set_config: config => {
-    config.data = qs.stringify(config.data, {
-      arrayFormat: 'indices',
-      allowDots: true
-    })
-    return config
-  },
-  //   请求错误自定义
-  api_error_handler: error => {
-    const responseCode = error.response.data.status
-    switch (responseCode) {
-      case 4:
-        router.replace({
-          name: 'login',
-          params: { message: '您已在其他地方登录，或登录信息失效，请重新登录' }
-        })
-        utils.removeToken()
-        break
-      default:
-    }
-  },
-  //   请求之前的处理（如判断当前是否有网络等）
-  api_before_fetch: () => {
-    if (!navigator.onLine) {
-      this.$message.warning('请检查当前网络！')
+  api: {
+    retry: 1, // 失败重试次数
+    retryDelay: 1000, // 失败重试延时
+    shouldRetry: () => true, // 失败重试条件，默认只要是错误都需要重试
+    url: BASE_URL,
+    timeout: 10000,
+    //   设置请求头
+    header: {
+      'Cache-Control': 'no-cache',
+      'Content-type': 'application/x-www-form-urlencoded'
+    },
+    // 自定义一些配置(包括修改请求头等)
+    set_config: config => {
+      config.data = qs.stringify(config.data, {
+        arrayFormat: 'indices',
+        allowDots: true
+      })
+      return config
+    },
+    //   请求错误自定义
+    error_handler: error => {
+      const responseCode = error.response.data.status
+      switch (responseCode) {
+        case 4:
+          router.replace({
+            name: 'login',
+            params: {
+              message: '您已在其他地方登录，或登录信息失效，请重新登录'
+            }
+          })
+          utils.removeToken()
+          break
+        default:
+      }
+    },
+    //   请求之前的处理（如判断当前是否有网络等）
+    before_fetch: () => {
+      if (!navigator.onLine) {
+        this.$message.warning('请检查当前网络！')
+      }
     }
   },
   //   是否开启路由鉴权
   router_auth: true,
   router_before_each: (to, from, next) => {
-  // let { token } = getToken()
-  // if (to.meta.auth) {
-  //   // 有用户信息
-  //   if (token) {
-  //     next({
-  //       query: {
-  //         redirect: to.fullPath
-  //       }
-  //     })
-  //   } else {
-  //     next({
-  //       path: '/login',
-  //       query: {
-  //         redirect: to.fullPath
-  //       }
-  //     })
-  //   }
-  // } else {
-  //   next()
-  // }
+    // let { token } = getToken()
+    // if (to.meta.auth) {
+    //   // 有用户信息
+    //   if (token) {
+    //     next({
+    //       query: {
+    //         redirect: to.fullPath
+    //       }
+    //     })
+    //   } else {
+    //     next({
+    //       path: '/login',
+    //       query: {
+    //         redirect: to.fullPath
+    //       }
+    //     })
+    //   }
+    // } else {
+    //   next()
+    // }
     next()
   }
 }

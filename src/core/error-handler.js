@@ -22,7 +22,7 @@ export default function errorHandler (error) {
       console.error('请求失败', error)
     }
   } else {
-    configs.api_error_handler && configs.api_error_handler(error)
+    configs.api.error_handler && configs.api.error_handler(error)
     if (!PRODUCTION) {
       let url = error.response.config.url
       let params = error.response.config.data

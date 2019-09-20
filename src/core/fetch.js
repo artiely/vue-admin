@@ -14,22 +14,26 @@ const CancelToken = axios.CancelToken
 // 存储请求的映射
 let requestMap = new Map()
 
+axios.defaults.retry = configs.api.retry // 重试次数
+axios.defaults.retryDelay = configs.api.retryDelay // 重试延时
+axios.defaults.shouldRetry = configs.api.shouldRetry // 重试条件，默认只要是错误都需要重试
+
 window.addEventListener('offline', function (e) {
   message.warning('当前网络已断开！')
 })
 
 export default function fetch (options, argu) {
-  configs.api_before_fetch && configs.api_before_fetch()
+  configs.api.before_fetch && configs.api.before_fetch()
   let headers = Object.assign(
     {
       'Cache-Control': 'no-cache',
       'Content-type': 'application/x-www-form-urlencoded'
     },
-    configs.headers
+    configs.api.headers
   )
-  let timeout = configs.timeout || 10000
+  let timeout = configs.api.timeout || 10000
   const instance = axios.create({
-    baseURL: configs.api_url,
+    baseURL: configs.api.url,
     headers: headers,
     validateStatus: function (status) {
       return status === 200
@@ -79,7 +83,7 @@ export default function fetch (options, argu) {
 
       Object.assign(config, { _keyString: keyString })
 
-      let cusConfig = configs.api_set_config(config)
+      let cusConfig = configs.api.set_config(config)
 
       return { ...config, ...cusConfig }
     },
@@ -105,7 +109,49 @@ export default function fetch (options, argu) {
       }
     },
     error => {
-      errorHandler(error)
+      var config = error.config
+      // 判断是否配置了重试
+      if (!config || !config.retry) {
+        errorHandler(error)
+        return Promise.reject(error)
+      }
+
+      if (!config.shouldRetry || typeof config.shouldRetry !== 'function') {
+        errorHandler(error)
+        return Promise.reject(error)
+      }
+
+      // 判断是否满足重试条件
+      if (!config.shouldRetry(error)) {
+        errorHandler(error)
+        return Promise.reject(error)
+      }
+
+      // 设置重置次数，默认为0
+      config.__retryCount = config.__retryCount || 0
+
+      // 判断是否超过了重试次数
+      if (config.__retryCount >= config.retry) {
+        errorHandler(error)
+        return Promise.reject(error)
+      }
+
+      // 重试次数自增
+      config.__retryCount += 1
+
+      // 延时处理
+      var backoff = new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve()
+        }, config.retryDelay || 1)
+      })
+
+      // 重新发起axios请求
+      return backoff.then(function () {
+        return axios(config)
+      }).catch(e => {
+        errorHandler(e)
+      })
     }
   )
 
