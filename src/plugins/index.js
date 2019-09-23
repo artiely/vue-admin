@@ -5,6 +5,7 @@ import 'moment/locale/zh-cn'
 import VueTheMask from 'vue-the-mask'
 // import MaskedInput from 'vue-text-mask'
 import VueAMap from 'vue-amap'
+import LazyRender from 'vue-lazy-render'
 // Vue.component('masked-input', MaskedInput);
 moment.locale('zh-cn')
 Vue.use(VueAMap)
@@ -25,6 +26,7 @@ VueAMap.initAMapApiLoader({
   v: '1.4.4',
   zoom: 15
 })
+Vue.use(LazyRender)
 // 全局注入
 Vue.use(VuePerfectScrollbar)
 Vue.use(VueTheMask)

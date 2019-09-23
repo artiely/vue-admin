@@ -1,14 +1,15 @@
 <template>
   <div>
+    <lazy-render :time="500" immediately tip="loading" maskClass="action-box2">
     <a-affix :offsetTop="top">
         <div class="action-box clearfix">
           <slot/>
           <div class="fr">
-
           <slot name="right"/>
           </div>
         </div>
       </a-affix>
+      </lazy-render>
   </div>
 </template>
 
@@ -39,5 +40,12 @@ export default {
     border-radius: 4px;
     height: 100%;
     width: 100%
+  }
+  .action-box2{
+    background: fade(@component-background,90%);
+    box-shadow: 0 4px 3px -3px rgba(10, 10, 10, 0.1);
+    height: 56px;
+    width: 100%;
+    padding: 10px;
   }
 </style>
