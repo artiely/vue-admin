@@ -18,7 +18,11 @@ export default {
   name: 'v-actionbar',
   computed: {
     top () {
-      return layout.layoutMode === 'flow' ? 0 : 104
+      let baseFontSize = layout.fontSize
+      let layout1Height = layout.headerHeight + layout.navTabsHeight
+      let finalHieght = layout.layoutShap === 'layout1' ? layout1Height : layout.isMobile ? layout.headerHeight : layout1Height
+      let top = finalHieght / 16 * baseFontSize
+      return top
     }
   }
 }
@@ -33,5 +37,7 @@ export default {
     position: relative;
     z-index: 100;
     border-radius: 4px;
+    height: 100%;
+    width: 100%
   }
 </style>

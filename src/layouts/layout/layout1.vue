@@ -127,16 +127,13 @@ export default {
         layout.isCollapse = !layout.isCollapse
         this.flag = false
       }
-      if (!this.o) {
-        this.timer = setTimeout(() => { this.flag = true }, 200)
-      } else {
-        this.flag = true
-      }
+      this.timer = setTimeout(() => { this.flag = true }, 200)
     }
   },
   destroyed () {
     this.o && this.o.removeEventListener('transitionend', this.callBack)
     clearTimeout(this.timer)
+    this.timer = null
     console.log('TCL: destroyed -> this.timer', this.timer)
   }
 }

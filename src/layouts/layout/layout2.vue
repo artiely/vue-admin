@@ -3,10 +3,10 @@
     id="components-layout-demo-top"
     class="layout"
   >
-    <a-layout-header v-if="!layout.isMobile" class="layout2-header" :class="layout.layoutMode==='fixed'?'fixed':''">
+    <a-layout-header  class="layout2-header" :class="layout.layoutMode==='fixed'?'fixed':''">
       <v-logo style="display:inline" :isCollapse="false"></v-logo>
       <common-header></common-header>
-      <div class="layout2-menu" :class="layout.menuTheme==='dark'?'dark':'light'" >
+      <div class="layout2-menu" v-if="!layout.isMobile" :class="layout.menuTheme==='dark'?'dark':'light'" >
           <solo-menu
           :logo="false"
           class="layout2-solo-menu"
@@ -14,9 +14,9 @@
         />
       </div>
     </a-layout-header>
-    <full-menu v-else trigger />
+    <full-menu v-if="layout.isMobile" trigger />
     <div style="height:64px" v-if="layout.layoutMode==='fixed' && !layout.isMobile"></div>
-    <a-layout-content style="padding:50px" >
+    <a-layout-content :style="contentStyle" >
       <!-- 面包屑 -->
       <breadcrumb />
          <slot/>
@@ -32,6 +32,8 @@ import fullMenu from '../menu/full-menu'
 import VFooter from './footer'
 // import routerPage from './router-page'
 import commonHeader from './common-header'
+import utils from '@utils'
+const contentTop = utils.pxtorem(layout.headerHeight)
 export default {
   components: {
     breadcrumb,
@@ -45,6 +47,13 @@ export default {
     return {
       layout
     }
+  },
+  computed: {
+    contentStyle () {
+      return {
+        paddingTop: contentTop
+      }
+    }
   }
 }
 </script>
@@ -54,6 +63,7 @@ export default {
 #components-layout-demo-top{
   min-height: 100%;
   .layout2-header{
+    padding: 0;
     &.fixed{
       position: fixed;
       width: 100%;

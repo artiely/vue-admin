@@ -5,6 +5,7 @@
       <a-button type="dashed" @click="visible=true">历史接口</a-button>
     </v-actionbar>
     <v-card style="margin-top:10px">
+
       <div class="example">
         <div class="example-box">
           <div class="block">
@@ -50,6 +51,7 @@
         </div>
       </div>
     </v-card>
+
     <a-drawer :visible="visible" :width="370" @close="visible=false" :show-btns="false" mode="code">
       <a-radio-group v-model="currApi" class="apilist">
         <a-radio :style="{display:'block'}" v-for="(item,i) in apiList" :key="i" :value="item">
@@ -70,6 +72,7 @@
         </a-radio>
       </a-radio-group>
     </a-drawer>
+    <div style="height:500px"></div>
   </div>
 </template>
 

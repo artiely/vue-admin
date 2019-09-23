@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img :src="logoUrl" alt="logo">  <h1 v-if="!layout.isCollapse&&!isCollapse" >{{logoText}}</h1>
+    <img :src="logoUrl" alt="logo">  <h1  class="logo-text textover1" >{{logoText}}</h1>
   </div>
 </template>
 
@@ -16,10 +16,6 @@ export default {
     logoText: {
       type: String,
       default: 'Ant Desgin Pro'
-    },
-    isCollapse: {
-      type: Boolean,
-      default: false
     }
   },
   data () {
@@ -39,6 +35,9 @@ export default {
   transition: all .3s;
   overflow: hidden;
   user-select: none;
+  .logo-text{
+    width: 160px;
+  }
   img{
     width: 32px;
     // height: 100%;

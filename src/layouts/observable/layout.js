@@ -15,7 +15,7 @@ export const layout = Vue.observable({
   isNavTabs: true,
   // 菜单的主题
   menuTheme: 'dark',
-  // 默认字体大小
+  // 默认字体大小(不建议修改)
   fontSize: 16,
   // 菜单折叠的宽度
   collapsedWidth: 80,
@@ -54,6 +54,7 @@ try {
   layout.menuTheme = menuTheme
   layout.fontSize = fontSize
   layout.navTabsShap = navTabsShap
+  setFontSize(fontSize)
 } catch (e) {}
 
 export function setFontSize (val) {

@@ -55,7 +55,7 @@
         <h1>其他配置</h1>
         <v-cell title="标签页模式" onoff defaultChecked @change="navTabsChange"></v-cell>
         <v-cell title="色弱模式" onoff @change="colorWeakChange"></v-cell>
-        <v-cell title="字体大小"  @change="colorWeakChange">
+        <v-cell title="字体大小"  >
           <a-slider slot="right" :min="14" :max="20" @change="handleChange" :value="layout.fontSize" />
         </v-cell>
       </div>

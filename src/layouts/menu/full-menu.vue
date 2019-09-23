@@ -9,7 +9,7 @@
     :width="layout.menuWidth"
     @close="handleChange"
   >
-    <solo-menu />
+    <solo-menu logo />
     <div
       v-if="trigger"
       class="menu-drawer-index-handle"
