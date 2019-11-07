@@ -44,9 +44,9 @@ export default {
     document.addEventListener('visibilitychange', () => {
     // 浏览器切换事件
       if (document.visibilityState === 'hidden') {
-        document.title = '车边（冻结）'
+        document.title = 'Artiely（冻结）'
       } else {
-        document.title = '车边'
+        document.title = 'Artiely'
         layout.appReload = false
         this.$nextTick(() => {
           layout.appReload = true

@@ -39,20 +39,22 @@ export default {
 <style lang="less" scoped>
 #router-view {
   position: relative;
+  // transform: translate3d(0,0,0);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  perspective: 1000;
 }
 .slide-fade-enter {
-  transform: translate3D(0, -100px, 0);
-  opacity: 0;
+  // transform: translate3d(0, -100px, 0);
 }
 .slide-fade-enter-active {
-  transform: translate3D(0, 40, 0);
-  transition: transform 0.2s cubic-bezier(0.1, 0.88, 0.45, 0.94);
-  opacity: 0.6;
+  // transform: translate3d(0, 40px, 0);
+  // transition: transform 0.2s cubic-bezier(0.1, 0.88, 0.45, 0.94);
 }
 .slide-fade-leave {
-  display:none
+  // transform: translate3d(0, 0, 0);
 }
 .slide-fade-leave-active {
-   display:none
+  // transform: translate3d(0, 0, 0);
 }
 </style>
