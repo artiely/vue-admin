@@ -40,7 +40,6 @@ export default {
   }
   img{
     width: 32px;
-    // height: 100%;
   }
   h1{
     display: inline-block;

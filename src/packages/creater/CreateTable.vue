@@ -110,9 +110,9 @@ export default {
     'layout.isCollapse' (val) {
       this.reRender = false
       this.$nextTick(() => {
-        setTimeout(() => {
-          this.reRender = true
-        }, 317)
+        this.reRender = true
+        // setTimeout(() => {
+        // }, 317)
       })
     }
   },

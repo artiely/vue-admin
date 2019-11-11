@@ -13,11 +13,13 @@
     v-on:leave="leave"
     v-on:after-leave="afterLeave"
     v-on:leave-cancelled="leaveCancelled" -->
+    <keep-alive>
     <router-view
       v-if="layout.homeReload"
       id="router-view"
       :style="{ padding: '24px', minHeight: '360px' }"
     />
+    </keep-alive>
   </transition>
 </template>
 

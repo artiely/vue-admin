@@ -47,7 +47,6 @@ export default {
     return {
       layout,
       collapsed: false,
-      timer: null,
       menu: Object.freeze(routes),
       openKeys: []
     }
@@ -59,12 +58,6 @@ export default {
         if (val) {
           this.openKeys = []
         }
-        clearTimeout(this.timer)
-        /* 这是一种粗暴的方式，性能开销大
-        this.timer = setTimeout(() => {
-          let E = new Event('resize')
-          window.dispatchEvent(E)
-        }, 250) */
       },
       immediate: true
     }

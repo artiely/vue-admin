@@ -37,7 +37,7 @@ export default {
     retryDelay: 1000, // 失败重试延时
     shouldRetry: () => true, // 失败重试条件，默认只要是错误都需要重试
     url: BASE_URL,
-    timeout: 10000,
+    timeout: 1000,
     //   设置请求头
     header: {
       'Cache-Control': 'no-cache',

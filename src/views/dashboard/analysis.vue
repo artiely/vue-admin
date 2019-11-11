@@ -113,6 +113,9 @@ export default {
         this.list = r.data.list
       }).finally(() => {
         this.loading = false
+      }).catch(()=>{
+        this.list=[2,5,3,7,9,3,4]
+        // alert(1)
       })
     }
   }
