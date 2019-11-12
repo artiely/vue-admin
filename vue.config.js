@@ -83,7 +83,7 @@ module.exports = {
         compressionWebpackPlugin,
         // uglifyJsPlugin,
         // 对打包文件进行压缩
-        zipPlugin
+        // zipPlugin
       )
     }
   },

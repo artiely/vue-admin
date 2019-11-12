@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0da6e6"],{"6c25":function(n,r,t){"use strict";t.r(r),r["default"]='\r\n\r\n\r\n```html vue-run\r\n<template>\r\n  <a-button class="btn btn-blue" @click="test" type="primary">打开console，点击看看效果</a-button>\r\n</template>\r\n<script>\r\n  export default {\r\n    data() {\r\n      return {};\r\n    },\r\n    methods: {\r\n      test() {\r\n        console.log(\'你点击了按钮\');\r\n      }\r\n    }\r\n  }\r\n<\/script>\r\n```'}}]);
+//# sourceMappingURL=chunk-2d0da6e6.fa153eca.js.map

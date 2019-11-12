@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/assets/fonts/DianHei.ttf"],"names":["module","exports","__webpack_require__","p"],"mappings":"qGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"static/js/chunk-2d0d7443.34841d2b.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/fonts/DianHei.5047b41d.ttf\";"],"sourceRoot":""}

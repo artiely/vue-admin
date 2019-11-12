@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d22bf54"],{f0d8:function(t,e,n){"use strict";n.r(e);var l=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("a-layout-footer",{staticStyle:{"text-align":"center"}},[t._v("\n    Ant Design Pro ©2019 Created by Artiely\n  ")])},r=[],a=n("2877"),c={},o=Object(a["a"])(c,l,r,!1,null,null,null);e["default"]=o.exports}}]);
+//# sourceMappingURL=chunk-2d22bf54.d215f7db.js.map
