@@ -9,7 +9,7 @@ apps:
 deploy :
   production :
     user : root
-    key : C:/Windows/SSH-ubuntu.pem
+    key : C:/key/SSH-ubuntu.pem
     host : 
       - 120.78.174.212
     port : 22
