@@ -1,33 +1,20 @@
 # 效果预览
-![](./docs/localhost_8082_(1).png)
+<img src="./docs/localhost_8082_(1).png" style="width:50%">
+<img src="./docs/localhost_8082_(3).png" style="width:50%">
+<img src="./docs/localhost_8082_(4).png" style="width:50%">
+<img src="./docs/localhost_8082_(5).png" style="width:50%">
+<img src="./docs/localhost_8082_(6).png" style="width:50%">
+<img src="./docs/localhost_8082_(7).png" style="width:50%">
+<img src="./docs/localhost_8082_(8).png" style="width:50%">
+<img src="./docs/localhost_8082_(9).png" style="width:50%">
+<img src="./docs/localhost_8082_(10).png" style="width:50%">
+<img src="./docs/localhost_8082_(11).png" style="width:50%">
+<img src="./docs/localhost_8082_(12).png" style="width:50%">
+<img src="./docs/localhost_8082_(iPadPro).png" style="width:50%">
+<img src="./docs/localhost_8082_(iPhoneX).png" style="width:50%">
+<img src="./docs/localhost_8082_(iPhoneX)(1).png" style="width:50%">
+<img src="./docs/192.168.124.14_8082_.png" style="width:50%">
 
-![](./docs/localhost_8082_(3).png)
-
-![](./docs/localhost_8082_(4).png)
-
-![](./docs/localhost_8082_(5).png)
-
-![](./docs/localhost_8082_(6).png)
-
-![](./docs/localhost_8082_(7).png)
-
-![](./docs/localhost_8082_(8).png)
-
-![](./docs/localhost_8082_(9).png)
-
-![](./docs/localhost_8082_(10).png)
-
-![](./docs/localhost_8082_(11).png)
-
-![](./docs/localhost_8082_(12).png)
-
-![](./docs/localhost_8082_(iPadPro).png)
-
-![](./docs/localhost_8082_(iPhoneX).png)
-
-![](./docs/localhost_8082_(iPhoneX)(1).png)
-
-![](./docs/192.168.124.14_8082_.png)
 
 # 预览地址
 
@@ -62,19 +49,19 @@ npm run new
 ```
 
 # 主要功能
-\- [ ] 深度响应式断点支持pc、pad及手机
+- [x] 响应式断点支持pc、pad及手机
 
-\- [] 可配置化布局
+- [x] 可配置化布局
 
-* [] 可自定义主题
+- [x] 可自定义主题
 
-- [ ] 标签页模式
+- [x] 标签页模式
 
-- [ ] 色弱模式
+- [x] 色弱模式
 
-- [] 自定义字体大小
+- [x] 自定义字体大小
 
-- [] 自定义组件及物料
+- [x] 自定义组件及物料
 
 ...
 
