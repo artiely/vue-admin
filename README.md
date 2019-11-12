@@ -1,19 +1,12 @@
 # 效果预览
-<img src="./docs/localhost_8082_(1).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(3).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(4).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(5).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(6).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(7).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(8).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(9).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(10).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(11).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(12).png" style="width:50%" width="400">
+<img src="./docs/localhost_8082_(iPhoneX).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(iPhoneX)(1).png" style="width:50%" width="400">
+
+<img src="./docs/localhost_8082_(6).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(7).png" style="width:50%" width="400">
+<img src="./docs/localhost_8082_(8).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(9).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(10).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(11).png" style="width:50%" width="400">
+
+<img src="./docs/localhost_8082_(3).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(4).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(5).png" style="width:50%" width="400"><img src="./docs/192.168.124.14_8082_.png" style="width:50%" width="400"><img src="./docs/localhost_8082_(12).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(1).png" style="width:50%" width="400">
+
 <img src="./docs/localhost_8082_(iPadPro).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(iPhoneX).png" style="width:50%" width="400">
-<img src="./docs/localhost_8082_(iPhoneX)(1).png" style="width:50%" width="400">
-<img src="./docs/192.168.124.14_8082_.png" style="width:50%" width="400">
 
 
 # 预览地址
