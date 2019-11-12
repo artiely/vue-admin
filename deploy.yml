@@ -1,5 +1,5 @@
 apps:
-  - script   : index.js
+  - script   : server.js
     name : 'vue-admin'
     watch  : true
     env    :
