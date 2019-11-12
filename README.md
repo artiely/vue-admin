@@ -81,10 +81,10 @@ npm run new
 
 #项目结构
 ```
-├─doc                // 文档目录
+├─doc                   // 文档目录
 │      
-├─public              // 静态资源目录
-├─script              // 脚本
+├─public                // 静态资源目录
+├─script                // 脚本
 │      
 ├─node_modules
 │  
@@ -94,25 +94,24 @@ npm run new
 │  │      
 │  ├─assets             // 组件静态资源
 │  │              
-│  ├─common             // 公共
-│  │  ├─directive       
-│  │  ├─filter          
-│  │  └─utils           
+│  ├─common             // 公共文件
+│  │  ├─directive       // 指令
+│  │  ├─filter          // 过滤器
+│  │  └─utils           // 工具
 │  │  
 │  ├─i18n               // 国际化
 │  │  
-│  ├─config          // 配置文件
-│  ├─core         // 抽离文件
-│  ├─layouts          // 布局组件
-│  ├─packages        // 非业务组件
-│  ├─plugins        // 第三方插件
-│  ├─views           // 业务组件
-│  │          
+│  ├─config             // 业务配置文件
+│  ├─core               // 非业务抽离文件
+│  ├─layouts            // 布局组件
+│  ├─packages           // 非业务组件
+│  ├─plugins            // 第三方插件
+│  ├─views              // 业务组件
 │  ├─router             // 路由管理
-│  │      
 │  └─store              // 状态管理
 │              
-└─test                  // 测试
+├─test                  // 测试
+└─theme                 // 主体管理
 ...
 ```
 # 浏览器支持
