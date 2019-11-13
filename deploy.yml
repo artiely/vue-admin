@@ -15,7 +15,7 @@ deploy :
     port : 22
     ref : origin/master
     repo : git@github.com:artiely/vue-admin.git
-    path : /www/and-design-pro/production
+    path : /www/ant-design-pro/production
     ssh_options : StrictHostKeyChecking=no
     pre-deploy : git fetch --all
     post-deploy : 'npm install --ignore-scripts && pm2 startOrRestart deploy.yml --env production'
