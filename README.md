@@ -28,6 +28,9 @@ npm run build
 
 # 发布上线
 npm run build-release
+# pm2
+pm2 deploy deploy.yml production setup
+pm2 deploy deploy.yml production
 ```
 
 # 快速新建页面
@@ -55,6 +58,8 @@ npm run new
 - [x] 自定义字体大小
 
 - [x] 自定义组件及物料
+
+- [x] axios封装支持重连、取消
 
 ...
 
