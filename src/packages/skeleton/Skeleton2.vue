@@ -3,7 +3,7 @@
     <div class="loading-container">
       <div class="loading" />
       <div id="loading-text">
-        加载中...
+        <!-- 加载中... -->
       </div>
     </div>
   </div>
@@ -271,6 +271,6 @@ export default {
   text-align: center;
   text-transform: uppercase;
   top: 0;
-  width: 400px;
+  width: 200px;
 }
 </style>
