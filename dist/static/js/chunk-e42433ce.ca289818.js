@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-e42433ce"],{"02b3":function(n,t,e){"use strict";var c=e("12e7"),u=e.n(c);u.a},"12e7":function(n,t,e){},ef4c:function(n,t,e){"use strict";e.r(t);var c=function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("div",{staticClass:"About"},[n._v("\n  About组件\n")])},u=[],s={name:"About"},a=s,o=(e("02b3"),e("2877")),i=Object(o["a"])(a,c,u,!1,null,"145d00dc",null);t["default"]=i.exports}}]);
-//# sourceMappingURL=chunk-e42433ce.ca289818.js.map

@@ -1,38 +1,252 @@
-<!DOCTYPE html><html lang=ZH_cn style=font-size:16px><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=renderer content=webkit><meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1"><meta http-equiv=Cache-Control content=no-siteapp><link rel=icon href=favicon.ico><title>vue-admin</title><link rel=stylesheet href=//at.alicdn.com/t/font_1326052_lr1bez3k2nc.css><link href=https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.css rel=preload as=style><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.css as=style><link href=https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.css rel=preload as=style><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.css as=style><link href=https://cdn.bootcss.com/vue/2.6.10/vue.min.js rel=preload as=script><script src=https://cdn.bootcss.com/vue/2.6.10/vue.min.js></script><link href=https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js rel=preload as=script><script src=https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js></script><link href=https://cdn.bootcss.com/vuex/3.1.1/vuex.min.js rel=preload as=script><script src=https://cdn.bootcss.com/vuex/3.1.1/vuex.min.js></script><link href=https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js></script><link href=https://cdn.jsdelivr.net/npm/moment@2.24.0/locale/zh-cn.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/moment@2.24.0/locale/zh-cn.js></script><link href=https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js rel=preload as=script><script src=https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js></script><link href=https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.js></script><link href=https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js rel=preload as=script><script src=https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js></script><link href=https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js rel=preload as=script><script src=https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js></script><link href=https://cdn.jsdelivr.net/npm/@antv/g2@3.5.8-beta.3/build/g2.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/@antv/g2@3.5.8-beta.3/build/g2.min.js></script><link href=https://cdn.jsdelivr.net/npm/@antv/data-set@0.10.2/build/data-set.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/@antv/data-set@0.10.2/build/data-set.min.js></script><link href=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js></script><link href=https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.js></script><link href=https://cdn.jsdelivr.net/npm/vue-amap@0.5.10/dist/index.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/vue-amap@0.5.10/dist/index.min.js></script><style>.load-wrapp[data-v-049a9356] {
-  width: 100%;
-  height: 100vh;
+<!DOCTYPE html><html lang=ZH_cn style=font-size:16px><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=renderer content=webkit><meta http-equiv=X-UA-Compatible content="IE=Edge,chrome=1"><meta http-equiv=Cache-Control content=no-siteapp><link rel=icon href=favicon.ico><title>vue-admin</title><link rel=stylesheet href=//at.alicdn.com/t/font_1326052_lr1bez3k2nc.css><link href=https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.css rel=preload as=style><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.css as=style><link href=https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.css rel=preload as=style><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.css as=style><link href=https://cdn.bootcss.com/vue/2.6.10/vue.min.js rel=preload as=script><script src=https://cdn.bootcss.com/vue/2.6.10/vue.min.js></script><link href=https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js rel=preload as=script><script src=https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js></script><link href=https://cdn.bootcss.com/vuex/3.1.1/vuex.min.js rel=preload as=script><script src=https://cdn.bootcss.com/vuex/3.1.1/vuex.min.js></script><link href=https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js></script><link href=https://cdn.jsdelivr.net/npm/moment@2.24.0/locale/zh-cn.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/moment@2.24.0/locale/zh-cn.js></script><link href=https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js rel=preload as=script><script src=https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js></script><link href=https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/ant-design-vue@1.3.16/dist/antd.min.js></script><link href=https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js rel=preload as=script><script src=https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js></script><link href=https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js rel=preload as=script><script src=https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js></script><link href=https://cdn.jsdelivr.net/npm/@antv/g2@3.5.8-beta.3/build/g2.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/@antv/g2@3.5.8-beta.3/build/g2.min.js></script><link href=https://cdn.jsdelivr.net/npm/@antv/data-set@0.10.2/build/data-set.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/@antv/data-set@0.10.2/build/data-set.min.js></script><link href=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js></script><link href=https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/driver.js@0.9.7/dist/driver.min.js></script><link href=https://cdn.jsdelivr.net/npm/vue-amap@0.5.10/dist/index.min.js rel=preload as=script><script src=https://cdn.jsdelivr.net/npm/vue-amap@0.5.10/dist/index.min.js></script><style>/** BEGIN CSS **/
+.skeleton-wrapper {
   display: flex;
-  align-items: center;
+  height: 100vh;
   justify-content: center;
-  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  background: #333;
 }
-.square[data-v-049a9356] {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.25rem;
-  background-color: #4b9cdb;
-}
-.load-7 .square[data-v-049a9356] {
-  animation: loadingG-data-v-049a9356 2.5s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
-}
-@keyframes loadingG-data-v-049a9356 {
+@keyframes rotate-loading {
 0% {
-    transform: translate(0, 0) rotate(0deg);
-}
-50% {
-    transform: translate(23.125rem, 0) rotate(360deg);
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
 }
 100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
 }
+}
+@-moz-keyframes rotate-loading {
+0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+}
+@-webkit-keyframes rotate-loading {
+0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+}
+@-o-keyframes rotate-loading {
+0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+}
+@keyframes rotate-loading {
+0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+}
+@-moz-keyframes rotate-loading {
+0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+}
+@-webkit-keyframes rotate-loading {
+0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+}
+@-o-keyframes rotate-loading {
+0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+}
+}
+@keyframes loading-text-opacity {
+0% {
+    opacity: 0;
+}
+20% {
+    opacity: 0;
+}
+50% {
+    opacity: 1;
+}
+100% {
+    opacity: 0;
+}
+}
+@-moz-keyframes loading-text-opacity {
+0% {
+    opacity: 0;
+}
+20% {
+    opacity: 0;
+}
+50% {
+    opacity: 1;
+}
+100% {
+    opacity: 0;
+}
+}
+@-webkit-keyframes loading-text-opacity {
+0% {
+    opacity: 0;
+}
+20% {
+    opacity: 0;
+}
+50% {
+    opacity: 1;
+}
+100% {
+    opacity: 0;
+}
+}
+@-o-keyframes loading-text-opacity {
+0% {
+    opacity: 0;
+}
+20% {
+    opacity: 0;
+}
+50% {
+    opacity: 1;
+}
+100% {
+    opacity: 0;
+}
+}
+.loading-container {
+  position: relative;
+}
+.loading-container,
+.loading {
+  height: 12.5rem;
+  width: 12.5rem;
+  border-radius: 100%;
+}
+.loading {
+  border: 0.125rem solid transparent;
+  border-color: transparent #fff transparent #fff;
+  -moz-animation: rotate-loading 1.5s linear 0s infinite normal;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: rotate-loading 1.5s linear 0s infinite normal;
+  -o-transform-origin: 50% 50%;
+  -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+  -webkit-transform-origin: 50% 50%;
+  animation: rotate-loading 1.5s linear 0s infinite normal;
+  transform-origin: 50% 50%;
+}
+.loading-container:hover .loading {
+  border-color: transparent #e45635 transparent #e45635;
+}
+.loading-container:hover .loading,
+.loading-container .loading {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+#loading-text {
+  -moz-animation: loading-text-opacity 2s linear 0s infinite normal;
+  -o-animation: loading-text-opacity 2s linear 0s infinite normal;
+  -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
+  animation: loading-text-opacity 2s linear 0s infinite normal;
+  color: #fff;
+  font-family: 'Helvetica Neue, ' Helvetica ', ' 'arial';
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 2.8125rem;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 0;
+  width: 25rem;
 }
 
 
-/*# sourceMappingURL=skeleton-app.css.map*/</style><link href=static/css/chunk-00a07099.7c3f772e.css rel=prefetch><link href=static/css/chunk-0a784dd5.0eda17fa.css rel=prefetch><link href=static/css/chunk-0ac31ac0.b6ec54b7.css rel=prefetch><link href=static/css/chunk-0baa589a.0e433876.css rel=prefetch><link href=static/css/chunk-0d5fdb9e.3bd9deb8.css rel=prefetch><link href=static/css/chunk-0f04a6bb.5f737688.css rel=prefetch><link href=static/css/chunk-247e771f.0e433876.css rel=prefetch><link href=static/css/chunk-27993f63.5dc43b99.css rel=prefetch><link href=static/css/chunk-2c7c76fb.4266e421.css rel=prefetch><link href=static/css/chunk-3134b494.555d3f3d.css rel=prefetch><link href=static/css/chunk-3af6d18c.51652431.css rel=prefetch><link href=static/css/chunk-3ca785de.445004ab.css rel=prefetch><link href=static/css/chunk-3fe53439.75d456e0.css rel=prefetch><link href=static/css/chunk-47dde441.136a9e9a.css rel=prefetch><link href=static/css/chunk-4ba067d5.b17d45c0.css rel=prefetch><link href=static/css/chunk-50abf16c.2e03dad5.css rel=prefetch><link href=static/css/chunk-53892f3f.53ace4b8.css rel=prefetch><link href=static/css/chunk-57996324.4e6de273.css rel=prefetch><link href=static/css/chunk-57fa8fdc.3c742cae.css rel=prefetch><link href=static/css/chunk-5cb742c2.2015eff2.css rel=prefetch><link href=static/css/chunk-61dc34aa.6fa4e5ec.css rel=prefetch><link href=static/css/chunk-62cfa690.4b30c8cb.css rel=prefetch><link href=static/css/chunk-6e3c80f6.7186e647.css rel=prefetch><link href=static/css/chunk-70d81b08.6e1372b0.css rel=prefetch><link href=static/css/chunk-744b430d.caa1292d.css rel=prefetch><link href=static/css/chunk-74527885.d71b9a44.css rel=prefetch><link href=static/css/chunk-745c0032.03167afb.css rel=prefetch><link href=static/css/chunk-749ea974.3debab79.css rel=prefetch><link href=static/css/chunk-75de7162.54040a99.css rel=prefetch><link href=static/css/chunk-764e1620.0e54eea5.css rel=prefetch><link href=static/css/chunk-76f0fd93.26a3a288.css rel=prefetch><link href=static/css/chunk-77073c5f.d51ba0cb.css rel=prefetch><link href=static/css/chunk-770d2a0a.d51ba0cb.css rel=prefetch><link href=static/css/chunk-7727447a.0852c8b8.css rel=prefetch><link href=static/css/chunk-772a6c0d.d51ba0cb.css rel=prefetch><link href=static/css/chunk-773483d4.a19035e3.css rel=prefetch><link href=static/css/chunk-77373be0.447a642a.css rel=prefetch><link href=static/css/chunk-779c9bc8.a2ecda99.css rel=prefetch><link href=static/css/chunk-7f367e29.23b2c703.css rel=prefetch><link href=static/css/chunk-9b458190.a4297e8a.css rel=prefetch><link href=static/css/chunk-a242f988.b4dabdfb.css rel=prefetch><link href=static/css/chunk-b9480562.0e433876.css rel=prefetch><link href=static/css/chunk-b94b259a.9552bb4e.css rel=prefetch><link href=static/css/chunk-bdb33456.0eda17fa.css rel=prefetch><link href=static/css/chunk-c19c5c98.a6b016d0.css rel=prefetch><link href=static/css/chunk-d027fdee.1fc50605.css rel=prefetch><link href=static/css/chunk-dc109c14.52f1698d.css rel=prefetch><link href=static/css/chunk-e42433ce.0e433876.css rel=prefetch><link href=static/css/chunk-e4906e3a.445004ab.css rel=prefetch><link href=static/js/chunk-00a07099.0d1de0f8.js rel=prefetch><link href=static/js/chunk-08ecace0.fef56888.js rel=prefetch><link href=static/js/chunk-09ebdaf6.ce03bf82.js rel=prefetch><link href=static/js/chunk-0a784dd5.2ebf3c10.js rel=prefetch><link href=static/js/chunk-0ac31ac0.a9fbb474.js rel=prefetch><link href=static/js/chunk-0baa589a.8cfd05f2.js rel=prefetch><link href=static/js/chunk-0d5fdb9e.67468957.js rel=prefetch><link href=static/js/chunk-0f04a6bb.9080d1f8.js rel=prefetch><link href=static/js/chunk-18c412b6.84894deb.js rel=prefetch><link href=static/js/chunk-247e771f.b87a5828.js rel=prefetch><link href=static/js/chunk-27993f63.507a3cb3.js rel=prefetch><link href=static/js/chunk-2c7c76fb.978f6681.js rel=prefetch><link href=static/js/chunk-2d0a31d4.f4356d6a.js rel=prefetch><link href=static/js/chunk-2d0a50ed.2e609811.js rel=prefetch><link href=static/js/chunk-2d0a553f.d47a9c32.js rel=prefetch><link href=static/js/chunk-2d0b1c20.487c9df9.js rel=prefetch><link href=static/js/chunk-2d0b2206.7dbf3adb.js rel=prefetch><link href=static/js/chunk-2d0ba167.f76829d1.js rel=prefetch><link href=static/js/chunk-2d0bd16d.014aca59.js rel=prefetch><link href=static/js/chunk-2d0be176.f4ae9680.js rel=prefetch><link href=static/js/chunk-2d0c174c.b3fdf2aa.js rel=prefetch><link href=static/js/chunk-2d0c7ad3.54cb25a2.js rel=prefetch><link href=static/js/chunk-2d0c7e5a.d278ab49.js rel=prefetch><link href=static/js/chunk-2d0cb73d.8e689e74.js rel=prefetch><link href=static/js/chunk-2d0d2b36.fc41150e.js rel=prefetch><link href=static/js/chunk-2d0d5c9c.e9e55bb1.js rel=prefetch><link href=static/js/chunk-2d0d7443.34841d2b.js rel=prefetch><link href=static/js/chunk-2d0d76cf.ef0f40f5.js rel=prefetch><link href=static/js/chunk-2d0da3e3.bb698939.js rel=prefetch><link href=static/js/chunk-2d0da6e6.fa153eca.js rel=prefetch><link href=static/js/chunk-2d0da700.40fc2acf.js rel=prefetch><link href=static/js/chunk-2d0e1d33.e82413e4.js rel=prefetch><link href=static/js/chunk-2d0e26b9.95c02a12.js rel=prefetch><link href=static/js/chunk-2d0e488f.0e0653fc.js rel=prefetch><link href=static/js/chunk-2d0e9963.3dde5037.js rel=prefetch><link href=static/js/chunk-2d2088c6.93a1b928.js rel=prefetch><link href=static/js/chunk-2d208e1b.99b0131c.js rel=prefetch><link href=static/js/chunk-2d20ebf5.0ad4d542.js rel=prefetch><link href=static/js/chunk-2d20f592.2ef7ae38.js rel=prefetch><link href=static/js/chunk-2d20fd05.936100c5.js rel=prefetch><link href=static/js/chunk-2d210b7f.833d99af.js rel=prefetch><link href=static/js/chunk-2d21af2b.f57c71e0.js rel=prefetch><link href=static/js/chunk-2d21ddf1.d859bbc4.js rel=prefetch><link href=static/js/chunk-2d21e454.18d15a7f.js rel=prefetch><link href=static/js/chunk-2d22269e.a39578a9.js rel=prefetch><link href=static/js/chunk-2d224c92.9070ba27.js rel=prefetch><link href=static/js/chunk-2d226378.9a66e6b9.js rel=prefetch><link href=static/js/chunk-2d2268f9.82f73a30.js rel=prefetch><link href=static/js/chunk-2d22bd9d.36045c0c.js rel=prefetch><link href=static/js/chunk-2d22bf54.d215f7db.js rel=prefetch><link href=static/js/chunk-2d22c550.7b6d6ed0.js rel=prefetch><link href=static/js/chunk-2d22d74b.b7a8f5ef.js rel=prefetch><link href=static/js/chunk-2d22d7f3.7cb7efb7.js rel=prefetch><link href=static/js/chunk-2d22fd30.63c3027d.js rel=prefetch><link href=static/js/chunk-2d230f8a.7e5b0560.js rel=prefetch><link href=static/js/chunk-2d237b44.c849bfab.js rel=prefetch><link href=static/js/chunk-2d2383b7.79d58c8d.js rel=prefetch><link href=static/js/chunk-3134b494.1671632b.js rel=prefetch><link href=static/js/chunk-3af6d18c.1007508e.js rel=prefetch><link href=static/js/chunk-3ca785de.eaef6b6c.js rel=prefetch><link href=static/js/chunk-3fe53439.06a63f97.js rel=prefetch><link href=static/js/chunk-47dde441.d04fde3c.js rel=prefetch><link href=static/js/chunk-4ba067d5.7d21ea0f.js rel=prefetch><link href=static/js/chunk-50abf16c.042793ca.js rel=prefetch><link href=static/js/chunk-53892f3f.ce9a22c5.js rel=prefetch><link href=static/js/chunk-57996324.9dd89aa6.js rel=prefetch><link href=static/js/chunk-57fa8fdc.6be29dbd.js rel=prefetch><link href=static/js/chunk-5cb742c2.e5aa620b.js rel=prefetch><link href=static/js/chunk-61237f42.6dd2ce37.js rel=prefetch><link href=static/js/chunk-61ba1ef3.74cfec8e.js rel=prefetch><link href=static/js/chunk-61dc34aa.29342da1.js rel=prefetch><link href=static/js/chunk-62cfa690.fe113939.js rel=prefetch><link href=static/js/chunk-6e3c80f6.d8065d36.js rel=prefetch><link href=static/js/chunk-70d81b08.33cf6fd2.js rel=prefetch><link href=static/js/chunk-744b430d.9e454929.js rel=prefetch><link href=static/js/chunk-74527885.3b6c7061.js rel=prefetch><link href=static/js/chunk-745c0032.67e06e7a.js rel=prefetch><link href=static/js/chunk-749ea974.aeb4cfde.js rel=prefetch><link href=static/js/chunk-75de7162.ed1afa2e.js rel=prefetch><link href=static/js/chunk-764e1620.f49467b0.js rel=prefetch><link href=static/js/chunk-76f0fd93.5b72e839.js rel=prefetch><link href=static/js/chunk-77073c5f.572fec9d.js rel=prefetch><link href=static/js/chunk-770d2a0a.8d7c86f5.js rel=prefetch><link href=static/js/chunk-7727447a.7e1af7a8.js rel=prefetch><link href=static/js/chunk-772a6c0d.134a11bd.js rel=prefetch><link href=static/js/chunk-773483d4.2acd07df.js rel=prefetch><link href=static/js/chunk-77373be0.85ac4617.js rel=prefetch><link href=static/js/chunk-779c9bc8.22b1e95a.js rel=prefetch><link href=static/js/chunk-7c512acc.c27678a1.js rel=prefetch><link href=static/js/chunk-7f367e29.14d346cf.js rel=prefetch><link href=static/js/chunk-9b458190.bac29b6c.js rel=prefetch><link href=static/js/chunk-a242f988.e8f92c93.js rel=prefetch><link href=static/js/chunk-b9480562.4b45a4c6.js rel=prefetch><link href=static/js/chunk-b94b259a.fabc47fc.js rel=prefetch><link href=static/js/chunk-bdb33456.123248a8.js rel=prefetch><link href=static/js/chunk-c19c5c98.d43e2856.js rel=prefetch><link href=static/js/chunk-d027fdee.6f972527.js rel=prefetch><link href=static/js/chunk-dc109c14.f330f841.js rel=prefetch><link href=static/js/chunk-e42433ce.ca289818.js rel=prefetch><link href=static/js/chunk-e4906e3a.b56c27fa.js rel=prefetch><link href=static/css/app.5e9b1b71.css rel=preload as=style><link href=static/css/chunk-vendors.f19cb26b.css rel=preload as=style><link href=static/js/app.2aeed533.js rel=preload as=script><link href=static/js/chunk-vendors.7bc20b4d.js rel=preload as=script><link href=static/css/chunk-vendors.f19cb26b.css rel=stylesheet><link href=static/css/app.5e9b1b71.css rel=stylesheet></head><body><noscript><strong>We're sorry but vue-admin doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app><div data-server-rendered=true class=load-wrapp data-v-049a9356><div class=load-7 data-v-049a9356><div class=square-holder data-v-049a9356><div class=square data-v-049a9356></div></div></div></div></div><script src=/static/js/particles.min.js></script><link rel=stylesheet/less type=text/css href=/color.less><script>window.less = {
+/*# sourceMappingURL=skeleton-app.css.map*/</style><link href=static/css/chunk-00a07099.7c3f772e.css rel=prefetch><link href=static/css/chunk-0a784dd5.0eda17fa.css rel=prefetch><link href=static/css/chunk-0ac31ac0.b6ec54b7.css rel=prefetch><link href=static/css/chunk-0baa589a.0e433876.css rel=prefetch><link href=static/css/chunk-0d5fdb9e.3bd9deb8.css rel=prefetch><link href=static/css/chunk-0f04a6bb.5f737688.css rel=prefetch><link href=static/css/chunk-247e771f.0e433876.css rel=prefetch><link href=static/css/chunk-27993f63.5dc43b99.css rel=prefetch><link href=static/css/chunk-2c7c76fb.4266e421.css rel=prefetch><link href=static/css/chunk-3134b494.555d3f3d.css rel=prefetch><link href=static/css/chunk-3af6d18c.51652431.css rel=prefetch><link href=static/css/chunk-3ca785de.445004ab.css rel=prefetch><link href=static/css/chunk-3fe53439.75d456e0.css rel=prefetch><link href=static/css/chunk-47dde441.136a9e9a.css rel=prefetch><link href=static/css/chunk-4ba067d5.b17d45c0.css rel=prefetch><link href=static/css/chunk-50abf16c.2e03dad5.css rel=prefetch><link href=static/css/chunk-53892f3f.53ace4b8.css rel=prefetch><link href=static/css/chunk-57996324.4e6de273.css rel=prefetch><link href=static/css/chunk-57fa8fdc.3c742cae.css rel=prefetch><link href=static/css/chunk-5cb742c2.2015eff2.css rel=prefetch><link href=static/css/chunk-61dc34aa.6fa4e5ec.css rel=prefetch><link href=static/css/chunk-62cfa690.4b30c8cb.css rel=prefetch><link href=static/css/chunk-6e3c80f6.7186e647.css rel=prefetch><link href=static/css/chunk-70d81b08.6e1372b0.css rel=prefetch><link href=static/css/chunk-744b430d.caa1292d.css rel=prefetch><link href=static/css/chunk-74527885.d71b9a44.css rel=prefetch><link href=static/css/chunk-745c0032.03167afb.css rel=prefetch><link href=static/css/chunk-749ea974.3debab79.css rel=prefetch><link href=static/css/chunk-75de7162.54040a99.css rel=prefetch><link href=static/css/chunk-764e1620.0e54eea5.css rel=prefetch><link href=static/css/chunk-76f0fd93.26a3a288.css rel=prefetch><link href=static/css/chunk-77073c5f.d51ba0cb.css rel=prefetch><link href=static/css/chunk-770d2a0a.d51ba0cb.css rel=prefetch><link href=static/css/chunk-7727447a.0852c8b8.css rel=prefetch><link href=static/css/chunk-772a6c0d.d51ba0cb.css rel=prefetch><link href=static/css/chunk-773483d4.a19035e3.css rel=prefetch><link href=static/css/chunk-77373be0.447a642a.css rel=prefetch><link href=static/css/chunk-779c9bc8.a2ecda99.css rel=prefetch><link href=static/css/chunk-7f367e29.23b2c703.css rel=prefetch><link href=static/css/chunk-9b458190.a4297e8a.css rel=prefetch><link href=static/css/chunk-a242f988.b4dabdfb.css rel=prefetch><link href=static/css/chunk-b9480562.0e433876.css rel=prefetch><link href=static/css/chunk-b94b259a.9552bb4e.css rel=prefetch><link href=static/css/chunk-bdb33456.0eda17fa.css rel=prefetch><link href=static/css/chunk-c19c5c98.a6b016d0.css rel=prefetch><link href=static/css/chunk-d027fdee.1fc50605.css rel=prefetch><link href=static/css/chunk-dc109c14.52f1698d.css rel=prefetch><link href=static/css/chunk-e42433ce.0e433876.css rel=prefetch><link href=static/css/chunk-e4906e3a.445004ab.css rel=prefetch><link href=static/js/chunk-00a07099.020366a1.js rel=prefetch><link href=static/js/chunk-08ecace0.092a30d2.js rel=prefetch><link href=static/js/chunk-09ebdaf6.f7bae977.js rel=prefetch><link href=static/js/chunk-0a784dd5.06c430e0.js rel=prefetch><link href=static/js/chunk-0ac31ac0.0caecec6.js rel=prefetch><link href=static/js/chunk-0baa589a.a77c92c2.js rel=prefetch><link href=static/js/chunk-0d5fdb9e.4e415888.js rel=prefetch><link href=static/js/chunk-0f04a6bb.c23e2458.js rel=prefetch><link href=static/js/chunk-18c412b6.96638da7.js rel=prefetch><link href=static/js/chunk-247e771f.6845a5a5.js rel=prefetch><link href=static/js/chunk-27993f63.9ca17130.js rel=prefetch><link href=static/js/chunk-2c7c76fb.9312648f.js rel=prefetch><link href=static/js/chunk-2d0a31d4.9d0be96c.js rel=prefetch><link href=static/js/chunk-2d0a50ed.2e609811.js rel=prefetch><link href=static/js/chunk-2d0a553f.f149dbbe.js rel=prefetch><link href=static/js/chunk-2d0b1c20.d9efb016.js rel=prefetch><link href=static/js/chunk-2d0b2206.7dbf3adb.js rel=prefetch><link href=static/js/chunk-2d0ba167.f76829d1.js rel=prefetch><link href=static/js/chunk-2d0bd16d.7429507a.js rel=prefetch><link href=static/js/chunk-2d0be176.4dbefe04.js rel=prefetch><link href=static/js/chunk-2d0c174c.8c690fa2.js rel=prefetch><link href=static/js/chunk-2d0c7ad3.54cb25a2.js rel=prefetch><link href=static/js/chunk-2d0c7e5a.d278ab49.js rel=prefetch><link href=static/js/chunk-2d0cb73d.48c96475.js rel=prefetch><link href=static/js/chunk-2d0d2b36.3d50d67f.js rel=prefetch><link href=static/js/chunk-2d0d5c9c.e9e55bb1.js rel=prefetch><link href=static/js/chunk-2d0d7443.34841d2b.js rel=prefetch><link href=static/js/chunk-2d0d76cf.80b476e0.js rel=prefetch><link href=static/js/chunk-2d0da3e3.d6a8471f.js rel=prefetch><link href=static/js/chunk-2d0da6e6.fa153eca.js rel=prefetch><link href=static/js/chunk-2d0da700.40fc2acf.js rel=prefetch><link href=static/js/chunk-2d0e1d33.7ef2cd6d.js rel=prefetch><link href=static/js/chunk-2d0e26b9.95c02a12.js rel=prefetch><link href=static/js/chunk-2d0e488f.10a5d180.js rel=prefetch><link href=static/js/chunk-2d0e9963.1e8b98e2.js rel=prefetch><link href=static/js/chunk-2d2088c6.7bcac1dd.js rel=prefetch><link href=static/js/chunk-2d208e1b.99b0131c.js rel=prefetch><link href=static/js/chunk-2d20ebf5.6d7819c5.js rel=prefetch><link href=static/js/chunk-2d20f592.ca2d7c85.js rel=prefetch><link href=static/js/chunk-2d20fd05.5fdaee3f.js rel=prefetch><link href=static/js/chunk-2d210b7f.3595c1ca.js rel=prefetch><link href=static/js/chunk-2d21af2b.4b835b8a.js rel=prefetch><link href=static/js/chunk-2d21ddf1.8012a0c1.js rel=prefetch><link href=static/js/chunk-2d21e454.88a34e18.js rel=prefetch><link href=static/js/chunk-2d22269e.a39578a9.js rel=prefetch><link href=static/js/chunk-2d224c92.9070ba27.js rel=prefetch><link href=static/js/chunk-2d226378.360382af.js rel=prefetch><link href=static/js/chunk-2d2268f9.f517515c.js rel=prefetch><link href=static/js/chunk-2d22bd9d.44450f86.js rel=prefetch><link href=static/js/chunk-2d22bf54.3019fec8.js rel=prefetch><link href=static/js/chunk-2d22c550.80767e2a.js rel=prefetch><link href=static/js/chunk-2d22d74b.b7a8f5ef.js rel=prefetch><link href=static/js/chunk-2d22d7f3.462a200f.js rel=prefetch><link href=static/js/chunk-2d22fd30.63c3027d.js rel=prefetch><link href=static/js/chunk-2d230f8a.61ea6442.js rel=prefetch><link href=static/js/chunk-2d237b44.5c5f2d29.js rel=prefetch><link href=static/js/chunk-2d2383b7.26d3273a.js rel=prefetch><link href=static/js/chunk-3134b494.59c2674c.js rel=prefetch><link href=static/js/chunk-3af6d18c.2d9b2972.js rel=prefetch><link href=static/js/chunk-3ca785de.8a49f000.js rel=prefetch><link href=static/js/chunk-3fe53439.18a82840.js rel=prefetch><link href=static/js/chunk-47dde441.b3429832.js rel=prefetch><link href=static/js/chunk-4ba067d5.3a0db3b2.js rel=prefetch><link href=static/js/chunk-50abf16c.f0d233f9.js rel=prefetch><link href=static/js/chunk-53892f3f.ddc34a7f.js rel=prefetch><link href=static/js/chunk-57996324.2f7895df.js rel=prefetch><link href=static/js/chunk-57fa8fdc.02f8c415.js rel=prefetch><link href=static/js/chunk-5cb742c2.98e5ac59.js rel=prefetch><link href=static/js/chunk-61237f42.7f7dc486.js rel=prefetch><link href=static/js/chunk-61ba1ef3.50a3a1d0.js rel=prefetch><link href=static/js/chunk-61dc34aa.cc0ca0bc.js rel=prefetch><link href=static/js/chunk-62cfa690.fad3d5d3.js rel=prefetch><link href=static/js/chunk-6e3c80f6.4ffc39f5.js rel=prefetch><link href=static/js/chunk-70d81b08.4d8c7109.js rel=prefetch><link href=static/js/chunk-744b430d.9e454929.js rel=prefetch><link href=static/js/chunk-74527885.3b6c7061.js rel=prefetch><link href=static/js/chunk-745c0032.67e06e7a.js rel=prefetch><link href=static/js/chunk-749ea974.aeb4cfde.js rel=prefetch><link href=static/js/chunk-75de7162.4152525a.js rel=prefetch><link href=static/js/chunk-764e1620.360ce50b.js rel=prefetch><link href=static/js/chunk-76f0fd93.5b72e839.js rel=prefetch><link href=static/js/chunk-77073c5f.572fec9d.js rel=prefetch><link href=static/js/chunk-770d2a0a.8d7c86f5.js rel=prefetch><link href=static/js/chunk-7727447a.7e1af7a8.js rel=prefetch><link href=static/js/chunk-772a6c0d.134a11bd.js rel=prefetch><link href=static/js/chunk-773483d4.2acd07df.js rel=prefetch><link href=static/js/chunk-77373be0.85ac4617.js rel=prefetch><link href=static/js/chunk-779c9bc8.ad936d16.js rel=prefetch><link href=static/js/chunk-7c512acc.c27678a1.js rel=prefetch><link href=static/js/chunk-7f367e29.cc76d6b9.js rel=prefetch><link href=static/js/chunk-9b458190.e460b566.js rel=prefetch><link href=static/js/chunk-a242f988.98b07ad8.js rel=prefetch><link href=static/js/chunk-b9480562.ac369057.js rel=prefetch><link href=static/js/chunk-b94b259a.406e41bd.js rel=prefetch><link href=static/js/chunk-bdb33456.d4eb500a.js rel=prefetch><link href=static/js/chunk-c19c5c98.886104fb.js rel=prefetch><link href=static/js/chunk-d027fdee.d6404b15.js rel=prefetch><link href=static/js/chunk-dc109c14.50b4238e.js rel=prefetch><link href=static/js/chunk-e42433ce.73d8ddf3.js rel=prefetch><link href=static/js/chunk-e4906e3a.d1738de5.js rel=prefetch><link href=static/css/app.5e9b1b71.css rel=preload as=style><link href=static/css/chunk-vendors.f19cb26b.css rel=preload as=style><link href=static/js/app.99a5b3ab.js rel=preload as=script><link href=static/js/chunk-vendors.7bc20b4d.js rel=preload as=script><link href=static/css/chunk-vendors.f19cb26b.css rel=stylesheet><link href=static/css/app.5e9b1b71.css rel=stylesheet></head><body><noscript><strong>We're sorry but vue-admin doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app><div data-server-rendered=true class=skeleton-wrapper><div class=loading-container><div class=loading></div><div id=loading-text>加载中...</div></div></div></div><script src=/static/js/particles.min.js></script><link rel=stylesheet/less type=text/css href=/color.less><script>window.less = {
         async: false,
         env: "production",
         javascriptEnabled: true,
         modifyVars: {
           "@primary-color": "#1890FF"
         }
-      };</script><script src=https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js></script><script src=static/js/chunk-vendors.7bc20b4d.js></script><script src=static/js/app.2aeed533.js></script></body></html>
+      };</script><script src=https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js></script><script src=static/js/chunk-vendors.7bc20b4d.js></script><script src=static/js/app.99a5b3ab.js></script></body></html>

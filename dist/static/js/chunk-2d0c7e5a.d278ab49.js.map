@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/fonts/YueHei.ttf"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"static/js/chunk-2d0c7e5a.d278ab49.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/fonts/YueHei.ba5b9ad3.ttf\";"],"sourceRoot":""}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/assets/fonts/ArtielySans-Medium.woff2"],"names":["module","exports","__webpack_require__","p"],"mappings":"mGAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"static/js/chunk-2d0c7ad3.54cb25a2.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/fonts/ArtielySans-Medium.5aba1aa2.woff2\";"],"sourceRoot":""}

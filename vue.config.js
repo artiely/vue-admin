@@ -4,7 +4,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 const {
   themePlugin,
   skeleton,
-  // uglifyJsPlugin,
+  uglifyJsPlugin,
   compressionWebpackPlugin,
   zipPlugin
 } = require('./webpack.config')
@@ -81,7 +81,7 @@ module.exports = {
       config.plugins.push(
         // 打包生产.gz包
         compressionWebpackPlugin,
-        // uglifyJsPlugin,
+        uglifyJsPlugin,
         // 对打包文件进行压缩
         // zipPlugin
       )
