@@ -4,13 +4,13 @@ var path = require('path')
 app.use(express.static(path.join(__dirname, '/dist')))
 var localhost = require('address').ip()
 var opn = require('opn')
-const spdy = require('spdy')
+const https = require('https')
+const http=requier('http')
 const fs = require('fs')
 var proxy = require('http-proxy-middleware')
-let port = 3999
 const http2options = {
-  key: fs.readFileSync(path.resolve(__dirname , '../../http2-key/server.key') ),
-  cert: fs.readFileSync(path.resolve(__dirname , '../../http2-key/server.crt'))
+  key: fs.readFileSync(path.resolve(__dirname , './key/3140499_08tj.com.key') ),
+  cert: fs.readFileSync(path.resolve(__dirname , './key/3140499_08tj.com.pem'))
 }
 let options = {
   target: 'https://www.easy-mock.com/mock/5d5b9eddaf6abb3d1b4270ad', // 测试
@@ -19,9 +19,14 @@ let options = {
 
 let exampleProxy = proxy(options) // 开启代理功能，并加载配置
 app.use('/api', exampleProxy) // 对地址为`/api`的请求全部转发
-spdy
-  .createServer(http2options, app).listen(port, () => {
-  var uri = `http://${localhost}:${port}`
+https
+  .createServer(http2options, app).listen('443', () => {
+  var uri = `http://${localhost}:443`
+  console.log(uri)
+  opn(uri)
+})
+http.createServer(app).listen('80',()=>{
+  var uri = `http://${localhost}:80`
   console.log(uri)
   opn(uri)
 })

@@ -3,6 +3,7 @@ node_modules
 
 /tests/e2e/reports/
 selenium-debug.log
+/key
 
 # local env files
 .env.local
