@@ -5,7 +5,7 @@ app.use(express.static(path.join(__dirname, '/dist')))
 var localhost = require('address').ip()
 var opn = require('opn')
 const https = require('https')
-const http=requier('http')
+const http=require('http')
 const fs = require('fs')
 var proxy = require('http-proxy-middleware')
 const http2options = {
