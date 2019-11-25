@@ -9,8 +9,8 @@ const fs = require('fs')
 var proxy = require('http-proxy-middleware')
 let port = 3999
 const http2options = {
-  key: fs.readFileSync(__dirname + '../../http2-key/server.key'),
-  cert: fs.readFileSync(__dirname + '../../http2-key/server.crt')
+  key: fs.readFileSync(path.resolve(__dirname , '../../http2-key/server.key') ),
+  cert: fs.readFileSync(path.resolve(__dirname , '../../http2-key/server.crt'))
 }
 let options = {
   target: 'https://www.easy-mock.com/mock/5d5b9eddaf6abb3d1b4270ad', // 测试
