@@ -14,8 +14,8 @@ const http2options = {
   cert: fs.readFileSync(path.resolve(__dirname , './key/3140499_08tj.com.pem'))
 }
 const h2options = {
-  key: fs.readFileSync(__dirname + '../key/server.key'),
-  cert:  fs.readFileSync(__dirname + '../key/server.crt')
+  key: fs.readFileSync(path.resolve(__dirname , '../key/server.key')),
+  cert:  fs.readFileSync(path.resolve(__dirname , '../key/server.crt'))
 }
 app.get('*', (req, res) => {
   res
