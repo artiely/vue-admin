@@ -3,7 +3,7 @@ var app = express()
 var path = require('path')
 app.use(express.static(path.join(__dirname, '/dist')))
 var localhost = require('address').ip()
-const spdy = require('spdy')
+// const spdy = require('spdy')
 var opn = require('opn')
 const https = require('https')
 const http=require('http')
@@ -13,10 +13,10 @@ const http2options = {
   key: fs.readFileSync(path.resolve(__dirname , './key/3140499_08tj.com.key') ),
   cert: fs.readFileSync(path.resolve(__dirname , './key/3140499_08tj.com.pem'))
 }
-const h2options = {
-  key: fs.readFileSync(__dirname + '../key/server.key'),
-  cert:  fs.readFileSync(__dirname + '../key/server.crt')
-}
+// const h2options = {
+//   key: fs.readFileSync(__dirname + '../key/server.key'),
+//   cert:  fs.readFileSync(__dirname + '../key/server.crt')
+// }
 let options = {
   target: 'https://www.easy-mock.com/mock/5d5b9eddaf6abb3d1b4270ad', // 测试
   changeOrigin: true // 需要虚拟主机站点
