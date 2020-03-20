@@ -94,7 +94,7 @@ export default {
         },
         series: [
           {
-            data: this.data?this.data:[3,4,5,7,9]
+            data: this.data ? this.data : [3, 4, 5, 7, 9]
           }
         ],
         tooltip: {

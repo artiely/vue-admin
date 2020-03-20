@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([["chunk-2d22bf54"],{f0d8:function(t,e,n){"use strict";n.r(e);var l=n("2877"),r=Object(l.a)({},function(){var t=this.$createElement;return(this._self._c||t)("a-layout-footer",{staticStyle:{"text-align":"center"}},[this._v("\n    Ant Design Pro ©2019 Created by Artiely\n  ")])},[],!1,null,null,null);e.default=r.exports}}]);
