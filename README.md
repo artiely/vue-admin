@@ -10,9 +10,7 @@
 
 
 # 预览地址
-（最低配服务器，可能不稳定）
-
-https://08tj.com
+https://artiely.gitee.io/antd-admin
 
 
 # 快速构建
