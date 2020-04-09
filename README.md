@@ -1,3 +1,4 @@
+> 此项目将随着ant-design-vue@2.0发布后进行全面重构，欢迎star!
 # 效果预览
 <img src="./docs/localhost_8082_(iPhoneX).png" style="width:50%" width="400"><img src="./docs/localhost_8082_(iPhoneX)(1).png" style="width:50%" width="400">
 
