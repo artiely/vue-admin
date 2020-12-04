@@ -36,7 +36,7 @@
 		"driver.js": "^0.9.7",
 		"element-ui": "^2.11.1",
 		"express": "^4.17.1",
-		"highlight.js": "^9.15.9",
+		"highlight.js": "^10.4.1",
 		"http": "0.0.0",
 		"http-proxy-middleware": "^0.19.1",
 		"https": "^1.0.0",
