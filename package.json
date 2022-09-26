@@ -79,7 +79,7 @@
 		"@babel/plugin-proposal-optional-chaining": "^7.2.0",
 		"@sentry/webpack-plugin": "^1.6.2",
 		"@vue/cli-plugin-babel": "^3.7.0",
-		"@vue/cli-plugin-e2e-nightwatch": "^3.7.0",
+		"@vue/cli-plugin-e2e-nightwatch": "^5.0.8",
 		"@vue/cli-plugin-eslint": "^3.7.0",
 		"@vue/cli-service": "^3.7.0",
 		"@vue/eslint-config-standard": "^4.0.0",
